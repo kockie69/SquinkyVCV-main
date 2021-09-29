@@ -1,0 +1,1278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\test">
+      <UniqueIdentifier>{f5dea203-4bd6-45b8-ac87-b6b9a4877380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp">
+      <UniqueIdentifier>{6cd4392e-16ed-4f15-9196-dbe57a9f5472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp">
+      <UniqueIdentifier>{4ff35a32-d2ce-4426-aaad-d9ef70138cf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\third-party">
+      <UniqueIdentifier>{f5a31e57-cc6b-443c-abf4-46970f118fe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\filters">
+      <UniqueIdentifier>{c2b8cfc5-30d0-4c94-9424-75409757ee7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\filters">
+      <UniqueIdentifier>{0ab36cfd-9f38-416a-b356-59180724dbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\third-party">
+      <UniqueIdentifier>{095df52d-c60a-44cb-9e6f-ff148b9f2730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\third-party\falco">
+      <UniqueIdentifier>{95f83ea1-2663-4fa7-86e2-5bb532d82198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\utils">
+      <UniqueIdentifier>{c53ee123-95ef-4304-8445-69048886956b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\generators">
+      <UniqueIdentifier>{4f96103b-8d78-4aec-b054-b4f72c382195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\utils">
+      <UniqueIdentifier>{20dd77d1-e20f-4a4f-8086-472afb19d4e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\test">
+      <UniqueIdentifier>{d358068d-664e-470d-93b2-2bb5db2b41e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\composites">
+      <UniqueIdentifier>{6f955dd1-2a2c-4506-bfc2-4bb55734eb72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sqsrc">
+      <UniqueIdentifier>{69f82fd1-904a-40e1-8a26-c2cd63f1e979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sqsrc">
+      <UniqueIdentifier>{dde575bc-41ce-4770-9fd3-411c945a262b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\fft">
+      <UniqueIdentifier>{09a864b6-3479-4e18-b9de-499c30b220a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\fft">
+      <UniqueIdentifier>{53848339-2c75-4ddc-8933-607d2353adee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\third-party\kiss_fft">
+      <UniqueIdentifier>{80fd0025-498b-4fd2-98ac-cdae460339fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\third-party\kiss_fft">
+      <UniqueIdentifier>{ea30d980-17c6-4bf8-91a7-847e331330c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sqsrc\thread">
+      <UniqueIdentifier>{19f721d6-97d9-4952-a547-52e6e418fbf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sqsrc\thread">
+      <UniqueIdentifier>{98bc8bb8-3835-46b9-be11-d534f001cac5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sqsrc\util">
+      <UniqueIdentifier>{d88fef08-3b09-4979-98d0-41863e55201d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sqsrc\clock">
+      <UniqueIdentifier>{2919976b-3c5e-48c7-9bc1-70b34d905594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sqsrc\clock">
+      <UniqueIdentifier>{6c381890-e472-4d98-a18a-8c768ec7a670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sqsrc\grammar">
+      <UniqueIdentifier>{c8db16de-4e6f-4c6d-bd7a-aeb75e464495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sqsrc\grammar">
+      <UniqueIdentifier>{d8e54a08-bbcc-4495-8f95-cd2178b57811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\third-party\src">
+      <UniqueIdentifier>{726b598f-f9ad-4df3-9db8-7cb86dc1cd03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\third-party\src">
+      <UniqueIdentifier>{bcce7e7a-2123-42c9-8557-a31f6444e05e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sqsrc\delay">
+      <UniqueIdentifier>{fc621d2c-8726-4e99-a6dd-bbc7135bee28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sqsrc\delay">
+      <UniqueIdentifier>{2b1546d2-0426-4a86-9aa8-0d5448be9ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\midi">
+      <UniqueIdentifier>{cd0f2601-02cc-4cff-8b9b-763f0847ee96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\midi\view">
+      <UniqueIdentifier>{3f59ecf1-abb1-41d0-af93-846c51ca67f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\midi">
+      <UniqueIdentifier>{959b7e4b-ce7b-471a-889c-df051c09304b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\midi\view">
+      <UniqueIdentifier>{4c14cdbc-b9f0-4e2f-931e-98d8ba661770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\midi\model">
+      <UniqueIdentifier>{726e2058-6d3f-43a6-aa73-10cf53629bf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\midi\controller">
+      <UniqueIdentifier>{1cdfb7ce-218c-40bb-a3e0-588b110427dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\midi\model">
+      <UniqueIdentifier>{14b5b8a1-05b8-4b58-8897-62fe9f5a8619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\midi\controller">
+      <UniqueIdentifier>{212cabf3-1fa1-4921-911d-bbd64a09d552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{2783a1b8-2a42-4f69-87bc-391a5bc4288e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sqsrc\delay\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source Files\dsp\third-party\midifile">
+      <UniqueIdentifier>{a41ed202-a9b2-4b3c-998d-dddfecad0549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\third-party\midifile">
+      <UniqueIdentifier>{be97dd4e-ec25-4d1f-bd8a-c5d964ff8de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sqsrc\util">
+      <UniqueIdentifier>{8cd94f6b-5889-4eee-a9fe-49432b5a171f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\third-party\pugixml">
+      <UniqueIdentifier>{7573ade3-6b63-4b11-a7dd-3d8424e0cd5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dsp\samp">
+      <UniqueIdentifier>{1419667e-a14e-4d18-bcdb-6cfcac686f3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\samp">
+      <UniqueIdentifier>{1a158232-c412-421c-81fa-99a58e1e5370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\third-party\flac">
+      <UniqueIdentifier>{683d1705-8044-4338-bd03-9dde6adfe820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dsp\third-party\flac\src">
+      <UniqueIdentifier>{2566534d-a3d8-4019-a245-823ffba00809}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\dsp\third-party\falco\DspFilter.cpp">
+      <Filter>Source Files\dsp\third-party</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\main.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testBiquad.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testLookupTable.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSaw.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSinOscillator.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\filters\ButterworthFilterDesigner.cpp">
+      <Filter>Source Files\dsp\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\AudioMath.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testHilbert.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\filters\HilbertFilterDesigner.cpp">
+      <Filter>Source Files\dsp\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testAudioMath.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\perfTest.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFrequencyShifter.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testStateVariable.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testTestSignal.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testVocalAnimator.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\filters\FormantTables2.cpp">
+      <Filter>Source Files\dsp\filters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\ObjectCache.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testObjectCache.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFFT.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\fft\FFTData.cpp">
+      <Filter>Source Files\dsp\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\kiss_fft130\tools\kiss_fftr.c">
+      <Filter>Source Files\dsp\third-party\kiss_fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\kiss_fft130\kiss_fft.c">
+      <Filter>Source Files\dsp\third-party\kiss_fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\thread\ThreadClient.cpp">
+      <Filter>Source Files\sqsrc\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\thread\ThreadServer.cpp">
+      <Filter>Source Files\sqsrc\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\thread\ThreadSharedState.cpp">
+      <Filter>Source Files\sqsrc\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testThread.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\fft\FFT.cpp">
+      <Filter>Source Files\dsp\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testRingBuffer.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testColoredNoise.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFFTCrossFader.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\fft\FFTCrossFader.cpp">
+      <Filter>Source Files\dsp\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFinalLeaks.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testClockMult.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\clock\ClockMult.cpp">
+      <Filter>Source Files\sqsrc\clock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testTremolo.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testGateTrigger.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\Analyzer.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testAnalyzer.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFilter.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testLowpassFilter.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testPoly.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testGMR.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testVCO.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFilterDesign.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testVCOAlias.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSin.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMinBLEPVCO.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testRateConversion.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testDelay.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\delay\FractionalDelay.cpp">
+      <Filter>Source Files\sqsrc\delay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSpline.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\AsymWaveShaper.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testButterLookup.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiDataModel.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\TestMidiViewport.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\MidiSong.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\MidiTrack.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFilteredIterator.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testReplaceCommand.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testUndoRedo.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\ReplaceDataCommand.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\UndoRedoStack.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiSong.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiEvents.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\perfTest2.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testUtils.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testIComposite.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\MidiSelectionModel.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\MidiSequencer.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiControllers.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiEditor.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiEditor.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testNoteScreenScale.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\view\NoteScreenScale.cpp">
+      <Filter>Source Files\midi\view</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\view\MidiEditorContext.cpp">
+      <Filter>Source Files\midi\view</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiLock.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiEditorNextPrev.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\SqClipboard.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiEditorCCP.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testVec.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSeqClock.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMix8.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSlew4.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiEditorSelection.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testCommChannels.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testLadder.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testHighpassFilter.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\calQ.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\initPerf.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMixHelper.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMix4.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiVoice.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiVoiceAssigner.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiPlayer2.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSeqComposite.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiPlayer2.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testDrumTrigger.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testAudition.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testStereoMix.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testStepRecordInput.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiFile.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiFileProxy.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\midifile\Binasc.cpp">
+      <Filter>Source Files\dsp\third-party\midifile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\midifile\MidiEvent.cpp">
+      <Filter>Source Files\dsp\third-party\midifile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\midifile\MidiEventList.cpp">
+      <Filter>Source Files\dsp\third-party\midifile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\midifile\MidiFile.cpp">
+      <Filter>Source Files\dsp\third-party\midifile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\midifile\MidiMessage.cpp">
+      <Filter>Source Files\dsp\third-party\midifile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\NewSongDataDataCommand.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testNewSongDataCommand.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testScale.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\Scale.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\ScaleRelativeNote.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiEditorTab.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\Triad.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testTriad.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\MidiSong4.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiPlayer4.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MidiTrackPlayer.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiPlayer4.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiSelectionModel.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\util\InteropClipboard.cpp">
+      <Filter>Source Files\sqsrc\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMidiTrackPlayer.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSeqComposite4.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSuper.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testEditCommands4.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\controller\MakeEmptyTrackCommand4.cpp">
+      <Filter>Source Files\midi\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\midi\model\MidiSequencer4.cpp">
+      <Filter>Source Files\midi\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testChaos.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testOnset.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\fft\FFTUtils.cpp">
+      <Filter>Source Files\dsp\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testOnset2.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\fft\OnsetDetector.cpp">
+      <Filter>Source Files\dsp\fft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\SqWaveFile.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\TestGenerators.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSimpleQuantizer.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\SimpleQuantizer.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testClockRecovery.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testCompCurves.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\CompCurves.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\SplineRenderer.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\simd_testBiquad.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testMultiLag2.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testWVCO.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSub.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFilterComposite.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testBasic.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSines.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testDC.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSimdLookup.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSimd.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\AutioMath_4.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\utils\Cmprsr.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\src\minblep.cpp">
+      <Filter>Source Files\dsp\third-party\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSqStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testOscSmoother.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testx.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\SLex.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\SParse.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testx2.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\WaveLoader.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\SInstrument.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\Streamer.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\Sampler4vx.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\CompiledInstrument.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testx3.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\CompiledRegion.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\SamplerSchema.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\SamplerPlayback.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testADSR.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testWavThread.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\util\SqLog.cpp">
+      <Filter>Source Files\dsp\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testx4.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testACDetector.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\FilePath.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\RegionPool.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testCmprsr.cpp">
+      <Filter>Header Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testCompressor.cpp">
+      <Filter>Header Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testCompressorParamHolder.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testx5.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testx6.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testADSRSampler.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testStreamer.cpp">
+      <Filter>Header Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testSampComposite.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\perfTest3.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testFlac.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\stream_decoder.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\windows_unicode_filenames.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\bitreader.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\crc.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\cpu.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\fixed.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\format.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\lpc.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\md5.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\FlacReader.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\third-party\flac\src\memory.c">
+      <Filter>Source Files\dsp\third-party\flac\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\WaveLoaders.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testx7.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\HeadingTracker.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testHeadingTracker.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\gc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testCompressorII.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testxLex.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dsp\samp\LexContext.cpp">
+      <Filter>Source Files\dsp\samp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testGateDelay.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testRegionPrune.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testStochasticGrammar2.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\grammar\StochasticProductionRule.cpp">
+      <Filter>Source Files\sqsrc\grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\grammar\StochasticGrammar2.cpp">
+      <Filter>Source Files\sqsrc\grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sqsrc\grammar\StochasticNote.cpp">
+      <Filter>Source Files\sqsrc\grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testGMR2.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\testStochasticTrigAndEval.cpp">
+      <Filter>Source Files\test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\dsp\third-party\falco\DspFilter.h">
+      <Filter>Header Files\dsp\third-party\falco</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\BiquadFilter.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\BiquadParams.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\BiquadState.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\ButterworthFilterDesigner.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\generators\SawOscillator.h">
+      <Filter>Header Files\dsp\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\generators\SinOscillator.h">
+      <Filter>Header Files\dsp\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\AudioMath.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\LookupTable.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\HilbertFilterDesigner.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\MeasureTime.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\FrequencyShifter.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\TestComposite.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\WidgetComposite.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\TimeStatsCollector.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\SqTime.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\StateVariableFilter.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\TestSignal.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\generators\MultiModOsc.h">
+      <Filter>Header Files\dsp\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\VocalAnimator.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\VocalFilter.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\FormantTables2.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\asserts.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\ExtremeTester.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\LookupTableFactory.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\ObjectCache.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\fft\FFTData.h">
+      <Filter>Header Files\dsp\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\fft\FFT.h">
+      <Filter>Header Files\dsp\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\kiss_fft130\kiss_fft.h">
+      <Filter>Header Files\dsp\third-party\kiss_fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\kiss_fft130\tools\kiss_fftr.h">
+      <Filter>Header Files\dsp\third-party\kiss_fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\thread\ThreadClient.h">
+      <Filter>Header Files\sqsrc\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\thread\ThreadServer.h">
+      <Filter>Header Files\sqsrc\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\thread\ThreadSharedState.h">
+      <Filter>Header Files\sqsrc\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\RingBuffer.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\ManagedPool.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\ColoredNoise.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\fft\FFTCrossFader.h">
+      <Filter>Header Files\dsp\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\clock\ClockMult.h">
+      <Filter>Header Files\sqsrc\clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\AsymRampShaper.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Tremolo.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\GateTrigger.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\SchmidtTrigger.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\Constants.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\thread\ThreadPriority.h">
+      <Filter>Header Files\sqsrc\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Analyzer.h">
+      <Filter>Source Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\grammar\StochasticGrammar.h">
+      <Filter>Header Files\sqsrc\grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\GraphicEq.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\LowPassFilter.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\Decimator.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\GMR.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\LFN.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\clock\GenerativeTriggerGenerator.h">
+      <Filter>Header Files\sqsrc\clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\clock\TriggerSequencer.h">
+      <Filter>Header Files\sqsrc\clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\poly.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\CHB.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\TriggerOutput.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\FunVCOComposite.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\src\FunVCO.h">
+      <Filter>Header Files\dsp\third-party\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\generators\MinBLEPVCO.h">
+      <Filter>Header Files\dsp\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\EV3.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\IIRDecimator.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\IIRUpsampler.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\delay\FractionalDelay.h">
+      <Filter>Header Files\sqsrc\delay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\daveguide.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Gray.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Shaper.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\AsymWaveShaper.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\ButterworthLookup.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Super.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\ReplaceDataCommand.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\SqCommand.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\UndoRedoStack.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\MidiSong.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\MidiTrack.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\KSComposite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\asserts.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\MultiLag.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\NonUniformLookupTable.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\SmoothedHPF.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\Divider.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\StateVariable4PHP.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\CH10.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\CHBg.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\src\FunVCO3.h">
+      <Filter>Header Files\dsp\third-party\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\src\SQMath.h">
+      <Filter>Header Files\dsp\third-party\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\MidiSelectionModel.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiEditor.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiKeyboardHandler.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\view\NoteScreenScale.h">
+      <Filter>Header Files\midi\view</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\PitchUtils.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\view\MidiEditorContext.h">
+      <Filter>Header Files\midi\view</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\MidiSequencer.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\util\FilteredIterator.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\TimeUtils.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiLock.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Seq.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\SeqClock.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\SqClipboard.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Blank.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\fVec.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Slew4.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\OneShot.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Mix8.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\LFNB.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Mix4.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\MixM.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\CommChannels.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\TrapezoidalLowpass.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\filters\LadderFilter.h">
+      <Filter>Header Files\dsp\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\Filt.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\PeakDetector.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\ISeqSettings.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\MixHelper.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiVoice.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiVoiceAssigner.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiPlayer2.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\IMidiPlayerHost.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\TestSettings.h">
+      <Filter>Source Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\MLockTest.h">
+      <Filter>Source Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\composites\DrumTrigger.h">
+      <Filter>Header Files\composites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\TestAuditionHost.h">
+      <Filter>Source Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiAudition.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\TestHost2.h">
+      <Filter>Source Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\AuditionLocker.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\StepRecordInput.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sqsrc\util\AtomicRingBuffer.h">
+      <Filter>Header Files\sqsrc\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiFileProxy.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\midifile\Binasc.h">
+      <Filter>Header Files\dsp\third-party\midifile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\midifile\MidiEventList.h">
+      <Filter>Header Files\dsp\third-party\midifile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\midifile\MidiFile.h">
+      <Filter>Header Files\dsp\third-party\midifile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\midifile\MidiMessage.h">
+      <Filter>Header Files\dsp\third-party\midifile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\midifile\MidiEvent.h">
+      <Filter>Header Files\dsp\third-party\midifile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\SqMidiEvent.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\NewSongDataCommand.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\Scale.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\ScaleRelativeNote.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\Triad.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\model\MidiSong4.h">
+      <Filter>Header Files\midi\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MidiPlayer4.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\TestHost4.h">
+      <Filter>Source Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\midi\controller\MakeEmptyTrackCommand4.h">
+      <Filter>Header Files\midi\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\fft\FFTUtils.h">
+      <Filter>Header Files\dsp\fft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\TestGenearators.h">
+      <Filter>Source Files\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\utils\CompCurves.h">
+      <Filter>Header Files\dsp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\simd.h">
+      <Filter>Header Files\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\SimdBlocks.h">
+      <Filter>Header Files\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\pugixml\pugiconfig.hpp">
+      <Filter>Header Files\dsp\third-party\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\third-party\pugixml\pugixml.hpp">
+      <Filter>Header Files\dsp\third-party\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\SLex.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\CompiledInstrument.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\CompiledRegion.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\dr_wav.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\Sampler4vx.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\SamplerPlayback.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\SamplerSchema.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\SInstrument.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\SParse.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dsp\samp\Streamer.h">
+      <Filter>Header Files\dsp\samp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\samplerTests.h">
+      <Filter>Header Files\test</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

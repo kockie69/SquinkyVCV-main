@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Grammar",
+    "type": "object",
+    "required": [
+        "rules"
+    ],
+    "properties": {
+        "rules": {
+            "type": "array",
+            "description": "The grammar's production rules.",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+
+                    "lhs": {
+                        "type": "string"
+                    },
+                    "entries": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rhs": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "p": {
+                                    "type": "number"
+                                }
+                            },
+                            "required":["rhs", "p"]
+                        }
+                    }
+                },
+                "required": ["lhs", "entries"]
+            }
+        }
+    }
+}
+

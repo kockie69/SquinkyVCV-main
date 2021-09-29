@@ -1,0 +1,85 @@
+#pragma once
+
+#include "LookupTable.h"
+#include "BiquadParams.h"
+
+/**
+ * This class creates objects and caches them.
+ * Objects in the cache only stay alive as long as there is a reference to the object,
+ * If all refs go away, the object will be deleted.
+ *
+ * All accessors return shared pointers to make the lifetime management easy.
+ * Clients are free to use the shared_ptr directly, or may use the raw pointer,
+ * as long as the client holds onto the reference.
+ */
+
+template <typename T>
+class ObjectCache
+{
+public:
+  
+
+    // default is 24db
+    static std::shared_ptr<LookupTableParams<T>> getAudioTaper();
+    static std::shared_ptr<LookupTableParams<T>> getBipolarAudioTaper();
+    static std::shared_ptr<LookupTableParams<T>> getBipolarAudioTaper30();
+    static std::shared_ptr<LookupTableParams<T>> getBipolarAudioTaper42();
+    static std::shared_ptr<LookupTableParams<T>> getAudioTaper18();
+
+
+    static std::shared_ptr<LookupTableParams<T>> getSinLookup();
+
+    static std::shared_ptr<LookupTableParams<T>> getMixerPanL();
+    static std::shared_ptr<LookupTableParams<T>> getMixerPanR();
+
+
+    /**
+     * 2 ** x, not scaled or shifted in any manner, but tables
+     * selected to span a "reasonable" range when used as frequencies
+     (4 Hz to 40kHz)
+     * Exp2 lookup is 2 ** x.
+     * Domain = {2 .. 15(+)}
+     * Range = {4 .. 40000}
+     * accuracy = 1 cent (1V/octave)
+     */
+    static std::shared_ptr<LookupTableParams<T>> getExp2();
+
+    static std::function<T(T)> getExp2Ex();
+
+    static std::shared_ptr<LookupTableParams<T>> getExp2ExtendedLow();
+    static std::shared_ptr<LookupTableParams<T>> getExp2ExtendedHigh();
+
+
+    static std::shared_ptr<LookupTableParams<T>> getDb2Gain();
+
+    /**
+     * tanh, unscaled, from -5 to 5
+     */
+    static std::shared_ptr<LookupTableParams<T>> getTanh5();
+
+    static std::shared_ptr<BiquadParams<T, 3>> get6PLPParams(float normalizedFc);
+
+private:
+    /**
+     * Cache uses weak pointers. This allows the cached objects to be
+     * freed when the last client reference goes away.
+     */
+    static std::weak_ptr<LookupTableParams<T>> bipolarAudioTaper;
+    static std::weak_ptr<LookupTableParams<T>> bipolarAudioTaper30;
+    static std::weak_ptr<LookupTableParams<T>> bipolarAudioTaper42;
+    static std::weak_ptr<LookupTableParams<T>> audioTaper;
+    static std::weak_ptr<LookupTableParams<T>> audioTaper18;
+    static std::weak_ptr<LookupTableParams<T>> sinLookupTable;
+    static std::weak_ptr<LookupTableParams<T>> exp2;
+    static std::weak_ptr<LookupTableParams<T>> exp2ExHigh;
+    static std::weak_ptr<LookupTableParams<T>> exp2ExLow;
+    static std::weak_ptr<LookupTableParams<T>> db2Gain;
+    static std::weak_ptr<LookupTableParams<T>> tanh5;
+
+    static std::weak_ptr< BiquadParams<T, 3>> lowpass64;
+    static std::weak_ptr< BiquadParams<T, 3>> lowpass32; 
+    static std::weak_ptr< BiquadParams<T, 3>> lowpass16;
+
+    static std::weak_ptr<LookupTableParams<T>> mixerPanL;
+    static std::weak_ptr<LookupTableParams<T>> mixerPanR;
+};

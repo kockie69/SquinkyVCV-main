@@ -1,0 +1,28 @@
+{
+    "$schema": "./grammar.schema.json",
+    "line_endings": "unix",
+    "rules": [
+        {
+            "lhs": "q",
+            "entries": [
+                {
+                    "rhs": [
+                        "s",
+                        "s",
+                        "s",
+                        "s"
+                    ],
+                    "p": 10
+                },
+                {
+                    "rhs": [
+                        "3e",
+                        "3e",
+                        "3e"
+                    ],
+                    "p": 10
+                }
+            ]
+        }
+    ]
+}
