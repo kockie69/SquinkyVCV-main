@@ -176,7 +176,7 @@ struct ColorDisplay : TransparentWidget
             // TODO: this 100x100 was a mistake, but now we like the
             // slight stretching. look into this some more to try and
             // improve the looks later.
-            _noiseDrawer.reset(new NoiseDrawer(vg, 100, 100));
+            // _noiseDrawer.reset(new NoiseDrawer(vg, 100, 100));
         //}
         //_noiseDrawer->draw(vg, colorX, colorY, colorWidth, colorHeight);
         
