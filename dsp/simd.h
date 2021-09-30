@@ -14,7 +14,7 @@
 
 #include <algorithm>
 #include <cstdint>
-#include <simd/vector.hpp>
+#include <simd/Vector.hpp>
 #include <simd/functions.hpp>
 #include "SqMath.h"
 #include "dsp/common.hpp"
