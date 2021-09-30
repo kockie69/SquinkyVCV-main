@@ -172,14 +172,18 @@ struct ColorDisplay : TransparentWidget
         nvgFill(vg);
 
         // then the noise
-        if (!_noiseDrawer) {
+        //if (!_noiseDrawer) {
             // TODO: this 100x100 was a mistake, but now we like the
             // slight stretching. look into this some more to try and
             // improve the looks later.
             _noiseDrawer.reset(new NoiseDrawer(vg, 100, 100));
+        //}
+        //_noiseDrawer->draw(vg, colorX, colorY, colorWidth, colorHeight);
+        
+        if (_noiseDrawer) {
+            _noiseDrawer.reset(new NoiseDrawer(vg, 100, 100));
+            _noiseDrawer->draw(vg, colorX, colorY, colorWidth, colorHeight);
         }
-        _noiseDrawer->draw(vg, colorX, colorY, colorWidth, colorHeight);
-
 
         // update the slope display in the UI
         const bool slopeSign = slope >= 0;
@@ -224,7 +228,6 @@ ColoredNoiseWidget::ColoredNoiseWidget(ColoredNoiseModule *module) : ModuleWidge
         addChild(display);
         display->module = module;
     }
-
 
     // Add the background panel
 #ifndef __V1x

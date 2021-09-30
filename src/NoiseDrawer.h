@@ -121,5 +121,5 @@ inline void NoiseDrawer::draw(NVGcontext *vg,
     nvgRect(vg, drawX, drawY, drawWidth, drawHeight);
 
     nvgFillPaint(vg, paint);
-    nvgFill(vg);
+    nvgFill(vg); 
 }
