@@ -214,7 +214,7 @@ void CompressorWidget2::paste() {
 void CompressorWidget2::appendContextMenu(Menu* theMenu) {
     MenuLabel* spacerLabel = new MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem("Comp II manual", "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/compressor2.md");
+    ManualMenuItem* manual = new ManualMenuItem("Comp II manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/compressor2.md");
     theMenu->addChild(manual);
 
     theMenu->addChild(new SqMenuItem(

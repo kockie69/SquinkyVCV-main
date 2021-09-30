@@ -489,7 +489,7 @@ static void testVoiceAssignRetrigger()
     assert(p->_getIndex() != p2->_getIndex());
 }
 
-// This case comes from a customer issue: https://github.com/squinkylabs/SquinkyVCV/issues/98
+// This case comes from a customer issue: https://github.com/kockie69/SquinkyVCV-main/issues/98
 static void testVoiceAssignBug()
 {
     MidiVoice vx[3];

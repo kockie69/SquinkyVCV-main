@@ -94,7 +94,7 @@ void SubWidget::appendContextMenu(Menu *menu)
 
     ManualMenuItem* manual = new ManualMenuItem(
         "Substitute manual",
-        "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/substitute.md");
+        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/substitute.md");
     menu->addChild(manual);
     
     SqMenuItem_BooleanParam2 * item = new SqMenuItem_BooleanParam2(module, Comp::AGC_PARAM);

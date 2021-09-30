@@ -18,7 +18,7 @@ As we mentioned earlier, SFZ Player implements a subset of the SFZ specification
 
 ## In case of problems
 
-If you load an SFZ file and have a problem, you can ignore it and move on, or you can log an issue with us on our [GitHub Page](https://github.com/squinkylabs/SquinkyVCV/issues). It's your choice.
+If you load an SFZ file and have a problem, you can ignore it and move on, or you can log an issue with us on our [GitHub Page](https://github.com/kockie69/SquinkyVCV-main/issues). It's your choice.
 
 If you have an SFZ that crashes SFZ player, or gives an error message, please report it. If possible zip the SFZ and include it (the SFZ is a pretty small file - it's the samples that are big).
 

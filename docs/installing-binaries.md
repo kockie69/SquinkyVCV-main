@@ -2,7 +2,7 @@
 
 This should rarely be needed, as the current versions of our modules are in the plugin manager.
 
-Download the current release from our [releases page](https://github.com/squinkylabs/SquinkyVCV/releases), or get them from someone who built them for you. Warning: often we do not post all the current releases.
+Download the current release from our [releases page](https://github.com/kockie69/SquinkyVCV-main/releases), or get them from someone who built them for you. Warning: often we do not post all the current releases.
 
 Follow the standard instructions for installing third-party plugins in rack: [here](https://vcvrack.com/manual/Installing.html). These instructions will tell you how to put the zip file in a location where VCV Rack will unzip it for you.
 

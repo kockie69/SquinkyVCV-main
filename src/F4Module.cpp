@@ -58,7 +58,7 @@ void F4Module::process(const ProcessArgs& args)
 struct F4Widget : ModuleWidget
 {
     F4Widget(F4Module *);
-    DECLARE_MANUAL("F4 Manual", "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/f4.md");
+    DECLARE_MANUAL("F4 Manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/f4.md");
 
     Label* addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK)
     {

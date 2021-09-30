@@ -129,7 +129,7 @@ void MixMWidget::appendContextMenu(Menu *menu)
 
     ManualMenuItem* manual = new ManualMenuItem(
         "Form manual",
-        "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/form.md");
+        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/form.md");
     menu->addChild(manual);
     
     MenuLabel *spacerLabel2 = new MenuLabel();

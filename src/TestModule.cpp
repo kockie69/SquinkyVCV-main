@@ -52,7 +52,7 @@ void TestModule::process(const ProcessArgs& args) {
 
 struct TestWidget : ModuleWidget {
     TestWidget(TestModule*);
-    DECLARE_MANUAL("Blank Manual", "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/booty-shifter.md");
+    DECLARE_MANUAL("Blank Manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/booty-shifter.md");
 
     Label* addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK) {
         Label* label = new Label();

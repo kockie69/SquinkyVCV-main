@@ -2,20 +2,20 @@
 
 ## 10.0.23
 
-Fixed SFZ Player not playing (sometimes?) in locales where a decimal point is displayed as a coma. This may only happen with certain Linux's. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/231)
+Fixed SFZ Player not playing (sometimes?) in locales where a decimal point is displayed as a coma. This may only happen with certain Linux's. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/231)
 
-Comp II Release knob was messed up on some channels. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/228)
+Comp II Release knob was messed up on some channels. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/228)
 
 Made SFZ Player more robust when faced with crazy envelope times.
 
 ## 10.0.22
 
-Fixed a crash in SFZ player. When it encountered an error loading an SFZ it would crash, rather than display the error message. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/223)
+Fixed a crash in SFZ player. When it encountered an error loading an SFZ it would crash, rather than display the error message. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/223)
 ## 10.0.21
 
 SFZ Player fixes and enhancements:
 
-* Support for `offset` and `end` makes many SFZ instruments play a little better. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/212)
+* Support for `offset` and `end` makes many SFZ instruments play a little better. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/212)
 * Gate is delayed by default to avoid catching the wrong pitch (suggestion from Frozen Wasteland).
 * Support for looping makes many more samples of analog synths play much better.
 * Support for non-standard multiline comments lets sound fonts converted by Sforzando load in SFZ Player.
@@ -40,7 +40,7 @@ Compressor level detector now has less IM distortion (re-design).
 
 Compressor soft-knee now has smoother shape - sounds better (re-design).
 
-Tooltips for compressor threshold now displayed in dB, for both compressors. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/198)
+Tooltips for compressor threshold now displayed in dB, for both compressors. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/198)
 
 User may now type into tooltips on Comp (bug fix).
 
@@ -143,7 +143,7 @@ Seq++ added the "Hookup Clock" command to patch and configure clocks from Improm
 
 Seq++ enhancement: The "auto" versions of the make triad command work a little better, and are more likely to come up with decent voice leading.
 
-Seq++ bug fix: Make triads now uses the normal voicings for chord inversions [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/132)
+Seq++ bug fix: Make triads now uses the normal voicings for chord inversions [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/132)
 
 "Hookup Clock" feature to patch compatible clocks into Seq++.
 
@@ -153,17 +153,17 @@ Seq++ new feature - "xforms".
 
 Enhanced FAQ for Seq++.
 
-Seq++ bug fix: Subrange loop now saved with patch. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/127)
+Seq++ bug fix: Subrange loop now saved with patch. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/127)
 
-Seq++ bug fix: Tab key frequently doesn't work in note grid. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/125)
+Seq++ bug fix: Tab key frequently doesn't work in note grid. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/125)
 
-Seq++ bug fix: Midi File I/O shifts pitch by an octave. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/123)
+Seq++ bug fix: Midi File I/O shifts pitch by an octave. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/123)
 
-Mixer bug fix: Typo in manual. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/121)
+Mixer bug fix: Typo in manual. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/121)
 
-EV3 bug fix: Tooltip for waveforms comes up in wrong place. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/120)
+EV3 bug fix: Tooltip for waveforms comes up in wrong place. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/120)
 
-Seq++ bug fix: Can't reliably change snap to grid settings from context menu. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/119)
+Seq++ bug fix: Can't reliably change snap to grid settings from context menu. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/119)
 
 ## 1.0.5
 
@@ -171,9 +171,9 @@ Seq++ has MIDI file input.
 
 Seq++ has a step recorder.
 
-Inputs on ExFor and Form mixers are now polyphonic. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/90).
+Inputs on ExFor and Form mixers are now polyphonic. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/90).
 
-Modular mixers now support multi-solo by control-clicking on the solo buttons. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/88).
+Modular mixers now support multi-solo by control-clicking on the solo buttons. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/88).
 
 Saws now has stereo outputs.
 
@@ -182,15 +182,15 @@ Seq++ bugs fixed:
 * Articulation setting of 100% was acting like 85%.
 * Notes were getting dropped when played with coarse clock.
 * Dragging durations with the mouse were making zero length notes.
-* Notes that start in the previous two bars are now drawn. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/112)
-* Notes re-triggering seemingly randomly when there are plenty of voices. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/98)
-* Inserting notes wasn't scrolling the the next bar when it should have. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/113)
+* Notes that start in the previous two bars are now drawn. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/112)
+* Notes re-triggering seemingly randomly when there are plenty of voices. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/98)
+* Inserting notes wasn't scrolling the the next bar when it should have. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/113)
 * Sometimes the purple track end marker wasn't drawing (depending on grid settings).
-* Stuck notes when stopping seq in the middle and then editing. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/117)
+* Stuck notes when stopping seq in the middle and then editing. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/117)
 
-Fixed bugs in Polygate that were causing stuck notes when CV inputs changed with gate high. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/105)
+Fixed bugs in Polygate that were causing stuck notes when CV inputs changed with gate high. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/105)
 
-Seq++ image in the module browser new looks correct, rather than a black blob. [[GitHub issue]](https://github.com/squinkylabs/SquinkyVCV/issues/99)
+Seq++ image in the module browser new looks correct, rather than a black blob. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/99)
 
 
 ## 1.0.4

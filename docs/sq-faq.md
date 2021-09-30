@@ -16,7 +16,7 @@ Also, it can be less confusing if you hook up the reset and run inputs. That is 
 
 ## Why doesn't Seq++ have all the features of Cubase and the like?
 
-Those program have been around a long time, and a lot of people have worked on them. But we are always adding new features. To make sure your favorite feature makes it to the top of the list, the best thing to do is log an issue un Github [here](https://github.com/squinkylabs/SquinkyVCV/issues). If you don't want to do that, post on facebook or in the VCV Community forum, or send us a message on Facebook.
+Those program have been around a long time, and a lot of people have worked on them. But we are always adding new features. To make sure your favorite feature makes it to the top of the list, the best thing to do is log an issue un Github [here](https://github.com/kockie69/SquinkyVCV-main/issues). If you don't want to do that, post on facebook or in the VCV Community forum, or send us a message on Facebook.
 
 ## I'm trying to make certain notes go to certain voices in VCV
 

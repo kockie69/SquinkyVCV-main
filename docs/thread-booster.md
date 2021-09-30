@@ -53,7 +53,7 @@ Most audio programs in fact do raise the priority of their audio threads, and of
 
 ## Questions for testers
 
-Please use our [GitHub issues](https://github.com/squinkylabs/SquinkyVCV/issues) to send us feedback. Some things we are curious about:
+Please use our [GitHub issues](https://github.com/kockie69/SquinkyVCV-main/issues) to send us feedback. Some things we are curious about:
 
 * With a fully loaded session that starts to make pops and clicks, does thread booster fix it?
 * If you are able to run realtime, is there any noticeable difference between boosted and real-time?

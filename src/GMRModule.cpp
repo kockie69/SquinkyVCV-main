@@ -82,7 +82,7 @@ void GMRModule::process(const ProcessArgs& args) {
 struct GMRWidget : ModuleWidget {
     GMRWidget(GMRModule*);
 
-    //  DECLARE_MANUAL("GMR manual", "https://github.com/squinkylabs/SquinkyVCV/blob/gmr2/docs/gmr.md");
+    //  DECLARE_MANUAL("GMR manual", "https://github.com/kockie69/SquinkyVCV-main/blob/gmr2/docs/gmr.md");
 
     void appendContextMenu(Menu* theMenu) override;
     void addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_WHITE) {
@@ -117,7 +117,7 @@ void GMRWidget::setNewGrammar(StochasticGrammarPtr gmr) {
 void GMRWidget::appendContextMenu(Menu* theMenu) {
     MenuLabel* spacerLabel = new MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem("GMR manual", "https://github.com/squinkylabs/SquinkyVCV/blob/gmr2/docs/gmr.md");
+    ManualMenuItem* manual = new ManualMenuItem("GMR manual", "https://github.com/kockie69/SquinkyVCV-main/blob/gmr2/docs/gmr.md");
     theMenu->addChild(manual);
 
     ::rack::MenuItem* item = new SqMenuItem([]() { return false; }, [this]() {
@@ -345,7 +345,7 @@ struct GMRWidget : ModuleWidget {
     ~GMRWidget() { //SQINFO("dtor of GMRWidget");
      }
 
-    //  DECLARE_MANUAL("GMR manual", "https://github.com/squinkylabs/SquinkyVCV/blob/gmr2/docs/gmr.md");
+    //  DECLARE_MANUAL("GMR manual", "https://github.com/kockie69/SquinkyVCV-main/blob/gmr2/docs/gmr.md");
 
     void appendContextMenu(Menu* theMenu) override;
     void addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_WHITE) {
@@ -376,7 +376,7 @@ void GMRWidget::setNewGrammar(StochasticGrammarPtr gmr) {
 void GMRWidget::appendContextMenu(Menu* theMenu) {
     MenuLabel* spacerLabel = new MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem("GMR manual", "https://github.com/squinkylabs/SquinkyVCV/blob/gmr3/docs/gmr.md");
+    ManualMenuItem* manual = new ManualMenuItem("GMR manual", "https://github.com/kockie69/SquinkyVCV-main/blob/gmr3/docs/gmr.md");
     theMenu->addChild(manual);
  
     theMenu->addChild(new SqMenuItem(
