@@ -146,7 +146,7 @@ bool StochasticProductionRule::isGrammarValid(const StochasticGrammar& grammar) 
     }
 
     if (rulesHit.size() != grammar.size()) {
-        const int gsize = int(grammar.size());
+        //const int gsize = int(grammar.size());
         //SQINFO("didn't hit all rules g=%d found%d", gsize, int(rulesHit.size()));
         return false;
     }

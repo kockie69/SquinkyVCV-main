@@ -14,7 +14,7 @@
 #include "BiquadState.h"
 #include "IIRDecimator.h"
 
-#include <simd/vector.hpp>
+#include <simd/Vector.hpp>
 #include <simd/functions.hpp>
 
 using float_4 = rack::simd::float_4;

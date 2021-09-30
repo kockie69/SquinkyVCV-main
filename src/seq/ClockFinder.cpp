@@ -382,7 +382,7 @@ void ClockFinder::go(ModuleWidget* host, int div, int clockInput, int runInput, 
     assert(inputs.size() == 3);
 
     if (outputs.size() != 3 || inputs.size() != 3) {
-        WARN("bad I/O matchup. o=%d, i=%d", outputs.size(), inputs.size());
+        WARN("bad I/O matchup. o=%lu, i=%lu", (unsigned long)outputs.size(), (unsigned long)inputs.size());
         return;
     }
 

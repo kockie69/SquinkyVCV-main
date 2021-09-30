@@ -75,11 +75,9 @@ public:
 
             double newDelayMetric = double(newDelayPPQ) / double(StochasticNote::ppq);
             nextEventTimeMetric = newDelayMetric;
-            if (nextEventTimeMetric > 0) {
+            //if (nextEventTimeMetric > 0) {
                 //SQINFO("data not at zero, %f", nextEventTimeMetric);
-            }
-        } else {
-            nextEventTimeMetric;
+            //}
         }
     }
 
@@ -140,7 +138,6 @@ private:
 
 inline void TriggerSequencer::playOnce(double metricTime, float quantizeInterval) {
     //SQINFO("TSeq::play once, metric %f", metricTime);
-    bool didClock = false;
 
     // const double delayMetricQuantized = TimeUtils::quantize(delayMetric, quantizeInterval, true);
     const double eventTimeMetricQuantized = TimeUtils::quantize(nextEventTimeMetric, quantizeInterval, true);

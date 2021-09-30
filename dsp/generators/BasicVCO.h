@@ -6,7 +6,7 @@
 #include "SqPort.h"
 #include "dsp/approx.hpp"
 #include "dsp/minblep.hpp"
-#include "simd/vector.hpp"
+#include "simd/Vector.hpp"
 #include "simd/functions.hpp"
 
 #include "ObjectCache.h"

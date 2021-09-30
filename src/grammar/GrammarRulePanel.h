@@ -19,6 +19,5 @@ public:
 
 private:
     StochasticGrammarPtr grammar;
-    Module *module;
     int ruleDuration = 0;
 };

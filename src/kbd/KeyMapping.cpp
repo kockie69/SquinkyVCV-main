@@ -68,7 +68,7 @@ KeyMapping::KeyMapping(const std::string& configPath)
         s.add(" ");
         s.add(error.text);
         fclose(file);
-        INFO(s.str().c_str());
+        INFO("%s", s.str().c_str());
         return;
     }
     JSONcloser cl(mappingJson, file);
@@ -89,14 +89,14 @@ KeyMapping::KeyMapping(const std::string& configPath)
                     s.add("Bad binding entry (");
                     s.add(json_dumps(value, 0));
                     s.add(")");
-                    INFO(s.str().c_str());
+                    INFO("%s", s.str().c_str());
                     return;
                 }
                 if (theMap.find(*key) != theMap.end()) {
                     SqStream s;
                     s.add("duplicate key mapping: ");
                     s.add(json_dumps(value, 0));
-                    INFO(s.str().c_str());
+                    INFO("%s", s.str().c_str());
                     return;
                 }
                 theMap[*key] = act;
@@ -128,7 +128,7 @@ KeyMapping::KeyMapping(const std::string& configPath)
                 SqStream s;
                 s.add("bad key in ignore_case: ");
                 s.add(json_dumps(value, 0));
-                INFO(s.str().c_str());
+                INFO("%s", s.str().c_str());
                 return;
             }
             std::string key = json_string_value(value);
@@ -147,7 +147,7 @@ KeyMapping::KeyMapping(const std::string& configPath)
             SqStream s;
             s.add("use_defaults is not true or false, is");
             s.add(json_dumps(useDefaultsJ, 0));
-            INFO(s.str().c_str());
+            INFO("%s", s.str().c_str());
             return;
         }
         _useDefaults = json_is_true(useDefaultsJ);
@@ -160,7 +160,7 @@ KeyMapping::KeyMapping(const std::string& configPath)
             SqStream s;
             s.add("grab_keys is not true or false, is");
             s.add(json_dumps(grabKeysJ, 0));
-            INFO(s.str().c_str());
+            INFO("%s", s.str().c_str());
             return;
         }
         _grabKeys = json_is_true(grabKeysJ);

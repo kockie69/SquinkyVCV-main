@@ -29,6 +29,5 @@ private:
     StochasticProductionRuleEntryPtr entry;
     std::string ruleText;
 
-    int ct = 0;
-   // void dump(const char* title) const;
+    // void dump(const char* title) const;
 };

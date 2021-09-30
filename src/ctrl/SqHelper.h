@@ -32,7 +32,7 @@ public:
      */
     static std::shared_ptr<::rack::Svg> loadSvg(const char* path, bool pathIsAbsolute = false) {
         if (pathIsAbsolute) {
-             APP->window->loadSvg(path);
+            return APP->window->loadSvg(path);
         } else {
             return APP->window->loadSvg(
                 SqHelper::assetPlugin(pluginInstance, path));
