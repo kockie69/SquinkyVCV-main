@@ -1,3 +1,7 @@
+### Squinky Labs ###
+This code repo is a copy of the original one by Squinky Labs. All the credits for the code written before September 28th go to Squinky Labs. 
+
+
 ### kiss FFT ###
 Copyright (c) 2003-2010 Mark Borgerding
 

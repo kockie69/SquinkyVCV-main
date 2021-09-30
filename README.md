@@ -1,18 +1,12 @@
-# This repo is closed
+# This is the new Squinky Labs repo
 
-We will not be updating the code here for VCV 2.0 compatibility, nor do we expect to be updating the code in the repo in other ways.
-
-The license permits many uses of this code, so as always people are free to re-use any pieces that are useful. The license also permits anyone to fork this repo and update it as they see fit.
-
-The graphic images and panel designs have no special licensing either, so they may be re-used as allowed by the repo license.
-
-Note that "Squinky Labs" is not a registered trademark, nor is the ugly logo that says "Squinky Labs" in a font called "Space Patrol". None the less, the name and logo have been used as our brand. While it is probably legal and permitted to re-use these, we would kindly ask that you not use them and develop your own name/trademark.
+On September 28th Squinky Labs announced they would not update their modules to VCV rack V2 [here](https://community.vcvrack.com/t/closing-the-squinky-lab/14194/33). As this message was received with lots of grief by the community I decided to pick up the porting and maintanance myself. As I don't pretend to be at the same level as Squinky Labs I hope at least this port will contribute enough to make my work valuable.
 
 ## About SquinkyVCV
 
 This project is a growing collection of modules for the VCV Rack virtual modular synthesizer. You can find more information about VCV Rack [here](https://vcvrack.com/).
 
-You can find us on Facebook [here](https://www.facebook.com/SquinkyLabs).
+For now, you can find Squinky Labs on Facebook [here](https://www.facebook.com/SquinkyLabs).
 
 ## Manuals and Release Notes
 
