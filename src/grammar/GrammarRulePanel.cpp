@@ -10,8 +10,7 @@
 #include "StochasticGrammar2.h"
 #include "StochasticProductionRule.h"
 
-GrammarRulePanel::GrammarRulePanel(const Vec &pos, const Vec &size, StochasticGrammarPtr g, Module *m) : grammar(g),
-                                                                                                         module(m) {
+GrammarRulePanel::GrammarRulePanel(const Vec &pos, const Vec &size, StochasticGrammarPtr g, Module *m) : grammar(g) {
     this->box.pos = pos;
     this->box.size = size;
 

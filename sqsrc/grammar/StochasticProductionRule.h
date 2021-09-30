@@ -58,9 +58,9 @@ StochasticProductionRuleEntry::duration() const {
 inline void
 StochasticProductionRuleEntry::_dump() const {
     //SQINFO("Entry p=%f notes:", probability);
-    for (auto note : rhsProducedNotes) {
+    //for (auto note : rhsProducedNotes) {
         //SQINFO("  note %d", note.duration);
-    }
+    //}
 }
 
 /**

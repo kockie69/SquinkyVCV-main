@@ -2,7 +2,7 @@
 
 #include "asserts.h"
 
-//#include <simd/vector.hpp>
+//#include <simd/Vector.hpp>
 //#include <simd/functions.hpp>
 #include "SqMath.h"
 

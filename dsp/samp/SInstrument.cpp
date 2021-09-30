@@ -4,7 +4,7 @@
 #include "SqLog.h"
 
 void SInstrument::_dump() {
-    const int hsize = headings.size();
+    //const int hsize = headings.size();
     //SQINFO("Num Headings = %d", hsize);
     for (auto h : headings) {
         //SQINFO("--h:");

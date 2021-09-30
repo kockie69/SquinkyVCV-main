@@ -23,7 +23,7 @@ StochasticGrammarPtr GMRSerialization::readGrammarFile(const std::string& path) 
     s.add(" ");
     s.add(error.text);
  //   fclose(file);
-    WARN(s.str().c_str());
+    WARN("%s", s.str().c_str());
 
     return nullptr;
 }

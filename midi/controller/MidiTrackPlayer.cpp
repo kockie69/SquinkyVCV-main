@@ -106,11 +106,11 @@ void MidiTrackPlayer::reset(bool resetGates, bool resetSectionIndex) {
 MidiTrackPlayer::MidiTrackPlayer(
     std::shared_ptr<IMidiPlayerHost4> host,
     int trackIndex, 
-    std::shared_ptr<MidiSong4> _song) : constTrackIndex(trackIndex),
+    std::shared_ptr<MidiSong4> _song) : host(host),
+                                        constTrackIndex(trackIndex),
                                         voiceAssigner(voices, 16),
                                         cv0Trigger(false),
-                                        cv1Trigger(false),
-                                        host(host) {
+                                        cv1Trigger(false) {
     setSong(_song, trackIndex);
     for (int i = 0; i < 16; ++i) {
         MidiVoice& vx = voices[i];

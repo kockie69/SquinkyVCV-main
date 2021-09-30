@@ -211,7 +211,7 @@ inline void C2Json::jsonToParamsOrig(json_t* rootJ, CompressorParamHolder* param
         (json_array_size(makeupsJ) < 16) ||
         (json_array_size(enabledsJ) < 16) ||
         (json_array_size(ratiosJ) < 16)) {
-        WARN("orig parameter json malformed2 %d", json_array_size(attacksJ));
+        WARN("orig parameter json malformed2 %lu", (unsigned long)json_array_size(attacksJ));
         return;
     }
 

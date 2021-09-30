@@ -396,7 +396,7 @@ bool NoteDisplay::handleKey(int key, int mods, int action) {
         handled = MidiKeyboardHandler::handle(sequencer, key, mods);
 #endif
         if (handled) {
-            APP->event->setSelected(this);
+            APP->event->setSelectedWidget(this);
         }
     }
     return handled;

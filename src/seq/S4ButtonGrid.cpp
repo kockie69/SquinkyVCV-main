@@ -56,7 +56,7 @@ void S4ButtonGrid::init(Sequencer4Widget* parent, rack::engine::Module* module,
         const float y = grid_y + row * (buttonSize + buttonMargin);
         for (int col = 0; col < MidiSong4::numSectionsPerTrack; ++col) {
             const float x = grid_x + col * (buttonSize + buttonMargin);
-            const int padNumber = row * MidiSong4::numSectionsPerTrack + col;
+            //const int padNumber = row * MidiSong4::numSectionsPerTrack + col;
 
 
             S4Button* button = new S4Button(
