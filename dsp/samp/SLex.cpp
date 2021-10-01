@@ -242,7 +242,7 @@ bool SLex::procNextIncludeChar(char c) {
         case IncludeSubState::MatchingOpcode:
             curItem += c;
             if (includeStr.find(curItem) != 0) {
-                SQINFO("","bad item: >%s<", curItem.c_str());
+                SQINFO("bad item: >%s<", curItem.c_str());
                 return error("Malformed #include");
             }
             if (curItem == includeStr) {
@@ -474,7 +474,7 @@ std::string SLexItem::lineNumberAsString() const {
 }
 
 bool SLex::handleIncludeFile(const std::string& relativeFileName) {
-    //  SQINFO("","SLex::handleIncludeFile %s", fileName.c_str());
+    //  SQINFO("SLex::handleIncludeFile %s", fileName.c_str());
     assert(!relativeFileName.empty());
 
     bool bOK = context->pushOneLevel(relativeFileName, currentLine);
@@ -493,7 +493,7 @@ bool SLex::handleIncludeFile(const std::string& relativeFileName) {
         this->items.end(),
         std::make_move_iterator(includeLexer->items.begin()),
         std::make_move_iterator(includeLexer->items.end()));
-    SQINFO("","finished incl, curItem=%s", curItem.c_str());
+    SQINFO("finished incl, curItem=%s", curItem.c_str());
     curItem.clear();
     // 3 continue lexing
     state = State::Ready;

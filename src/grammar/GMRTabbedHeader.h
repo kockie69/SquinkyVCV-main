@@ -16,7 +16,7 @@ public:
     GMRTabbedHeader(StochasticGrammarPtr);
     GMRTabbedHeader() = delete;
     GMRTabbedHeader(const GMRTabbedHeader &) = delete;
-    ~GMRTabbedHeader() { SQINFO("","dtor of GMRTabbedHeader");
+    ~GMRTabbedHeader() { SQINFO("dtor of GMRTabbedHeader");
      }
 
     void setNewGrammar(StochasticGrammarPtr gmr);

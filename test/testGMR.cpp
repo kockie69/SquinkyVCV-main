@@ -13,7 +13,7 @@ using G2 = GMR2<TestComposite>;
 // test that we get triggers out
 static void test0()
 {
-    SQINFO("","\n\n\n-------------- testGMR-0 -------------");
+    SQINFO("\n\n\n-------------- testGMR-0 -------------");
     G2 gmr;
     std::set<float> data;
 
@@ -24,7 +24,7 @@ static void test0()
 
     TestComposite::ProcessArgs args;
     for (int i = 0; i < 10; ++i) {
-        SQINFO("","---- clock low");
+        SQINFO("---- clock low");
         gmr.inputs[G2::CLOCK_INPUT].setVoltage(0, 0);
         for (int i = 0; i < 100; ++i) {
             gmr.process(args);
@@ -32,7 +32,7 @@ static void test0()
             data.insert(out);
         }
 
-        SQINFO("","---clock high");
+        SQINFO("---clock high");
         gmr.inputs[G2::CLOCK_INPUT].setVoltage(10, 0);
         for (int i = 0; i < 100; ++i) {
             gmr.process(args);
@@ -50,7 +50,7 @@ static void test0()
 
 static void test1()
 {
-    SQINFO("","\n\n\n-------------- testGMR2-1 -------------");
+    SQINFO("\n\n\n-------------- testGMR2-1 -------------");
     G2 gmr;
     initComposite(gmr);
    // std::set<float> data;
@@ -88,7 +88,7 @@ static void test1()
         }
     }
 
-    SQINFO("","transitions = %d", transitions);
+    SQINFO("transitions = %d", transitions);
     assertGT(transitions, 20);
 }
 

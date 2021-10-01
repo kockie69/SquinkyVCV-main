@@ -67,12 +67,12 @@ private:
 };
 
 inline GcGenerator::GcGenerator(int nBits) : numBits(nBits) {
-    SQINFO("","----- generating %d bits -------");
+    SQINFO("----- generating %d bits -------");
     assert(numBits <= 16);
     assert((numBits & 1) == 0);
     state.push_back(0);         // initial guess
     numEntries = int(std::round(std::pow<int>(2, numBits)));
-    SQINFO(""," numEntreis = %d", numEntries);
+    SQINFO(" numEntreis = %d", numEntries);
 
     makeNextGuess();
     data = state;
@@ -82,9 +82,9 @@ inline GcGenerator::GcGenerator(int nBits) : numBits(nBits) {
 
 inline void GcGenerator::makeNextGuess() {
     const int ssize = int(state.size());
-    SQINFO("","makeNext Guess, state=%d cb=%d", ssize, currentBit);
+    SQINFO("makeNext Guess, state=%d cb=%d", ssize, currentBit);
     if (state.size() == numEntries) {
-        SQINFO("","all done");
+        SQINFO("all done");
         return;
     }
     if (currentBit < numBits-1) {
@@ -100,7 +100,7 @@ inline void GcGenerator::makeNextGuess() {
 
 inline void GcGenerator::dump() {
     for (int i=0; i< numEntries; ++i) {
-        SQINFO("","%x", data[i]);
+        SQINFO("%x", data[i]);
     }
 }
 

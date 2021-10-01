@@ -88,7 +88,7 @@ static void testDefaultAmpeg() {
 
 // test we prune release group
 static void testRemoveRelease() {
-    SQINFO("","----- testRemoveRelease");
+    SQINFO("----- testRemoveRelease");
     const char* data = R"foo(<global>
         <region>sample=b key=1
         <group>trigger=release

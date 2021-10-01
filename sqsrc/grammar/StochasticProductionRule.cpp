@@ -41,7 +41,7 @@ std::vector<StochasticNote>* StochasticProductionRule::_evaluateRule(const Stoch
 #endif
 
 void StochasticProductionRule::evaluate(EvaluationState& es, const StochasticProductionRulePtr ruleToEval) {
-    SQINFO("","StochasticProductionRule::evaluate %p", ruleToEval.get());
+    SQINFO("StochasticProductionRule::evaluate %p", ruleToEval.get());
     assert(ruleToEval);
     assert(ruleToEval->isValid());
 
@@ -50,13 +50,13 @@ void StochasticProductionRule::evaluate(EvaluationState& es, const StochasticPro
     if (!result)  // request to terminate recursion
     {
         es.writeSymbol(ruleToEval->lhs);
-        SQINFO("","evaluate found terminal, writing");
+        SQINFO("evaluate found terminal, writing");
     } else {
-        SQINFO("","expanding %d into %d notes", ruleToEval->lhs.duration, (int)result->size());
+        SQINFO("expanding %d into %d notes", ruleToEval->lhs.duration, (int)result->size());
         for (auto note : *result) {
             auto rule = es.grammar->getRule(note);
             if (!rule) {
-                SQINFO("","found a terminal in the results  %d", note.duration);
+                SQINFO("found a terminal in the results  %d", note.duration);
                 es.writeSymbol(note);
             } else {
                 evaluate(es, rule);
@@ -66,21 +66,21 @@ void StochasticProductionRule::evaluate(EvaluationState& es, const StochasticPro
 }
 
 bool StochasticProductionRule::isValid() const {
-    SQINFO("","rule, is valid");
+    SQINFO("rule, is valid");
     if (this->lhs.duration < 1) {
-        SQINFO("","error: zero duration rule");
+        SQINFO("error: zero duration rule");
         return false;
     }
     for (auto entry : entries) {
         if (!entry->isValid()) {
-            SQINFO("","error: bad entry:");
+            SQINFO("error: bad entry:");
             entry->_dump();
             entry->isValid();
             return false;
         }
-        SQINFO("","entry=%d, lhs=%d", entry->duration(), lhs.duration);
+        SQINFO("entry=%d, lhs=%d", entry->duration(), lhs.duration);
         if (entry->duration() != lhs.duration) {
-            SQINFO("","error: entry mismatch %d vs %d", lhs.duration, entry->duration());
+            SQINFO("error: entry mismatch %d vs %d", lhs.duration, entry->duration());
             return false;
         }
     }
@@ -90,20 +90,20 @@ bool StochasticProductionRule::isValid() const {
 
 void StochasticProductionRule::_dump(const char* title) const {
     assert(this);
-    SQINFO("","---- dump rule %s, lhs dur=%d", title, this->lhs.duration);
+    SQINFO("---- dump rule %s, lhs dur=%d", title, this->lhs.duration);
     for (auto entry : this->entries) {
         // StochasticProductionRuleEntryPtr e = entry;
         entry->_dump();
     }
-    SQINFO("","---- end dump");
+    SQINFO("---- end dump");
 }
 
 bool StochasticProductionRule::isGrammarValidSub(const StochasticGrammar& grammar, StochasticProductionRulePtr rule, std::set<size_t>& rulesHit) {
     assert(rule);
 
-    SQINFO("","enteer sub rule = %p", rule.get());
+    SQINFO("enteer sub rule = %p", rule.get());
     if (!rule->isValid()) {
-        SQINFO("","invalid rule");
+        SQINFO("invalid rule");
         rule->_dump("invalid");
         return false;
     }
@@ -116,15 +116,15 @@ bool StochasticProductionRule::isGrammarValidSub(const StochasticGrammar& gramma
         for (auto note : notes) {
             auto nextRule = grammar.getRule(note);
             if (!nextRule) {
-                SQINFO("","found a note entry with no rule %d. must be a terminal", note.duration);
+                SQINFO("found a note entry with no rule %d. must be a terminal", note.duration);
                 return true;
             }
             if (nextRule.get() == rule.get()) {
-                SQINFO("","grammar has loop");
+                SQINFO("grammar has loop");
                 return false;
             }
             if (!isGrammarValidSub(grammar, nextRule, rulesHit)) {
-                SQINFO("","found a bad rule");
+                SQINFO("found a bad rule");
                 return false;
             }
         }
@@ -135,7 +135,7 @@ bool StochasticProductionRule::isGrammarValidSub(const StochasticGrammar& gramma
 bool StochasticProductionRule::isGrammarValid(const StochasticGrammar& grammar) {
     auto nextRule = grammar.getRootRule();
     if (!nextRule) {
-        SQINFO("","grammar has no root");
+        SQINFO("grammar has no root");
         return false;
     }
 
@@ -147,7 +147,7 @@ bool StochasticProductionRule::isGrammarValid(const StochasticGrammar& grammar) 
 
     if (rulesHit.size() != grammar.size()) {
         const int gsize = int(grammar.size());
-        SQINFO("","didn't hit all rules g=%d found%d", gsize, int(rulesHit.size()));
+        SQINFO("didn't hit all rules g=%d found%d", gsize, int(rulesHit.size()));
         return false;
     }
 

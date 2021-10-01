@@ -15,10 +15,10 @@ will print something like
 
 #include "logger.hpp"		// rack logger
 
-#define SQDEBUG(format, ...) rack::logger::log(rack::logger::DEBUG_LEVEL, __FILE__, __LINE__, format, ##__VA_ARGS__)
-#define SQINFO(format, ...) rack::logger::log(rack::logger::INFO_LEVEL, __FILE__, __LINE__, format, ##__VA_ARGS__)
-#define SQWARN(format, ...) rack::logger::log(rack::logger::WARN_LEVEL, __FILE__, __LINE__, format, ##__VA_ARGS__)
-#define SQFATAL(format, ...) rack::logger::log(rack::logger::FATAL_LEVEL, __FILE__, __LINE__, format, ##__VA_ARGS__)
+#define SQDEBUG DEBUG
+#define SQINFO INFO
+#define SQWARN WARN
+#define SQFATAL FATAL
 
 #else
 

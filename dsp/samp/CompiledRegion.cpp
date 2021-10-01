@@ -33,7 +33,7 @@ void CompiledRegion::findValue(int& intValue, SamplerSchema::KeysAndValuesPtr in
 void CompiledRegion::findValue(bool& boolValue, SamplerSchema::KeysAndValuesPtr inputValues, SamplerSchema::Opcode opcode) {
 #if 0
     for (auto x : *inputValues) {
-        SQINFO("","in: %s, %s", x.first, x.second);
+        SQINFO("in: %s, %s", x.first, x.second);
     }
 #endif
     assert(inputValues);
@@ -154,17 +154,17 @@ void CompiledRegion::addRegionInfo(SamplerSchema::KeysAndValuesPtr values) {
     findValue(loopData.loop_mode, values, SamplerSchema::Opcode::LOOP_MODE);
     findValue(loopData.oscillator, values, SamplerSchema::Opcode::OSCILLATOR);
 
-   //SQINFO("","leave addRegionInfo seqPos=%d seqLen=%d samp=%s trigger=%d", sequencePosition, sequenceLength, sampleFile.c_str(), trigger);
+   //SQINFO("leave addRegionInfo seqPos=%d seqLen=%d samp=%s trigger=%d", sequencePosition, sequenceLength, sampleFile.c_str(), trigger);
 }
 
 void CompiledRegion::finalize() {
-    SQINFO("","finalize pos = %d len=%d", sequencePosition, sequenceLength);
+    SQINFO("finalize pos = %d len=%d", sequencePosition, sequenceLength);
     if (sequencePosition < 0) {
         sequenceLength = 1;
         sequencePosition = 1;
-        SQINFO("","sp < 0, so making def");
+        SQINFO("sp < 0, so making def");
     }
-    SQINFO("","leave finalize pos = %d len=%d", sequencePosition, sequenceLength);
+    SQINFO("leave finalize pos = %d len=%d", sequencePosition, sequenceLength);
 
      // let's move this to finalize
     FilePath def(defaultPathName);
@@ -297,11 +297,11 @@ bool CompiledRegion::LoopData::operator == (const LoopData& l) const {
 }
 
 void CompiledRegion::_dump(int depth) const {
-    SQINFO("","** dumping region from line %d (one based)", this->lineNumber);
-    SQINFO("","lokey=%d hikey=%d center=%d lovel=%d hivel=%d", lokey, hikey, keycenter, lovel, hivel);
-    SQINFO("","sample=%s tune=%d", sampleFile.toString().c_str(), tune);
-    SQINFO("","isKeyswitched=%d, sw_lolast=%d sw_hilast=%d", isKeyswitched(), sw_lolast, sw_hilast);
-    SQINFO("","seq switched = %d seqCtr = %d, seqLen=%d, seqPos=%d", sequenceSwitched, sequenceCounter, sequenceLength, sequencePosition);
-    SQINFO("","lorand=%.2f hirand=%.2f", lorand, hirand);
-    SQINFO("","");
+    SQINFO("** dumping region from line %d (one based)", this->lineNumber);
+    SQINFO("lokey=%d hikey=%d center=%d lovel=%d hivel=%d", lokey, hikey, keycenter, lovel, hivel);
+    SQINFO("sample=%s tune=%d", sampleFile.toString().c_str(), tune);
+    SQINFO("isKeyswitched=%d, sw_lolast=%d sw_hilast=%d", isKeyswitched(), sw_lolast, sw_hilast);
+    SQINFO("seq switched = %d seqCtr = %d, seqLen=%d, seqPos=%d", sequenceSwitched, sequenceCounter, sequenceLength, sequencePosition);
+    SQINFO("lorand=%.2f hirand=%.2f", lorand, hirand);
+    SQINFO("%s", "");
 }

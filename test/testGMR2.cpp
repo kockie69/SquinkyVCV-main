@@ -11,7 +11,7 @@ using G = GMR2<TestComposite>;
 
 // test that we get triggers out
 static void test0() {
-    SQINFO("","-------------- testGMR2-0 -------------");
+    SQINFO("-------------- testGMR2-0 -------------");
     G gmr;
     initComposite(gmr);
     std::set<float> data;
@@ -29,14 +29,14 @@ static void test0() {
             gmr.process(args);
 
             float out = gmr.outputs[G::TRIGGER_OUTPUT].getVoltage(0);
-            SQINFO("","in test add %f", out);
+            SQINFO("in test add %f", out);
             data.insert(out);
         }
         gmr.inputs[G::CLOCK_INPUT].setVoltage(10, 0);
         for (int i = 0; i < 100; ++i) {
             gmr.process(args);
             float out = gmr.outputs[G::TRIGGER_OUTPUT].getVoltage(0);
-            //  SQINFO("","in test add %f", out);
+            //  SQINFO("in test add %f", out);
             data.insert(out);
         }
     }
@@ -48,7 +48,7 @@ static void test0() {
 }
 
 static void test1() {
-    SQINFO("","-------------- testGMR2-1 -------------");
+    SQINFO("-------------- testGMR2-1 -------------");
     G gmr;
     initComposite(gmr);
     // std::set<float> data;
@@ -90,7 +90,7 @@ static void test1() {
 }
 
 static void testQuarters() {
-    SQINFO("","-------------- testGMR2-quarter -------------");
+    SQINFO("-------------- testGMR2-quarter -------------");
     G gmr;
     initComposite(gmr);
     // std::set<float> data;
@@ -120,7 +120,7 @@ static void testQuarters() {
             if (out != lastOut) {
                 transitions++;
                 lastOut = out;
-                SQINFO("","pos = %d out=%f last = %d elapsed1=%d", pos, out, lastCross, elapsedClocks);
+                SQINFO("pos = %d out=%f last = %d elapsed1=%d", pos, out, lastCross, elapsedClocks);
                 lastCross = 0;
                 elapsedClocks = 0;
             }
@@ -136,7 +136,7 @@ static void testQuarters() {
             if (out != lastOut) {
                 transitions++;
                 lastOut = out;
-                SQINFO("","pos = %d out=%f last = %d elapsed2=%d", pos, out, lastCross, elapsedClocks);
+                SQINFO("pos = %d out=%f last = %d elapsed2=%d", pos, out, lastCross, elapsedClocks);
                 lastCross = 0;
                 elapsedClocks = 0;
             }
@@ -158,7 +158,7 @@ void waitForTriggerToGoAway(G& comp) {
     while (true) {
         bool trig = comp.outputs[G::TRIGGER_OUTPUT].value > 5;
         if (!trig) {
-            SQINFO("","waitForTriggerToGoAway waited %d", iter);
+            SQINFO("waitForTriggerToGoAway waited %d", iter);
             return;
         }
         comp.process(args);
@@ -264,14 +264,14 @@ static void testReset() {
     gmr.inputs[G::RESET_INPUT].value = 10;
     gmr.process(args);
 
-    SQINFO("","back in test");
+    SQINFO("back in test");
     bool out = gmr.outputs[G::TRIGGER_OUTPUT].value > 5;
     assert(out);
 #if 0
-    SQINFO("","first trig out after reset = %d", out);
+    SQINFO("first trig out after reset = %d", out);
    // assert(out);
     out = gmr.outputs[G::TRIGGER_OUTPUT].value > 5;
-    SQINFO("","second trig out after reset = %d", out);
+    SQINFO("second trig out after reset = %d", out);
 
 
     assert(false);  // finish me

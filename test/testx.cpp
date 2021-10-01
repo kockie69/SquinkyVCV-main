@@ -91,7 +91,7 @@ static void testParseGroupAndValues() {
 }
 
 static void testParseGlobal() {
-    SQINFO("","---- start test parse global\n");
+    SQINFO("---- start test parse global\n");
     SInstrumentPtr inst = std::make_shared<SInstrument>();
     auto err = SParse::go("<global>", inst);
     // no regions - that's not legal, but we make up groups if there aren't any,
@@ -102,7 +102,7 @@ static void testParseGlobal() {
 }
 
 static void testParseGlobalGroupAndRegion() {
-    SQINFO("","\n-- start testParseGlobalAndRegion\n");
+    SQINFO("\n-- start testParseGlobalAndRegion\n");
     SInstrumentPtr inst = std::make_shared<SInstrument>();
     auto err = SParse::go("<global><group><region>", inst);
 
@@ -110,7 +110,7 @@ static void testParseGlobalGroupAndRegion() {
 }
 
 static void testParseGlobalAndRegion() {
-    //  SQINFO("","\n-- start testParseGlobalAndRegion\n");
+    //  SQINFO("\n-- start testParseGlobalAndRegion\n");
     SInstrumentPtr inst = std::make_shared<SInstrument>();
     auto err = SParse::go("<global><region>", inst);
 

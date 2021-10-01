@@ -328,7 +328,7 @@ inline void Compressor<TBase>::onNewPatch(int knownSchema) {
             const float def = myDescription->getParamValue(i).def;
             const float cur = Compressor<TBase>::params[i].value;
             const bool same = (def == cur);
-            //SQINFO("","p=%d def=%f cur=%f same = %d", i, def, cur, same);
+            //SQINFO("p=%d def=%f cur=%f same = %d", i, def, cur, same);
             if (!same) {
                 needsUpdate = false;
             }

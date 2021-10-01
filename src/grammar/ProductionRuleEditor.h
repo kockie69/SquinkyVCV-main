@@ -15,7 +15,7 @@ public:
     ProductionRuleEditor(const ProductionRuleEditor&) = delete;
     const ProductionRuleEditor& operator=(const ProductionRuleEditor&) = delete;
 
-    ~ProductionRuleEditor() { SQINFO("","dtor of ProductionRuleEditor");
+    ~ProductionRuleEditor() { SQINFO("dtor of ProductionRuleEditor");
      }
     void draw(const DrawArgs& args) override;
 

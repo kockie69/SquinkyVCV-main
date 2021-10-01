@@ -196,7 +196,7 @@ static void testFilePathAbs() {
 
     FilePath fp2("\\foo");
     assert(fp2.isAbsolute());
-    SQINFO("","fp2 is %s", fp2.toString().c_str());
+    SQINFO("fp2 is %s", fp2.toString().c_str());
 
     FilePath fp3("/foo");
     assert(fp3.isAbsolute());

@@ -13,7 +13,7 @@ x y z
 
     void
     log(Level level, const char* filename, int line, const char* format, ...) {
-    rack::logger::log(level, filename, line, format, ...);
+    rack::logger::log(level, filename, line, __FUNCTION__, format, ...);
 }
 
 #else
