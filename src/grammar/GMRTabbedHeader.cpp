@@ -145,7 +145,7 @@ void GMRTabbedHeader::updateLabelPositions(NVGcontext* vg) {
         const float width = nvgTextBounds(vg, 1, 1, labels[i].c_str(), NULL, NULL);
         labelPositions.push_back(std::make_pair(x, width));
 
-        SQINFO("","pos = %f, w=%f nextx=%f", x, width);
+        //SQINFO("","pos = %f, w=%f nextx=%f", x, width);
         assert(width > 0);
         //x += (width + spaceBetweenTabs);
         x = x + width + spaceBetweenTabs;

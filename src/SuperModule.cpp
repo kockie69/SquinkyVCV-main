@@ -41,6 +41,8 @@ void SuperModule::onSampleRateChange()
 SuperModule::SuperModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    paramQuantities[Comp::OCTAVE_PARAM]->snapEnabled = true;
+    paramQuantities[Comp::OCTAVE_PARAM]->smoothEnabled = false;
     super = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
@@ -135,8 +137,8 @@ void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite>
         Vec(col1, row1),
         module, 
         Comp::OCTAVE_PARAM);
-    oct->snap = true;
-    oct->smooth = false;
+    //oct->snap = true;
+    //oct->smooth = false;
     addParam(oct);
     Label* l = addLabel(
         Vec(col1 - 23, row1 + labelOffsetBig),
