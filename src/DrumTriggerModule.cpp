@@ -55,8 +55,7 @@ void DrumTriggerModule::step()
 struct DrumTriggerWidget : ModuleWidget
 {
     DrumTriggerWidget(DrumTriggerModule *);
-    DECLARE_MANUAL("Polygate manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/dt.md");
-
+ 
     Label* addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK)
     {
         Label* label = new Label();

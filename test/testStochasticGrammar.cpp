@@ -20,7 +20,7 @@ short int ppq = StochasticNote::ppq;
 // let's try going down the road of assuming that events at
 // t == 0 fire in constructor (sort of makes sense)
 static void ts0() {
-    //SQINFO("------ ts0");
+    SQINFO("","------ ts0");
     //  const int ppq = StochasticNote::ppq;
     const short int duration = int(1.5f * float(ppq));
     TriggerSequencer::Event seq[] =
@@ -144,7 +144,7 @@ static void tsTriggerAtEnd() {
 
 // 4 quarter loop: delay 4, trigger, end
 static void tsQuarterLoop() {
-    //SQINFO("------- ts2");
+    SQINFO("","------- ts2");
 
     TriggerSequencer::Event seq[] =
         {
@@ -296,7 +296,7 @@ static void ts4() {
 **********************************************************************************************/
 
 static void gtgFirstNote() {
-    //SQINFO("\n\n****************************** gtgFirstNote ");
+    SQINFO("","\n\n****************************** gtgFirstNote ");
     //  GKEY key = init1();
 
     StochasticGrammarPtr grammar = StochasticGrammar::getDemoGrammar(StochasticGrammar::DemoGrammar::quarters);
@@ -313,7 +313,7 @@ static void gtgFirstNote() {
 // test that we get some clocks and some not
 #if 1
 static void gtg0() {
-    //SQINFO("\n\n****************************** gtg0 ");
+    SQINFO("","\n\n****************************** gtg0 ");
     //  GKEY key = init1();
     const float sixtyFourth = float(1.0 / 64.0);
     StochasticGrammarPtr grammar = StochasticGrammar::getDemoGrammar(StochasticGrammar::DemoGrammar::quarters);
@@ -322,7 +322,7 @@ static void gtg0() {
     bool yes = false;
     bool no = false;
     for (int i = 0; i < 100; ++i) {
-        //SQINFO("In loop of gtg0 test, i=%d", i);
+        SQINFO("","In loop of gtg0 test, i=%d", i);
         double time = i * .5;  // clock at eighth notes
         bool ck = gtg.updateToMetricTime(time, sixtyFourth, true);
         if (ck)

@@ -49,12 +49,12 @@ static void characterizeSpline(float ratio, float t2y) {
     auto p99 = h.renderPoint(.99);
     auto p999 = h.renderPoint(.999);
 
-    //SQINFO("\n\nfor ratio=%f, t2y=%f", ratio, t2y);
-    //   //SQINFO("y2 = %f lastV=%f", y2, y2 + 6 * deltaY);
-    //SQINFO("desired end value = %f, des slope=%f", desiredEndValue, desiredEndSlope);
-    //SQINFO("p0=%f,%f, p1=%f, %f", p0.first, p0.second, p1.first, p1.second);
-    //SQINFO("final slope99 = %f", (p1.second - p99.second) / (p1.first - p99.first));
-    //SQINFO("slope 9 = %f, 999=%f\n",
+    SQINFO("","\n\nfor ratio=%f, t2y=%f", ratio, t2y);
+    //   SQINFO("","y2 = %f lastV=%f", y2, y2 + 6 * deltaY);
+    SQINFO("","desired end value = %f, des slope=%f", desiredEndValue, desiredEndSlope);
+    SQINFO("","p0=%f,%f, p1=%f, %f", p0.first, p0.second, p1.first, p1.second);
+    SQINFO("","final slope99 = %f", (p1.second - p99.second) / (p1.first - p99.first));
+    SQINFO("","slope 9 = %f, 999=%f\n",
            (p1.second - p9.second) / (p1.first - p9.first),
            (p1.second - p999.second) / (p1.first - p999.first));
 
@@ -62,7 +62,7 @@ static void characterizeSpline(float ratio, float t2y) {
     for (int i=0; i <= 10; ++i) {
         double t = double(i) / 10;
         auto p = h.renderPoint(t);
-        //SQINFO("i=%d x=%f, y=%f", i, p.first, p.second);
+        SQINFO("","i=%d x=%f, y=%f", i, p.first, p.second);
     }
 #endif
     auto ptl = h.renderPoint(0);
@@ -83,12 +83,12 @@ static void characterizeSpline(float ratio, float t2y) {
         if (jump < 10) {
             if (jump > biggestJump) {
                 biggestJump = jump;
-               //SQINFO("new biggest %e at i=%d", biggestJump, i);
+               SQINFO("","new biggest %e at i=%d", biggestJump, i);
             }
         }
-        //SQINFO("i=%d x=%f, y=%f", i, p.first, p.second);
+        SQINFO("","i=%d x=%f, y=%f", i, p.first, p.second);
     }
-    //SQINFO("biggest jump was %e", biggestJump);
+    SQINFO("","biggest jump was %e", biggestJump);
 }
 
 // Not really a tests - used this to design the curves
@@ -143,7 +143,7 @@ static void testLookupBelowThesh() {
 }
 
 static void testLookupAboveThesh(const CompCurves::Recipe& r, std::function<float(float)> lookup, double acceptedError) {
-    //SQINFO("in test ratio=%f knee=%f", r.ratio, r.kneeWidth);
+    SQINFO("","in test ratio=%f knee=%f", r.ratio, r.kneeWidth);
     const float topOfKneeDb = r.kneeWidth / 2;
     const float topOfKneeVin = float(AudioMath::gainFromDb(topOfKneeDb));
 
@@ -373,7 +373,7 @@ static void testContinuousCurveOld() {
     for (int i = 0; i < k; ++i) {
         float x = (float)i / (k / 10);
         const float yLook = CompCurves::lookup(lookup, x);
-        //SQINFO("x=%f yLook=%f", x, yLook);
+        SQINFO("","x=%f yLook=%f", x, yLook);
         const float y = float(cont(x));
         assertClosePct(y, yLook, 1.f);
     }
@@ -393,26 +393,26 @@ static void testLookup2Old() {
         double x = (double)i / (k / 10);
         //const float yLook = CompCurves::lookup(lookup, x);
         const float yLook = look->lookup(float(x));
-        //SQINFO("x=%f yLook=%f", x, yLook);
+        SQINFO("","x=%f yLook=%f", x, yLook);
         const float y = float(cont(x));
         assertClosePct(yLook, y, 5.f);
     }
 }
 
 double getBiggestJump(double maxX, int divisions, std::function<double(double)> func) {
-    //SQINFO("--- get biggest jump");
+    SQINFO("","--- get biggest jump");
     double ret = 0;
     double lastValue = 1;
     double scaler = maxX / divisions;
     for (int i = 0; i < divisions; ++i) {
-        //SQINFO("i = %d", i);
+        SQINFO("","i = %d", i);
         double x = i * scaler;
         double y = func(x);
         assert(y <= 1);
         double dif = std::abs(y - lastValue);
 
         if (dif > ret) {
-            //SQINFO("new max %f at x = %f", dif, x);
+            SQINFO("","new max %f at x = %f", dif, x);
             ret = dif;
         }
         lastValue = y;
@@ -421,7 +421,7 @@ double getBiggestJump(double maxX, int divisions, std::function<double(double)> 
 }
 
 double getBiggestSlopeJump(double maxX, int divisions, bool strictlyReducing, std::function<double(double)> func) {
-    //SQINFO("--- get biggest jump");
+    SQINFO("","--- get biggest jump");
     // double ret = 0;
     double sizeOfBiggestJump = 0;
     double lastValue = 1;
@@ -429,7 +429,7 @@ double getBiggestSlopeJump(double maxX, int divisions, bool strictlyReducing, st
     //  double lastSlopeDelta = 0;
     double scaler = maxX / divisions;
     for (int i = 0; i < divisions; ++i) {
-        //SQINFO("i = %d", i);
+        SQINFO("","i = %d", i);
 
         double x = i * scaler;
         double y = func(x);
@@ -452,11 +452,11 @@ double getBiggestSlopeJump(double maxX, int divisions, bool strictlyReducing, st
 
             if (std::abs(slopeDelta) > sizeOfBiggestJump) {
                 sizeOfBiggestJump = std::abs(slopeDelta);
-                //SQINFO("capture new jump %f atx=%f", sizeOfBiggestJump, x);
+                SQINFO("","capture new jump %f atx=%f", sizeOfBiggestJump, x);
             }
 
             if (sizeOfBiggestJump > .4) {
-                //SQINFO("new max slope change of %f at %f slope=%f was%f delta=%f", sizeOfBiggestJump, x, slope, lastSlope, slopeDelta);
+                SQINFO("","new max slope change of %f at %f slope=%f was%f delta=%f", sizeOfBiggestJump, x, slope, lastSlope, slopeDelta);
             }
         }
         lastValue = y;
@@ -520,12 +520,12 @@ static void testBiggestSlopeJumpNew(CompCurves::Type type, const CompCurves::Rec
     assertGT(allowableJump, 0);
     assertLT(dRef, allowableJump);
 
-    //SQINFO("dRef = %f, type=%d spline =%d r=%f", dRef, int(type), int(CompCurves::Type::SplineLin), r.ratio);
-    //SQINFO("div = %d", div);
+    SQINFO("","dRef = %f, type=%d spline =%d r=%f", dRef, int(type), int(CompCurves::Type::SplineLin), r.ratio);
+    SQINFO("","div = %d", div);
 }
 
 static void testBiggestSlopeJumpNew() {
-    //SQINFO("get biggest slope jump new");
+    SQINFO("","get biggest slope jump new");
     for (auto x : all) {
         // only look at soft knee
         if (x.kneeWidth > 1) {
@@ -533,13 +533,13 @@ static void testBiggestSlopeJumpNew() {
             const double allowable = .1;
             testBiggestSlopeJumpNew(CompCurves::Type::ClassicLin, x, allowable, false);
             testBiggestSlopeJumpNew(CompCurves::Type::ClassicNU, x, allowable, false);
-            //SQINFO("here is spline:");
+            SQINFO("","here is spline:");
 
             // passed with .1, not with .05
             // now with less severe spline .05 ok
             // .025 ngt
             testBiggestSlopeJumpNew(CompCurves::Type::SplineLin, x, .1, true);
-            //SQINFO("done with spline:");
+            SQINFO("","done with spline:");
         }
     }
 }
@@ -586,7 +586,7 @@ static void testOldHighRatio(CompCurves::Type t, int ratio) {
 
         assertClosePct(ratio, expectedRatio, 6);
 
-        //  //SQINFO("\ni=%d, input1=%f input2=%f   dbOut1=%f, dbOut2=%f ratio =%f", i, level1, level2, dbOut1, dbOut2, ratio);
+        //  SQINFO("","\ni=%d, input1=%f input2=%f   dbOut1=%f, dbOut2=%f ratio =%f", i, level1, level2, dbOut1, dbOut2, ratio);
     }
 }
 
@@ -826,7 +826,7 @@ static void testBasicSplineImp() {
 
     const float expectedY2 = 1.0f + 1.0f / r.ratio;
 
-   //  //SQINFO("expecting y=%f at 2\n", expectedY2);
+   //  SQINFO("","expecting y=%f at 2\n", expectedY2);
     const float div = 20;
     
     auto interp = CompCurves::getKneeInterpolator(r);
@@ -835,7 +835,7 @@ static void testBasicSplineImp() {
         assert(x > 0);
 
         float y = (float)NonUniformLookupTable<double>::lookup(*splineLookup, x);
-        //SQINFO("x=%f y=%f", x, y);
+        SQINFO("","x=%f y=%f", x, y);
     }
 }
 
@@ -845,10 +845,10 @@ static void justPrintSpline() {
     r.ratio = 4;
     std::function<float(float)> curve = CompCurves::getLambda(r, CompCurves::Type::SplineLin);
 
-    //SQINFO("here is normal spline");
+    SQINFO("","here is normal spline");
      for (float q = .3f; q < 5;  q += .07f) {
          float y = curve(q);
-        //SQINFO("x=%f, y=%f", q, y);
+        SQINFO("","x=%f, y=%f", q, y);
     }
     assert(false)
 ;}

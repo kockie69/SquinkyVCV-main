@@ -58,8 +58,6 @@ void VocalModule::step()
 struct VocalWidget : ModuleWidget
 {
     VocalWidget(VocalModule *);
-    DECLARE_MANUAL("Growler manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/growler.md");
-
 
 #ifdef _TIME_DRAWING
     // Growler: avg = 40.949576, stddev = 13.453620 (us) Quota frac=0.245697

@@ -248,8 +248,8 @@ CompCurves::makeSplineMiddle(const Recipe& r) {
       
         NonUniformLookupTable<double>::addPoint(*params, vInVolts, yGainVolts);
 
-       //SQINFO("i=%d  vInVolts=%f vInDb =%f", i, vInVolts, vInDb);
-       //SQINFO("yGainDb=%f yg=%f debug=%f\n", yGainDb, yGainVolts, yOutDebug);
+       //SQINFO("","i=%d  vInVolts=%f vInDb =%f", i, vInVolts, vInDb);
+       //SQINFO("","yGainDb=%f yg=%f debug=%f\n", yGainDb, yGainVolts, yOutDebug);
     }
 
     //assert(false);
@@ -259,9 +259,9 @@ CompCurves::makeSplineMiddle(const Recipe& r) {
 
 
 void CompCurves::CompCurveLookup::_dump() const {
-    //SQINFO("dumping curve low");
+    SQINFO("","dumping curve low");
     lowRange._dump();
-    //SQINFO("dumping curve high");
+    SQINFO("","dumping curve high");
     highRange._dump();
-    //SQINFO("done dumping curve");
+    SQINFO("","done dumping curve");
 }

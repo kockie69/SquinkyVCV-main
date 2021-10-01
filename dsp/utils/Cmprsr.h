@@ -362,7 +362,7 @@ inline float_4 Cmprsr::stepPolyLinked(float_4 input, float_4 detectorInput) {
         float avg = (inp[0] + inp[1]) * .5f;
         inp[0] = avg;
         inp[1] = avg;
-        //SQINFO("input=%f, %f avg=%f", input[0], input[1], avg);
+        SQINFO("","input=%f, %f avg=%f", input[0], input[1], avg);
         avg = (inp[2] + inp[3]) * .5f;
         inp[2] = avg;
         inp[3] = avg;

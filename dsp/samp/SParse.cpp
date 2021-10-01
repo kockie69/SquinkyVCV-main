@@ -104,7 +104,7 @@ std::string SParse::goCommon(const std::string& sContentIn, SInstrumentPtr outPa
         errorStream.add(lex->_index());
         if (type == SLexItem::Type::Tag) {
             auto tag = std::static_pointer_cast<SLexTag>(item);
-            //SQINFO("extra tok = %s", tag->tagName.c_str());
+            SQINFO("","extra tok = %s", tag->tagName.c_str());
         }
 
         if (type == SLexItem::Type::Identifier) {
@@ -137,7 +137,7 @@ std::string SParse::matchHeadingGroups(SInstrumentPtr inst, SLexPtr lex) {
 
 SParse::Result SParse::matchHeadingGroup(SInstrumentPtr inst, SLexPtr lex) {
     SHeadingPtr theHeading;
-    //  //SQINFO("about to call match extln=%d", lex->next()->lineNumber);
+    //  SQINFO("","about to call match extln=%d", lex->next()->lineNumber);
     Result result = matchSingleHeading(lex, theHeading);
     if (result.res == Result::ok && theHeading) {
         inst->headings.push_back(theHeading);

@@ -73,10 +73,7 @@ struct ColoredNoiseWidget : ModuleWidget
     Label * slopeLabel;
     Label * signLabel;
 
-    DECLARE_MANUAL("Colors manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/colors.md");
-
-
-#ifdef _TIME_DRAWING
+ #ifdef _TIME_DRAWING
     // Colors: avg = 41.157473, stddev = 13.277238 (us) Quota frac=0.246945
     void draw(const DrawArgs &args) override
     {

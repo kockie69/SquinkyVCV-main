@@ -63,7 +63,7 @@ float MidiPlayer2::getCurrentSubrangeLoopStart() const {
 
 void MidiPlayer2::updateToMetricTime(double metricTime, float quantizationInterval, bool running) {
 #if defined(_MLOG) && 0
-    //SQINFO("MidiPlayer::updateToMetricTime metrict=%.2f, quantizInt=%.2f\n", metricTime, quantizationInterval);
+    SQINFO("","MidiPlayer::updateToMetricTime metrict=%.2f, quantizInt=%.2f\n", metricTime, quantizationInterval);
 #endif
 
     assert(quantizationInterval != 0);
@@ -122,7 +122,7 @@ void MidiPlayer2::updateToMetricTimeInternal(double metricTime, float quantizati
 
 bool MidiPlayer2::playOnce(double metricTime, float quantizeInterval) {
 #if defined(_MLOG) && 1
-    //SQINFO("MidiPlayer::playOnce metrict=%.2f, quantizInt=%.2f\n", metricTime, quantizeInterval);
+    SQINFO("","MidiPlayer::playOnce metrict=%.2f, quantizInt=%.2f\n", metricTime, quantizeInterval);
 #endif
 
     bool didSomething = false;

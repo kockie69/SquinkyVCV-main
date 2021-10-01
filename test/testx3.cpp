@@ -417,7 +417,7 @@ static void testPlayKeyswitch2() {
 }
 
 static void testPlayOverlapVel() {
-    //SQINFO("---- testOverlapVel");
+    SQINFO("","---- testOverlapVel");
     static char* patch = R"foo(
     <group> // kick - snares on
     key=48
@@ -510,7 +510,7 @@ static void testPlayOverlapVel() {
 }
 
 static void testPlayOverlapPitch() {
-    //SQINFO("---- testOverlapVel");
+    SQINFO("","---- testOverlapVel");
     static char* patch = R"foo(
     <region> 
     sample=a
@@ -696,7 +696,7 @@ static void testPlayLoop() {
 
 #if 0
 static void testPlayOsc() {
-    //SQINFO("-- testPlayOsc --");
+    SQINFO("","-- testPlayOsc --");
     // for reference - normal pitch
     {
         const char* data = (R"foo(
@@ -719,13 +719,13 @@ static void testPlayOsc() {
         params.midiVelocity = 60;
 
         cinst->play(info, params, w.get(), 44100);
-        //SQINFO("normal play, transv = %f", info.transposeV);
+        SQINFO("","normal play, transv = %f", info.transposeV);
         assert(info.valid);
     }
 
     // now the test of loop
     {
-        //SQINFO("-- testPlayOsc (looped) --");
+        SQINFO("","-- testPlayOsc (looped) --");
         const char* data = (R"foo(
           <region>sample=a oscillator=on
           )foo");
@@ -746,7 +746,7 @@ static void testPlayOsc() {
 
         cinst->play(info, params, w.get(), 44100);
         assert(info.valid);
-        //SQINFO("loop play, transv = %f", info.transposeV);
+        SQINFO("","loop play, transv = %f", info.transposeV);
     }
 
     assert(false);

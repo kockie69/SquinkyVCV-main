@@ -56,8 +56,7 @@ struct ShaperWidget : ModuleWidget
 {
     ShaperWidget(ShaperModule *);
 
-    DECLARE_MANUAL("Shaper manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/shaper.md");
-    /**
+     /**
      * Helper to add a text label to this widget
      */
     Label* addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK)

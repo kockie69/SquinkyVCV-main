@@ -77,18 +77,18 @@ void Sampler4vx::updatePitch() {
     float_4 transposeAmt;
     for (int i = 0; i < 4; ++i) {
         transposeAmt[i] = PitchUtils::semitoneToFreqRatio(combinedCV[i]);
-      //  //SQINFO("kb=%f combinedCV = %f giving xpose %f", pitchCVFromKeyboard[i], combinedCV[i], transposeAmt[i]);
+      //  SQINFO("","kb=%f combinedCV = %f giving xpose %f", pitchCVFromKeyboard[i], combinedCV[i], transposeAmt[i]);
     }
     player.setTranspose(transposeAmt);
 #if 0
     if (myIndex == 0) {
-        //SQINFO("Sampler4vx::updatePitch %s", toStr(transposeAmt).c_str());
+        SQINFO("","Sampler4vx::updatePitch %s", toStr(transposeAmt).c_str());
     }
 #endif
 }
 
 bool Sampler4vx::note_on(int channel, int midiPitch, int midiVelocity, float sampleRate) {
-    //SQINFO("note on, midid pitch = %d", midiPitch);
+    SQINFO("","note on, midid pitch = %d", midiPitch);
     assert(sampleRate > 100);
     if (!patch || !waves) {
         if (printErrors) {
@@ -105,7 +105,7 @@ bool Sampler4vx::note_on(int channel, int midiPitch, int midiVelocity, float sam
     params.midiVelocity = midiVelocity;
     const bool didKS = patch->play(patchInfo, params, waves.get(), sampleRate);
     if (!patchInfo.valid) {
-        //SQINFO("could not get play info pitch %d vel%d", midiPitch, midiVelocity);
+        SQINFO("","could not get play info pitch %d vel%d", midiPitch, midiVelocity);
         player.clearSamples(channel);
         return didKS;
     }
@@ -113,7 +113,7 @@ bool Sampler4vx::note_on(int channel, int midiPitch, int midiVelocity, float sam
     WaveLoader::WaveInfoPtr waveInfo = waves->getInfo(patchInfo.sampleIndex);
     assert(waveInfo->isValid());
 #if 0
-    //SQINFO("played pitch=%d vel=%d file=%s", midiPitch, midiVelocity, waveInfo->getFileName().c_str());
+    SQINFO("","played pitch=%d vel=%d file=%s", midiPitch, midiVelocity, waveInfo->getFileName().c_str());
 #endif
 
     player.setSample(channel, waveInfo->getData(), int(waveInfo->getTotalFrameCount()));
@@ -133,11 +133,11 @@ bool Sampler4vx::note_on(int channel, int midiPitch, int midiVelocity, float sam
     const float transposeAmt = PitchUtils::semitoneToFreqRatio(transposeCV);
 
 #if 0
-    //SQINFO("");
-    //SQINFO("trans from patch = %f trans from fm = %f", patchInfo.transposeV * 12, fmCV[channel]);
-    //SQINFO("total transCV %f", transposeCV);
-    //SQINFO("final amt, after exp = %f", transposeAmt);
-    //SQINFO("will turn on needs transpose for now...");
+    SQINFO("","");
+    SQINFO("","trans from patch = %f trans from fm = %f", patchInfo.transposeV * 12, fmCV[channel]);
+    SQINFO("","total transCV %f", transposeCV);
+    SQINFO("","final amt, after exp = %f", transposeAmt);
+    SQINFO("","will turn on needs transpose for now...");
 #endif
     //  player.setTranspose(channel, patchInfo.needsTranspose, transposeAmt);
 
@@ -149,7 +149,7 @@ bool Sampler4vx::note_on(int channel, int midiPitch, int midiVelocity, float sam
 #endif
 
     // std::string sample = waveInfo->fileName.getFilenamePart();
-    //SQINFO("play vel=%d pitch=%d gain=%f samp=%s", midiVelocity, midiPitch, patchInfo.gain, sample.c_str());
+    //SQINFO("","play vel=%d pitch=%d gain=%f samp=%s", midiVelocity, midiPitch, patchInfo.gain, sample.c_str());
 
     // this is a little messed up - the adsr should really have independent
     // settings for each channel. OK for now, though.

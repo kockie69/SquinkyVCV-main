@@ -319,7 +319,7 @@ static void testParseHeadingControl() {
 }
 
 static void testParseInclude() {
-    //SQINFO("------ testParseInclude");
+    SQINFO("","------ testParseInclude");
     const char* data = R"foo(<global>bend_up=1200
         bend_down=-1200
         #include "vc_arco_sus_map.sfz")foo";
@@ -461,7 +461,7 @@ loop_mode=loop_continuous)foo";
     auto err = SParse::goFile(fp, inst);
 
 #endif
-    //SQINFO("err: %s", err.c_str());
+    SQINFO("","err: %s", err.c_str());
     assert(err.empty());
    
 
@@ -639,7 +639,7 @@ static void testCompileMutliControls() {
 }
 #if 0  // need to re-do this
 static void testCompileMutliControls() {
-    //SQINFO("--- start testCompileMutliControls");
+    SQINFO("","--- start testCompileMutliControls");
 
     const char* test = R"foo(
         <control>
@@ -679,7 +679,7 @@ static void testCompileMutliControls() {
     fprintf(stderr, "xx=%s\n", xx.c_str());
 #endif
 
-   //SQINFO("at 635, exp=%s", expected.c_str());
+   SQINFO("","at 635, exp=%s", expected.c_str());
     fprintf(stderr, "at 635, exp=%s", expected.c_str());
 
     fflush(stderr); fflush(stdout);
@@ -1219,9 +1219,9 @@ static void testCompileSimpleDrum() {
     SamplerErrorContext errc;
     auto ci = CompiledInstrument::make(errc, inst);
 
-    //SQINFO("dumping drum patch");
+    SQINFO("","dumping drum patch");
     //ci->_dump(0);
-    //SQINFO("done with dump");
+    SQINFO("","done with dump");
 
     assertEQ(ci->_pool().size(), 6);
     VoicePlayInfo info;

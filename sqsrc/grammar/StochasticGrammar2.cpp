@@ -75,13 +75,13 @@ bool StochasticGrammar::isValid() const {
 }
 
 void StochasticGrammar::_dump() const {
-    //SQINFO("***** dumping grammar");
+    SQINFO("","***** dumping grammar");
 
     for (auto r : rules) {
         ConstStochasticProductionRulePtr rule = r.second;
         rule->_dump("next rule in gmr");
     }
-    //SQINFO("***** done dumping grammar");
+    SQINFO("","***** done dumping grammar");
 }
 
 StochasticGrammarPtr StochasticGrammar::getDemoGrammar(DemoGrammar g) {

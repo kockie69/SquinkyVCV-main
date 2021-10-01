@@ -121,17 +121,17 @@ bool FlacReader::onData(unsigned samples, const int32_t* leftData, const int32_t
 
 #if 0
 	if (framesRead == 0) {
-		//SQINFO("first frame L");
+		SQINFO("","first frame L");
 		const uint8_t* p = reinterpret_cast<const uint8_t*>(leftData); 
 		for (int i=0; i<8; ++i) {
-			//SQINFO("lbyte[%d]=%x", i, p[i]);
+			SQINFO("","lbyte[%d]=%x", i, p[i]);
 		}
 	}
 	if (framesRead == 0 && rightData) {
-		//SQINFO("first frameR");
+		SQINFO("","first frameR");
 		const uint8_t* p = reinterpret_cast<const uint8_t*>(rightData); 
 		for (int i=0; i<8; ++i) {
-			//SQINFO("lbyte[%d]=%x", i, p[i]);
+			SQINFO("","lbyte[%d]=%x", i, p[i]);
 		}
 	}
 #endif
@@ -174,7 +174,7 @@ bool FlacReader::onData(unsigned samples, const int32_t* leftData, const int32_t
     if (framesRead >= framesExpected) {
         isOk = true;
     }
-    // if (isOk) //SQINFO("leaving block with %d framesRaad %lld expected", framesRead, framesExpected);
+    // if (isOk) SQINFO("","leaving block with %d framesRaad %lld expected", framesRead, framesExpected);
     return true;
 }
 

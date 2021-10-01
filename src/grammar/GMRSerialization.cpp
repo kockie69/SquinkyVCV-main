@@ -97,7 +97,7 @@ StochasticProductionRuleEntryPtr GMRSerialization::readRuleEntry(json_t* entryJs
 }
 
 StochasticProductionRulePtr GMRSerialization::readRule(json_t* r) {
-    //SQINFO("read rule called");
+    SQINFO("","read rule called");
     assert(json_is_object(r));  // already checked.
 
     // get lhs string and make a rule from it
@@ -132,7 +132,7 @@ StochasticProductionRulePtr GMRSerialization::readRule(json_t* r) {
         }
         StochasticProductionRuleEntryPtr ruleEntry = readRuleEntry(entry);
         if (ruleEntry) {
-            //SQINFO("adding entry to rule: ");
+            SQINFO("","adding entry to rule: ");
             ruleEntry->_dump();
             ret->addEntry(ruleEntry);
         }
@@ -181,9 +181,9 @@ StochasticGrammarPtr GMRSerialization::readGrammar(json_t* theJson) {
         ret->addRule(r);
     }
 
-    //SQINFO("read json grammar");
+    SQINFO("","read json grammar");
     if (ret->isValid()) {
-        //SQINFO("using loaded grammar");
+        SQINFO("","using loaded grammar");
          ret->_dump();
         return ret;
     } else {

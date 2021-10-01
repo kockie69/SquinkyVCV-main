@@ -329,7 +329,7 @@ inline void Samp<TBase>::_setupPerfTest() {
 // Called when a patch has come back from thread server
 template <class TBase>
 inline void Samp<TBase>::setNewPatch(SampMessage* newMessage) {
-    //SQINFO("Samp::setNewPatch (came back from thread server)");
+    SQINFO("","Samp::setNewPatch (came back from thread server)");
     assert(newMessage);
     const bool instError =  !newMessage->instrument || newMessage->instrument->isInError();
     if (instError || !newMessage->waves) {
@@ -353,7 +353,7 @@ inline void Samp<TBase>::setNewPatch(SampMessage* newMessage) {
 
     // even if just for errors, we do have a new "instrument"
     _isNewInstrument = true;
-    //SQINFO("Samp::setNewPatch _isNewInstrument");
+    SQINFO("","Samp::setNewPatch _isNewInstrument");
     this->gcWaveLoader = newMessage->waves;
     this->gcInstrument = newMessage->instrument;
 
@@ -393,7 +393,7 @@ template <class TBase>
 inline void Samp<TBase>::serviceKeySwitch() {
     const int val = int(std::round(TBase::params[DUMMYKS_PARAM].value));
     if (val != lastServicedKeyswitchValue) {
-        //SQINFO("comp saw ks param change from %d to %d", lastServicedKeyswitchValue, val);
+        SQINFO("","comp saw ks param change from %d to %d", lastServicedKeyswitchValue, val);
         lastServicedKeyswitchValue = val;
         playback[0].note_on(0, val, 64, 44100.f);
     }
@@ -408,7 +408,7 @@ template <class TBase>
 inline void Samp<TBase>::serviceSchema() {
     const int schema = int(std::round(TBase::params[SCHEMA_PARAM].value));
     if (schema == 0) {
-        //SQINFO("loaded old schema, pitch = %f, octave = %f", TBase::params[PITCH_PARAM].value + TBase::params[OCTAVE_PARAM].value);
+        SQINFO("","loaded old schema, pitch = %f, octave = %f", TBase::params[PITCH_PARAM].value + TBase::params[OCTAVE_PARAM].value);
         TBase::params[SCHEMA_PARAM].value = 1;
 
         float patchOffset = TBase::params[PITCH_PARAM].value;
@@ -450,8 +450,8 @@ inline void Samp<TBase>::serviceFMMod() {
 #if 0
         if (bank == 0) {
             float_4 x = fmInput.getVoltageSimd<float_4>(bank * 4);
-            //SQINFO("p0=%f, trim=%f cv=%f x=%f res=%f", expPitchOffset[0], expPitchCVTrim[0], rawInput[0], x[0], finalBankFM[0]);
-            //SQINFO("  simdin=%s", toStr(rawInput).c_str());
+            SQINFO("","p0=%f, trim=%f cv=%f x=%f res=%f", expPitchOffset[0], expPitchCVTrim[0], rawInput[0], x[0], finalBankFM[0]);
+            SQINFO("","  simdin=%s", toStr(rawInput).c_str());
             
         }
 #endif
@@ -486,7 +486,7 @@ inline int Samp<TBase>::quantize(float pitchCV) {
 #if 1  // new version with gate delat
 template <class TBase>
 inline void Samp<TBase>::process(const typename TBase::ProcessArgs& args) {
-    //   //SQINFO("pin");
+    //   SQINFO("","pin");
     divn.step();
 
     // is there some "off by one error" here?
@@ -552,7 +552,7 @@ inline void Samp<TBase>::process(const typename TBase::ProcessArgs& args) {
             depth *= .1f;
             float_4 rawInput = pIn.getPolyVoltageSimd<float_4>(bank * 4);
             fm = rawInput * lfmGain_n * depth;
-            //SQINFO("read fm=%s, raw=%s", toStr(fm).c_str(), toStr(rawInput).c_str());
+            //SQINFO("","read fm=%s, raw=%s", toStr(fm).c_str(), toStr(rawInput).c_str());
         }
 
         // Step 3: run the audio
@@ -568,7 +568,7 @@ inline void Samp<TBase>::process(const typename TBase::ProcessArgs& args) {
 
 template <class TBase>
 inline void Samp<TBase>::process(const typename TBase::ProcessArgs& args) {
-    //   //SQINFO("pin");
+    //   SQINFO("","pin");
     divn.step();
 
     // is there some "off by one error" here?
@@ -625,7 +625,7 @@ inline void Samp<TBase>::process(const typename TBase::ProcessArgs& args) {
             depth *= .1f;
             float_4 rawInput = pIn.getPolyVoltageSimd<float_4>(bank * 4);
             fm = rawInput * lfmGain_n * depth;
-            //SQINFO("read fm=%s, raw=%s", toStr(fm).c_str(), toStr(rawInput).c_str());
+            SQINFO("","read fm=%s, raw=%s", toStr(fm).c_str(), toStr(rawInput).c_str());
         }
 
         // Step 3: run the audio
@@ -634,7 +634,7 @@ inline void Samp<TBase>::process(const typename TBase::ProcessArgs& args) {
         TBase::outputs[AUDIO_OUTPUT].setVoltageSimd(output, bank * 4);
         lastGate4[bank] = gate4;
     }
-    //    //SQINFO("pout");
+    //    SQINFO("","pout");
 }
 #endif
 
@@ -696,10 +696,10 @@ public:
         SampMessage* smsg = static_cast<SampMessage*>(msg);
 
 #ifdef _ATOM
-        //SQINFO("worker about to wait for sample access");
+        SQINFO("","worker about to wait for sample access");
         assert(smsg->sharedState);
         smsg->sharedState->uiw_requestAndWaitForSampleReload();
-        //SQINFO("worker got sample access");
+        SQINFO("","worker got sample access");
 #endif
 
         // First thing we do it throw away the old patch data.
@@ -752,7 +752,7 @@ public:
             }
         }
 
-        //SQINFO("preparing to return cinst to caller, err=%d", cinst->isInError());
+        SQINFO("","preparing to return cinst to caller, err=%d", cinst->isInError());
         smsg->instrument = cinst;
         smsg->waves = loadedState == WaveLoader::LoaderState::Done ? waves : nullptr;
 
@@ -769,7 +769,7 @@ public:
             info->errorMessage = waves->lastError;
         }
 
-        //SQINFO("****** loader thread returning %d", int(loadedState));
+        SQINFO("","****** loader thread returning %d", int(loadedState));
         sendMessageToClient(msg);
     }
 
@@ -801,9 +801,9 @@ private:
 
         // If the patch had a path, add that
         //   samplePath += cinst->getDefaultPath();
-        //   //SQINFO("after def sample base path %s", samplePath.c_str());
+        //   SQINFO("","after def sample base path %s", samplePath.c_str());
         //     std::string composedPath = samplePath
-        //  //SQINFO("about to set waves to %s. default = %s global = %s\n", samplePath.c_str(), cinst->getDefaultPath().c_str(), globalPath.c_str());
+        //  SQINFO("","about to set waves to %s. default = %s global = %s\n", samplePath.c_str(), cinst->getDefaultPath().c_str(), globalPath.c_str());
         //if (!cinst->defaultPath())
     }
 };
@@ -872,12 +872,12 @@ void Samp<TBase>::serviceMessagesReturnedToComposite() {
     // see if any messages came back for us
     ThreadMessage* newMsg = thread->getMessage();
     if (newMsg) {
-        //SQINFO("new patch message back from worker thread!");
+        SQINFO("","new patch message back from worker thread!");
         assert(newMsg->type == ThreadMessage::Type::SAMP);
         SampMessage* smsg = static_cast<SampMessage*>(newMsg);
         setNewPatch(smsg);
-        //SQINFO("new patch message back from worker thread done!");
+        SQINFO("","new patch message back from worker thread done!");
         messagePool.push(smsg);
-        //SQINFO("leave snpm");
+        SQINFO("","leave snpm");
     }
 }

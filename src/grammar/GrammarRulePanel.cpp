@@ -27,20 +27,20 @@ GrammarRulePanel::GrammarRulePanel(const Vec &pos, const Vec &size, StochasticGr
     p->text = "LP";
     p->setLabels({"LP", "BP", "HP", "N"});
     p->setNotificationCallback([](int index) {
-        //SQINFO("notification callback %d", index);
+        SQINFO("","notification callback %d", index);
     });
     addChild(p);
 
     if (grammar) {
-        //SQINFO("getting root");
+        SQINFO("","getting root");
         StochasticProductionRulePtr root = grammar->getRootRule();
         if (root) {
-            //SQINFO("using root to get dur");
+            SQINFO("","using root to get dur");
             ruleDuration = root->lhs.duration;
         } else {}
-            //SQINFO("no root");
+            SQINFO("","no root");
     } else {}
-        //SQINFO("no grammar");
+        SQINFO("","no grammar");
 }
 
 void GrammarRulePanel::draw(const DrawArgs &args) {

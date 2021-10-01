@@ -81,8 +81,7 @@ struct superWidget : ModuleWidget
     void addOtherKnobs(SuperModule *, std::shared_ptr<IComposite>);
     void addJacks(SuperModule *);
     void appendContextMenu(Menu *menu) override;
-  //  DECLARE_MANUAL("Saws manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/saws.md");
-
+ 
     SemitoneDisplay semitoneDisplay;
 
 #ifdef _TIME_DRAWING

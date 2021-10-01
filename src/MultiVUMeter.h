@@ -160,6 +160,7 @@ inline float MultiVUMeter::getFakeGain(int channel) {
 }
 
 inline void MultiVUMeter::draw(const DrawArgs& args) {
+    nvgGlobalTint(args.vg, color::WHITE);
     nvgBeginPath(args.vg);
     nvgRect(args.vg, 0, 0, box.size.x, box.size.y);
     nvgFillColor(args.vg, nvgRGB(0, 0, 0));

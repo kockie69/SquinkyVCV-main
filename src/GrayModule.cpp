@@ -53,9 +53,7 @@ struct GrayWidget : ModuleWidget
 {
     GrayWidget(GrayModule *);
 
-    DECLARE_MANUAL("Gray Code manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/gray-code.md");
-
-    /**
+     /**
      * Helper to add a text label to this widget
      */
     Label* addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK)

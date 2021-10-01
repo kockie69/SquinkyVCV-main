@@ -151,16 +151,11 @@ void SampModule::process(const ProcessArgs& args) {
 
 #define _TW
 
-static const char* helpUrl = "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/sfz-player.md";
-
 struct SampWidget : ModuleWidget {
     SampWidget(SampModule* m);
     void appendContextMenu(Menu* theMenu) override {
         ::rack::ui::MenuLabel* spacerLabel = new ::rack::ui::MenuLabel();
         theMenu->addChild(spacerLabel);
-        ManualMenuItem* manual = new ManualMenuItem("SFZ Player manual", helpUrl);
-        theMenu->addChild(manual);
-
         {
             SqMenuItem* sfile = new SqMenuItem(
                 []() { return false; },
@@ -433,7 +428,7 @@ std::string SampWidget::buildPitchrangeUIString() {
     std::string lowName = PitchUtils::pitch2str(lowCV);
     const float hiCV = PitchUtils::semitoneToCV(info->maxPitch - 12);
     std::string hiName = PitchUtils::pitch2str(hiCV);
-    //SQINFO("build range, %d, %f, %s %s",  info->minPitch, lowCV, lowName.c_str(), hiName.c_str());
+    SQINFO("","build range, %d, %f, %s %s",  info->minPitch, lowCV, lowName.c_str(), hiName.c_str());
     s.add("Pitch range: ");
     s.add(lowName);
     s.add(" to ");
@@ -648,7 +643,7 @@ static void shouldFindMalformed(const char* input) {
     //if (!err.empty()) SQFATAL(err.c_str());
     assert(err.empty());
 
-    //SQINFO("now will compile");
+    SQINFO("","now will compile");
     SamplerErrorContext errc;
     CompiledInstrumentPtr cinst = CompiledInstrument::make(errc, inst);
     if (!cinst) {
@@ -689,20 +684,20 @@ static void testMalformedKey() {
 }
 
 void SampWidget::debug() {
-    //SQINFO("start debug");
+    SQINFO("","start debug");
     const char* input = "12345";
     int intValue;
     SamplerSchema::stringToInt(input, &intValue);
-    //SQINFO(" debug 645");
+    SQINFO(""," debug 645");
     
     input = "abc";
     float floatValue;
     SamplerSchema::stringToFloat(input, &floatValue);
-    //SQINFO(" debug 650");
+    SQINFO(""," debug 650");
     testMalformedRelease();
-    //SQINFO(" debug 652");
+    SQINFO(""," debug 652");
     testMalformedKey();
-    //SQINFO("test finished");
+    SQINFO("","test finished");
 }
 
 Model* modelSampModule = createModel<SampModule, SampWidget>("squinkylabs-samp");

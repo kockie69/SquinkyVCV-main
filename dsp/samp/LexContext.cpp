@@ -19,7 +19,7 @@ LexContext::LexContext(const FilePath& initialFile) {
 #endif
 
 void LexContext::addDefine(const std::string& defineVarName, const std::string& defineVal) {
-    //SQINFO("addDefine var=%s val=%s", defineVarName.c_str(), defineVal.c_str());
+    SQINFO("","addDefine var=%s val=%s", defineVarName.c_str(), defineVal.c_str());
     if (defineVarName.empty()) {
         //SQWARN("trying to add empty define");
         return;
@@ -33,7 +33,7 @@ void LexContext::addDefine(const std::string& defineVarName, const std::string& 
 }
 
 void LexContext::applyDefine(std::string* theString) {
-    //SQINFO("applyDefine: %s", theString->c_str());
+    SQINFO("","applyDefine: %s", theString->c_str());
     
     // search the scopes from closest to farthest,
     // looking for a scope that has this string.
@@ -76,7 +76,7 @@ bool LexContext::pushOneLevel(const std::string& relativePath, int currentLine) 
     FilePath namePart(rawFilename);
     FilePath fullPath = origFolder;
     fullPath.concat(namePart);
-    //SQINFO("make full include path: %s", fullPath.toString().c_str());
+    SQINFO("","make full include path: %s", fullPath.toString().c_str());
 
     std::string sIncludeContent;
 
@@ -121,7 +121,7 @@ void LexContext::addTestFolder(const FilePath& folder, const std::string& conten
 //////////////////////////////////////////////////////////////////////////////
 
 bool LexFileScope::applyDefine(std::string* theString) {
-    //SQINFO("apply define %s", theString->c_str());
+    SQINFO("","apply define %s", theString->c_str());
     if (theString->empty()) {
         return false;
     }
@@ -130,7 +130,7 @@ bool LexFileScope::applyDefine(std::string* theString) {
         if (pos != std::string::npos) {
             const size_t len = it.first.size();
 
-            //SQINFO("found a match, val = %s", it.second.c_str());
+            SQINFO("","found a match, val = %s", it.second.c_str());
             theString->replace(pos, len, it.second);
             return true;
         }

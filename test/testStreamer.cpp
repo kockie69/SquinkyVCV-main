@@ -204,10 +204,10 @@ static void testStreamValuesSub(TestValues& v) {
     assertEQ(v.s._cd(v.channel).canPlay(), true);
     v.s.channels[v.channel].curFloatSampleOffset += v.fractionalOffset;
     for (unsigned int i = 0; i < v.expectedOutputSamples; ++i) {
-        //SQINFO("\ntop of test loop %d", i);
+        SQINFO("","\ntop of test loop %d", i);
         v.s._assertValid();
         float_4 vx = v.s.step(0, false);
-        //SQINFO("sample[%d] = %f", i, vx[v.channel]);
+        SQINFO("","sample[%d] = %f", i, vx[v.channel]);
         if (i >= v.skipSamples) {
             assertClose(vx[v.channel], v.expectedOutput[i], .01);
         }
@@ -218,7 +218,7 @@ static void testStreamValuesSub(TestValues& v) {
 }
 
 static void testStreamValueEnd() {
-    //SQINFO("-- testStreamValuesEnd -- ");
+    SQINFO("","-- testStreamValuesEnd -- ");
 
     float input[8] =  {1, 1, 1, 1, 1, 1, 1, 1};
     float output[8] = {1, 1, 1, 1, 0, 0, 0, 0};
@@ -234,7 +234,7 @@ static void testStreamValueEnd() {
 }
 
 static void testStreamValueOSc() {
-    //SQINFO("-- testStreamValuesOsc -- ");
+    SQINFO("","-- testStreamValuesOsc -- ");
 
     float input[4] =  {1, 2, 3, 4};
     float output[12] = { 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4 };
@@ -281,7 +281,7 @@ static void testStreamValueOSc2(int playRegionSize, float fractionalOffset, floa
 }
 
 static void testStreamValueOSc2() {
-    //SQINFO("-- testStreamValuesOsc2 -- ");
+    SQINFO("","-- testStreamValuesOsc2 -- ");
     // first, no fractions
     for (int i = 4; i < 12; ++i) {
         testStreamValueOSc2(i, 0, 1);
@@ -300,7 +300,7 @@ static void testStreamValueOSc2() {
 
 // This was assererting before
 static void testStreamValueOSc3() {
-     //SQINFO("-- testStreamValuesOsc3 -- ");
+     SQINFO("","-- testStreamValuesOsc3 -- ");
 
     const int size = 2048;
     // 
@@ -323,7 +323,7 @@ static void testStreamValueOSc3() {
 }
 
 static void testStreamValues() {
-    //SQINFO("-- testStreamValues -- ");
+    SQINFO("","-- testStreamValues -- ");
     TestValues v;
     v.channel = 1;
     assertEQ(v.s._cd(v.channel).canPlay(), false);
@@ -340,7 +340,7 @@ static void testStreamValues() {
 }
 
 static void testStreamValuesInterp() {
-    //SQINFO("-- testStreamValuesInterp -- ");
+    SQINFO("","-- testStreamValuesInterp -- ");
     TestValues v;
     v.channel = 2;
     assertEQ(v.s._cd(v.channel).canPlay(), false);
@@ -359,7 +359,7 @@ static void testStreamValuesInterp() {
 }
 
 static void testStreamValuesOffset() {
-    //SQINFO("------ testStreamValuesOffset --------------");
+    SQINFO("","------ testStreamValuesOffset --------------");
     TestValues v;
     v.channel = 1;
     assertEQ(v.s._cd(v.channel).canPlay(), false);
@@ -379,7 +379,7 @@ static void testStreamValuesOffset() {
 }
 
 static void testStreamValuesLoop() {
-    //SQINFO("-- testStreamValuesLoop -- ");
+    SQINFO("","-- testStreamValuesLoop -- ");
     TestValues v;
     v.channel = 1;
     assertEQ(v.s._cd(v.channel).canPlay(), false);
@@ -399,7 +399,7 @@ static void testStreamValuesLoop() {
 }
 
 static void testStreamValuesLoop2() {
-    //SQINFO("-- testStreamValuesLoop (make me pass! -- ");
+    SQINFO("","-- testStreamValuesLoop (make me pass! -- ");
     TestValues v;
     v.channel = 1;
     assertEQ(v.s._cd(v.channel).canPlay(), false);
@@ -490,7 +490,7 @@ static void testStreamRetrigger() {
 }
 
 static void testBugCaseHighFreq() {
-    //SQINFO("---- bug case high freq ----");
+    SQINFO("","---- bug case high freq ----");
     Streamer s;
     const int channel = 0;
     assertEQ(s._cd(channel).canPlay(), false);

@@ -60,9 +60,7 @@ struct TremoloWidget : ModuleWidget
 {
     TremoloWidget(TremoloModule *);
 
-    DECLARE_MANUAL("Chopper manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/chopper.md");
-
-    void addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK)
+     void addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK)
     {
         Label* label = new Label();
         label->box.pos = v;

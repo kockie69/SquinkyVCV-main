@@ -12,7 +12,7 @@ using Comp2_Poly = F2_Poly<TestComposite>;
  * These tests show that a) Fc follows CV, b) changing fc attenuverters forces a re-calb  
  */
 static void testF2Fc_Poly(float fcParam, float cv, float expectedFcGain, float expectedFcGainWithCV, int channel) {
-    //SQINFO("\n---- testF2Fc_Poly %f, %f, %f, %f", fcParam, cv, expectedFcGain, expectedFcGainWithCV);
+    SQINFO("","\n---- testF2Fc_Poly %f, %f, %f, %f", fcParam, cv, expectedFcGain, expectedFcGainWithCV);
 
     auto setup1 = [fcParam, cv, channel](Comp2_Poly& comp) {
         // here we will leave the attenuverters on 0

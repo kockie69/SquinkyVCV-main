@@ -101,11 +101,3 @@ public:
         }
     }
 };
-
-#define DECLARE_MANUAL(TEXT, URL)                                         \
-    void appendContextMenu(Menu* theMenu) override {                      \
-        ::rack::ui::MenuLabel* spacerLabel = new ::rack::ui::MenuLabel(); \
-        theMenu->addChild(spacerLabel);                                   \
-        ManualMenuItem* manual = new ManualMenuItem(TEXT, URL);           \
-        theMenu->addChild(manual);                                        \
-    }

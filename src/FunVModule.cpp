@@ -86,9 +86,7 @@ struct FunVWidget : ModuleWidget
     void addMiddle4(FunVModule *, float verticalShift);
     void addJacks(FunVModule *, float verticalShift);
 
-    DECLARE_MANUAL("Functional VCO manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/functional-vco-1.md");
-
-    Label* addLabel(const Vec& v, const char* str, const NVGcolor& color)
+     Label* addLabel(const Vec& v, const char* str, const NVGcolor& color)
     {
         Label* label = new Label();
         label->box.pos = v;

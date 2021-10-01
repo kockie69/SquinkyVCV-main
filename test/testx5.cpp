@@ -404,7 +404,7 @@ static void testSampPitch() {
 }
 
 static void testSampOsc() {
-    //SQINFO("-- testSampOsc (looped) --");
+    SQINFO("","-- testSampOsc (looped) --");
     {
         const char* data = (R"foo(
             <region>sample=a 
@@ -415,15 +415,15 @@ static void testSampOsc() {
         std::shared_ptr<Sampler4vx> s = makeTestSampler4vx2(data, WaveLoader::Tests::Zero2048);
         bool b = s->note_on(0, 60, 60, 44100);
         auto tr = s->_player()._transAmt(0);
-        //SQINFO("norm 60 tr = %f", tr);
+        SQINFO("","norm 60 tr = %f", tr);
 
         s->note_on(0, 60+12, 60, 44100);
         tr = s->_player()._transAmt(0);
-        //SQINFO("norm 60+12 tr = %f", tr);
+        SQINFO("","norm 60+12 tr = %f", tr);
 
          s->note_on(0, 60-12, 60, 44100);
         tr = s->_player()._transAmt(0);
-        //SQINFO("norm 60+-12 tr = %f", tr);
+        SQINFO("","norm 60+-12 tr = %f", tr);
     }
     {
         const char* data = (R"foo(
@@ -432,7 +432,7 @@ static void testSampOsc() {
         std::shared_ptr<Sampler4vx> s = makeTestSampler4vx2(data, WaveLoader::Tests::Zero2048);
         bool b = s->note_on(0, 60, 60, 44100);
         auto tr = s->_player()._transAmt(0);
-        //SQINFO("case 415: tr = %f", tr);
+        SQINFO("","case 415: tr = %f", tr);
         assertClose(tr, 12.15, .01);
     }
 }
@@ -470,7 +470,7 @@ static void testSampOffset() {
     VoicePlayInfo info;
     ci->play(info, params, nullptr, 44100);
     assertEQ(info.loopData.offset, 4321);
-    //SQINFO("foo");
+    SQINFO("","foo");
 
     samp.note_on(0, 60, 60, 44100);
     const Streamer& player = samp._player();
@@ -479,7 +479,7 @@ static void testSampOffset() {
 }
 
 static void testOneShot(bool oneShot) {
-    //SQINFO("--- testOneShot(%d)", oneShot);
+    SQINFO("","--- testOneShot(%d)", oneShot);
     //std::shared_ptr<Sampler4vx> s = std::make_shared<Sampler4vx>();
 
     SamplerErrorContext errc;
@@ -532,15 +532,15 @@ static void testOneShot(bool oneShot) {
     float largest = 0;
     for (int i = 0; i < 200; ++i) {
         auto x = samp.step(gates, sampleTime, lfm, false);
-        //SQINFO("x = %f", x[0]);
+        SQINFO("","x = %f", x[0]);
         largest = std::max(x[0], largest);
     }
-    //SQINFO("larges was %f", largest);
+    SQINFO("","larges was %f", largest);
     // while playing, should have something
     assert(largest > .2);
 
     // takes gates low, pump a little
-    //SQINFO("gates go low now");
+    SQINFO("","gates go low now");
     gates = SimdBlocks::maskFalse();
     for (int i = 0; i < 200; ++i) {
         auto x = samp.step(gates, sampleTime, lfm, false);
@@ -552,7 +552,7 @@ static void testOneShot(bool oneShot) {
         auto x = samp.step(gates, sampleTime, lfm, false);
         largest = std::max(x[0], largest);
     }
-    //SQINFO("largest was %f", largest);
+    SQINFO("","largest was %f", largest);
     const bool wasSignal = largest > .01f;
     assertEQ(wasSignal, oneShot);
 }

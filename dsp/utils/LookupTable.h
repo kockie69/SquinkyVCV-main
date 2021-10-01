@@ -240,9 +240,9 @@ public:
     }
 
     void _dump() const {
-        //SQINFO("_dump lookup");
+        SQINFO("","_dump lookup");
         for(int i = 0; i < numBins_i; ++i) {
-            //SQINFO("i=%d a=%f b=%f", i, entries[i*2], entries[i*2 + 1]);
+            SQINFO("","i=%d a=%f b=%f", i, entries[i*2], entries[i*2 + 1]);
         }
     }
 

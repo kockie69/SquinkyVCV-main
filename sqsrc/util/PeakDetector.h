@@ -46,11 +46,11 @@ public:
         value = std::max(value, buffer[2]);
         value = std::max(value, buffer[3]);
         buffer = float_4(0);
-     //   //SQINFO("rounded up another value %.2f", value);
+     //   SQINFO("","rounded up another value %.2f", value);
         
         value -= decayRate * sec;
         value = std::max(value, 0.f);
-      //  //SQINFO("decayed = %.2f", value);
+      //  SQINFO("","decayed = %.2f", value);
     }
 
     void setDecay(float d) {

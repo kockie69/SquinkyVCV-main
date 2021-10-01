@@ -62,8 +62,7 @@ void Slew4Module::step()
 struct Slew4Widget : ModuleWidget
 {
     Slew4Widget(Slew4Module *);
-    DECLARE_MANUAL("Slade manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/slew4.md");
-
+ 
     Label* addLabel(const Vec& v, const char* str, const NVGcolor& color = SqHelper::COLOR_BLACK)
     {
         Label* label = new Label();

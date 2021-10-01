@@ -67,7 +67,7 @@ static void testSchemaUpdate(float oldPitch, float newOctave, float newPitch) {
     Comp::ProcessArgs args;
 
     comp.process(args);
-    //SQINFO("old %f gives %f,%f", oldPitch, comp.params[Comp::OCTAVE_PARAM].value, comp.params[Comp::PITCH_PARAM].value);
+    SQINFO("","old %f gives %f,%f", oldPitch, comp.params[Comp::OCTAVE_PARAM].value, comp.params[Comp::PITCH_PARAM].value);
 
     const float octave = comp.params[Comp::OCTAVE_PARAM].value;
     const float fraction = comp.params[Comp::PITCH_PARAM].value;
