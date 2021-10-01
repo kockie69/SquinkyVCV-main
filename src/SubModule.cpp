@@ -91,11 +91,6 @@ void SubWidget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "Substitute manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/substitute.md");
-    menu->addChild(manual);
     
     SqMenuItem_BooleanParam2 * item = new SqMenuItem_BooleanParam2(module, Comp::AGC_PARAM);
     item->text = "AGC";

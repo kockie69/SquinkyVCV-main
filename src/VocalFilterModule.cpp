@@ -66,9 +66,6 @@ struct VocalFilterWidget : ModuleWidget
 inline Menu* VocalFilterWidget::createContextMenu()
 {
     Menu* theMenu = ModuleWidget::createContextMenu();
-    ManualMenuItem* manual = new ManualMenuItem(
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/formants.md");
-    theMenu->addChild(manual);
     return theMenu;
 }
 #endif

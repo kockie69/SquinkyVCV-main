@@ -228,10 +228,6 @@ private:
 void Sequencer4Widget::appendContextMenu(Menu* theMenu) {
     ::rack::ui::MenuLabel* spacerLabel = new ::rack::ui::MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem(
-        "4X4 manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/4x4.md");
-    theMenu->addChild(manual);
 
 #if 0 // doesn't work yet
     auto item = new SqMenuItem_BooleanParam2(module, Comp::TRIGGER_IMMEDIATE_PARAM);

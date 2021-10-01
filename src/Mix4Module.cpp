@@ -118,12 +118,7 @@ void Mix4Widget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "ExFor manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/exfor.md");
-    menu->addChild(manual);
-    
+   
     MenuLabel *spacerLabel2 = new MenuLabel();
     menu->addChild(spacerLabel2);
     SqMenuItem_BooleanParam2 * item = new SqMenuItem_BooleanParam2(mixModule, Comp::PRE_FADERa_PARAM);

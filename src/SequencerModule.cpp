@@ -62,8 +62,6 @@ struct SequencerWidget : ModuleWidget
     { 
         ::rack::ui::MenuLabel *spacerLabel = new ::rack::ui::MenuLabel(); 
         theMenu->addChild(spacerLabel); 
-        ManualMenuItem* manual = new ManualMenuItem("Seq++ manual", helpUrl); 
-        theMenu->addChild(manual); 
 
         ::rack::MenuItem* item = new SqMenuItem( []() { return false; }, [this](){
             float rawClockValue = APP->engine->getParamValue(module, Comp::CLOCK_INPUT_PARAM);

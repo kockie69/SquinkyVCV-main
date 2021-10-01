@@ -30,6 +30,7 @@ void S4ButtonGrid::setNewSeq(MidiSequencer4Ptr newSeq) {
 using Comp = Seq4<WidgetComposite>;
 void S4ButtonGrid::init(Sequencer4Widget* parent, rack::engine::Module* module,
                         MidiSequencer4Ptr _seq, std::shared_ptr<Seq4<WidgetComposite>> _seq4Comp) {
+    
     widget = parent;
     seq = _seq;
 
@@ -56,8 +57,7 @@ void S4ButtonGrid::init(Sequencer4Widget* parent, rack::engine::Module* module,
         const float y = grid_y + row * (buttonSize + buttonMargin);
         for (int col = 0; col < MidiSong4::numSectionsPerTrack; ++col) {
             const float x = grid_x + col * (buttonSize + buttonMargin);
-            //const int padNumber = row * MidiSong4::numSectionsPerTrack + col;
-
+            const int padNumber = row * MidiSong4::numSectionsPerTrack + col;
 
             S4Button* button = new S4Button(
                 rack::math::Vec(buttonSize, buttonSize),
@@ -67,12 +67,11 @@ void S4ButtonGrid::init(Sequencer4Widget* parent, rack::engine::Module* module,
             seq,
             seq4Comp,
             module);
-
 #if 1   // param widget way
-           // if (module) {
-           //     button->getParamQuantity() = module->paramQuantities[Comp::PADSELECT0_PARAM + padNumber];       
-           // }
-           // parent->addParam(button);
+            if (module) {
+                button->paramQuantity = module->paramQuantities[Comp::PADSELECT0_PARAM + padNumber];       
+            }
+            parent->addParam(button);
 #else
            
             parent->addChild(b);
@@ -88,46 +87,48 @@ void S4ButtonGrid::init(Sequencer4Widget* parent, rack::engine::Module* module,
         const float gate_out_dy = 28;
         const float cv_in_dy = 0;
 
+
+        // Tooltips are now supported by VCV so will handle it there
         {
-            SqStream s;
-            s.add("Track ");
-            s.add(row+1);
-            s.add(" CV out");
+            //SqStream s;
+            //s.add("Track ");
+            //s.add(row+1);
+            //s.add(" CV out");
            //s << "Track " << row + 1 << " CV out";
             SqOutputJack* oj = rack::createOutput<SqOutputJack>(
                 rack::math::Vec(jacksX2, y + cv_out_dy),
                 module,
                 Comp::CV0_OUTPUT + row);
-            oj->setTooltip(s.str());
+            //oj->setTooltip(s.str());
             parent->addOutput(oj);
         }
 
        
         {
-            SqStream s;
-            s.add("Track ");
-            s.add(row+1);
-            s.add(" Gate out");
+            //SqStream s;
+            //s.add("Track ");
+            //s.add(row+1);
+            //s.add(" Gate out");
            // s << "Track " << row + 1 << " Gate out";
             SqOutputJack* oj = createOutput<SqOutputJack>(
                 rack::math::Vec(jacksX2, y + gate_out_dy),
                 module,
                 Comp::GATE0_OUTPUT + row);
-            oj->setTooltip(s.str());
+            //oj->setTooltip(s.str());
             parent->addOutput(oj);
         }
 
         {
-            SqStream s;
-            s.add("Track ");
-            s.add(row+1);
-            s.add(" section selector CV in");
+            //SqStream s;
+            //s.add("Track ");
+            //s.add(row+1);
+            //s.add(" section selector CV in");
             //s << "Track " << row + 1 << " section selector CV in";
             SqInputJack* ij = rack::createInput<SqInputJack>(
                 rack::math::Vec(jacksX1, y + cv_in_dy ),
                 module,
                 Comp::MOD0_INPUT + row);
-            ij->setTooltip(s.str());
+            //ij->setTooltip(s.str());
             parent->addInput(ij);
         }
     }

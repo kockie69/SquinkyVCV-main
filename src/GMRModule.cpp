@@ -115,8 +115,6 @@ void GMRWidget::setNewGrammar(StochasticGrammarPtr gmr) {
 void GMRWidget::appendContextMenu(Menu* theMenu) {
     MenuLabel* spacerLabel = new MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem("GMR manual", "https://github.com/kockie69/SquinkyVCV-main/blob/gmr2/docs/gmr.md");
-    theMenu->addChild(manual);
 
     ::rack::MenuItem* item = new SqMenuItem([]() { return false; }, [this]() {
             float rawClockValue = APP->engine->getParamValue(module, Comp::CLOCK_INPUT_PARAM);
@@ -372,8 +370,6 @@ void GMRWidget::setNewGrammar(StochasticGrammarPtr gmr) {
 void GMRWidget::appendContextMenu(Menu* theMenu) {
     MenuLabel* spacerLabel = new MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem("GMR manual", "https://github.com/kockie69/SquinkyVCV-main/blob/gmr3/docs/gmr.md");
-    theMenu->addChild(manual);
  
     theMenu->addChild(new SqMenuItem(
         "Load grammar",

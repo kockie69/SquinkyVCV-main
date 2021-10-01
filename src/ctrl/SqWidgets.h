@@ -59,31 +59,6 @@ struct SqTrimpot24 : app::SvgKnob {
 
 
 class SqPortBase : public app::SvgPort {
-public:
-	void onEnter(const event::Enter& e) override  {
-        if (::rack::settings::tooltips && !tooltip && !toolTipString.empty()) {
-
-            ui::Tooltip * paramTooltip = new ui::Tooltip;
-            paramTooltip->text = toolTipString;
-            APP->scene->addChild(paramTooltip);
-            tooltip = paramTooltip;
-        }
-	}
-
-    void onLeave(const event::Leave& e) override {
-       	if (tooltip) {
-            APP->scene->removeChild(tooltip);
-            delete tooltip;
-            tooltip = NULL;
-        } 
-    }
-
-    void setTooltip(const std::string& s) {
-        toolTipString = s;
-        if (tooltip) {
-            tooltip->text = s;
-        }
-    }
 private:
     ui::Tooltip* tooltip = NULL;
     std::string toolTipString;

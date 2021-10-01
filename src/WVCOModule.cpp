@@ -297,11 +297,6 @@ void WVCOWidget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "Kitchen Sink manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/kitchen-sink.md");
-    menu->addChild(manual);
     
 #if 0
     MenuLabel *spacerLabel2 = new MenuLabel();

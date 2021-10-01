@@ -102,12 +102,6 @@ void superWidget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "Saws manual", 
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/saws.md");
-
-    menu->addChild(manual);
     
     //   HARD_PAN_PARAM,
     //    ALTERNATE_PAN_PARAM,
