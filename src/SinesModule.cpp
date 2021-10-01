@@ -14,9 +14,10 @@ using Comp = Sines<WidgetComposite>;
 
 class Drawbar : public app::SvgSlider {
 public:
+    ParamQuantity* paramQuantity = getParamQuantity();
     Drawbar(const std::string& handleName) {
         math::Vec margin = math::Vec(3.5, 3.5);
-
+        
         maxHandlePos = math::Vec(-7, 10).plus(margin);
 		minHandlePos = math::Vec(-7, 90).plus(margin);
 
@@ -154,9 +155,9 @@ void SinesWidget::addDrawbars(SinesModule *module, std::shared_ptr<IComposite> i
         const float inputX = x;
         x += 4;
         drawbar->box.pos = Vec(x, drawbarY);
-        //if (module) {
-        //    drawbar->getParamQuantity() = module->paramQuantities[Comp::DRAWBAR1_PARAM +i];
-        //}
+        if (module) {
+            drawbar->paramQuantity = module->paramQuantities[Comp::DRAWBAR1_PARAM +i];
+        }
         addParam(drawbar);
 
         addInput(createInput<PJ301MPort>(

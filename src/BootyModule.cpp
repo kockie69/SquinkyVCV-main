@@ -35,10 +35,12 @@ struct BootyModule : Module
     void onSampleRateChange() override;
 
     std::shared_ptr<Comp> shifter;
+
 private:
     typedef float T;
 public:
     ChoiceButton * rangeChoice;
+    int rangeIndex;
 };
 
 extern float values[];
@@ -47,7 +49,7 @@ extern const char* ranges[];
 #ifdef __V1x
 BootyModule::BootyModule()
 {
-    config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);   
     shifter = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
@@ -92,13 +94,9 @@ void BootyModule::fromJson(json_t *rootJ)
     json_t *driverJ = json_object_get(rootJ, "range");
     if (driverJ) {
         const int rg = json_number_value(driverJ);
-
-        // TODO: should we be more robust about float <> int issues?
-        //need to tell the control what text to display
         for (int i = 0; i < 5; ++i) {
-            if (rg == values[i]) {
-                rangeChoice->text = ranges[i];
-            }
+            if (rg == values[i]) 
+                    rangeIndex = i;
         }
         shifter->freqRange = rg;
     }
@@ -138,7 +136,6 @@ struct RangeItem : MenuItem
     {
         text = ranges[index];
     }
-
     const int rangeIndex;
     float * const rangeOut;
     ChoiceButton* const rangeChoice;
@@ -247,6 +244,7 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
     // time UI callbacks need to go bak..
     if (module) {
         module->rangeChoice = new RangeChoice(&module->shifter->freqRange, Vec(xPos, row2), width);
+        module->rangeChoice->text = ranges[module->rangeIndex];
         addChild(module->rangeChoice);
     } else {
         // let's make one, just for the module browser
