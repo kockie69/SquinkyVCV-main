@@ -95,16 +95,16 @@ public:
 
             switch(type) {
                 case OpcodeType::Int:
-                    SQINFO("","int: %d", numericInt);
+                    SQINFO("int: %d", numericInt);
                     break;
                  case OpcodeType::Float:
-                    SQINFO("","flt: %f", numericFloat);
+                    SQINFO("flt: %f", numericFloat);
                     break;
                  case OpcodeType::Discrete:
-                   SQINFO("","disc: %d", static_cast<int>(discrete));
+                   SQINFO("disc: %d", static_cast<int>(discrete));
                     break;
                  case OpcodeType::String:
-                    SQINFO("","str: %s", string.c_str());
+                    SQINFO("str: %s", string.c_str());
                     break;
                 default:
                     assert(false);
@@ -137,7 +137,7 @@ public:
 
         void _dump() {
             for (auto x : data) {
-                //SQINFO("","key=%d val=", x.first);
+                //SQINFO("key=%d val=", x.first);
                 x.second->_dump();
             }
         }

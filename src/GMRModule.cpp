@@ -279,10 +279,10 @@ struct GMRModule : Module {
 public:
     GMRModule();
     ~GMRModule() {
-        SQINFO("","module dtor begin");
+        SQINFO("module dtor begin");
         comp.reset();
         grammar.reset();
-        SQINFO("","module dtor end");
+        SQINFO("module dtor end");
     }
     /**
      *
@@ -328,7 +328,7 @@ GMRModule::GMRModule() {
 }
 
 void GMRModule::process(const ProcessArgs& args) {
-    SQINFO(""," GMRModule::process");
+    SQINFO(" GMRModule::process");
     comp->process(args);
 }
 
@@ -338,7 +338,7 @@ void GMRModule::process(const ProcessArgs& args) {
 
 struct GMRWidget : ModuleWidget {
     GMRWidget(GMRModule*);
-    ~GMRWidget() { SQINFO("","dtor of GMRWidget");
+    ~GMRWidget() { SQINFO("dtor of GMRWidget");
      }
 
     void appendContextMenu(Menu* theMenu) override;
@@ -403,7 +403,7 @@ void GMRWidget::loadGrammarFile() {
         std::free(pathC);
     });
 
-    SQINFO("","load grammar from %s", pathC);
+    SQINFO("load grammar from %s", pathC);
     auto grammar = GMRSerialization::readGrammarFile(pathC);
     if (grammar) {
         setNewGrammar(grammar);
@@ -429,7 +429,7 @@ GMRWidget::GMRWidget(GMRModule* module) {
         addChild(screenHolder);
     }
 
-    SQINFO("","adding the jacks at the bottom my h=%f", this->box.size.y);
+    SQINFO("adding the jacks at the bottom my h=%f", this->box.size.y);
 
     addLabel(
         Vec(30, 320),

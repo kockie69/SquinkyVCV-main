@@ -43,19 +43,19 @@ const CompiledRegion* RegionPool::play(const VoicePlayParameter& params, float r
 
         if (currentSwitch_ >= 0 && currentSwitch_ != params.midiPitch) {
             for (auto& region : lastKeyswitchLists_[currentSwitch_]) {
-                SQINFO("","setting region->keySwitched = false (turning off regions from the old keyswitch set) r=%p", region);
+                SQINFO("setting region->keySwitched = false (turning off regions from the old keyswitch set) r=%p", region);
                 region->keySwitched = false;
             }
         }
         currentSwitch_ = params.midiPitch;
-        SQINFO("","setting currentSwitch to %d", params.midiPitch);
+        SQINFO("setting currentSwitch to %d", params.midiPitch);
         didKS = true;
     } else {
         didKS = false;
     }
 
     for (auto& region : lastKeyswitchLists_[params.midiPitch]) {
-        SQINFO("","setting region keyswitched true because in lastKeySwitches");
+        SQINFO("setting region keyswitched true because in lastKeySwitches");
         region->keySwitched = true;
     }
 
@@ -82,7 +82,7 @@ const CompiledRegion* RegionPool::play(const VoicePlayParameter& params, float r
     }
 #if 0
     if (foundRegion) {
-        SQINFO("","play found region");
+        SQINFO("play found region");
         foundRegion->_dump(0);
     }
 #endif
@@ -131,7 +131,7 @@ bool RegionPool::buildCompiledTree(const SInstrumentPtr in) {
 #if 1  // new parser. merge conflict here
     HeadingTracker ht(in->headings);
 
-    //SQINFO("","---- buildCompiledTree with %d regions", in->headings.size());
+    //SQINFO("---- buildCompiledTree with %d regions", in->headings.size());
     // Enumerate all the parsed regions
     while (ht.getCurrent(SHeading::Type::Region)) {
         // here we know current describes a region
@@ -147,11 +147,11 @@ bool RegionPool::buildCompiledTree(const SInstrumentPtr in) {
             }
         }
         cReg->finalize();
-        SQINFO("","one more region from headings");
+        SQINFO("one more region from headings");
         //cReg->_dump(0);
         //
         if (!cReg->shouldIgnore()) {
-            SQINFO("","not ignoring");
+            SQINFO("not ignoring");
             maybeAddToKeyswitchList(cReg);
             if (cReg->sw_default >= 0) {
                 currentSwitch_ = cReg->sw_default;
@@ -177,7 +177,7 @@ bool RegionPool::buildCompiledTree(const SInstrumentPtr in) {
                 }
 #endif
             }
-            SQINFO("","adding");
+            SQINFO("adding");
             regions.push_back(cReg);
         }
 
@@ -185,7 +185,7 @@ bool RegionPool::buildCompiledTree(const SInstrumentPtr in) {
     }
 
 #if 0
-    SQINFO("","regions before fixup ");
+    SQINFO("regions before fixup ");
     for (auto region : regions) {
         region->_dump(0);
 
@@ -239,7 +239,7 @@ bool RegionPool::attemptOverlapRepairWithVel(CompiledRegionPtr firstRegion, Comp
     auto velOverlap = firstRegion->overlapVelocityAmount(*secondRegion);
     if (velOverlap.first > 0) {
         if (velOverlap.second > .8f) {
-            SQINFO("","velocity overlap %f too large to repair at %d and %d", velOverlap.second, firstRegion->lineNumber, secondRegion->lineNumber);
+            SQINFO("velocity overlap %f too large to repair at %d and %d", velOverlap.second, firstRegion->lineNumber, secondRegion->lineNumber);
             return true;
         }
         //assert(firstRegion->lovel <= secondRegion->lovel);  // sorted
@@ -278,7 +278,7 @@ bool RegionPool::attemptOverlapRepairWithPitch(CompiledRegionPtr firstRegion, Co
     auto pitchOverlap = firstRegion->overlapPitchAmount(*secondRegion);
     if (pitchOverlap.first > 0) {
         if (pitchOverlap.second > .8f) {
-            SQINFO("","pitch overlap %f too large to repair at %d and %d", pitchOverlap.second, firstRegion->lineNumber, secondRegion->lineNumber);
+            SQINFO("pitch overlap %f too large to repair at %d and %d", pitchOverlap.second, firstRegion->lineNumber, secondRegion->lineNumber);
             return true;
         }
         // If we have patched so much that we are our of order, give up
@@ -326,19 +326,19 @@ bool RegionPool::evaluateOverlapsAndAttemptRepair(CompiledRegionPtr firstRegion,
     const int lv2 = secondRegion->lovel;
 
 #ifdef _LOGOV
-    SQINFO("","overlap comparing line %d with %d", firstRegion->lineNumber, secondRegion->lineNumber);
-    SQINFO("","  first pitch=%d,%d, vel=%d,%d", firstRegion->lokey, firstRegion->hikey, firstRegion->lovel, firstRegion->hivel);
-    SQINFO("","  second pitch=%d,%d, vel=%d,%d", firstRegion->lokey, secondRegion->hikey, secondRegion->lovel, secondRegion->hivel);
+    SQINFO("overlap comparing line %d with %d", firstRegion->lineNumber, secondRegion->lineNumber);
+    SQINFO("  first pitch=%d,%d, vel=%d,%d", firstRegion->lokey, firstRegion->hikey, firstRegion->lovel, firstRegion->hivel);
+    SQINFO("  second pitch=%d,%d, vel=%d,%d", firstRegion->lokey, secondRegion->hikey, secondRegion->lovel, secondRegion->hivel);
 
-    SQINFO("","  first sw_ range=%d, %d. second=%d, %d", firstRegion->sw_lolast, firstRegion->sw_hilast, secondRegion->sw_lolast, secondRegion->sw_hilast);
-    SQINFO("","  overlap pitch = %d, overlap vel = %d", firstRegion->overlapsPitch(*secondRegion), firstRegion->overlapsVelocity(*secondRegion));
+    SQINFO("  first sw_ range=%d, %d. second=%d, %d", firstRegion->sw_lolast, firstRegion->sw_hilast, secondRegion->sw_lolast, secondRegion->sw_hilast);
+    SQINFO("  overlap pitch = %d, overlap vel = %d", firstRegion->overlapsPitch(*secondRegion), firstRegion->overlapsVelocity(*secondRegion));
 #endif
 
     // If there is no overlap, then everything is fine.
     // Can keep and use regions as they are
     if (!regionsOverlap(firstRegion, secondRegion)) {
 #ifdef _LOGOV
-        SQINFO("","no overlap, do nothing");
+        SQINFO("no overlap, do nothing");
 #endif
         return false;
     }
@@ -355,7 +355,7 @@ bool RegionPool::evaluateOverlapsAndAttemptRepair(CompiledRegionPtr firstRegion,
     // if regions are good now, then stop
     if (!regionsOverlap(firstRegion, secondRegion)) {
 #ifdef _LOGOV
-        SQINFO("","overlap, repaired using %s", velLessOverlap ? "vel" : "pitch");
+        SQINFO("overlap, repaired using %s", velLessOverlap ? "vel" : "pitch");
 #endif
         return false;
     }
@@ -367,11 +367,11 @@ bool RegionPool::evaluateOverlapsAndAttemptRepair(CompiledRegionPtr firstRegion,
 
     bool stillBad = regionsOverlap(firstRegion, secondRegion);
     if (stillBad) {
-        SQINFO("","unable to repair overlaps at  lines %d and %d", firstRegion->lineNumber, secondRegion->lineNumber);
+        SQINFO("unable to repair overlaps at  lines %d and %d", firstRegion->lineNumber, secondRegion->lineNumber);
     #if 0
-        SQINFO(""," First region:");
+        SQINFO(" First region:");
         firstRegion->_dump(1);
-        SQINFO(""," second region:");
+        SQINFO(" second region:");
         secondRegion->_dump(1);
     #endif
 
@@ -419,11 +419,11 @@ void RegionPool::removeOverlaps() {
             const int firstPitchRange = first->hikey - first->lokey;
             const int secondPitchRange = second->hikey - second->lokey;
             if (firstPitchRange <= secondPitchRange) {
-                SQINFO("","about to erase region from %d based on conflict from %d\n", second->lineNumber, first->lineNumber);
+                SQINFO("about to erase region from %d based on conflict from %d\n", second->lineNumber, first->lineNumber);
 #if 0
-                SQINFO("","here is one going away: ");
+                SQINFO("here is one going away: ");
                 second->_dump(1);
-                SQINFO("","here is one staying: ");
+                SQINFO("here is one staying: ");
                 first->_dump(1);
 #endif
 
@@ -461,7 +461,7 @@ bool RegionPool::fixupCompiledTree() {
 }
 
 void RegionPool::_dump(int depth) const {
-    SQINFO("","dumping region pool");
+    SQINFO("dumping region pool");
     for (int i = 0; i < depth; ++i) {
         printf(" ");
     }
@@ -469,5 +469,5 @@ void RegionPool::_dump(int depth) const {
         region->_dump(depth + 4);
     }
     fflush(stdout);
-    SQINFO("","dunp dumping region pool");
+    SQINFO("dunp dumping region pool");
 }

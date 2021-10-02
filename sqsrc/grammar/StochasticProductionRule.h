@@ -57,9 +57,9 @@ StochasticProductionRuleEntry::duration() const {
 
 inline void
 StochasticProductionRuleEntry::_dump() const {
-    SQINFO("","Entry p=%f notes:", probability);
+    SQINFO("Entry p=%f notes:", probability);
     for (auto note : rhsProducedNotes) {
-        SQINFO("","  note %d", note.duration);
+        SQINFO("  note %d", note.duration);
     }
 }
 
@@ -113,13 +113,13 @@ private:
 
 inline StochasticProductionRule::StochasticProductionRule(const StochasticNote& n) : lhs(n) {
     assert(lhs.duration > 0);
-    SQINFO("","ctor of rule, pased %d, have %d", n.duration, lhs.duration);
+    SQINFO("ctor of rule, pased %d, have %d", n.duration, lhs.duration);
 }
 
 inline void
 StochasticProductionRule::addEntry(StochasticProductionRuleEntryPtr entry) {
     assert(entry->isValid());
-    SQINFO("","add Entry, dur of ent = %d", entry->duration());
+    SQINFO("add Entry, dur of ent = %d", entry->duration());
     // assertEQ(entry->duration(), lhs.duration);
     entries.push_back(entry);
 }

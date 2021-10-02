@@ -105,7 +105,7 @@ static void testLexComment4() {
     SLexPtr lex = SLex::go(ctx);
     assert(lex);
     lex->validate();
-    SQINFO("","lex error %s", ctx->errorString().c_str());
+    SQINFO("lex error %s", ctx->errorString().c_str());
     lex->_dump();
     assertEQ(lex->items.size(), 0);
 }

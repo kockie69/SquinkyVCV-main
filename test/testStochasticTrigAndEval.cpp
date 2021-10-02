@@ -205,7 +205,7 @@ static void gtg0() {
 // could bring this over
 static void gtg1() {
     //assert(false);
-    SQINFO("","we could port gtg1 test to new arch");
+    SQINFO("we could port gtg1 test to new arch");
 #if 0
     GKEY key = init1();
     std::set<int> counts;
@@ -304,13 +304,13 @@ static void testEvaluatorGenerates25Fixed(float fakeRandomNumber, int expectedDu
     // all same dur
     assertEQ(notes.size(), 1);
     for (auto entry : notes) {
-        SQINFO("","dur %d, got %d", entry.first, entry.second);
+        SQINFO("dur %d, got %d", entry.first, entry.second);
         assert(entry.first == expectedDur);
     }
 }
 
 static void testEvaluatorGenerates25_0() {
-    SQINFO("","====  run with gmr 25, rand = 0");
+    SQINFO("====  run with gmr 25, rand = 0");
    
     testEvaluatorGenerates25Fixed(0, StochasticNote::ppq);
     testEvaluatorGenerates25Fixed(.24f, StochasticNote::ppq);
@@ -350,12 +350,12 @@ static void testEvaluatorGenerates25Fixed(float fakeRandomNumber, std::map<int, 
 }
 
 static void testEvaluatorGenerates25_0() {
-    SQINFO("","====  run with gmr 25, rand = 0");
+    SQINFO("====  run with gmr 25, rand = 0");
     std::map<int, int> notes;
     testEvaluatorGenerates25Fixed(0,notes);
     assert(entry.size() > 0);
     for (auto entry : notes) {
-        SQINFO("","dur %d, got %d", entry.first, entry.second);
+        SQINFO("dur %d, got %d", entry.first, entry.second);
         assert(entry.first == StochasticNote::ppq);
     }
 }
@@ -387,7 +387,7 @@ static void testEvaluatorGenerates25() {
 
 #if 0
     for (auto it : notes) {
-        SQINFO("","key=%d, value=%d", it.first, it.second);
+        SQINFO("key=%d, value=%d", it.first, it.second);
     }
 #endif
 
@@ -410,7 +410,7 @@ static void testEvaluatorGenerates25() {
         default:
             assert(false);
         }
-        SQINFO("","dur %d, got %d (adj)", duration, count);
+        SQINFO("dur %d, got %d (adj)", duration, count);
         assertClose(count, expected, 75);
     }
 }
@@ -429,12 +429,12 @@ static void testEvaluatorGeneratesSimple(AudioMath::RandomUniformFunc rand, int 
     for (int i = 0; i < iterations; ++i) {
         StochasticProductionRule::evaluate(es, es.grammar->getRootRule());
 #if 0
-        SQINFO("","Iter %d", i);
+        SQINFO("Iter %d", i);
          for (auto note : es.notes) {
-             SQINFO("","  n=%s", note.toText().c_str());
+             SQINFO("  n=%s", note.toText().c_str());
          }
 #endif
-        SQINFO("",es.notes.size() > 1 ? "B" : "a");
+        SQINFO(es.notes.size() > 1 ? "B" : "a");
          if (last == es.notes.size()) {
              currentRun++;
              currentRun = std::max(currentRun, 2);
@@ -453,9 +453,9 @@ static void testEvaluatorGeneratesSimple(AudioMath::RandomUniformFunc rand, int 
 
 void testEvaluatorGeneratesSimple() {
     const int iterations = 1000000;
-    SQINFO("","norm");
+    SQINFO("norm");
     testEvaluatorGeneratesSimple(AudioMath::random(), iterations);
-    SQINFO("","better");
+    SQINFO("better");
     testEvaluatorGeneratesSimple(AudioMath::random_better(), iterations);
     assert(false);
 }

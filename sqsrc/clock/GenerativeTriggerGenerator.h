@@ -85,7 +85,7 @@ public:
             ret |= _seq->getTrigger();
             //printf("this should be getTrigger!!!\n");
         }
-        SQINFO("","GTG clock ret %d", ret);
+        SQINFO("GTG clock ret %d", ret);
         return ret;
     }
 #endif
@@ -99,7 +99,7 @@ private:
     //
     void generate()
     {
-        SQINFO("","gtg generate rules=%p", _rules);
+        SQINFO("gtg generate rules=%p", _rules);
         GTGEvaluator es(_r, _data);
         es.rules = _rules;
         es.numRules = _numRules;
@@ -109,7 +109,7 @@ private:
         TriggerSequencer::isValid(_data);
         _seq->reset(_data);
         assert(!_seq->getEnd());
-        SQINFO("","gtg generate exit");
+        SQINFO("gtg generate exit");
 #if 0
         printf("just generated trigger seq\n");
         TriggerSequencer::Event * p;

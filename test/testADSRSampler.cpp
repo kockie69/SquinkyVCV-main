@@ -44,7 +44,7 @@ static float measureRelease(float r) {
 
     a.step(gates, sampleTime);
 
-    SQINFO("","leaving measure(%f) with %f", r, release);
+    SQINFO("leaving measure(%f) with %f", r, release);
     return release;
 }
 
@@ -56,7 +56,7 @@ static void testSub(float time, float ptcTolerance = 5.f) {
 
 static void debug(float seconds) {
     float r = measureRelease(seconds);
-    SQINFO("","at %f seconds measure %f", seconds, r);
+    SQINFO("at %f seconds measure %f", seconds, r);
 }
 
 #if 0
@@ -71,7 +71,7 @@ static void debug() {
 #endif
 
 static void test0() {
-    //  SQINFO("","----------- test0");
+    //  SQINFO("----------- test0");
 
     //  debug();
 
