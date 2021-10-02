@@ -360,13 +360,13 @@ void EV3Widget::makeSection(EV3Module *module, int index, std::shared_ptr<ICompo
         module,
         Comp::SEMI1_PARAM + delta * index));
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y2), module,
         Comp::FINE1_PARAM + delta * index));
     addLabel(Vec(x - 20, y2 - 34), "Fine");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x2, y2), module,
         Comp::FM1_PARAM + delta * index));

@@ -211,7 +211,7 @@ void Mix4Widget::makeStrip(
    
     const float extraDy = 5;
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -219,7 +219,7 @@ void Mix4Widget::makeStrip(
     volY = y;
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -228,14 +228,14 @@ void Mix4Widget::makeStrip(
 
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
         channel + Comp::SENDb0_PARAM));
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,

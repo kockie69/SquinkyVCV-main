@@ -123,7 +123,7 @@ void BasicWidget::addControls(BasicModule *module, std::shared_ptr<IComposite> i
         icomp,
         Vec(knobX, knobY + 1 * dy),
         module,  Comp::SEMITONE_PARAM));
-     addParam(SqHelper::createParam<Blue30Knob>(
+     addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX, knobY + 2 * dy),
         module,  Comp::FINE_PARAM));

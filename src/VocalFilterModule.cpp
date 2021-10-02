@@ -6,6 +6,7 @@
 #include "WidgetComposite.h"
 #include "VocalFilter.h"
 #include "ctrl/SqMenuItem.h"
+#include "ctrl/SqWidgets.h"
 
 using Comp = VocalFilter<WidgetComposite>;
 
@@ -192,7 +193,7 @@ VocalFilterWidget::VocalFilterWidget(VocalFilterModule* module)
     const float trimDx = 3;             // move to the right to match input
     Label* label;
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(col2, row2L),
         module, Comp::FILTER_VOWEL_PARAM));
@@ -213,7 +214,7 @@ VocalFilterWidget::VocalFilterWidget(VocalFilterModule* module)
     label->color = SqHelper::COLOR_BLACK;
     addChild(label);
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(col3, row2R), module, Comp::FILTER_FC_PARAM));
 
@@ -233,7 +234,7 @@ VocalFilterWidget::VocalFilterWidget(VocalFilterModule* module)
     label->color = SqHelper::COLOR_BLACK;
     addChild(label);
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(col2, row3L),
         module, Comp::FILTER_Q_PARAM));
@@ -253,7 +254,7 @@ VocalFilterWidget::VocalFilterWidget(VocalFilterModule* module)
     label->text = "Brite";
     label->color = SqHelper::COLOR_BLACK;
     addChild(label);
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(col3, row3R),
         module, Comp::FILTER_BRIGHTNESS_PARAM));

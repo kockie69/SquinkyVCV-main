@@ -132,7 +132,7 @@ const float labelOffsetSmall = -32;
 void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite> icomp)
 {
     // Octave
-    Rogan1PSBlue* oct = SqHelper::createParamCentered<Rogan1PSBlue>(
+    RoganSLBlue40* oct = SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(col1, row1),
         module, 
@@ -146,7 +146,7 @@ void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite>
     semitoneDisplay.setOctLabel(l, Super<WidgetComposite>::OCTAVE_PARAM);
 
     // Semi
-    auto semi = SqHelper::createParamCentered<Rogan1PSBlue>(
+    auto semi = SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(col2, row1),
         module,
@@ -160,7 +160,7 @@ void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite>
     semitoneDisplay.setSemiLabel(l, Super<WidgetComposite>::SEMI_PARAM);
 
     // Fine
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(col1, row2),
         module,
@@ -171,7 +171,7 @@ void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite>
         "Fine");
 
     // FM
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(col2, row2),
         module, 
@@ -184,7 +184,7 @@ void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite>
 void superWidget::addOtherKnobs(SuperModule *, std::shared_ptr<IComposite> icomp)
 {
     // Detune
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col1, row3), 
         module, 
@@ -199,7 +199,7 @@ void superWidget::addOtherKnobs(SuperModule *, std::shared_ptr<IComposite> icomp
         module, 
         Comp::DETUNE_TRIM_PARAM));
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col2, row3), 
         module, 

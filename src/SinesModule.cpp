@@ -166,11 +166,11 @@ void SinesWidget::addDrawbars(SinesModule *module, std::shared_ptr<IComposite> i
             Comp::DRAWBAR1_INPUT + i));
     }
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(231, 81),
         module,  Comp::PERCUSSION1_PARAM));
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(188, 81),
         module,  Comp::PERCUSSION2_PARAM));
@@ -193,7 +193,7 @@ void SinesWidget::addJacks(SinesModule *module, std::shared_ptr<IComposite> icom
         module,
         Comp::MAIN_OUTPUT));
    
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(11, 81),
         module,  Comp::ATTACK_PARAM));
@@ -203,7 +203,7 @@ void SinesWidget::addJacks(SinesModule *module, std::shared_ptr<IComposite> icom
         module,
         Comp::ATTACK_INPUT));
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(55, 81),
         module,  Comp::RELEASE_PARAM));

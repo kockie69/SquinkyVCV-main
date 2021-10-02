@@ -5,6 +5,7 @@
 #include "WidgetComposite.h"
 #include "VocalAnimator.h"
 #include "ctrl/SqMenuItem.h"
+#include "ctrl/SqWidgets.h"
 
 #ifdef _TIME_DRAWING
 static DrawTimer drawTimer("Growler");
@@ -67,15 +68,6 @@ struct VocalWidget : ModuleWidget
         ModuleWidget::draw(args);
     }
 #endif
-};
-
-template <typename BASE>
-struct MuteLight : BASE
-{
-    MuteLight()
-    {
-        this->box.size = mm2px(Vec(6.0f, 6.0f));
-    }
 };
 
 struct NKK2 : SqHelper::SvgSwitch
@@ -155,7 +147,7 @@ VocalWidget::VocalWidget(VocalModule *module)
         module,
         Comp::LFO2_OUTPUT));
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(lfoRateKnobX, lfoRateKnobY),
         module,
@@ -196,7 +188,7 @@ VocalWidget::VocalWidget(VocalModule *module)
     const float inputX = mainBlockX + 8;
     const float inputY = mainBlockY + 108;
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY),
         module,
@@ -213,7 +205,7 @@ VocalWidget::VocalWidget(VocalModule *module)
         module,
         Comp::FILTER_FC_TRIM_PARAM));
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX + colSpacingX, knobY),
         module,
@@ -230,7 +222,7 @@ VocalWidget::VocalWidget(VocalModule *module)
         module,
         Comp::FILTER_Q_TRIM_PARAM));
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX + 2 * colSpacingX, knobY),
         module,

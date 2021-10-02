@@ -211,7 +211,7 @@ void MixStereoWidget::makeGroup(
    
     const float extraDy = 5;
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -219,21 +219,21 @@ void MixStereoWidget::makeGroup(
     volY = y;
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
         group + Comp::PAN0_PARAM));
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
         group + Comp::SENDb0_PARAM));
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,

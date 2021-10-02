@@ -132,7 +132,7 @@ void LFNBWidget::addStage(int index)
 {
     // make a temporary one for instantiation controls,
     // in case module is null.
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY + index * knobDy),
         module, Comp::EQ0_PARAM + index));
@@ -212,7 +212,7 @@ void LFNBWidget::addKnobs(LFNBModule* module, std::shared_ptr<IComposite> icomp)
     float trimDy = 6;
    // float lavelDy = 6;
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY),
         module, Comp::FC0_PARAM ));
@@ -224,7 +224,7 @@ void LFNBWidget::addKnobs(LFNBModule* module, std::shared_ptr<IComposite> icomp)
         module,  Comp::FC0_TRIM_PARAM ));
 
     knobY += knobDy;
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY),
         module, Comp::Q0_PARAM));
@@ -236,7 +236,7 @@ void LFNBWidget::addKnobs(LFNBModule* module, std::shared_ptr<IComposite> icomp)
         module,  Comp::Q0_TRIM_PARAM ));
 
     knobY += knobDy;
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY),
         module, Comp::FC1_PARAM ));
@@ -248,7 +248,7 @@ void LFNBWidget::addKnobs(LFNBModule* module, std::shared_ptr<IComposite> icomp)
         module,  Comp::FC1_TRIM_PARAM ));
 
     knobY += knobDy;
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY),
         module, Comp::Q1_PARAM));

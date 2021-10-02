@@ -5,6 +5,7 @@
 #include "ctrl/ToggleButton.h"
 #include "WidgetComposite.h"
 #include "ctrl/SqMenuItem.h"
+#include "ctrl/SqWidgets.h"
 
 #include "Shaper.h"
 
@@ -120,7 +121,7 @@ void ShaperWidget::addSelector(ShaperModule* module, std::shared_ptr<IComposite>
 {
     const float x = 37;
     const float y = 80;
-    auto p = SqHelper::createParamCentered<Rogan3PSBlue>(
+    auto p = SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(x, y),
         module, Shaper<WidgetComposite>::PARAM_SHAPE);
@@ -153,14 +154,14 @@ ShaperWidget::ShaperWidget(ShaperModule* module)
     const float gainY = 232;
     const float offsetY = 147;
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(gainX, gainY),
         module, 
         Shaper<WidgetComposite>::PARAM_GAIN));
     addLabel(Vec(8, 191), "Gain");
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(offsetX, offsetY),
         module, Shaper<WidgetComposite>::PARAM_OFFSET));

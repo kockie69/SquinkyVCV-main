@@ -126,7 +126,7 @@ void LFNWidget::addStage(int index)
 {
     // make a temporary one for instantiation controls,
     // in case module is null.
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY + index * knobDy),
         module, Comp::EQ0_PARAM + index));
@@ -168,7 +168,7 @@ LFNWidget::LFNWidget(LFNModule *module) : module(module)
     addLabel(
         Vec(54, inputY - knobDy - 18), "out", SqHelper::COLOR_WHITE);
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(10, knobY - 1 * knobDy),
         module,

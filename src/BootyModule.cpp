@@ -3,6 +3,7 @@
 #include "FrequencyShifter.h"
 #include "WidgetComposite.h"
 #include "ctrl/SqMenuItem.h"
+#include "ctrl/SQWidgets.h"
 
 #ifdef _BOOTY
 #include "DrawTimer.h"
@@ -254,7 +255,7 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
     }
 
     // knob on row 1
-    addParam(SqHelper::createParam<Rogan3PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(18, row1),
         module,

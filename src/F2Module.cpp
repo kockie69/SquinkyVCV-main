@@ -207,7 +207,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(14 - 6, 166),
         "Fc");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(7, 185),
         module, Comp::FC_PARAM));
@@ -221,7 +221,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(55 - 8, 166),
         "Q");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(45, 185),
         module, Comp::Q_PARAM));
@@ -235,7 +235,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(95 - 8, 166),
         "R");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(84, 185),
         module, Comp::R_PARAM));
@@ -249,7 +249,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(10 - 8, 32),
         "Vol");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(7, 50),
         module, Comp::VOL_PARAM));

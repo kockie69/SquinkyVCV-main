@@ -8,20 +8,34 @@
 #include <functional>
 
 /**
- * Like Rogan1PSBlue, but smaller.
+ * Like RoganSLBlue40, but smaller.
  */
 
-struct Blue30Knob : SvgKnob
+struct RoganSLBlue30 : Rogan
 {
-    Blue30Knob()
+    RoganSLBlue30()
     {
         minAngle = -0.83*M_PI;
         maxAngle = 0.83*M_PI;
-        SqHelper::setSvg(this, SqHelper::loadSvg("res/Blue30.svg"));
+		setSvg(SqHelper::loadSvg("res/RoganSLBlue30.svg"));
+		bg->setSvg(SqHelper::loadSvg("res/RoganSLBlue30-bg.svg"));
+		fg->setSvg(SqHelper::loadSvg("res/RoganSLBlue30-fg.svg"));
     }
 };
 
-struct Blue30SnapKnob : Blue30Knob
+struct RoganSLBlue40 : Rogan
+{
+    RoganSLBlue40()
+    {
+        minAngle = -0.83*M_PI;
+        maxAngle = 0.83*M_PI;
+		setSvg(SqHelper::loadSvg("res/RoganSLBlue40.svg"));
+		bg->setSvg(SqHelper::loadSvg("res/RoganSLBlue40-bg.svg"));
+		fg->setSvg(SqHelper::loadSvg("res/RoganSLBlue40-fg.svg"));
+    }
+};
+
+struct Blue30SnapKnob : RoganSLBlue30
 {
     Blue30SnapKnob()
     {

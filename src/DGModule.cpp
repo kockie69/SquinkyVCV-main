@@ -112,25 +112,25 @@ DGWidget::DGWidget(DGModule *module)
 
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(gainX, y),
         module, Daveguide<WidgetComposite>::OCTAVE_PARAM));
     addLabel(Vec(gainX + labelDeltaX, y + labelDeltaY), "octave");
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(offsetX, y),
         module, Daveguide<WidgetComposite>::TUNE_PARAM));
     addLabel(Vec(offsetX + labelDeltaX, y + labelDeltaY), "tune");
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(gainX, y2),
         module, Daveguide<WidgetComposite>::DECAY_PARAM));
     addLabel(Vec(gainX + labelDeltaX, y2 + labelDeltaY), "decay");
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(offsetX, y2),
         module, Daveguide<WidgetComposite>::FC_PARAM));
