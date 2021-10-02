@@ -14,20 +14,24 @@ using Comp = Sines<WidgetComposite>;
 
 class Drawbar : public app::SvgSlider {
 public:
-    ParamQuantity* paramQuantity = getParamQuantity();
-    Drawbar(const std::string& handleName) {
+    Drawbar() {
+        
+        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
+		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/blue-handle-16.svg")));    
+	}
+
+    void DrawbarSvg(const std::string& handleName) {
         math::Vec margin = math::Vec(3.5, 3.5);
         
         maxHandlePos = math::Vec(-7, 10).plus(margin);
 		minHandlePos = math::Vec(-7, 90).plus(margin);
 
-        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
-		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, handleName.c_str())));
         background->box.pos = margin;
         this->box.size.x = 29;
-        this->box.size.y = 120;
-      
-	}
+        this->box.size.y = 120; 
+        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
+		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, handleName.c_str())));
+    }
 };
 
 class PercSpeedParamQuantity : public SqTooltips::SQParamQuantity {
@@ -144,20 +148,20 @@ const char* handles[] = {
 
 void SinesWidget::addDrawbars(SinesModule *module, std::shared_ptr<IComposite> icomp)
 {
-    float drawbarX = 6;
+    float drawbarX = 4;
     float drawbarDX = 29;
     float drawbarY = 132;
-
+ 
     for (int i = 0; i < 9; ++i) {
         std::string handleName = handles[i];
-        auto drawbar = new Drawbar(handleName);
         float x = drawbarX + i * drawbarDX;
         const float inputX = x;
         x += 4;
-        drawbar->box.pos = Vec(x, drawbarY);
-        if (module) {
-            drawbar->paramQuantity = module->paramQuantities[Comp::DRAWBAR1_PARAM +i];
-        }
+
+        auto drawbar = new Drawbar();
+        drawbar=createParam<Drawbar>(Vec(x,drawbarY), module, Comp::DRAWBAR1_PARAM+i);
+
+        drawbar->DrawbarSvg(handles[i]);
         addParam(drawbar);
 
         addInput(createInput<PJ301MPort>(
