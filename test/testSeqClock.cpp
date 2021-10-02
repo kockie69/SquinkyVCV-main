@@ -119,7 +119,7 @@ static void testClockExtEdge() {
     auto rate = TClock::ClockRate::Div1;
     const double metricTimePerClock = 1;
     TClock ck;
-    TClock::ClockResults results;
+    typename TClock::ClockResults results;
     ck.setup(rate, 120, 100);  // internal clock
 
     // send one clock (first low)
@@ -198,7 +198,7 @@ static void testClockChangeWhileStopped() {
 
     // call with clock low,high,low whole running
     // to get to time zero, ready for first
-    TClock::ClockResults results;
+    typename TClock::ClockResults results;
     ck.update(sampleRateI, 0, true, 0);
     ck.update(sampleRateI, 10, true, 0);
     results = ck.update(sampleRateI, 0, true, 0);
@@ -316,7 +316,7 @@ static void testResetIgnoreClock() {
     int samplesInOneMs = int(44100.f / 1000.f);
 
     TClock ck;
-    TClock::ClockResults results;
+    typename TClock::ClockResults results;
     ck.setup(TClock::ClockRate::Div1, 120, sampleTime);  // external clock = quarter
 
     // run external clock high
@@ -379,7 +379,7 @@ static void testNoNoteAfterReset() {
     const float sampleTime = 1.f / sampleRate;
 
     TClock ck;
-    TClock::ClockResults results;
+    typename TClock::ClockResults results;
     ck.setup(TClock::ClockRate::Div1, 120, sampleTime);  // external clock = quarter
 
     //   ClockResults update(int samplesElapsed, float externalClock, bool runStop, float reset)
@@ -433,7 +433,7 @@ static void testRunGeneratesClock() {
     const float sampleTime = 1.f / sampleRate;
 
     TClock ck;  // freq new clock
-    TClock::ClockResults results;
+    typename TClock::ClockResults results;
     ck.setup(TClock::ClockRate::Div1, 120, sampleTime);  // external clock = quarter
 
     // clock with run off, clock high. Nothing happens
@@ -456,7 +456,7 @@ static void testResetRetriggersClock() {
     const float sampleTime = 1.f / sampleRate;
 
     TClock ck;  // freq new clock
-    TClock::ClockResults results;
+    typename TClock::ClockResults results;
     ck.setup(TClock::ClockRate::Div1, 120, sampleTime);  // external clock = quarter
 
     // clock with run off, clock high. Nothing happens
