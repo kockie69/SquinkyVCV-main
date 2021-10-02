@@ -214,8 +214,6 @@ void CompressorWidget2::paste() {
 void CompressorWidget2::appendContextMenu(Menu* theMenu) {
     MenuLabel* spacerLabel = new MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem("Comp II manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/compressor2.md");
-    theMenu->addChild(manual);
 
     theMenu->addChild(new SqMenuItem(
         "Copy channel",
@@ -357,7 +355,7 @@ void CompressorWidget2::addControls(Compressor2Module* module, std::shared_ptr<I
         Vec(52, 193),
         "Att", TEXTCOLOR);
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(52, 211),
         module, Comp::ATTACK_PARAM));
@@ -367,7 +365,7 @@ void CompressorWidget2::addControls(Compressor2Module* module, std::shared_ptr<I
         Vec(96, 193),
         "Rel", TEXTCOLOR);
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(98, 211),
         module, Comp::RELEASE_PARAM));
@@ -377,7 +375,7 @@ void CompressorWidget2::addControls(Compressor2Module* module, std::shared_ptr<I
         Vec(2, 193),
         "Thrsh", TEXTCOLOR);
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(6, 211),
         module, Comp::THRESHOLD_PARAM));
@@ -403,7 +401,7 @@ void CompressorWidget2::addControls(Compressor2Module* module, std::shared_ptr<I
         Vec(4, 250),
         "Mix", TEXTCOLOR);
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(6, 268),
         module, Comp::WETDRY_PARAM));
@@ -413,7 +411,7 @@ void CompressorWidget2::addControls(Compressor2Module* module, std::shared_ptr<I
         Vec(93, 250),
         "Out", TEXTCOLOR);
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(98, 268),
         module, Comp::MAKEUPGAIN_PARAM));

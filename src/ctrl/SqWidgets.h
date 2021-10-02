@@ -8,20 +8,34 @@
 #include <functional>
 
 /**
- * Like Rogan1PSBlue, but smaller.
+ * Like RoganSLBlue40, but smaller.
  */
 
-struct Blue30Knob : SvgKnob
+struct RoganSLBlue30 : Rogan
 {
-    Blue30Knob()
+    RoganSLBlue30()
     {
         minAngle = -0.83*M_PI;
         maxAngle = 0.83*M_PI;
-        SqHelper::setSvg(this, SqHelper::loadSvg("res/Blue30.svg"));
+		setSvg(SqHelper::loadSvg("res/RoganSLBlue30.svg"));
+		bg->setSvg(SqHelper::loadSvg("res/RoganSLBlue30-bg.svg"));
+		fg->setSvg(SqHelper::loadSvg("res/RoganSLBlue30-fg.svg"));
     }
 };
 
-struct Blue30SnapKnob : Blue30Knob
+struct RoganSLBlue40 : Rogan
+{
+    RoganSLBlue40()
+    {
+        minAngle = -0.83*M_PI;
+        maxAngle = 0.83*M_PI;
+		setSvg(SqHelper::loadSvg("res/RoganSLBlue40.svg"));
+		bg->setSvg(SqHelper::loadSvg("res/RoganSLBlue40-bg.svg"));
+		fg->setSvg(SqHelper::loadSvg("res/RoganSLBlue40-fg.svg"));
+    }
+};
+
+struct Blue30SnapKnob : RoganSLBlue30
 {
     Blue30SnapKnob()
     {
@@ -59,31 +73,6 @@ struct SqTrimpot24 : app::SvgKnob {
 
 
 class SqPortBase : public app::SvgPort {
-public:
-	void onEnter(const event::Enter& e) override  {
-        if (::rack::settings::tooltips && !tooltip && !toolTipString.empty()) {
-
-            ui::Tooltip * paramTooltip = new ui::Tooltip;
-            paramTooltip->text = toolTipString;
-            APP->scene->addChild(paramTooltip);
-            tooltip = paramTooltip;
-        }
-	}
-
-    void onLeave(const event::Leave& e) override {
-       	if (tooltip) {
-            APP->scene->removeChild(tooltip);
-            delete tooltip;
-            tooltip = NULL;
-        } 
-    }
-
-    void setTooltip(const std::string& s) {
-        toolTipString = s;
-        if (tooltip) {
-            tooltip->text = s;
-        }
-    }
 private:
     ui::Tooltip* tooltip = NULL;
     std::string toolTipString;

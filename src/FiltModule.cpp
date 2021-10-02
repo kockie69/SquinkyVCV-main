@@ -136,7 +136,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
     const float labelDx = 22;
     const float labelY = -38;
    
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x1, y1),
         module,
@@ -145,7 +145,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
         Vec(x1+8-labelDx, y1 + labelY),
         "Fc");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x2, y1),
         module,
@@ -154,7 +154,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
         Vec(x2+10-labelDx, y1 + labelY),
         "Q");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x3, y1),
         module,
@@ -163,7 +163,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
         Vec(x3+1-labelDx, y1 + labelY),
         "Drive");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x4, y1),
         module,
@@ -198,7 +198,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
     }
 
     // second row
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x1, y2),
         module,
@@ -207,7 +207,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
         Vec(x1+2-labelDx, y2 + labelY),
         "Edge");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x2, y2),
         module,
@@ -216,7 +216,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
         Vec(x2-labelDx, y2 + labelY),
         "Caps");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x3, y2),
         module,
@@ -225,7 +225,7 @@ void FiltWidget::addParams(FiltModule *module, std::shared_ptr<IComposite> icomp
         Vec(x3+2-labelDx, y2 + labelY),
         "Bass");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x4, y2),
         module,

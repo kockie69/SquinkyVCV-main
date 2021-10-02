@@ -169,9 +169,6 @@ ThreadBoostWidget::ThreadBoostWidget(ThreadBoostModule *module)
 inline Menu* ThreadBoostWidget::createContextMenu()
 {
     Menu* theMenu = ModuleWidget::createContextMenu();
-    ManualMenuItem* manual = new ManualMenuItem(
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/booster.md");
-    theMenu->addChild(manual);
     return theMenu;
 }
 // Specify the Module and ModuleWidget subclass, human-readable

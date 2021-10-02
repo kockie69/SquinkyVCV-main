@@ -8,6 +8,7 @@
 #include "NoiseDrawer.h"
 #include "ctrl/SqMenuItem.h"
 #include "SqStream.h"
+#include "ctrl/SQWidgets.h"
 
 #ifdef _TIME_DRAWING
 static DrawTimer drawTimer("Colors");
@@ -252,7 +253,7 @@ ColoredNoiseWidget::ColoredNoiseWidget(ColoredNoiseModule *module) : ModuleWidge
     label->color = SqHelper::COLOR_WHITE;
     addChild(label);
 
-    addParam(SqHelper::createParam<Rogan2PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(22, 80),
         module,

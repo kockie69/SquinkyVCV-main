@@ -133,21 +133,21 @@ inline void CHBgWidget::addVCOKnobs(CHBgModule *module)
         -5.0f, 4.0f, 0.f));
     addLabel(Vec(col2 - 27, row1 - labelAboveKnob), "Octave");
 
-    addParam(createParamCentered<Blue30Knob>(
+    addParam(createParamCentered<RoganSLBlue30>(
         Vec(col3, row1),
         module,
         module->chb.PARAM_TUNE,
         -7.0f, 7.0f, 0));
     addLabel(Vec(col3 - 22, row1 - labelAboveKnob), "Tune");
 
-    addParam(createParamCentered<Blue30Knob>(
+    addParam(createParamCentered<RoganSLBlue30>(
         Vec(col2, row2),
         module,
         module->chb.PARAM_PITCH_MOD_TRIM,
         0, 1.0f, 0.0f));
     addLabel(Vec(col2 - 20, row2 - labelAboveKnob), "Mod");
 
-    addParam(createParamCentered<Blue30Knob>(
+    addParam(createParamCentered<RoganSLBlue30>(
         Vec(col3, row2),
         module,
         module->chb.PARAM_LINEAR_FM_TRIM,
@@ -159,7 +159,7 @@ inline void CHBgWidget::addOtherKnobs(CHBgModule *module)
 {
     // gain
 
-    gainParam = createParamCentered<Blue30Knob>(
+    gainParam = createParamCentered<RoganSLBlue30>(
         Vec(col1, row2),
         module,
         module->chb.PARAM_EXTGAIN,
@@ -176,7 +176,7 @@ inline void CHBgWidget::addOtherKnobs(CHBgModule *module)
 
     // slope
     const float col2p5 = (col2 + col3) / 2;
-    addParam(createParamCentered<Blue30Knob>(
+    addParam(createParamCentered<RoganSLBlue30>(
         Vec(col2p5, 188),
         module,
         module->chb.PARAM_SLOPE,
@@ -184,7 +184,7 @@ inline void CHBgWidget::addOtherKnobs(CHBgModule *module)
     addLabel(Vec(col2p5 - 23, 188 - labelAboveKnob), "Slope");
 
     //even
-    addParam(createParamCentered<Blue30Knob>(
+    addParam(createParamCentered<RoganSLBlue30>(
         Vec(col2, row3),
         module,
         module->chb.PARAM_MAG_EVEN,
@@ -192,7 +192,7 @@ inline void CHBgWidget::addOtherKnobs(CHBgModule *module)
     addLabel(Vec(col2 - 21.5, row3 - labelAboveKnob), "Even");
 
     //odd
-    addParam(createParamCentered<Blue30Knob>(
+    addParam(createParamCentered<RoganSLBlue30>(
         Vec(col3, row3),
         module,
         module->chb.PARAM_MAG_ODD,

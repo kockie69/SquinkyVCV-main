@@ -7,6 +7,7 @@
 #include "WidgetComposite.h"
 #include "Tremolo.h"
 #include "ctrl/SqMenuItem.h"
+#include "ctrl/SqWidgets.h"
 
 #ifdef _TIME_DRAWING
 static DrawTimer drawTimer("Chopper");
@@ -162,7 +163,7 @@ void TremoloWidget::addMainSection(TremoloModule *module, std::shared_ptr<ICompo
     const float inY = knobY + 6;
     const float inX = 8;
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY + 0 * knobDy),
         module,
@@ -181,7 +182,7 @@ void TremoloWidget::addMainSection(TremoloModule *module, std::shared_ptr<ICompo
     addLabel(
         Vec(labelX, labelY + 0 * knobDy), "Shape");
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY + 1 * knobDy),
         module,
@@ -200,7 +201,7 @@ void TremoloWidget::addMainSection(TremoloModule *module, std::shared_ptr<ICompo
     addLabel(
         Vec(labelX + 1, labelY + 1 * knobDy), "Skew");
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY + 2 * knobDy),
         module,
@@ -219,7 +220,7 @@ void TremoloWidget::addMainSection(TremoloModule *module, std::shared_ptr<ICompo
     addLabel(
         Vec(labelX, labelY + 2 * knobDy), "Phase");
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(knobX, knobY + 3 * knobDy),
         module,

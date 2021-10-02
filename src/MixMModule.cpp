@@ -126,11 +126,6 @@ void MixMWidget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "Form manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/form.md");
-    menu->addChild(manual);
     
     MenuLabel *spacerLabel2 = new MenuLabel();
     menu->addChild(spacerLabel2);
@@ -281,7 +276,7 @@ void MixMWidget::makeStrip(
     
     y -= (channelDy + extraDy);
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -296,7 +291,7 @@ void MixMWidget::makeStrip(
     volY = y;
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -310,7 +305,7 @@ void MixMWidget::makeStrip(
 #endif
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -324,7 +319,7 @@ void MixMWidget::makeStrip(
 #endif
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -442,7 +437,7 @@ void MixMWidget::makeMaster(MixMModule* module, std::shared_ptr<IComposite> icom
     
     y = volY;
   
-    addParam(SqHelper::createParamCentered<Rogan2PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(x, y-12),
         module,
@@ -450,7 +445,7 @@ void MixMWidget::makeMaster(MixMModule* module, std::shared_ptr<IComposite> icom
 
   
      y -=  (channelDy + extraDy) * 2;
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -460,7 +455,7 @@ void MixMWidget::makeMaster(MixMModule* module, std::shared_ptr<IComposite> icom
             "R2");
 #endif
     y -=  (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,

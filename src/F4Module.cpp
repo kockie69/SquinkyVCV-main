@@ -92,15 +92,15 @@ void F4Widget::addKnobs(F4Module *module, std::shared_ptr<IComposite> icomp)
         module, Comp::LIMITER_PARAM));
     addLabel(Vec(80-11, 80), "Lim");
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX, knobY + 0* dy),
         module,  Comp::FC_PARAM));
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX, knobY + 1* dy),
         module,  Comp::Q_PARAM));
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX, knobY + 2* dy),
         module,  Comp::R_PARAM));

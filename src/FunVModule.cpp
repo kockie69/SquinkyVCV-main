@@ -4,6 +4,7 @@
 
 #ifdef _FUN
 #include "WidgetComposite.h"
+#include "ctrl/SqWidgets.h"
 #include "ctrl/SqHelper.h"
 #include "ctrl/SqMenuItem.h"
 #include "FunVCOComposite.h"
@@ -115,7 +116,7 @@ void FunVWidget::addTop3(FunVModule * module, float verticalShift)
     addLabel(Vec(left -4, 48+ verticalShift), "anlg");
     addLabel(Vec(left -3, 108+ verticalShift), "dgtl");
 
-    addParam(SqHelper::createParam<Rogan3PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(center, 61 + verticalShift),
         module, 
@@ -134,26 +135,26 @@ void FunVWidget::addTop3(FunVModule * module, float verticalShift)
 
 void FunVWidget::addMiddle4(FunVModule * module, float verticalShift)
 {
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(23, 143 + verticalShift),
         module, Comp::FINE_PARAM));
     addLabel(Vec(25, 124 +verticalShift), "fine");
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(91, 143 + verticalShift),
         module, Comp::PW_PARAM));
     addLabel(Vec(84, 124 +verticalShift), "p width");
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(23, 208 + verticalShift),
         module,
         Comp::FM_PARAM));
     addLabel(Vec(19, 188 +verticalShift), "fm cv");
 
-    addParam(SqHelper::createParam<Rogan1PSBlue>(
+    addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
         Vec(91, 208 + verticalShift),
         module, 

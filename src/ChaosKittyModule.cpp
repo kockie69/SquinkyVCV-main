@@ -105,25 +105,25 @@ ChaosKittyWidget::ChaosKittyWidget(ChaosKittyModule *module)
         module,
         Comp::CHAOS_INPUT));
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(xParam, yRow1),
         module, 
         Comp::CHAOS_PARAM));
 
-    addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(xParam, yRow2),
         module, 
         Comp::BRIGHTNESS_PARAM));
 
-      addParam(SqHelper::createParamCentered<Rogan1PSBlue>(
+      addParam(SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(xParam, yRow3),
         module, 
         Comp::RESONANCE_PARAM));
 
-    auto octaveControl = SqHelper::createParamCentered<Rogan1PSBlue>(
+    auto octaveControl = SqHelper::createParamCentered<RoganSLBlue40>(
         icomp,
         Vec(40, 240),
         module, 

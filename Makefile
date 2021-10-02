@@ -96,5 +96,5 @@ LDFLAGS +=
 # LDFLAGS += $(ASAN_FLAGS)
 # LDFLAGS += -static-libasan
 
-# include test.mk
+include test.mk
 

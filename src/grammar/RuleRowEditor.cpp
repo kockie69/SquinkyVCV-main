@@ -20,7 +20,7 @@ RuleRowEditor::RuleRowEditor(StochasticProductionRuleEntryPtr e) : entry(e) {
 
     module->configParam(paramId, 0, 100, prob * 100, "probability");
 
-    auto p = new Blue30Knob();
+    auto p = new RoganSLBlue30();
     p->box.pos.x = 150;
     p->box.pos.y = 4;
     //p->getParamQuantity() = module->paramQuantities[paramId];

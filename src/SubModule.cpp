@@ -91,11 +91,6 @@ void SubWidget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "Substitute manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/substitute.md");
-    menu->addChild(manual);
     
     SqMenuItem_BooleanParam2 * item = new SqMenuItem_BooleanParam2(module, Comp::AGC_PARAM);
     item->text = "AGC";
@@ -181,7 +176,7 @@ void SubWidget::addKnobs(SubModule *module, std::shared_ptr<IComposite> icomp, i
         addLabelx(Vec(side ? 262 : 49, knobY1 - labelAboveKnob), "Semi"),
         Comp::SEMITONE1_PARAM + side);
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(side ? knobX4 : knobX3, knobY1),
         module,
@@ -190,21 +185,21 @@ void SubWidget::addKnobs(SubModule *module, std::shared_ptr<IComposite> icomp, i
 
     // second row
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(side ? knobX6 : knobX1, knobY2),
         module,
         Comp::VCO1_LEVEL_PARAM + side));
     //addLabel(Vec(xfunc(knobX1, side) - 4, knobY2 - labelAboveKnob),    "Vol");
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(side ? knobX5 : knobX2, knobY2),
         module,
         Comp::SUB1A_LEVEL_PARAM + side));
     //addLabel(Vec(xfunc(knobX2, side) - 8, knobY2 - labelAboveKnob),   "Sub A");
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(side ? knobX4 : knobX3, knobY2),
         module,

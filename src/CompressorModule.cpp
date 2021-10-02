@@ -169,7 +169,7 @@ void CompressorWidget::addControls(CompressorModule *module, std::shared_ptr<ICo
         Vec(knobX - 4, labelY + 0 * dy),
         "Atck");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         //Vec(knobX, knobY + 0 * dy),
         Vec(8, 174),
@@ -180,7 +180,7 @@ void CompressorWidget::addControls(CompressorModule *module, std::shared_ptr<ICo
         Vec(knobX2 - 1, labelY + 0 * dy),
         "Rel");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         //Vec(knobX2, knobY + 0 * dy),
         Vec(52, 174),
@@ -191,7 +191,7 @@ void CompressorWidget::addControls(CompressorModule *module, std::shared_ptr<ICo
         Vec(knobX - 10, labelY + 1 * dy),
         "Thrsh");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         // Vec(knobX, knobY + 1 * dy),
         Vec(8, 121),
@@ -202,7 +202,7 @@ void CompressorWidget::addControls(CompressorModule *module, std::shared_ptr<ICo
         Vec(knobX2 - 2, labelY + 1 * dy),
         "Mix");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         //Vec(knobX2, knobY + 1 * dy),
         Vec(8, 225),
@@ -213,7 +213,7 @@ void CompressorWidget::addControls(CompressorModule *module, std::shared_ptr<ICo
         Vec(knobX - 10, labelY + 2 * dy),
         "Makeup");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         //Vec(knobX, knobY + 2 * dy),
         Vec(52, 121),

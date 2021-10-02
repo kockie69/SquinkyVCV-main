@@ -297,11 +297,6 @@ void WVCOWidget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "Kitchen Sink manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/kitchen-sink.md");
-    menu->addChild(manual);
     
 #if 0
     MenuLabel *spacerLabel2 = new MenuLabel();
@@ -372,7 +367,7 @@ void WVCOWidget::addKnobs(WVCOModule *module, std::shared_ptr<IComposite> icomp)
         Comp::FREQUENCY_MULTIPLIER_PARAM));
     //addLabel(Vec(knobX2 - 6, knobY1 - labelAboveKnob), "Ratio");
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX3, knobY1),
         module,
@@ -394,7 +389,7 @@ void WVCOWidget::addKnobs(WVCOModule *module, std::shared_ptr<IComposite> icomp)
 
     // second row
     // 1 level
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX1, knobY2),
         module,
@@ -402,7 +397,7 @@ void WVCOWidget::addKnobs(WVCOModule *module, std::shared_ptr<IComposite> icomp)
     //addLabel(Vec(knobX1 - 8, knobY2 - labelAboveKnob), "Level");
 
     // 2 fm-0
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX2, knobY2),
         module,
@@ -410,7 +405,7 @@ void WVCOWidget::addKnobs(WVCOModule *module, std::shared_ptr<IComposite> icomp)
     //addLabel(Vec(knobX2 - 10, knobY2 - labelAboveKnob), "Depth");
   
   // 3 Fdbk
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX3, knobY2),
         module,
@@ -418,7 +413,7 @@ void WVCOWidget::addKnobs(WVCOModule *module, std::shared_ptr<IComposite> icomp)
     //addLabel(Vec(knobX3 - 6, knobY2 - labelAboveKnob), "Fbck");
 
     // 4 SHAPE
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(knobX4, knobY2),
         module,
@@ -436,28 +431,28 @@ void WVCOWidget::addKnobs(WVCOModule *module, std::shared_ptr<IComposite> icomp)
         Comp::SNAP_PARAM));
 #endif
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(39, knobY3),
         module,
         Comp::ATTACK_PARAM));
     // addLabel(Vec(knobX1 + 4, knobY3 - labelAboveKnob), "A");
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(82, knobY3),
         module,
         Comp::DECAY_PARAM));
     // ddLabel(Vec(knobX2 + 4, knobY3 - labelAboveKnob), "D");
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(127, knobY3),
         module,
         Comp::SUSTAIN_PARAM));
     // addLabel(Vec(knobX3 + 4, knobY3 - labelAboveKnob), "S");
 
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(169, knobY3),
         module,

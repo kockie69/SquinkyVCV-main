@@ -42,7 +42,7 @@ public:
              MidiSequencer4Ptr s,
              std::shared_ptr<Seq4<WidgetComposite>> seq4Comp,
              ::rack::engine::Module* theModule);
-
+    ParamQuantity* paramQuantity = getParamQuantity();
     /**
      * pass callback here to handle clicking on LED
      */

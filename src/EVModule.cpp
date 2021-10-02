@@ -197,7 +197,7 @@ EVWidget::EVWidget(EVModule *module) : ModuleWidget(module)
     addChild(Widget::create<ScrewSilver>(Vec(15 * 6, 0)));
     addChild(Widget::create<ScrewSilver>(Vec(15 * 6, 365)));
 
-    octaveKnob = ParamWidget::create<Rogan3PSBlue>(Vec(34, 32),
+    octaveKnob = ParamWidget::create<RoganSLBlue40>(Vec(34, 32),
         module, module->vco.OCTAVE_PARAM, -5.0, 4.0, 0.0);
 
     addParam(octaveKnob);

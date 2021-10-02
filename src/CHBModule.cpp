@@ -162,7 +162,7 @@ void CHBWidget::addRow1(CHBModule *module, std::shared_ptr<IComposite> icomp)
 {
     const float row = row1;
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col1, row),
         module,
@@ -187,7 +187,7 @@ void CHBWidget::addRow1(CHBModule *module, std::shared_ptr<IComposite> icomp)
         addLabel(Vec(col3 - 26, row - labelAboveKnob), "Semi"),
         CHB<WidgetComposite>::PARAM_SEMIS);
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col4, row1),
         module,
@@ -199,21 +199,21 @@ void CHBWidget::addRow2(CHBModule *module, std::shared_ptr<IComposite> icomp)
 {
     const float row = row2;
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col1, row),
         module,
         CHB<WidgetComposite>::PARAM_FALL));
     addLabel(Vec(col1 - 18, row - labelAboveKnob), "Fall");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col3, row),
         module,
         CHB<WidgetComposite>::PARAM_PITCH_MOD_TRIM));
     addLabel(Vec(col3 - 20, row - labelAboveKnob), "Mod");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col4, row),
         module,
@@ -240,7 +240,7 @@ void CHBWidget::addRow3(CHBModule *module, std::shared_ptr<IComposite> icomp)
 {
     const float row = row3;
 
-    gainParam = SqHelper::createParamCentered<Blue30Knob>(
+    gainParam = SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col1, row),
         module,
@@ -249,7 +249,7 @@ void CHBWidget::addRow3(CHBModule *module, std::shared_ptr<IComposite> icomp)
     addLabel(Vec(col1 - 21, row - labelAboveKnob), "Gain");
 
     //even
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col2, row),
         module,
@@ -257,7 +257,7 @@ void CHBWidget::addRow3(CHBModule *module, std::shared_ptr<IComposite> icomp)
     addLabel(Vec(col2 - 21.5, row - labelAboveKnob), "Even");
 
     // slope
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col3, row),
         module,
@@ -265,7 +265,7 @@ void CHBWidget::addRow3(CHBModule *module, std::shared_ptr<IComposite> icomp)
     addLabel(Vec(col3 - 23, row - labelAboveKnob), "Slope");
 
     //odd
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col4, row),
         module,

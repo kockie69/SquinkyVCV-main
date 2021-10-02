@@ -187,7 +187,8 @@ inline int SeqClock2::clockRate2Div(ClockRate r) {
 inline void SeqClock2::setup(ClockRate inputSetting, float, float sampleT) {
     sampleTime = sampleT;
     clockSetting = inputSetting;
-    SQINFO("setting = %d, 96=%d", int(clockSetting), int(ClockRate::Div96));
+
+    //SQINFO("setting = %d, 96=%d", clockSetting, ClockRate::Div96);
     resetLockout.setSampleTime(sampleT);
     switch (clockSetting) {
         case ClockRate::Div96:

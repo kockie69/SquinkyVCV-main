@@ -211,7 +211,7 @@ void Mix8Widget::makeStrip(
 
     const float extraDy = 6;
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -224,7 +224,7 @@ void Mix8Widget::makeStrip(
     volY = y;
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -236,7 +236,7 @@ void Mix8Widget::makeStrip(
     }
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -314,7 +314,7 @@ void Mix8Widget::makeMaster(Mix8Module* module, std::shared_ptr<IComposite> icom
   //  const float zz2 = mute->getValue();
 
     y = volY;
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -323,7 +323,7 @@ void Mix8Widget::makeMaster(Mix8Module* module, std::shared_ptr<IComposite> icom
             "M");
     
     y -= 55;
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,

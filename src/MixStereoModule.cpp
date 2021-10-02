@@ -123,11 +123,6 @@ void MixStereoWidget::appendContextMenu(Menu *menu)
 {
     MenuLabel *spacerLabel = new MenuLabel();
 	menu->addChild(spacerLabel);
-
-    ManualMenuItem* manual = new ManualMenuItem(
-        "ExTwo manual",
-        "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/extwo.md");
-    menu->addChild(manual);
     
     MenuLabel *spacerLabel2 = new MenuLabel();
     menu->addChild(spacerLabel2);
@@ -216,7 +211,7 @@ void MixStereoWidget::makeGroup(
    
     const float extraDy = 5;
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
@@ -224,21 +219,21 @@ void MixStereoWidget::makeGroup(
     volY = y;
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
         group + Comp::PAN0_PARAM));
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,
         group + Comp::SENDb0_PARAM));
 
     y -= (channelDy + extraDy);
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, y),
         module,

@@ -159,8 +159,6 @@ struct F2Widget : ModuleWidget {
 void F2Widget::appendContextMenu(Menu* theMenu) {
     MenuLabel* spacerLabel = new MenuLabel();
     theMenu->addChild(spacerLabel);
-    ManualMenuItem* manual = new ManualMenuItem("F2 Manual", "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/f2.md");
-    theMenu->addChild(manual);
 
     //   SqMenuItem_BooleanParam2* item = new SqMenuItem_BooleanParam2(module, Comp::CV_UPDATE_FREQ);
     //    item->text = "CV Fidelity";
@@ -209,7 +207,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(14 - 6, 166),
         "Fc");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(7, 185),
         module, Comp::FC_PARAM));
@@ -223,7 +221,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(55 - 8, 166),
         "Q");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(45, 185),
         module, Comp::Q_PARAM));
@@ -237,7 +235,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(95 - 8, 166),
         "R");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(84, 185),
         module, Comp::R_PARAM));
@@ -251,7 +249,7 @@ void F2Widget::addKnobs(F2Module* module, std::shared_ptr<IComposite> icomp) {
         Vec(10 - 8, 32),
         "Vol");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(7, 50),
         module, Comp::VOL_PARAM));

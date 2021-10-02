@@ -142,7 +142,7 @@ const float vcoCVRow = vcoSemiRow + rowSpacing;
 inline void CH10Widget::makeVCO(CH10Module* module, int whichVCO, std::shared_ptr<IComposite> icomp)
 {
     const float x = whichVCO ? vcoBCol : vcoACol;
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(x, vcoOctRow),
         module,

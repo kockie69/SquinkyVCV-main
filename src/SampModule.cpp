@@ -566,7 +566,7 @@ void SampWidget::addKnobs(SampModule* module, std::shared_ptr<IComposite> icomp)
         Vec(knobsX - 6 - dx, labelY),
         "Vol");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(201, 219),
         module,
@@ -576,7 +576,7 @@ void SampWidget::addKnobs(SampModule* module, std::shared_ptr<IComposite> icomp)
         Vec(knobsX - 6, labelY),
         "Pitch");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(105, 219),
         module,
@@ -592,7 +592,7 @@ void SampWidget::addKnobs(SampModule* module, std::shared_ptr<IComposite> icomp)
         Vec(knobsX - 6 + 1 * dx, labelY),
         "Depth");
 #endif
-    addParam(SqHelper::createParam<Blue30Knob>(
+    addParam(SqHelper::createParam<RoganSLBlue30>(
         icomp,
         Vec(153, 219),
         module,

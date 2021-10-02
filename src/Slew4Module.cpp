@@ -149,21 +149,21 @@ static const float jackY2 = 342;
 
 void Slew4Widget::addOther(Slew4Module*, std::shared_ptr<IComposite> icomp)
 {
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(knobX, knobY),
         module,
         Comp::PARAM_RISE));
     addLabel(Vec(knobX - 20, knobY - labelAboveKnob), "Rise");
 
-    addParam(SqHelper::createParamCentered<Blue30Knob>(
+    addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(knobX + knobDx, knobY),
         module,
         Comp::PARAM_FALL));
     addLabel(Vec(knobX + 2 + knobDx - 20, knobY - labelAboveKnob), "Fall");
 
-     addParam(SqHelper::createParamCentered<Blue30Knob>(
+     addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(knobX + 2 * knobDx, knobY),
         module,

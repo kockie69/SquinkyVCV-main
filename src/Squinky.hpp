@@ -21,14 +21,14 @@
 
 #define _MIX8
 #define _FILT
-//#define _MIX4
-//#define _MIX_STEREO
+#define _MIX4
+#define _MIX_STEREO
 //#define _USERKB
 #define _SAMP
 #define _F2
 
 
-//#define _MIXM
+#define _MIXM
 #define _DTMODULE
 
 #define _WVCO
