@@ -121,7 +121,7 @@ void ShaperWidget::addSelector(ShaperModule* module, std::shared_ptr<IComposite>
 {
     const float x = 37;
     const float y = 80;
-    auto p = SqHelper::createParamCentered<RoganSLBlue40>(
+    Blue40SnapKnob* p = SqHelper::createParamCentered<Blue40SnapKnob>(
         icomp,
         Vec(x, y),
         module, Shaper<WidgetComposite>::PARAM_SHAPE);

@@ -132,7 +132,7 @@ const float labelOffsetSmall = -32;
 void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite> icomp)
 {
     // Octave
-    RoganSLBlue40* oct = SqHelper::createParamCentered<RoganSLBlue40>(
+    Blue30SnapKnob* oct = SqHelper::createParamCentered<Blue30SnapKnob>(
         icomp,
         Vec(col1, row1),
         module, 
@@ -146,7 +146,7 @@ void superWidget::addPitchKnobs(SuperModule* module, std::shared_ptr<IComposite>
     semitoneDisplay.setOctLabel(l, Super<WidgetComposite>::OCTAVE_PARAM);
 
     // Semi
-    auto semi = SqHelper::createParamCentered<RoganSLBlue40>(
+    Blue30SnapKnob* semi = SqHelper::createParamCentered<Blue30SnapKnob>(
         icomp,
         Vec(col2, row1),
         module,

@@ -44,6 +44,15 @@ struct Blue30SnapKnob : RoganSLBlue30
     }
 };
 
+struct Blue40SnapKnob : RoganSLBlue40
+{
+    Blue40SnapKnob()
+    {
+        snap = true;
+        smooth = false;
+    }
+};
+
 struct NKKSmall : SvgSwitch
 {
     NKKSmall()
