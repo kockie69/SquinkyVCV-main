@@ -8,7 +8,7 @@
 #include "NoiseDrawer.h"
 #include "ctrl/SqMenuItem.h"
 #include "SqStream.h"
-#include "ctrl/SQWidgets.h"
+#include "ctrl/SqWidgets.h"
 
 #ifdef _TIME_DRAWING
 static DrawTimer drawTimer("Colors");

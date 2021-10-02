@@ -3,7 +3,7 @@
 #include "FrequencyShifter.h"
 #include "WidgetComposite.h"
 #include "ctrl/SqMenuItem.h"
-#include "ctrl/SQWidgets.h"
+#include "ctrl/SqWidgets.h"
 
 #ifdef _BOOTY
 #include "DrawTimer.h"
