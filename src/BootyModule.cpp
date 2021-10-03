@@ -182,6 +182,11 @@ struct RangeChoice : ChoiceButton
             menu->addChild(new RangeItem(4, output, this));
         }
     }
+
+    void draw(const DrawArgs& args) override {
+	nvgGlobalTint(args.vg, color::WHITE);
+	ChoiceButton::draw(args);
+}
 };
 
 ////////////////////
@@ -245,7 +250,10 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
     // time UI callbacks need to go bak..
     if (module) {
         module->rangeChoice = new RangeChoice(&module->shifter->freqRange, Vec(xPos, row2), width);
-        module->rangeChoice->text = ranges[module->rangeIndex];
+// Hier gaat het mis
+        if (module->rangeIndex >= 0 && module->rangeIndex < 5)
+            module->rangeChoice->text = ranges[module->rangeIndex];
+        else module->rangeChoice->text = ranges[0];
         addChild(module->rangeChoice);
     } else {
         // let's make one, just for the module browser

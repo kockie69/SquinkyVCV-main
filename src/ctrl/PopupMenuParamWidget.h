@@ -101,6 +101,7 @@ inline void PopupMenuParamWidget::onChange(const ::rack::event::Change &e) {
 }
 
 inline void PopupMenuParamWidget::draw(const DrawArgs &args) {
+    nvgGlobalTint(args.vg, rack::color::WHITE);
     BNDwidgetState state = BND_DEFAULT;
     bndChoiceButton(args.vg, 0.0, 0.0, box.size.x, box.size.y, BND_CORNER_NONE, state, -1, text.c_str());
 }

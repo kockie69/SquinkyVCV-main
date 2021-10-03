@@ -165,6 +165,7 @@ inline float SqSvgParamToggleButton::getValue()
 
 inline void SqSvgParamToggleButton::draw(const DrawArgs &args)
 {
+    nvgGlobalTint(args.vg, color::WHITE);
     button->draw(args);
 }
 

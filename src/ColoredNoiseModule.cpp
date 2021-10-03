@@ -159,6 +159,7 @@ struct ColorDisplay : TransparentWidget
 
     void draw(NVGcontext *vg) override
     {
+        nvgGlobalTint(vg, color::WHITE);
         // First draw the solid fill
         float slope = 0;
         if (module) {

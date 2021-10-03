@@ -44,6 +44,11 @@ public:
     {
         return  SqHelper::getValue(this);
     }
+
+    void draw(const DrawArgs& args) override {
+	    nvgGlobalTint(args.vg, rack::color::WHITE);
+        ::rack::app::SvgSwitch::draw(args);
+    }
 };
 
 #else
@@ -131,6 +136,7 @@ inline void ToggleButton::addSvg(const char* resourcePath)
 
 inline void ToggleButton::draw(const DrawArgs &args)
 {
+    nvgGlobalTint(args.vg, color::WHITE);
     const float _value = SqHelper::getValue(this);
     int index = int(std::round(_value));
     auto svg = svgs[index];

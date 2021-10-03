@@ -76,6 +76,7 @@ inline int SqToggleLED::getSvgIndex()
 
 inline void SqToggleLED::draw(const DrawArgs &args)
 {
+    nvgGlobalTint(args.vg, color::WHITE);
     int index = getSvgIndex();
     auto svg = svgs[index];
     svg->draw(args);
