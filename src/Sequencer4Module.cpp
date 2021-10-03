@@ -235,7 +235,7 @@ void Sequencer4Widget::appendContextMenu(Menu* theMenu) {
     theMenu->addChild(item);
 #endif
     {
-        auto item = new SqMenuItem( []() { return false; }, [this](){
+ /*       auto item = new SqMenuItem( []() { return false; }, [this](){
             // float rawClockFalue = Comp::CLOCK_INPUT_PARAM
             float rawClockValue = APP->engine->getParamValue(module, Comp::CLOCK_INPUT_PARAM);
             SeqClock::ClockRate rate =  SeqClock::ClockRate(int(std::round(rawClockValue)));
@@ -243,7 +243,7 @@ void Sequencer4Widget::appendContextMenu(Menu* theMenu) {
             ClockFinder::go(this, div, Comp::CLOCK_INPUT, Comp::RUN_INPUT, Comp::RESET_INPUT, ClockFinder::SquinkyType::X4X);
         });
         item->text = "Hookup Clock";
-        theMenu->addChild(item);
+        theMenu->addChild(item);*/
     }
     {
         Sequencer4Module* sModule = dynamic_cast<Sequencer4Module*>(module);

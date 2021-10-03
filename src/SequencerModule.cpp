@@ -63,14 +63,14 @@ struct SequencerWidget : ModuleWidget
         ::rack::ui::MenuLabel *spacerLabel = new ::rack::ui::MenuLabel(); 
         theMenu->addChild(spacerLabel); 
 
-        ::rack::MenuItem* item = new SqMenuItem( []() { return false; }, [this](){
+/*        ::rack::MenuItem* item = new SqMenuItem( []() { return false; }, [this](){
             float rawClockValue = APP->engine->getParamValue(module, Comp::CLOCK_INPUT_PARAM);
             SeqClock::ClockRate rate =  SeqClock::ClockRate(int(std::round(rawClockValue)));
             const int div = SeqClock::clockRate2Div(rate);
             ClockFinder::go(this, div, Comp::CLOCK_INPUT, Comp::RUN_INPUT, Comp::RESET_INPUT, ClockFinder::SquinkyType::SEQPP);
         });
         item->text = "Hookup Clock";
-        theMenu->addChild(item); 
+        theMenu->addChild(item); */
 #ifdef _SEQ4
         ::rack::MenuItem* remoteEdit = new SqMenuItem_BooleanParam2(
             module,
