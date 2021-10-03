@@ -2,7 +2,7 @@
 
 On September 28th Squinky Labs announced they would not update their modules to VCV rack V2 [here](https://community.vcvrack.com/t/closing-the-squinky-lab/14194/33). As this message was received with lots of grief by the community I decided to pick up the porting and maintanance myself. As I don't pretend to be at the same level as Squinky Labs I hope at least this port will contribute enough to make my work valuable.
 
-Feedback and bug reports (and donations) are always appreciated!
+Feedback and bug reports (and donations[here](https://www.paypal.com/paypalme/RPJVCV)) are always appreciated!
 
 ## About SquinkyVCV
 
