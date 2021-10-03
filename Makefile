@@ -76,7 +76,7 @@ ifdef ARCH_WIN
 	FLAGS += -fmax-errors=5
 endif
 
-FLAGS += -finline-limit=500000 -finline-functions-called-once 
+FLAGS += -finline-limit=500000 -finline-functions-called-once -flto -fno-fat-lto-objects
 LDFLAGS += 
 # FLAGS += -finline-limit=500000 -finline-functions-called-once -flto
 # LDFLAGS += -flto
