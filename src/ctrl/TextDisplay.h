@@ -77,6 +77,7 @@ void StyledTextDisplay::draw(const DrawArgs& args) {
 #endif
 
 void StyledTextDisplay::draw(const DrawArgs& args) {
+    nvgGlobalTint(args.vg, color::WHITE);
 	nvgScissor(args.vg, RECT_ARGS(args.clipBox));
 
 	// Background

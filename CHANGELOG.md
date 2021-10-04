@@ -1,5 +1,13 @@
 # Change log for Squinky Labs modules
 
+## 2.0.5
+
+All the modules have been ported and now are ready to run in Rack v2.
+
+All the modules now give light at displays, leds and light-buttons when room brightness is low.
+
+I have (for now) removed the 'Hookup Clock' functionality. Not sure if it will be implemented again. If people ask got it I might do otherwise I leave it as is.
+
 ## 10.0.23
 
 Fixed SFZ Player not playing (sometimes?) in locales where a decimal point is displayed as a coma. This may only happen with certain Linux's. [[GitHub issue]](https://github.com/kockie69/SquinkyVCV-main/issues/231)

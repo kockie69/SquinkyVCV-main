@@ -311,13 +311,13 @@ void WVCOWidget::appendContextMenu(Menu *menu)
 
     {
         if (WvcoPatcher::shouldShowMenu(module)) {
-            auto item = new SqMenuItem( []() { return false; }, [this](){
+            /* Kockr: auto item = new SqMenuItem( []() { return false; }, [this](){
                 assert(module);
                 WvcoPatcher::go(this, module);
             });
 
             item->text = "Hookup Modulator";
-            menu->addChild(item);
+            menu->addChild(item);*/
         }
     }
 }
