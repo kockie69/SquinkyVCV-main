@@ -190,8 +190,10 @@ void NoteDisplay::drawCursor(NVGcontext *vg) {
 }
 
 void NoteDisplay::draw(const Widget::DrawArgs &args) {
-    NVGcontext *vg = args.vg;
 
+    NVGcontext *vg = args.vg;
+    nvgGlobalTint(args.vg, color::WHITE);
+    
     if (!this->sequencer) {
         return;
     }

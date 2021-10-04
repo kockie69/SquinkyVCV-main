@@ -43,5 +43,5 @@ private:
     std::shared_ptr<Seq4<WidgetComposite>> seq4Comp;
     std::shared_ptr<MidiSequencer4> seq;
     Sequencer4Widget*  widget = nullptr;
-    
+   
 };

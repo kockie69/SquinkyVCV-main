@@ -158,6 +158,7 @@ void AboveNoteGrid::updateTimeLabels() {
 
 void AboveNoteGrid::draw(const DrawArgs& args) {
     NVGcontext* vg = args.vg;
+    nvgGlobalTint(args.vg, color::WHITE);
 
     if (!this->sequencer) {
         return;

@@ -57,7 +57,8 @@ public:
     bool isSelected() const {
         return _isSelected;
     }
-
+    void draw(const DrawArgs& args) override;
+    
     void step() override;
 
     void setNewSeq(MidiSequencer4Ptr newSeq) {
