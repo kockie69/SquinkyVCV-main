@@ -62,7 +62,7 @@ The [Changelog](../CHANGELOG.md) describes recent changes to our modules. (Notic
 
 [Stairway](./filter.md). Polyphonic ladder filter with an enormous range of over-driven and clean sounds. Combines features from Moog, Oberheim, and Rossum filters and adds some some of our own, including four independent wave shapers.
 
-[Shaper](./shaper.md). Yet another wave shaper. But unlike most, this one has almost no aliasing distortion. And a few new shapes that sound nice.
+[Shaper](./shaper.md). Yet another wave shaper.  But unlike most, this one has almost no aliasing distortion. And a few new shapes that sound nice. Also, since Rack V2 this module is polyphonic too. Wow!
 
 [Chopper](./chopper.md) Is a tremolo powered by a clock-synchable LFO. The LFO is highly programmable to give a range of waveforms. A built-in clock multiplier enables easy rhythmic effects.
 

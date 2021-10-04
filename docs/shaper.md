@@ -3,7 +3,7 @@
 ![shaper image](./shaper-panel.png)
 
 ## Overview
-Shaper is a stereo waveshaper offering many different shape options. Some of these shapes are commonly found in other wave shapers, and some are unique to Shaper. It can be used to modify the waveforms from a VCO, or to add distortion to some other sound. And, as usual, the creative user may use for "left field" uses, such as shaping control voltages.
+Shaper is a Polyphonic stereo waveshaper offering many different shape options. Some of these shapes are commonly found in other wave shapers, and some are unique to Shaper. It can be used to modify the waveforms from a VCO, or to add distortion to some other sound. And, as usual, the creative user may use for "left field" uses, such as shaping control voltages.
 
 A unique feature of Shaper is that it has very little aliasing, whereas most we have seen have a lot of aliasing. The other special thing about Shaper is that it has a few shapes that are good for "soft overdrive".
 
