@@ -41,7 +41,7 @@ jobs:
         shell: bash
         if: runner.os == 'Windows'
         run: |
-          sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/RackSDK/plugin.mk
+          sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk
       - name: Modify plugin version
         shell: bash
         run: |
@@ -53,7 +53,7 @@ jobs:
         shell: bash
         run: |
           ${{ matrix.config.prepare-os }}
-          export RACK_DIR=$HOME/RackSDK
+          export RACK_DIR=$HOME/Rack-SDK
           make -j dep
           make -j dist
       - name: Upload artifact
