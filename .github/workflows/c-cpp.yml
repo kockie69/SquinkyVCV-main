@@ -80,6 +80,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: "*.vcvplugin"
-          tag: ${{ env.release-tag }}
+          release-tag: ${{ env.release-tag }}
           overwrite: true
           file_glob: true
