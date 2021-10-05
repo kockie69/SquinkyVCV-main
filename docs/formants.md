@@ -10,6 +10,8 @@ Use it as a **filter bank**. Just set the knobs for a good sound and leave it fi
 
 Try to synthesize something like **singing** by sequencing the vowel CV of several formants. Leave the Fc in place, or move it slightly as the input pitches move.
 
+When Formants is bypassed the Input will be directly connected to the Output.
+
 ## Controls
 
 * **Fc** control moves all the filters up and down by the standard one "volt" per octave.
