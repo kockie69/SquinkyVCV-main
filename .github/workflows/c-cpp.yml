@@ -1,4 +1,4 @@
-name: Build VCV Rack Plugin New-Development
+name: Build VCV Rack Plugin Master
 on:
   push:
     branches:
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: New-Development
+          ref: master
           submodules: recursive
       - name: Get RackSDK
         shell: bash
@@ -72,7 +72,7 @@ jobs:
         uses: mknejp/delete-release-assets@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: ${{ env.release-tag }}
+          tag: master
           assets: '*.vcvplugin'
           fail-if-no-assets: false
       - name: Upload release assets
@@ -80,6 +80,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: "*.vcvplugin"
-          release-tag: ${{ env.release-tag }}
+          tag: ${{ env.release-tag }}
           overwrite: true
           file_glob: true
