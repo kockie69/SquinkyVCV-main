@@ -36,7 +36,7 @@ jobs:
         run: |
           pushd $HOME
           curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-${{ env.rack-sdk-version }}.zip
-          unzip Rack-SDK.zip
+          unzip RackSDK.zip
       - name: Patch plugin.mk, use 7zip on Windows
         shell: bash
         if: runner.os == 'Windows'
@@ -53,7 +53,7 @@ jobs:
         shell: bash
         run: |
           ${{ matrix.config.prepare-os }}
-          export RACK_DIR=$HOME/Rack-SDK
+          export RACK_DIR=$HOME/RackSDK
           make -j dep
           make -j dist
       - name: Upload artifact
