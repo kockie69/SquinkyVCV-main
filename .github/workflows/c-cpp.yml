@@ -72,7 +72,7 @@ jobs:
         uses: mknejp/delete-release-assets@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ env.release-tag }}
+          release-tag: ${{ env.release-tag }}
           assets: '*.vcvplugin'
           fail-if-no-assets: false
       - name: Upload release assets
