@@ -67,7 +67,7 @@ jobs:
         run: |
           mv **/*.vcvplugin .
           export EXTEND_TAG=`date "+%Y%m%d"`
-          for file in ./*.vcvplugin; do mv "$file" "${file/.zip/-${EXTEND_TAG}.vcvplugin}"; done
+          for file in ./*.vcvplugin; do mv "$file" "${file/.vcvplugin/-${EXTEND_TAG}.vcvplugin}"; done
       - name: Delete existing release assets
         uses: mknejp/delete-release-assets@v1
         with:
