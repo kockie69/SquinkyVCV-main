@@ -2,7 +2,7 @@ name: Build VCV Rack Plugin
 on: [push, pull_request]
 
 env:
-  rack-sdk-version: 1.1.6
+  rack-sdk-version: 2.git.042a9ce0-lin
   release-tag: AzureCI
 
 jobs:
@@ -31,17 +31,17 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-      - name: Get Rack-SDK
+      - name: Get RackSDK
         shell: bash
         run: |
           pushd $HOME
-          curl -o Rack-SDK.zip https://vcvrack.com/downloads/Rack-SDK-${{ env.rack-sdk-version }}.zip
+          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-${{ env.rack-sdk-version }}.zip
           unzip Rack-SDK.zip
       - name: Patch plugin.mk, use 7zip on Windows
         shell: bash
         if: runner.os == 'Windows'
         run: |
-          sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk
+          sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/RackSDK/plugin.mk
       - name: Modify plugin version
         shell: bash
         run: |
