@@ -4,6 +4,8 @@
 
 **Growler** is a re-creation of the Vocal Animator circuit invented by Bernie Hutchins, and published in Electronotes magazine in the late 70's. It continuously morphs between different vaguely voice like tones.
 
+When Growler is bypassed the Input will be directly connected to the Output.
+
 **To get a good sound:** run any harmonically rich signal into the input, and something good will come out. Low frequency pulse waves and distorted sounds make great input.
 
 The controls do pretty much what you would expect:
