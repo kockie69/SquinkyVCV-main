@@ -2,7 +2,7 @@ name: Build VCV Rack Plugin
 on: [push, pull_request]
 
 env:
-  rack-sdk-version: 2.git.042a9ce0-lin
+  rack-sdk-version: 2.git.042a9ce0-win
   release-tag: AzureCI
 
 jobs:
@@ -12,16 +12,6 @@ jobs:
     strategy:
       matrix:
         config:
-        - {
-            name: Linux,
-            os: ubuntu-latest,
-            prepare-os: sudo apt install -y libglu-dev
-          }
-        - {
-            name: MacOS,
-            os: macos-latest,
-            prepare-os: ""
-          }
         - {
             name: Windows,
             os: windows-latest,
