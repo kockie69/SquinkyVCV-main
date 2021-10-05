@@ -392,11 +392,21 @@ void ClockFinder::go(ModuleWidget* host, int div, int clockInput, int runInput, 
 
     // const NVGcolor color = nvgRGB(0, 0, 0);
     for (int i = 0; i < 3; ++i) {
-        CableWidget* cable = new CableWidget();
-        // cable->color = color;
-        cable->outputPort=outputs[i];
-        cable->inputPort=inputs[i];
-        APP->scene->rack->addCable(cable);
+        rack::engine::Cable* cable = new rack::engine::Cable;
+        //cable->color = color;
+        for (PortWidget *port : outputs) {
+            if (port->portId == outputs[i]->portId) {
+                cable->outputId=outputs[i]->portId;
+                break;
+            }
+        }
+        for (PortWidget *port : inputs) {
+            if (port->portId == inputs[i]->portId) {
+                cable->inputId=inputs[i]->portId;
+                break;
+            }
+        }
+        APP->engine->addCable(cable); //This one causes a crash!!!!!
     }
 
     if (!clockOutput.second) {
