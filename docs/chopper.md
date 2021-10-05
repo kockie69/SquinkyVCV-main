@@ -9,6 +9,8 @@ There is also a **clock synchronizer** and multiplier.
 
 To use Chopper as a tremolo, send a signal to the *in* jack, and listen to the *out* jack. Leave the *clock* control at the default *int* setting. Most of the knob settings will now affect the tremolo effect.
 
+When Chopper is bypassed the Input will be directly connected to the Output.
+
 ## Chopper LFO
 
 ![chopper LFO image](../docs/lfo-waveforms.png)
