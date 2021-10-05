@@ -1,5 +1,7 @@
 # Change log for Squinky Labs modules
 
+Shaper is now Polyphonic.
+
 ## 2.0.5
 
 All the modules have been ported and now are ready to run in Rack v2.
