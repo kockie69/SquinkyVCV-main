@@ -41,6 +41,8 @@ void FiltModule::onSampleRateChange()
 
 FiltModule::FiltModule()
 {
+    configBypass(Comp::L_AUDIO_INPUT, Comp::L_AUDIO_OUTPUT);
+    configBypass(Comp::R_AUDIO_INPUT, Comp::R_AUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
     filt = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();

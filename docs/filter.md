@@ -17,6 +17,8 @@ Stairway provides much more control over distortion and overdrive that most filt
 
 Stairway is "stereo". There are two independent channels. But they will be inactive (using no CPU) if they are not patched.
 
+When Stairway is bypassed the Left/Right Inputs will be directly connected to the left/right Outputs.
+
 There are extensive notes at the bottom of this page about how the filter actually works.
 
 ## Important notes
