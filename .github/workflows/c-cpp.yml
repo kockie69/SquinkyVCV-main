@@ -65,21 +65,21 @@ jobs:
       - uses: actions/download-artifact@v2
       - name: Tag asset names with date
         run: |
-          mv **/*.zip .
+          mv **/*.vcvplugin .
           export EXTEND_TAG=`date "+%Y%m%d"`
-          for file in ./*.zip; do mv "$file" "${file/.zip/-${EXTEND_TAG}.zip}"; done
+          for file in ./*.vcvplugin; do mv "$file" "${file/.zip/-${EXTEND_TAG}.vcvplugin}"; done
       - name: Delete existing release assets
         uses: mknejp/delete-release-assets@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.release-tag }}
-          assets: '*.zip'
+          assets: '*.vcvplugin'
           fail-if-no-assets: false
       - name: Upload release assets
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: "*.zip"
+          file: "*.vcvplugin"
           tag: ${{ env.release-tag }}
           overwrite: true
           file_glob: true
