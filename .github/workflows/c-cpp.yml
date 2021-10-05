@@ -16,6 +16,11 @@ jobs:
       matrix:
         config:
         - {
+            name: Linux,
+            os: ubuntu-latest,
+            prepare-os: sudo apt install -y libglu-dev
+          }
+        - {
             name: Windows,
             os: windows-latest,
             prepare-os: export CC=gcc
