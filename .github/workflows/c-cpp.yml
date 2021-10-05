@@ -1,6 +1,6 @@
 name: Build VCV Rack Plugin New-Development
 on:
-  push:
+  workflow_dispatch:
     branches:
     - New-Development
 
