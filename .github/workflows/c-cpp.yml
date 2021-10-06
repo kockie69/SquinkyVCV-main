@@ -15,11 +15,21 @@ jobs:
     strategy:
       matrix:
         config:
-        - {
-            name: Windows,
-            os: windows-latest,
-            prepare-os: export CC=gcc
-          }
+        - os: ubuntu-latest
+            arch: lin
+            compiler: cc
+            install-dependencies: |
+              sudo apt-get install -y libglu-dev
+          - os: macos-latest
+            arch: mac
+            compiler: cc
+            install-dependencies: |
+              brew install mesa
+        - os: windows-latest
+            arch: win
+            compiler: gcc
+            install-dependencies: |
+              choco install --no-progress -y zip
     steps:
       - uses: actions/checkout@v2
         with:
