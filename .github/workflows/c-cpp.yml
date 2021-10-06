@@ -19,16 +19,19 @@ jobs:
             - os: ubuntu-latest
               name: Linux
               arch: lin
+              compiler: cc
               install-dependencies: |
                 sudo apt-get install -y libglu-dev
             - os: macos-latest
               name: Mac
               arch: mac
+              compiler: cc
               install-dependencies: |
                 brew install mesa
             - os: windows-latest
               name: Windows
               arch: win
+              compiler: gcc
               install-dependencies: |
                 choco install --no-progress -y zip
     steps:
