@@ -77,8 +77,8 @@ jobs:
         run: |
           ${{ matrix.install-dependencies }}
           export RACK_DIR=$HOME/Rack-SDK
-          make -j dep
-          make -j dist
+          make -j ARGS=\"no-strip\" dep
+          make -j  ARGS=\"no-strip\" dist
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
