@@ -61,7 +61,6 @@ jobs:
           cat <<< `jq --arg VERSION "$pluginversion-$gitrev" '.version=$VERSION' plugin.json` > plugin.json
       - name: Build plugin
         run: |
-          ${{ matrix.prepare-os }}
           export RACK_DIR=$HOME/Rack-SDK
           make -j dep
           make -j dist
