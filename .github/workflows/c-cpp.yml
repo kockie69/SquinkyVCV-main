@@ -21,7 +21,7 @@ jobs:
               arch: lin
               compiler: cc
               install-dependencies: |
-                sudo apt-get install -y libglu-dev libxrandr
+                sudo apt-get install -y libx11-dev libglu1-mesa-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev zlib1g-dev libasound2-dev libgtk2.0-dev libgtk-3-dev libjack-jackd2-dev
             - os: macos-latest
               name: Mac
               arch: mac
