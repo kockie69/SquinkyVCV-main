@@ -19,7 +19,8 @@ jobs:
             - os: ubuntu-latest
               name: Linux
               arch: lin
-              prepare-os: sudo apt install -y libglu-dev
+              install-dependencies: |
+                sudo apt-get install -y libglu-dev
             - os: macos-latest
               name: Mac
               arch: mac
@@ -28,7 +29,8 @@ jobs:
             - os: windows-latest
               name: Windows
               arch: win
-              prepare-os: export CC=gcc
+              install-dependencies: |
+                choco install --no-progress -y zip
     steps:
       - uses: actions/checkout@v2
         with:
@@ -38,7 +40,7 @@ jobs:
           pushd $HOME
           curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.042a9ce0-${{ matrix.arch }}.zip
           unzip RackSDK.zip
-      - name: Patch plugin.mk, use 7zip on Windows
+      - name: Patch makefiles, use 7zip on Windows
         if: runner.os == 'windows-latest'
         run: |
           sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk
@@ -59,7 +61,7 @@ jobs:
           cat <<< `jq --arg VERSION "$pluginversion-$gitrev" '.version=$VERSION' plugin.json` > plugin.json
       - name: Build plugin
         run: |
-          ${{ matrix.config.prepare-os }}
+          ${{ matrix.install-dependencies }}
           export RACK_DIR=$HOME/Rack-SDK
           make -j dep
           make -j dist
