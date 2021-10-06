@@ -44,18 +44,18 @@ jobs:
           curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.042a9ce0-${{ matrix.arch }}.zip
           unzip RackSDK.zip
       - name: Patch makefiles, use 7zip on Windows
-        if: runner.os == 'windows-latest'
+        if: runner.os == 'windows'
         run: |
           sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk
           sed -i 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
           sed -i 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
       - name: Update compile.mk file to remove debugging for Mac
-        if: runner.os == 'macOS-latest'
+        if: runner.os == 'macOS'
         run: |
           sed 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
           sed 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
       - name: Update compile.mk file to remove debugging for Linux
-        if: runner.os == 'linux-latest'
+        if: runner.os == 'linux'
         run: |
           sed -i 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
           sed -i 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk 
