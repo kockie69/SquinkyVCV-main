@@ -2,7 +2,7 @@ name: Build VCV Rack Plugin - Windows
 on: [push, pull_request]
 
 env:
-  rack-sdk-version: 2.git.042a9ce0-win
+  rack-sdk-version: 2.git.042a9ce0
 
 defaults:
   run:
@@ -14,8 +14,7 @@ jobs:
     runs-on: ${{ matrix.config.os }}
     strategy:
       matrix:
-        config:
-        
+        config:      
         - {
             name: Linux
             os: ubuntu-latest
