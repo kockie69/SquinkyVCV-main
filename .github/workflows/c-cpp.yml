@@ -10,8 +10,8 @@ defaults:
 
 jobs:
   build:
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]       
@@ -41,7 +41,7 @@ jobs:
       - name: Get Rack-SDK
         run: |
           pushd $HOME
-          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.042a9ce0-${{ matrix.config.arch }}.zip
+          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.042a9ce0-${{ matrix.arch }}.zip
           unzip RackSDK.zip
       - name: Patch plugin.mk, use 7zip on Windows and update compiler
         if: runner.os == 'Windows'
@@ -59,7 +59,7 @@ jobs:
           cat <<< `jq --arg VERSION "$pluginversion-$gitrev" '.version=$VERSION' plugin.json` > plugin.json
       - name: Build plugin
         run: |
-          ${{ matrix.config.prepare-os }}
+          ${{ matrix.prepare-os }}
           export RACK_DIR=$HOME/Rack-SDK
           make -j dep
           make -j dist
@@ -67,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: dist
-          name: ${{ matrix.config.name }}
+          name: ${{ matrix.name }}
 
   publish:
     name: Publish plugin
