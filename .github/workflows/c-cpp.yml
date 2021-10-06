@@ -19,21 +19,16 @@ jobs:
             - os: ubuntu-latest
               name: Linux
               arch: lin
-              compiler: cc
-              install-dependencies: |
-                sudo apt-get install -y libglu-dev
+              prepare-os: sudo apt install -y libglu-dev
             - os: macos-latest
               name: Mac
               arch: mac
-              compiler: cc
               install-dependencies: |
                 brew install mesa
             - os: windows-latest
               name: Windows
               arch: win
-              compiler: gcc
-              install-dependencies: |
-                choco install --no-progress -y zip
+              prepare-os: export CC=gcc
     steps:
       - uses: actions/checkout@v2
         with:
@@ -61,6 +56,7 @@ jobs:
           cat <<< `jq --arg VERSION "$pluginversion-$gitrev" '.version=$VERSION' plugin.json` > plugin.json
       - name: Build plugin
         run: |
+          ${{ matrix.config.prepare-os }}
           export RACK_DIR=$HOME/Rack-SDK
           make -j dep
           make -j dist
