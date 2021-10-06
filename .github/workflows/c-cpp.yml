@@ -58,11 +58,7 @@ jobs:
       - name: Update compile.mk file to remove debugging for Linux
         if: runner.os == 'linux'
         run: |
-          sed 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
           sed 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk 
-          dd if=/dev/zero of=/media/fasthdd/swapfile.img bs=1024 count=1M
-          mkswap /media/fasthdd/swapfile.img
-          swapon /media/fasthdd/swapfile.img
       - name: Modify plugin version
         # only modify plugin version if no tag was created
         if: "! startsWith(github.ref, 'refs/tags/v')"
