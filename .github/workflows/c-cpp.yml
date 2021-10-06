@@ -63,6 +63,9 @@ jobs:
           echo "Set plugin version from $pluginversion to $pluginversion-$gitrev"
           cat <<< `jq --arg VERSION "$pluginversion-$gitrev" '.version=$VERSION' plugin.json` > plugin.json
       - name: Build plugin
+        env:
+          RACK_DIR: Rack-SDK
+          CC: ${{ matrix.compiler }}
         run: |
           ${{ matrix.install-dependencies }}
           export RACK_DIR=$HOME/Rack-SDK
