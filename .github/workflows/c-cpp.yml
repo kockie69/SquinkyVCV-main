@@ -61,8 +61,8 @@ jobs:
         run: |
           ls
           sed 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
-          sed 's/FLAGS += -finline-limit=500000 -finline-functions-called-once/FLAGS += /' $HOME/SquinkyVCV-main/Makefile
-          sed 's/LDFLAGS += -flto/LDFLAGS += /' $HOME/SquinkyVCV-main/Makefile
+          sed 's/FLAGS += -finline-limit=500000 -finline-functions-called-once/FLAGS += /' ./Makefile
+          sed 's/LDFLAGS += -flto/LDFLAGS += /' ./Makefile
           cat $HOME/Rack-SDK/compile.mk
       - name: Modify plugin version
         # only modify plugin version if no tag was created
