@@ -48,6 +48,7 @@ jobs:
         run: |
           sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk         
       - name: Update compile.mk file to remove debugging
+        run: |
           sed -i 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
           sed -i 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk    
       - name: Modify plugin version
