@@ -59,7 +59,11 @@ jobs:
       - name: Update compile.mk file to remove debugging for Linux
         if: runner.os == 'linux'
         run: |
-          sed 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk 
+          ls
+          sed 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
+          sed 's/FLAGS += -finline-limit=500000 -finline-functions-called-once/FLAGS += /' $HOME/SquinkyVCV-main/Makefile
+          sed 's/LDFLAGS += -flto/LDFLAGS += /' $HOME/SquinkyVCV-main/Makefile
+          cat $HOME/Rack-SDK/compile.mk
       - name: Modify plugin version
         # only modify plugin version if no tag was created
         if: "! startsWith(github.ref, 'refs/tags/v')"
@@ -75,8 +79,8 @@ jobs:
         run: |
           ${{ matrix.install-dependencies }}
           export RACK_DIR=$HOME/Rack-SDK
-          make -j ARGS=\"no-strip\" dep
-          make -j  ARGS=\"no-strip\" dist
+          make dep
+          make dist
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
