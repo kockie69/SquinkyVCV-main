@@ -20,7 +20,8 @@ jobs:
               name: Linux
               arch: lin
               compiler: cc
-              install-dependencies: ""
+              install-dependencies: |
+                apt install libglu1-mesa-dev 
             - os: macos-latest
               name: Mac
               arch: mac
