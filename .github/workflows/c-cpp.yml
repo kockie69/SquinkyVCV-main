@@ -27,7 +27,7 @@ jobs:
       - name: Get Rack-SDK
         run: |
           pushd $HOME
-          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-${{ env.rack-sdk-version }}.zip
+          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.042a9ce0-${{ matrix.config.arch }}.zip
           unzip RackSDK.zip
       - name: Patch plugin.mk, use 7zip on Windows and update compiler
         if: runner.os == 'Windows'
