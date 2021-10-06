@@ -16,6 +16,8 @@ Like a real organ, Organ-Three sounds really good when processed by a "Leslie" e
 
 Make sure to use the tooltips to find out what the controls do. The panel labels are rather sparse, but the tooltips are very detailed.
 
+Currently the sliders of Organ respond weird. You need to be exactly on them otherwise you move the module.
+
 ## TL;DR getting started
 
 Patch a polyphonic pitch CV to the V/Oct input, patch an appropriate polyphonic gate to the gate in, and try playing some of the presets available on the context menu. For a quick listen, hook Organ-Three directly the the VCV CV-MIDI Module get get a V/Oct and Gate signal, path the Out to the VCV Audio-8.
