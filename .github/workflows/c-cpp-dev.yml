@@ -88,6 +88,7 @@ jobs:
           make dep
           make dist
       - name: Create plantUml
+        if: runner.os == 'windows'
         run: |  
           pip install hpp2plantuml
           hpp2plantuml -i "*/*.hpp" -o output.puml
@@ -96,7 +97,13 @@ jobs:
         with:
           path: dist
           name: ${{ matrix.name }}
-
+      - name: Upload PlantUML output
+        if: runner.os == 'windows'
+        uses: actions/upload-artifact@v2
+        with:
+          name: PlantUML-out
+          path: output.puml
+       
   publish:
     name: Publish plugin
     # only create a release if a tag was created that is called e.g. v1.2.3
