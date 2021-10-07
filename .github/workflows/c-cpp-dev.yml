@@ -90,7 +90,7 @@ jobs:
       - name: Create plantUml
         run: |  
           pip install hpp2plantuml
-          hpp2plantuml -i "*/*.h*" -o output.puml
+          hpp2plantuml -i "*/*.hpp" -o output.puml
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
