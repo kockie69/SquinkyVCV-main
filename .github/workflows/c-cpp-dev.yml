@@ -88,6 +88,7 @@ jobs:
           make dep
           make dist
       - name: Create plantUml
+        run: |  
           pip install hpp2plantuml
           hpp2plantuml
       - name: Upload artifact
