@@ -16,8 +16,8 @@ class Drawbar : public app::SvgSlider {
 public:
     Drawbar() {
         
-        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
-		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/blue-handle-16.svg")));    
+    //    setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
+	//	this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/blue-handle-16.svg")));    
 	}
 
     void DrawbarSvg(const std::string& handleName) {
@@ -25,12 +25,11 @@ public:
         
         maxHandlePos = math::Vec(-7, 10).plus(margin);
 		minHandlePos = math::Vec(-7, 90).plus(margin);
-
+        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
+		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, handleName.c_str())));
         background->box.pos = margin;
         this->box.size.x = 29;
         this->box.size.y = 120; 
-        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
-		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, handleName.c_str())));
     }
 };
 
@@ -148,7 +147,7 @@ const char* handles[] = {
 
 void SinesWidget::addDrawbars(SinesModule *module, std::shared_ptr<IComposite> icomp)
 {
-    float drawbarX = 4;
+    float drawbarX = 6;
     float drawbarDX = 29;
     float drawbarY = 132;
  
