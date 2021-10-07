@@ -4,9 +4,11 @@ on:
   push:
     branches:
     - 'New-Development'
+    - master
   pull_request:
     branches:
     - 'New-Development'
+    - master
 env:
   rack-sdk-version: 2.git.042a9ce0
 
