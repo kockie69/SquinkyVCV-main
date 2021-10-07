@@ -87,6 +87,9 @@ jobs:
           export RACK_DIR=$HOME/Rack-SDK
           make dep
           make dist
+      - name: Create plantUml
+          pip install hpp2plantuml
+          hpp2plantuml
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
