@@ -9,7 +9,7 @@ using StochasticGrammarPtr = std::shared_ptr<StochasticGrammar>;
 class GMRMainScreen : public OpaqueWidget {
 public:
     GMRMainScreen(StochasticGrammarPtr);
-    ~GMRMainScreen() { SQINFO("dtor GMRMainScreen"); 
+    ~GMRMainScreen() { //SQINFO("dtor GMRMainScreen"); 
     }
 
     void draw(const DrawArgs &args) override;

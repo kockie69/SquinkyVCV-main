@@ -259,9 +259,9 @@ CompCurves::makeSplineMiddle(const Recipe& r) {
 
 
 void CompCurves::CompCurveLookup::_dump() const {
-    SQINFO("dumping curve low");
+    //SQINFO("dumping curve low");
     lowRange._dump();
-    SQINFO("dumping curve high");
+    //SQINFO("dumping curve high");
     highRange._dump();
-    SQINFO("done dumping curve");
+    //SQINFO("done dumping curve");
 }

@@ -35,7 +35,7 @@ using SKeyValueList = std::vector<SKeyValuePairPtr>;
 class SHeading {
 public:
     void _dump() const { 
-        SQINFO("dump heading from line %d", lineNumber+1);
+        //SQINFO("dump heading from line %d", lineNumber+1);
         dumpKeysAndValues(values); }
     enum class Type {
         Region,
@@ -71,9 +71,9 @@ public:
      */
     SamplerSchema::KeysAndValuesPtr compiledValues;
     static void dumpKeysAndValues(const SKeyValueList& v) {
-        SQINFO("-- keys and vals:");
+        //SQINFO("-- keys and vals:");
         for (auto k : v) {
-            SQINFO("key=%s val=%s", k->key.c_str(), k->value.c_str());
+            //SQINFO("key=%s val=%s", k->key.c_str(), k->value.c_str());
         }
     }
 const int lineNumber = 0;

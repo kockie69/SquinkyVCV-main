@@ -23,7 +23,7 @@ using ConstStochasticGrammarPtr = std::shared_ptr<const StochasticGrammar>;
  */
 class StochasticGrammar {
 public:
-    ~StochasticGrammar() { /*SQINFO("dtor of StochasticGrammar");*/ }
+    ~StochasticGrammar() { /*//SQINFO("dtor of StochasticGrammar");*/ }
     StochasticProductionRulePtr getRule(const StochasticNote&) const;
     StochasticProductionRulePtr getRootRule() const;
     void addRule(StochasticProductionRulePtr rule);

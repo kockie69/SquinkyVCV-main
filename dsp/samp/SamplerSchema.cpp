@@ -122,7 +122,7 @@ OpcodeType SamplerSchema::keyTextToType(const std::string& key, bool suppressErr
     Opcode opcode = SamplerSchema::translate(key, suppressErrorMessages);
     if (opcode == Opcode::NONE) {
         if (!suppressErrorMessages) {
-            SQINFO("unknown opcode type %s", key.c_str());
+            //SQINFO("unknown opcode type %s", key.c_str());
         }
         return OpcodeType::Unknown;
     }
@@ -347,7 +347,7 @@ void SamplerSchema::compile(SamplerErrorContext& err, SamplerSchema::KeysAndValu
         case OpcodeType::Discrete: {
             const DiscreteValue dv = translated(input->value);
             if (dv == DiscreteValue::NONE) {
-                SQINFO("malformed discrete kb = %s, %s", input->key.c_str(), input->value.c_str());
+                //SQINFO("malformed discrete kb = %s, %s", input->key.c_str(), input->value.c_str());
                 err.sawMalformedInput = true;
                 return;
             }

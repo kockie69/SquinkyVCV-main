@@ -337,7 +337,7 @@ inline void F2_Poly<TBase>::setupLimiter() {
         alt ? 20.f : 100.f,
         TBase::engineGetSampleTime());
     limiter.setInputGain(alt ? 20.f : 4.f);
-    SQINFO("setupLim, alt = %d", alt);
+    //SQINFO("setupLim, alt = %d", alt);
 }
 
 template <class TBase>
@@ -404,7 +404,7 @@ inline float_4 F2_Poly<TBase>::computeGain_fast(bool twoStages, float_4 q4, floa
 
     float_4 g = SimdBlocks::ifelse((r4 > float_4(2.f)), oneOverQ, g_interp);
     g = sqrt(g);
-    SQINFO("g = %f", g[0]);
+    //SQINFO("g = %f", g[0]);
     return g;
 }
 
@@ -436,7 +436,7 @@ inline float_4 F2_Poly<TBase>::computeGain_slow(bool twoStages, float_4 q4, floa
             outputGain4[i] = g_;
         }
     }
-    SQINFO("cg(%f, %f) = %f", q4[0], r4[0]);
+    //SQINFO("cg(%f, %f) = %f", q4[0], r4[0]);
     return outputGain4;
 }
 
@@ -616,7 +616,7 @@ inline void F2_Poly<TBase>::updateVUOutput() {
     TBase::lights[VOL2_LIGHT].value = (level >= ((lMax - 2) * .5)) ? bright : dim;
     TBase::lights[VOL1_LIGHT].value = (level >= (lMax * .25f)) ? bright : dim;
     TBase::lights[VOL0_LIGHT].value = (level >= (lMax * .125f)) ? bright : dim;
-    SQINFO("level = %.2f", level);
+    //SQINFO("level = %.2f", level);
 }
 
 #define ENDPROC(chan)                                \

@@ -107,7 +107,7 @@ inline void GMR2<TBase>::init() {
 
 template <class TBase>
 inline void GMR2<TBase>::setGrammar(StochasticGrammarPtr grammar) {
-    SQINFO("GMR2::setGrammar in");
+    //SQINFO("GMR2::setGrammar in");
     if (!gtg) {
         gtg = std::make_shared<GenerativeTriggerGenerator2>(
             AudioMath::random(),
@@ -115,7 +115,7 @@ inline void GMR2<TBase>::setGrammar(StochasticGrammarPtr grammar) {
     } else {
         gtg->setGrammar(grammar);
     }
-    SQINFO("GMR2::setGrammar out");
+    //SQINFO("GMR2::setGrammar out");
 }
 
 template <class TBase>
@@ -149,7 +149,7 @@ inline void GMR2<TBase>::process(const typename TBase::ProcessArgs& args) {
     {
         static double last = -1;
         if (results.totalElapsedTime != last) {
-            SQINFO("in GMR2 147, totalElapsed=%f", results.totalElapsedTime);
+            //SQINFO("in GMR2 147, totalElapsed=%f", results.totalElapsedTime);
             last = results.totalElapsedTime;
         }
     }
@@ -265,7 +265,7 @@ public:
     }
     GMR2() : TBase(), inputClockProcessing(true) {
     }
-    ~GMR2() { SQINFO("dtor of GMR2 composite");
+    ~GMR2() { //SQINFO("dtor of GMR2 composite");
      }
     void setSampleRate(float rate) {
         reciprocalSampleRate = 1 / rate;
@@ -323,7 +323,7 @@ inline void GMR2<TBase>::init() {
 
 template <class TBase>
 inline void GMR2<TBase>::setGrammar(StochasticGrammarPtr grammar) {
-    SQINFO("GMR2::setGrammar in");
+    //SQINFO("GMR2::setGrammar in");
     if (!gtg) {
         gtg = std::make_shared<GenerativeTriggerGenerator2>(
         AudioMath::random_better(),
@@ -331,12 +331,12 @@ inline void GMR2<TBase>::setGrammar(StochasticGrammarPtr grammar) {
     } else {
         gtg->setGrammar(grammar);
     }
-      SQINFO("GMR2::setGrammar out");
+      //SQINFO("GMR2::setGrammar out");
 }
 
 template <class TBase>
 inline void GMR2<TBase>::process(const typename TBase::ProcessArgs& args) {
-  //  SQINFO("GMR2<TBase>::process gtg = %p", gtg.get());
+  //SQINFO("GMR2<TBase>::process gtg = %p", gtg.get());
     bool outClock = false;
     float inClock = TBase::inputs[CLOCK_INPUT].getVoltage(0);
     inputClockProcessing.go(inClock);

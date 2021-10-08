@@ -210,13 +210,13 @@ public:
         float delta = std::abs(lastValue - s);
         if (delta > threshold) {
             if (!havePrinted) {
-                SQINFO("*********************************************");
-                SQINFO("jump detectd at %s size %f", label.c_str(), delta);
-                SQINFO("value is %f, was %f", s, lastValue);
-                SQINFO("index = %d", counter);
-             //   SQINFO("do: %f -> %f", lastd0, do);
-             //   SQINFO("d1: %f -> %f", lastd0, d1);
-                SQINFO("*********************************************");
+                //SQINFO("*********************************************");
+                //SQINFO("jump detectd at %s size %f", label.c_str(), delta);
+                //SQINFO("value is %f, was %f", s, lastValue);
+                //SQINFO("index = %d", counter);
+             //SQINFO("do: %f -> %f", lastd0, do);
+             //SQINFO("d1: %f -> %f", lastd0, d1);
+                //SQINFO("*********************************************");
                 havePrinted = true;
                 r = true;
             }

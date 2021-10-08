@@ -401,7 +401,7 @@ static void testRandom3(AudioMath::RandomUniformFunc rand, float tolerance) {
     for (int i = 0; i < iterations; ++i) {
         float x = rand();
         bool b = x >= .5f;
-        SQINFO("b=%d", b);
+        //SQINFO("b=%d", b);
         if (b) {
             trueInARow++;
             falseInARow = 0;
@@ -425,12 +425,12 @@ static void testRandom3(AudioMath::RandomUniformFunc rand, float tolerance) {
         }
     }
 #if 0
-    SQINFO("iter=%d,%d,%d,%d,%d", iterations, iterations / 2, iterations / 4, iterations / 8, iterations / 16);
-    SQINFO("iter=%d,%d,%d,%d,%d", iterations / 32, iterations / 64, iterations / 128, iterations / 256, iterations / 512);
-    SQINFO(".5**4 = %f, .5**8=%f", std::pow(.5, 4), std::pow(.5, 8));
-    SQINFO("iterX .5**4 = %f, .5**8=%f", iterations * std::pow(.5, 4), iterations * std::pow(.5, 8));
-    SQINFO("four = %d, eight=%d", fourInARow, eightInARow);
-    SQINFO("four F = %d, eightF=%d", fourfInARow, eightfInARow);
+    //SQINFO("iter=%d,%d,%d,%d,%d", iterations, iterations / 2, iterations / 4, iterations / 8, iterations / 16);
+    //SQINFO("iter=%d,%d,%d,%d,%d", iterations / 32, iterations / 64, iterations / 128, iterations / 256, iterations / 512);
+    //SQINFO(".5**4 = %f, .5**8=%f", std::pow(.5, 4), std::pow(.5, 8));
+    //SQINFO("iterX .5**4 = %f, .5**8=%f", iterations * std::pow(.5, 4), iterations * std::pow(.5, 8));
+    //SQINFO("four = %d, eight=%d", fourInARow, eightInARow);
+    //SQINFO("four F = %d, eightF=%d", fourfInARow, eightfInARow);
 #endif
 
     assertClosePct(fourInARow, iterations / 32, tolerance);

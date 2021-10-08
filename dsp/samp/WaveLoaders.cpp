@@ -73,7 +73,7 @@ bool WaveFileLoader::load(std::string& errorMessage) {
         return false;
     }
     // TODO: insist that they be 2
-    SQINFO("after load, frames = %u rate= %d ch=%d\n", (unsigned int)totalFrameCount, sampleRate, numChannels);
+    //SQINFO("after load, frames = %u rate= %d ch=%d\n", (unsigned int)totalFrameCount, sampleRate, numChannels);
     data = pSampleData;
     if (numChannels == 2) {
         convertToMono();

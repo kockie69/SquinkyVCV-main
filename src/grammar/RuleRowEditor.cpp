@@ -13,7 +13,7 @@ RuleRowEditor::RuleRowEditor(StochasticProductionRuleEntryPtr e) : entry(e) {
     this->setModule(module);
     module->config(1, 0, 0, 0);
 
-    SQINFO("ctol of rule row editor");
+    //SQINFO("ctol of rule row editor");
 
     const int paramId = 0;
     const float prob = entry->probability;
@@ -51,7 +51,7 @@ void RuleRowEditor::draw(const DrawArgs &args) {
 void RuleRowEditor::step() {
     const int value = int(std::round(APP->engine->getParamValue(module, 0)));
     if (value != int(entry->probability * 100)) {
-        SQINFO("knob change! knob value=%d, existing probx100 = %d this=%p", value, int(entry->probability * 100), this);
+        //SQINFO("knob change! knob value=%d, existing probx100 = %d this=%p", value, int(entry->probability * 100), this);
         entry->probability = 0.01 * value;
     }
     ModuleWidget::step();

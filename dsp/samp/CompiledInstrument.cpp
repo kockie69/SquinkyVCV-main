@@ -27,7 +27,7 @@ using Value = SamplerSchema::Value;
 //#define _LOGOV
 
 bool CompiledInstrument::compile(const SInstrumentPtr in) {
-    SQINFO("dump parse from CompiledInstrument::compile");
+    //SQINFO("dump parse from CompiledInstrument::compile");
     // in->_dump();
 
     assert(in->wasExpanded);
@@ -39,7 +39,7 @@ bool CompiledInstrument::compile(const SInstrumentPtr in) {
     addSampleIndexes();
     deriveInfo();
     assert(info);
-    SQINFO("dump from end of compile");
+    //SQINFO("dump from end of compile");
     // _dump(0);
     return true;
 }
@@ -127,7 +127,7 @@ CompiledInstrumentPtr CompiledInstrument::CompiledInstrument::make(SamplerErrorC
     CompiledInstrumentPtr instOut = std::make_shared<CompiledInstrument>();
     const bool result = instOut->compile(inst);
     if (!result) {
-        SQINFO("unexpected compile error");
+        //SQINFO("unexpected compile error");
         if (!instOut->info) {
             instOut->info = std::make_shared<InstrumentInfo>();
         }
@@ -245,7 +245,7 @@ bool CompiledInstrument::play(VoicePlayInfo& info, const VoicePlayParameter& par
     bool didKS = false;
     const CompiledRegion* region = regionPool.play(params, r, didKS);
     if (region) {
-        SQINFO("playing new region:");
+        //SQINFO("playing new region:");
         // region->_dump(1);
         info.sampleIndex = region->sampleIndex;
         info.valid = true;
@@ -258,7 +258,7 @@ bool CompiledInstrument::play(VoicePlayInfo& info, const VoicePlayParameter& par
         getGain(info, params.midiVelocity, region->amp_veltrack, region->volume);
         info.loopData = region->loopData;
     } else {
-        SQINFO("not playing region at p=%d v=%d", params.midiPitch, params.midiVelocity);
+        //SQINFO("not playing region at p=%d v=%d", params.midiPitch, params.midiVelocity);
     }
     return didKS;
 }
@@ -311,7 +311,7 @@ void CompiledInstrument::setWaves(WaveLoaderPtr loader, const FilePath& rootPath
         assert(!path.empty());
         FilePath relativePath(path);
         if (relativePath.isAbsolute()) {
-            SQINFO("found an absolute %s", relativePath.toString().c_str());
+            //SQINFO("found an absolute %s", relativePath.toString().c_str());
             loader->addNextSample(relativePath);
         } else {
             FilePath fullPath(rootPath);

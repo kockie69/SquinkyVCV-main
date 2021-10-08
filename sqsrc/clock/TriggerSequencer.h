@@ -56,7 +56,7 @@ public:
 
         curEvent = data;
         auto newDelayPPQ = data->delayPPQ;
-        SQINFO("TSEQ reset 58: initial delay = %d\n", newDelayPPQ);
+        //SQINFO("TSEQ reset 58: initial delay = %d\n", newDelayPPQ);
         double newDelayMetric = double(newDelayPPQ) / double(StochasticNote::ppq);
 
         nextEventTimeMetric += newDelayMetric;
@@ -76,7 +76,7 @@ public:
             double newDelayMetric = double(newDelayPPQ) / double(StochasticNote::ppq);
             nextEventTimeMetric = newDelayMetric;
             //if (nextEventTimeMetric > 0) {
-                SQINFO("data not at zero, %f", nextEventTimeMetric);
+                //SQINFO("data not at zero, %f", nextEventTimeMetric);
             //}
         }
     }
@@ -137,7 +137,7 @@ private:
 };
 
 inline void TriggerSequencer::playOnce(double metricTime, float quantizeInterval) {
-    SQINFO("TSeq::play once, metric %f", metricTime);
+    //SQINFO("TSeq::play once, metric %f", metricTime);
 
     // const double delayMetricQuantized = TimeUtils::quantize(delayMetric, quantizeInterval, true);
     const double eventTimeMetricQuantized = TimeUtils::quantize(nextEventTimeMetric, quantizeInterval, true);
@@ -151,11 +151,11 @@ inline void TriggerSequencer::playOnce(double metricTime, float quantizeInterval
         // we already set this->trigger, so I don't think we should change the meaning of our return value.
         // it just means we did something
 
-        SQINFO("*** play once now nextEventTimeMetric = %f", nextEventTimeMetric);
+        //SQINFO("*** play once now nextEventTimeMetric = %f", nextEventTimeMetric);
 
         // processClocks will update trigger, etc.
         //     delayMetric -= delayMetricQuantized;
-        //  SQINFO("*** play once now delay metric after = %f", delayMetric);
+        //SQINFO("*** play once now delay metric after = %f", delayMetric);
         processClocks(metricTime);
     }
 }
@@ -208,7 +208,7 @@ inline void TriggerSequencer::processClocks(double curMetricTime) {
     trigger = false;
     //printf("enter proc clock, curevt =%p, delay = %d\n", curEvent, delay);
     if (!curEvent) {
-        SQINFO("--- leave clock early - ended\n");
+        //SQINFO("--- leave clock early - ended\n");
         return;  // seq is stopped
     }
 
@@ -218,14 +218,14 @@ inline void TriggerSequencer::processClocks(double curMetricTime) {
         //SQINFO("in proc clock, firing %f <= %f evt=%d", nextEventTimeMetric, curMetricTime, curEvent->evt);
         switch (curEvent->evt) {
             case END:
-                SQINFO("process clock setting end at 188\n");
+                //SQINFO("process clock setting end at 188\n");
                 curEvent = 0;  // stop seq by clering ptr
                 needData = true;
                 return;
             case TRIGGER:
                 trigger = true;
                 ++curEvent;  // and go to next one
-                SQINFO("trigger set true");
+                //SQINFO("trigger set true");
                 break;
 
             default:
@@ -233,7 +233,7 @@ inline void TriggerSequencer::processClocks(double curMetricTime) {
         }
 
         auto newDelayPPQ = curEvent->delayPPQ;
-        SQINFO("Process Clocks fetching new delay ppq = %d", newDelayPPQ);
+        //SQINFO("Process Clocks fetching new delay ppq = %d", newDelayPPQ);
         double newDelayMetric = double(newDelayPPQ) / double(StochasticNote::ppq);
 
         nextEventTimeMetric += newDelayMetric;

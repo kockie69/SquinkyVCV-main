@@ -53,14 +53,14 @@ float_4 Streamer::step(float_4 fm, bool fmEnabled) {
 float Streamer::stepTranspose(ChannelData& cd, float lfm) {
     assert(cd.curFloatSampleOffset >= 0);
 #ifdef _LOG
-    SQINFO("in stepTranspose offset=%f cd=%p", cd.curFloatSampleOffset, &cd);
+    //SQINFO("in stepTranspose offset=%f cd=%p", cd.curFloatSampleOffset, &cd);
 #endif
     if (cd.loopActive && (cd.curFloatSampleOffset >= (cd.loopData.loop_end - 2))) {
         const int dataBufferOffset = 3 - cd.loopData.loop_end;
 #ifdef _LOG
         {
             int x = CubicInterpolator<float>::getIntegerPart(dataBufferOffset + float(cd.curFloatSampleOffset));
-            SQINFO("loop, loope end x=%d to %d shift=%d", x - 1, x + 2, dataBufferOffset);
+            //SQINFO("loop, loope end x=%d to %d shift=%d", x - 1, x + 2, dataBufferOffset);
         }
 #endif
         float ret = CubicInterpolator<float>::interpolate(cd.loopEndBuffer, float(dataBufferOffset + cd.curFloatSampleOffset));
@@ -71,7 +71,7 @@ float Streamer::stepTranspose(ChannelData& cd, float lfm) {
 #ifdef _LOG
         {
             int x = CubicInterpolator<float>::getIntegerPart(float(cd.curFloatSampleOffset));
-            SQINFO("straight interp, case 1 linear x=%d to %d", x - 1, x + 2);
+            //SQINFO("straight interp, case 1 linear x=%d to %d", x - 1, x + 2);
         }
 #endif
         float ret = CubicInterpolator<float>::interpolate(cd.data, float(cd.curFloatSampleOffset));
@@ -81,7 +81,7 @@ float Streamer::stepTranspose(ChannelData& cd, float lfm) {
         // if not more data, something is wrong - we ran past end.
         // this can happen with transpose is high..
 #ifdef _LOG
-        SQINFO("ran past end offset=%f frames=%d", cd.curFloatSampleOffset, cd.frames);
+        //SQINFO("ran past end offset=%f frames=%d", cd.curFloatSampleOffset, cd.frames);
 #endif
         return 0;
     } else if (cd.curFloatSampleOffset < 1) {
@@ -90,7 +90,7 @@ float Streamer::stepTranspose(ChannelData& cd, float lfm) {
 #ifdef _LOG
         {
             int x = CubicInterpolator<float>::getIntegerPart(float(1 + cd.curFloatSampleOffset));
-            SQINFO("start: offset buffer interp,  x=%d to %d", x - 1, x + 2);
+            //SQINFO("start: offset buffer interp,  x=%d to %d", x - 1, x + 2);
         }
 #endif
         float ret = CubicInterpolator<float>::interpolate(cd.offsetBuffer, float(1 + cd.curFloatSampleOffset));
@@ -106,7 +106,7 @@ float Streamer::stepTranspose(ChannelData& cd, float lfm) {
         {
             // int x = CubicInterpolator<float>::getIntegerPart(float(1 + cd.curFloatSampleOffset));
             int x = CubicInterpolator<float>::getIntegerPart(subIndex);
-            SQINFO("end buffer interp,  x=%d to %d", x - 1, x + 2);
+            //SQINFO("end buffer interp,  x=%d to %d", x - 1, x + 2);
         }
 #endif
         float ret = CubicInterpolator<float>::interpolate(cd.endBuffer, subIndex);
@@ -119,16 +119,16 @@ float Streamer::stepTranspose(ChannelData& cd, float lfm) {
             assert(false);
             // const unsigned int loop_length = cd.loopData.loop_end - cd.loopData.loop_start;
             //cd.curFloatSampleOffset -= loop_length;
-            SQINFO("loop wrap, set offset to %f", cd.curFloatSampleOffset);
+            //SQINFO("loop wrap, set offset to %f", cd.curFloatSampleOffset);
         }
     }
-    SQINFO("Stream defaul case offset=%f, total=%d", cd.curFloatSampleOffset, cd.frames);
+    //SQINFO("Stream defaul case offset=%f, total=%d", cd.curFloatSampleOffset, cd.frames);
     return 0;
 }
 
 void Streamer::ChannelData::advancePointer(float lfm) {
 #ifdef _LOG
-        SQINFO("enter advance, offset=%f, trans=%f", curFloatSampleOffset, transposeMultiplier);
+        //SQINFO("enter advance, offset=%f, trans=%f", curFloatSampleOffset, transposeMultiplier);
 #endif
     curFloatSampleOffset += transposeMultiplier;
     curFloatSampleOffset += lfm;
@@ -140,8 +140,8 @@ void Streamer::ChannelData::advancePointer(float lfm) {
     //  if (loopActive && (curFloatSampleOffset > loopData.loop_end)) {
     if (loopActive && (curFloatSampleOffset >= (loopData.loop_end + 1))) {
 #ifdef _LOG
-        SQINFO("in advance loop, offset was %f", curFloatSampleOffset);
-        SQINFO("  loop end=%d loop start = %d", loopData.loop_end, loopData.loop_start);
+        //SQINFO("in advance loop, offset was %f", curFloatSampleOffset);
+        //SQINFO("  loop end=%d loop start = %d", loopData.loop_end, loopData.loop_start);
 #endif
         // original way - failed osc3 test
         const int loopLength = loopData.loop_end - loopData.loop_start;
@@ -150,19 +150,19 @@ void Streamer::ChannelData::advancePointer(float lfm) {
         // 2: try this instead, but then 4 does not wrap to zero, as it should
         // curFloatSampleOffset -= (loopData.loop_end - loopData.loop_start);
 #ifdef _LOG
-        SQINFO("after adjust: %f", curFloatSampleOffset);
+        //SQINFO("after adjust: %f", curFloatSampleOffset);
 #endif
         assert(curFloatSampleOffset >= 0);
     }
 #ifdef _LOG
-    SQINFO("Leaving advancePointer, frames = %d, offset = %f this=%p", frames, curFloatSampleOffset, this);
-    SQINFO("tmult = %f, lfm=%f", transposeMultiplier, lfm);
+    //SQINFO("Leaving advancePointer, frames = %d, offset = %f this=%p", frames, curFloatSampleOffset, this);
+    //SQINFO("tmult = %f, lfm=%f", transposeMultiplier, lfm);
 #endif
     if (!loopActive) {
         // if (!CubicInterpolator<float>::canInterpolate(float(curFloatSampleOffset), frames)) {
         if (curFloatSampleOffset > (frames - 1)) {
 #ifdef _LOG
-            SQINFO("shut off: setting arePlaying = false in advance pointer");
+            //SQINFO("shut off: setting arePlaying = false in advance pointer");
 #endif
             arePlaying = false;
         }
@@ -225,7 +225,7 @@ void Streamer::setSample(int whichChannel, const float* data, int totalFrames) {
 }
 
 void Streamer::clearSamples() {
-    SQINFO("Streamer::clearSamples()");
+    //SQINFO("Streamer::clearSamples()");
     for (int channel = 0; channel < 4; ++channel) {
         clearSamples(channel);
     }
@@ -246,10 +246,10 @@ void Streamer::setTranspose(float_4 amount) {
         bool doTranspose = delta > .0001;  // TODO: is this in tune enough?
         cd.transposeEnabled = doTranspose;
         cd.transposeMultiplier = xpose;
-      //  SQINFO("set t=%f on ch%d", cd.transposeMultiplier, channel);
+      //SQINFO("set t=%f on ch%d", cd.transposeMultiplier, channel);
 #if 0 // debuging trap
         if (xpose > 2) {
-            SQINFO("set t=%f on ch%d", cd.transposeMultiplier, channel);
+            //SQINFO("set t=%f on ch%d", cd.transposeMultiplier, channel);
             assert(false);
         }
 #endif
@@ -258,8 +258,8 @@ void Streamer::setTranspose(float_4 amount) {
 }
 
 void Streamer::ChannelData::_dump() const {
-    SQINFO("dumping %p", this);
-    SQINFO("vol=%f, te=%d tm=%f g = %f", vol, transposeEnabled, transposeMultiplier, gain);
+    //SQINFO("dumping %p", this);
+    //SQINFO("vol=%f, te=%d tm=%f g = %f", vol, transposeEnabled, transposeMultiplier, gain);
 }
 
 void Streamer::_assertValid() {
@@ -381,18 +381,18 @@ void Streamer::setLoopData(int chan, const CompiledRegion::LoopData& inData) {
     }
 #ifdef _LOG
     for (int i = 0; i < 4; ++i) {
-        SQINFO("offset buffer[%d]=%f", i, cd.offsetBuffer[i]);
+        //SQINFO("offset buffer[%d]=%f", i, cd.offsetBuffer[i]);
     }
-    SQINFO("%s", "");
+    //SQINFO("%s", "");
     for (int i = 0; i < 4; ++i) {
-        SQINFO("end buffer[%d]=%f", i, cd.endBuffer[i]);
+        //SQINFO("end buffer[%d]=%f", i, cd.endBuffer[i]);
     }
-    SQINFO("%s", "");
+    //SQINFO("%s", "");
     for (int i = 0; i < 8; ++i) {
-        SQINFO("loop_end buffer [%d]=%f", i, cd.loopEndBuffer[i]);
+        //SQINFO("loop_end buffer [%d]=%f", i, cd.loopEndBuffer[i]);
     }
-    SQINFO("loopActive = %d, loop end = %d", channels[chan].loopActive, channels[chan].loopData.loop_end);
-    SQINFO("offset = %d", channels[chan].loopData.offset);
-    SQINFO("------");
+    //SQINFO("loopActive = %d, loop end = %d", channels[chan].loopActive, channels[chan].loopData.loop_end);
+    //SQINFO("offset = %d", channels[chan].loopData.offset);
+    //SQINFO("------");
 #endif
 }

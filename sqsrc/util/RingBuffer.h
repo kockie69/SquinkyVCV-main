@@ -49,10 +49,10 @@ private:
 
 template <>
 inline void SqRingBuffer<uint16_t, 3>::_dump() {
-    SQINFO("*** ring buffer dump.");
-    SQINFO("in=%d out=%d", inIndex, outIndex);
+    //SQINFO("*** ring buffer dump.");
+    //SQINFO("in=%d out=%d", inIndex, outIndex);
     for (int i = 0; i < 3; ++i) {
-        SQINFO("buffer[%d] = %x", i, memory[i]);
+        //SQINFO("buffer[%d] = %x", i, memory[i]);
     }
 }
 

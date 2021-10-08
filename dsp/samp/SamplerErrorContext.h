@@ -12,10 +12,10 @@ public:
     void dump() const {
         //SQWARN("err dump nimp");
         if (!unrecognizedOpcodes.empty()) {
-            SQINFO("unimplemented opcodes:");
+            //SQINFO("unimplemented opcodes:");
         }
         for (auto x : unrecognizedOpcodes) {
-            SQINFO("%s", x.c_str());
+            //SQINFO("%s", x.c_str());
         }
     }
     std::set<std::string> unrecognizedOpcodes;

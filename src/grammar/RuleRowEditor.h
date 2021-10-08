@@ -10,7 +10,7 @@ using StochasticProductionRuleEntryPtr = std::shared_ptr<StochasticProductionRul
 class RuleRowEditor : public ModuleWidget {
 public:
     RuleRowEditor(StochasticProductionRuleEntryPtr entry);
-    ~RuleRowEditor() { SQINFO("dtor or RuleRowEditor");
+    ~RuleRowEditor() { //SQINFO("dtor or RuleRowEditor");
      }
     void draw(const DrawArgs& args) override;
     void step() override;

@@ -94,7 +94,7 @@ inline bool GenerativeTriggerGenerator2::updateToMetricTime(double metricTime, f
     const bool needData = _seq->getNeedDataAndReset();
 
     if (needData) {
-        SQINFO("GTG::calling generator from updateToMetricTime (%f)", metricTime);
+        //SQINFO("GTG::calling generator from updateToMetricTime (%f)", metricTime);
         generate();
         _seq->updateToMetricTime(metricTime, quantizationInterval, running);
         assert(!_seq->getNeedDataAndReset());
@@ -103,7 +103,7 @@ inline bool GenerativeTriggerGenerator2::updateToMetricTime(double metricTime, f
 }
 
 inline void GenerativeTriggerGenerator2::generate() {
-    SQINFO("---------- gtg generate new --------------");
+    //SQINFO("---------- gtg generate new --------------");
     assert(_grammar);
     GTGEvaluator2 es(_r, _data);
     es.grammar = _grammar;
@@ -118,5 +118,5 @@ inline void GenerativeTriggerGenerator2::generate() {
         _seq->resetData(_data);
         assert(!_seq->getEnd());
     }
-    //    SQINFO("---------- generate new exit --------------");
+    //SQINFO("---------- generate new exit --------------");
 }

@@ -117,7 +117,7 @@ inline SeqClock2::ClockResults SeqClock2::update(int samplesElapsed, float exter
 
     if (!runStop) {
         results.totalElapsedTime = curMetricTime;
-        SQINFO("leaving on runstop");
+        //SQINFO("leaving on runstop");
         return results;
     }
 
@@ -126,15 +126,15 @@ inline SeqClock2::ClockResults SeqClock2::update(int samplesElapsed, float exter
         // external clock
         clockProcessor.go(externalClock);
         if (clockProcessor.trigger()) {
-            SQINFO("seqClock proc new one");
+            //SQINFO("seqClock proc new one");
             // if an external clock fires, advance the time.
             // But if we are reset (negative time), then always go to zero
             if (curMetricTime >= 0) {
                 curMetricTime += metricTimePerClock;
-                SQINFO("cur ret adv to %f 1/64=%f", curMetricTime, 1.0 / 64);
+                //SQINFO("cur ret adv to %f 1/64=%f", curMetricTime, 1.0 / 64);
             } else {
                 curMetricTime = 0;
-                SQINFO("curMetricTime set to zero");
+                //SQINFO("curMetricTime set to zero");
             }
         }
     }
@@ -195,7 +195,7 @@ inline void SeqClock2::setup(ClockRate inputSetting, float, float sampleT) {
             metricTimePerClock = 1.0 / 96.0;
             break;
         case ClockRate::Div64:
-            SQINFO("clock setup div64");
+            //SQINFO("clock setup div64");
             metricTimePerClock = .0625 / 4.0;
             break;
         case ClockRate::Div32:
@@ -221,7 +221,7 @@ inline void SeqClock2::setup(ClockRate inputSetting, float, float sampleT) {
             fflush(stdout);
             assert(false);
     }
-    SQINFO("after clock setup, met/ck = %f", metricTimePerClock);
+    //SQINFO("after clock setup, met/ck = %f", metricTimePerClock);
 }
 
 inline std::vector<std::string> SeqClock2::getClockRates() {

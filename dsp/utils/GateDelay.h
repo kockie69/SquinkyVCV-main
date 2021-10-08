@@ -33,23 +33,23 @@ private:
 // Turn the ring buffer into a delay line by pushing enough zeros into it
 template <int SIZE>
 GateDelay<SIZE>::GateDelay() {
-    SQINFO("ctor of gate delay here is buffer");
+    //SQINFO("ctor of gate delay here is buffer");
     // ringBuffer._dump();
     for (int i = 0; i < SIZE; ++i) {
         ringBuffer.push(0);
-        SQINFO("ctor of gate dela pushed one here is buffer");
+        //SQINFO("ctor of gate dela pushed one here is buffer");
         //ringBuffer._dump();
     }
 }
 
 template <int SIZE>
 void GateDelay<SIZE>::addGates(const float_4& fourGates) {
-    SQINFO("enter add gate");
+//SQINFO("enter add gate");
     assert(gatesAddedToFrame < 4);
     auto x = rack::simd::movemask(fourGates);
     addBuffer |= (x << (gatesAddedToFrame * 4));
     ++gatesAddedToFrame;
-    SQINFO("after add, num=%d val=%x", gatesAddedToFrame, addBuffer);
+//SQINFO("after add, num=%d val=%x", gatesAddedToFrame, addBuffer);
 }
 
 template <int SIZE>
@@ -89,6 +89,6 @@ float_4 GateDelay<SIZE>::getGates() {
     auto temp = movemask_inverse_alternative(retI);
     ret = temp;
     gatesPulledFromFrame++;
-    //  SQINFO("get returning %s", toStr(ret).c_str());
+    //SQINFO("get returning %s", toStr(ret).c_str());
     return ret;
 }

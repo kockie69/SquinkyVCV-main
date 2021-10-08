@@ -24,7 +24,7 @@ GMRScreenHolder::GMRScreenHolder(const Vec &pos, const Vec &size, StochasticGram
     // Capturing `this` is a sin. But here we are relying on
     // VCV for memory management. It's fine (if we are careful).
     header->registerCallback([this](int index) {
-        SQINFO("header callback %d", index);
+        //SQINFO("header callback %d", index);
         this->onNewTab(index);
     });
     this->header = header;
@@ -37,7 +37,7 @@ GMRScreenHolder::GMRScreenHolder(const Vec &pos, const Vec &size, StochasticGram
 }
 
 GMRScreenHolder::~GMRScreenHolder() {
-    SQINFO("dtor of GMRScreenHolder");
+    //SQINFO("dtor of GMRScreenHolder");
     for (int i = 0; i < int(screens.size()); ++i) {
         // one of the screens is on the stage, and will get killed anyway
         if (i != currentTab) {
@@ -52,7 +52,7 @@ void GMRScreenHolder::sizeChild(Widget *child) {
     child->box.size.x = this->box.size.x;
     child->box.size.y = this->box.size.y - headerHeight;
 
-    SQINFO("size child, leave = %f height=%f", child->box.pos.y, child->box.size.y);
+    //SQINFO("size child, leave = %f height=%f", child->box.pos.y, child->box.size.y);
 }
 
 void GMRScreenHolder::setNewGrammar(StochasticGrammarPtr gmr) {
@@ -96,7 +96,7 @@ void GMRScreenHolder::onNewTab(int index) {
         assert(index > 0);
         Widget *newScreen = new ProductionRuleEditor(grammar, allLHS[index - 1]);
         sizeChild(newScreen);
-        SQINFO("onnewtab makde new one = %f height=%f", newScreen->box.pos.y, newScreen->box.size.y);
+        //SQINFO("onnewtab makde new one = %f height=%f", newScreen->box.pos.y, newScreen->box.size.y);
         screens[index] = newScreen;
     }
 
@@ -147,7 +147,7 @@ GMRScreenHolder::draw(const DrawArgs &args) {
     {
         static int count = 0;
         if (!count) {
-            SQINFO("x=%f %f", x1, x2);
+            //SQINFO("x=%f %f", x1, x2);
             ++count;
             if (count > 20) {
                 count = 0;

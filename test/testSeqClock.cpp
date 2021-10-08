@@ -298,12 +298,13 @@ static double getExpectedResetTime() {
 }
 
 template <>
-static double getExpectedResetTime<SeqClock>() {
+//static double getExpectedResetTime<SeqClock>() {
+double getExpectedResetTime<SeqClock>() {
     return -1;
 }
 
 template <>
-static double getExpectedResetTime<SeqClock2>() {
+double getExpectedResetTime<SeqClock2>() {
     return 0;
 }
 

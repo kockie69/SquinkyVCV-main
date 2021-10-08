@@ -28,7 +28,7 @@ inline float_4 Limiter::step(float_4 input)
     float_4 reductionGain = threshold / lag.get();
     float_4 gain = SimdBlocks::ifelse( lag.get() > threshold, reductionGain, 1);
 #if 0
-    SQINFO("input = %f, lag=%f reduct = %f gain=%f",
+    //SQINFO("input = %f, lag=%f reduct = %f gain=%f",
         input[0],
         lag.get()[0],
         reductionGain[0],

@@ -22,7 +22,7 @@ void GMRTabbedHeader::setNewGrammar(StochasticGrammarPtr gmr) {
     auto lhs = grammar->getAllLHS();
     for (auto note : lhs) {
         std::string s = note.toText();
-        SQINFO("make header, lab %s", s.c_str());
+        //SQINFO("make header, lab %s", s.c_str());
         labels.push_back(s);
     }
 
@@ -40,7 +40,7 @@ void GMRTabbedHeader::draw(const DrawArgs& args) {
     drawTabText(vg);
     drawLineUnderTabs(vg);
 
-    SQINFO("tabbed draw, y=%f, height=%f", this->box.pos.y, this->box.size.y);
+    //SQINFO("tabbed draw, y=%f, height=%f", this->box.pos.y, this->box.size.y);
     OpaqueWidget::draw(args);
 }
 
@@ -95,18 +95,18 @@ void GMRTabbedHeader::onButton(const event::Button& e) {
     int button = e.button;
     float x = e.pos.x;
        float y = e.pos.y;
-    SQINFO("button in header, type=%d x=%fx, y=%f", button, x, y);
+    //SQINFO("button in header, type=%d x=%fx, y=%f", button, x, y);
     const int newIndex = x2index(x);
-    SQINFO("x2index ret %d", newIndex);
+    //SQINFO("x2index ret %d", newIndex);
     if (newIndex >= 0) {
         selectNewTab(newIndex);
     }
 }
 
 int GMRTabbedHeader::x2index(float x) const {
-    SQINFO("x2INdex called with x=%f", x);
+    //SQINFO("x2INdex called with x=%f", x);
     for (int i = 0; i < int(labels.size()); ++i) {
-        SQINFO("at %d %f, %f", i, labelPositions[i].first, labelPositions[i].second);
+        //SQINFO("at %d %f, %f", i, labelPositions[i].first, labelPositions[i].second);
         if ((x >= labelPositions[i].first) && (x <= (labelPositions[i].first + labelPositions[i].second))) {
             return i;
         }
@@ -115,7 +115,7 @@ int GMRTabbedHeader::x2index(float x) const {
 }
 
 void GMRTabbedHeader::selectNewTab(int index) {
-    SQINFO("selectNewTab %d", index);
+    //SQINFO("selectNewTab %d", index);
     if (currentTab != index) {
         currentTab = index;
         if (theCallback) {
@@ -140,7 +140,7 @@ void GMRTabbedHeader::updateLabelPositions(NVGcontext* vg) {
         int f = regFont->handle;
         nvgFontFaceId(vg, f);
         nvgFontSize(vg, 12);
-        //  SQINFO("about to call next x with x=%f label=%s", x, labels[i].c_str());
+        //SQINFO("about to call next x with x=%f label=%s", x, labels[i].c_str());
 
         const float width = nvgTextBounds(vg, 1, 1, labels[i].c_str(), NULL, NULL);
         labelPositions.push_back(std::make_pair(x, width));
@@ -149,7 +149,7 @@ void GMRTabbedHeader::updateLabelPositions(NVGcontext* vg) {
         assert(width > 0);
         //x += (width + spaceBetweenTabs);
         x = x + width + spaceBetweenTabs;
-        SQINFO("at bottom of loop, x set to %f", x);
+        //SQINFO("at bottom of loop, x set to %f", x);
     }
 }
 

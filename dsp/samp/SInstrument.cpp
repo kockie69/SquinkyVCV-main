@@ -5,7 +5,7 @@
 
 void SInstrument::_dump() {
     const int hsize = headings.size();
-    SQINFO("Num Headings = %d", hsize);
+    //SQINFO("Num Headings = %d", hsize);
     for (auto h : headings) {
         //SQINFO("--h:");
         //SHeading::dumpKeysAndValues(headings);
