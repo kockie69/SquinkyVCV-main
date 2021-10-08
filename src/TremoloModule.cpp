@@ -41,6 +41,12 @@ TremoloModule::TremoloModule()
 {
     configBypass(Comp::AUDIO_INPUT, Comp::AUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Comp::CLOCK_INPUT,"Clock");
+    configInput(Comp::AUDIO_INPUT,"Audio");
+    configOutput(Comp::AUDIO_OUTPUT,"Audio");
+    configOutput(Comp::SAW_OUTPUT,"Saw");
+    configOutput(Comp::LFO_OUTPUT, "Low Frequency Oscillator");
+
     tremolo = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);

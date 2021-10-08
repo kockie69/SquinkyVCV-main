@@ -54,6 +54,9 @@ private:
 
 Compressor2Module::Compressor2Module() {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Comp::LAUDIO_INPUT,"Audio");
+    configInput(Comp::SIDECHAIN_INPUT,"Sidechain");
+    configOutput(Comp::LAUDIO_OUTPUT,"Audio");
     compressor = std::make_shared<Comp>(this);
 
     addParams();

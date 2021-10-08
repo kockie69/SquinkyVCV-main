@@ -52,6 +52,15 @@ FunVModule::FunVModule() : vco(this)
 {
     // Set the number of components
     config(vco.NUM_PARAMS, vco.NUM_INPUTS, vco.NUM_OUTPUTS, vco.NUM_LIGHTS);
+    configInput(vco.PITCH_INPUT,"1V/oct pitch");
+    configInput(vco.FM_INPUT,"Frequency modulation");
+    configInput(vco.SYNC_INPUT,"Sync");
+    configInput(vco.PW_INPUT,"Pulse width modulation");
+    configOutput(vco.SIN_OUTPUT,"Sine");
+    configOutput(vco.TRI_OUTPUT,"Triangle");
+    configOutput(vco.SAW_OUTPUT,"Saw");
+    configOutput(vco.SQR_OUTPUT,"Square");
+ 
     onSampleRateChange();
     std::shared_ptr<IComposite> icomp = FunVCOComposite<WidgetComposite>::getDescription();
     SqHelper::setupParams(icomp, this);

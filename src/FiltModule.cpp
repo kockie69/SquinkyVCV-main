@@ -44,6 +44,17 @@ FiltModule::FiltModule()
     configBypass(Comp::L_AUDIO_INPUT, Comp::L_AUDIO_OUTPUT);
     configBypass(Comp::R_AUDIO_INPUT, Comp::R_AUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Comp::CV_INPUT1,"Cutoff frequency");
+    configInput(Comp::CV_INPUT2,"Cutoff frequency");
+    configInput(Comp::Q_INPUT,"Filter resonance");
+    configInput(Comp::DRIVE_INPUT,"Drive");
+    configInput(Comp::SLOPE_INPUT,"Slope");
+    configInput(Comp::EDGE_INPUT,"Edge");
+    configInput(Comp::L_AUDIO_INPUT,"Left Audio");
+    configInput(Comp::R_AUDIO_INPUT,"Right Audio");
+    configOutput(Comp::L_AUDIO_OUTPUT,"Left Audio");
+    configOutput(Comp::R_AUDIO_OUTPUT,"Right Audio");
+
     filt = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 

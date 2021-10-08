@@ -68,6 +68,23 @@ MixMModule::MixMModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
     
+    for (int channel = 0; channel<Comp::numChannels; ++channel) {
+        configInput(channel + Comp::AUDIO0_INPUT, "Channel " + std::to_string(channel+1) + " Audio");
+        configOutput(channel + Comp::CHANNEL0_OUTPUT, "Channel " + std::to_string(channel+1) + " Audio");
+        configInput(channel + Comp::MUTE0_INPUT, "Channel " + std::to_string(channel+1) + " Mute CV");
+        configInput(channel + Comp::LEVEL0_INPUT, "Channel " + std::to_string(channel+1) + " Volume Control CV");
+        configInput(channel + Comp::PAN0_INPUT, "Channel " + std::to_string(channel+1) + " Pan Control CV");
+    }
+
+    for (int channel = 0; channel<2; ++channel) {
+        std::string pos = (channel==0) ? "Left " : "Right ";       
+        configOutput(channel + Comp::LEFT_OUTPUT, pos + "Main stereo");
+        configOutput(channel + Comp::LEFT_SENDb_OUTPUT, pos + "Aux bus 2 send");
+        configOutput(channel + Comp::LEFT_SEND_OUTPUT, pos + "Aux bus 1 send");
+        configInput(channel + Comp::LEFT_RETURNb_INPUT, pos + "Aux bus 2 return");
+        configInput(channel + Comp::LEFT_RETURN_INPUT, pos + "Aux bus 1 return");
+    }
+
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 
 
@@ -156,12 +173,12 @@ static float muteY = 0;
 
 void MixMWidget::makeStrip(
     MixMModule* module,
-    std::shared_ptr<IComposite> icomp,
-    int channel)
+    std::shared_ptr<IComposite> icomp,int channel)
 {
     const float x = channelX + channel * dX;
 
     float y = channelY;
+
 
     addOutput(createOutputCentered<PJ301MPort>(
         Vec(x, y),
@@ -176,6 +193,7 @@ void MixMWidget::makeStrip(
 #endif
 
     y -= channelDy;
+
     addInput(createInputCentered<PJ301MPort>(
         Vec(x, y),
         module,
@@ -188,6 +206,7 @@ void MixMWidget::makeStrip(
     }
 #endif
     y -= channelDy;
+
     addInput(createInputCentered<PJ301MPort>(
         Vec(x, y),
         module,
@@ -201,7 +220,7 @@ void MixMWidget::makeStrip(
 #endif
 
     y -= channelDy;
-    addInput(createInputCentered<PJ301MPort>(
+        addInput(createInputCentered<PJ301MPort>(
         Vec(x, y),
         module,
         channel + Comp::LEVEL0_INPUT));
@@ -214,7 +233,7 @@ void MixMWidget::makeStrip(
 #endif
 
     y -= channelDy;
-    addInput(createInputCentered<PJ301MPort>(
+        addInput(createInputCentered<PJ301MPort>(
         Vec(x, y),
         module,
         channel + Comp::PAN0_INPUT));
@@ -346,7 +365,7 @@ void MixMWidget::makeMaster(MixMModule* module, std::shared_ptr<IComposite> icom
     for (int channel = 0; channel<2; ++channel) {
         y = channelY;
         x = x0 + 13 + (channel * dX) + (WIDE * 15);
-
+        
         addOutput(createOutputCentered<PJ301MPort>(
             Vec(x, y),
             module,
@@ -359,6 +378,7 @@ void MixMWidget::makeMaster(MixMModule* module, std::shared_ptr<IComposite> icom
             );
         }
 #endif
+
 
         y -= channelDy;
         addOutput(createOutputCentered<PJ301MPort>(

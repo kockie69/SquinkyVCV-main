@@ -210,6 +210,16 @@ private:
 WVCOModule::WVCOModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Comp::GATE_INPUT,"Gate");
+    configInput(Comp::LINEAR_FM_DEPTH_INPUT,"Linear Frequency Modulation Depth");
+    configInput(Comp::FEEDBACK_INPUT,"Feedback");
+    configInput(Comp::SHAPE_INPUT,"Shape");
+    configInput(Comp::VOCT_INPUT,"1V/oct");
+    configInput(Comp::FM_INPUT,"Frequency modulation");
+    configInput(Comp::LINEAR_FM_INPUT,"Linear Frequency Modulation");
+    configInput(Comp::SYNC_INPUT,"Sync");
+    configOutput(Comp::MAIN_OUTPUT,"Audio");
+
     wvco = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 

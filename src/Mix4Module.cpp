@@ -66,7 +66,13 @@ void Mix4Module::setExternalOutput(float* buf)
 Mix4Module::Mix4Module()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
-    
+    for (int channel = 0; channel<Comp::numChannels; ++channel) {
+        configInput(channel + Comp::AUDIO0_INPUT, "Channel " + std::to_string(channel+1) + " Audio");
+        configOutput(channel + Comp::CHANNEL0_OUTPUT, "Channel " + std::to_string(channel+1) + " Audio");
+        configInput(channel + Comp::MUTE0_INPUT, "Channel " + std::to_string(channel+1) + " Mute CV");
+        configInput(channel + Comp::LEVEL0_INPUT, "Channel " + std::to_string(channel+1) + " Volume Control CV");
+        configInput(channel + Comp::PAN0_INPUT, "Channel " + std::to_string(channel+1) + " Pan Control CV");
+    }
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 
     Mix4 = std::make_shared<Comp>(this);

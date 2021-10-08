@@ -67,6 +67,14 @@ void SinesModule::onSampleRateChange()
 SinesModule::SinesModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+        for (int i=0; i < 9 ;i++) 
+            configInput(Comp::DRAWBAR1_INPUT + i,"Drawbar " + std::to_string(i+1) + " Volume");
+        configInput(Comp::VOCT_INPUT,"1V/oct");
+        configInput(Comp::GATE_INPUT,"Gate");
+        configOutput(Comp::MAIN_OUTPUT,"Audio");
+        configInput(Comp::ATTACK_INPUT,"Attack");
+        configInput(Comp::RELEASE_INPUT,"Release");
+
     blank = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 

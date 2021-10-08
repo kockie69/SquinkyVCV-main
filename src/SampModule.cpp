@@ -63,6 +63,14 @@ private:
 
 SampModule::SampModule() {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configOutput(Comp::AUDIO_OUTPUT,"Audio");
+    configInput(Comp::PITCH_INPUT,"V/Oct Pitch");
+    configInput(Comp::GATE_INPUT,"Gate");
+    configInput(Comp::VELOCITY_INPUT,"Velocity");
+    configInput(Comp::FM_INPUT,"Frequency modulation");
+    configInput(Comp::LFM_INPUT,"Linear Frequency Modulation");
+    configInput(Comp::LFMDEPTH_INPUT,"Linear Frequency Modulation Depth");
+
     samp = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     //SqHelper::setupParams(icomp, this);
@@ -428,7 +436,7 @@ std::string SampWidget::buildPitchrangeUIString() {
     std::string lowName = PitchUtils::pitch2str(lowCV);
     const float hiCV = PitchUtils::semitoneToCV(info->maxPitch - 12);
     std::string hiName = PitchUtils::pitch2str(hiCV);
-    SQINFO("build range, %d, %f, %s %s",  info->minPitch, lowCV, lowName.c_str(), hiName.c_str());
+    //SQINFO("build range, %d, %f, %s %s",  info->minPitch, lowCV, lowName.c_str(), hiName.c_str());
     s.add("Pitch range: ");
     s.add(lowName);
     s.add(" to ");
@@ -643,7 +651,7 @@ static void shouldFindMalformed(const char* input) {
     //if (!err.empty()) SQFATAL(err.c_str());
     assert(err.empty());
 
-    SQINFO("now will compile");
+    //SQINFO("now will compile");
     SamplerErrorContext errc;
     CompiledInstrumentPtr cinst = CompiledInstrument::make(errc, inst);
     if (!cinst) {

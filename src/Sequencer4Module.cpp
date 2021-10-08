@@ -86,6 +86,17 @@ private:
 Sequencer4Module::Sequencer4Module() {
     runStopRequested = false;
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+        configInput(Comp::CLOCK_INPUT,"Clock");
+        configInput(Comp::RESET_INPUT, "Reset");
+        configInput(Comp::RUN_INPUT, "Run");
+        configInput(Comp::SELECT_CV_INPUT, "Select CV");
+        configInput(Comp::SELECT_GATE_INPUT, "Select gate");
+        for (int i = 0; i <4 ; i++) {
+            configOutput(Comp::CV0_OUTPUT + i, "Track " + std::to_string(i+1) + " CV"); 
+            configOutput(Comp::GATE0_OUTPUT + i, "Track " + std::to_string(i+1) + " gate");
+            configInput(Comp::MOD0_INPUT + i, "Track " + std::to_string(i+1) + " CV");
+        }
+
     MidiSong4Ptr song = MidiSong4::makeTest(MidiTrack::TestContent::empty, 0);
     seq4 = MidiSequencer4::make(song);
     seq4Comp = std::make_shared<Comp>(this, song);

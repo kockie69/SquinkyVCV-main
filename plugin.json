@@ -15,7 +15,7 @@
 			"slug": "squinkylabs-mixm",
 			"name": "Form",
 			"description": "Mixer master module",
-			"manualUrl": "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/form.md",
+			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/form.md",
 			"disabled": false,
 			"tags": ["Mixer"]
 		},
@@ -24,7 +24,7 @@
 			"name": "ExTwo",
 			"description": "Two channel stereo mixer expander",
 			"disabled": false,
-			"manualUrl": "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/extwo.md",
+			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/extwo.md",
 			"tags": ["Mixer", "Expander"]
 		},
 		{
@@ -32,7 +32,7 @@
 			"name": "ExFor",
 			"description": "4 channel mixer expander",
 			"disabled": false,
-			"manualUrl": "https://github.com/squinkylabs/SquinkyVCV/blob/main/docs/exfor.md",
+			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/exfor.md",
 			"tags": ["Mixer", "Expander"]
 		},
 		{
