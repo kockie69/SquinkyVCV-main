@@ -33,6 +33,14 @@ VocalFilterModule::VocalFilterModule() :
 {
     configBypass(Comp::AUDIO_INPUT, Comp::AUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+           
+    configInput(Comp::FILTER_VOWEL_CV_INPUT,"Filter vowel");
+    configInput(Comp::FILTER_FC_CV_INPUT,"Filter frequency cutoff");
+    configInput(Comp::FILTER_Q_CV_INPUT,"Filter Q");
+    configInput(Comp::FILTER_BRIGHTNESS_INPUT,"Filter brightness");
+    configInput(Comp::AUDIO_INPUT,"Audio");
+    configOutput(Comp::AUDIO_OUTPUT,"Audio");
+
     onSampleRateChange();
     vocalFilter.init();
     std::shared_ptr<IComposite> icomp = Comp::getDescription();

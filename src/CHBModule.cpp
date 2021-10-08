@@ -39,21 +39,22 @@ CHBModule::CHBModule() : chb(this)
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
     for (int i = 0; i < 10; ++i) {
-    configInput(chb.H0_INPUT + i,"Harmonic " + std::to_string(i+1));
+        configInput(chb.H0_INPUT + i,"Harmonic " + std::to_string(i+1));
     }
-    configInput(CHB<WidgetComposite>::CV_INPUT,"");
-    configInput(CHB<WidgetComposite>::PITCH_MOD_INPUT,"");
-    configInput(CHB<WidgetComposite>::LINEAR_FM_INPUT,"");
-    configInput(CHB<WidgetComposite>::EVEN_INPUT,"");
-    configInput(CHB<WidgetComposite>::SLOPE_INPUT,"");
-    configInput(CHB<WidgetComposite>::ODD_INPUT,"");
+    // top row
+    configInput(CHB<WidgetComposite>::CV_INPUT,"1V/oct");
+    configInput(CHB<WidgetComposite>::PITCH_MOD_INPUT,"Modulation depth");
+    configInput(CHB<WidgetComposite>::LINEAR_FM_INPUT,"Linear frequency modulation");
+    configInput(CHB<WidgetComposite>::EVEN_INPUT,"Even level control");
+    configInput(CHB<WidgetComposite>::SLOPE_INPUT,"Slope");
+    configInput(CHB<WidgetComposite>::ODD_INPUT,"Odd level control");
     //bottom row
-    configInput(CHB<WidgetComposite>::AUDIO_INPUT,"");
-    configInput(CHB<WidgetComposite>::GAIN_INPUT,"");
-    configInput(CHB<WidgetComposite>::ENV_INPUT,"");
-    configInput(CHB<WidgetComposite>::RISE_INPUT,"");
-    configInput(CHB<WidgetComposite>::FALL_INPUT,"");
-    configInput(CHB<WidgetComposite>::MIX_OUTPUT,"");
+    configInput(CHB<WidgetComposite>::AUDIO_INPUT,"Audio");
+    configInput(CHB<WidgetComposite>::GAIN_INPUT,"Gain");
+    configInput(CHB<WidgetComposite>::ENV_INPUT,"Envelope generator");
+    configInput(CHB<WidgetComposite>::RISE_INPUT,"Rise");
+    configInput(CHB<WidgetComposite>::FALL_INPUT,"Fall");
+    configOutput(CHB<WidgetComposite>::MIX_OUTPUT,"Mix"); 
 }
 
 void CHBModule::step()

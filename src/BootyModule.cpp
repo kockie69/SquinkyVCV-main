@@ -50,7 +50,12 @@ extern const char* ranges[];
 #ifdef __V1x
 BootyModule::BootyModule()
 {
-    config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);   
+    config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS); 
+        configInput(Comp::AUDIO_INPUT,"Audio");
+        configInput(Comp::CV_INPUT,"Disorder");
+        configOutput(Comp::SIN_OUTPUT,"Up-shifted");
+        configOutput(Comp::COS_OUTPUT,"Down-shifted");
+
     shifter = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);

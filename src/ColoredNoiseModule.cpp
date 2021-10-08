@@ -37,6 +37,9 @@ private:
 ColoredNoiseModule::ColoredNoiseModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configOutput(Comp::AUDIO_OUTPUT,"Noise");
+    configInput(Comp::SLOPE_CV,"Slope");
+
     noiseSource = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
