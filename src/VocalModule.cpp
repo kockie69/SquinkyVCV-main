@@ -34,6 +34,16 @@ VocalModule::VocalModule()
 {
     configBypass(Comp::AUDIO_INPUT, Comp::AUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configOutput(Comp::LFO0_OUTPUT,"LFO 1");
+    configOutput(Comp::LFO1_OUTPUT,"LFO 2");
+    configOutput(Comp::LFO2_OUTPUT,"LFO 3");
+    configInput(Comp::LFO_RATE_CV_INPUT,"LFO Rate");
+    configInput(Comp::FILTER_FC_CV_INPUT,"Filter FC");
+    configInput(Comp::FILTER_Q_CV_INPUT,"Filter Q");
+    configInput(Comp::FILTER_MOD_DEPTH_CV_INPUT,"Filter modulation depth");
+    configInput(Comp::AUDIO_INPUT,"Audio");
+    configOutput(Comp::AUDIO_OUTPUT,"Audio");
+
     animator = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
