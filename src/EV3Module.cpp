@@ -29,6 +29,18 @@ struct EV3Module : Module
 EV3Module::EV3Module()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    for (int i = 0; i < 3; ++i) {
+        configInput(Comp::CV1_INPUT + i,"1V/oct VCO " + std::to_string(i+1));
+        configInput(Comp::FM1_INPUT + i,"Frequency modulation VCO " + std::to_string(i+1));
+        configInput(Comp::PWM1_INPUT + i,"Pulse width modulation VCO " + std::to_string(i+1));
+    }
+    configOutput(Comp::VCO1_OUTPUT,"VCO 1");
+
+    configOutput(Comp::VCO2_OUTPUT,"VCO 2");
+
+    configOutput(Comp::VCO3_OUTPUT,"VCO 3");
+
+    configOutput(Comp::MIX_OUTPUT,"Mix");
 
     //wait until after config to allocate this guy.
     ev3 = std::make_shared<Comp>(this);

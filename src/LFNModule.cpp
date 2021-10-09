@@ -42,6 +42,11 @@ void LFNModule::onSampleRateChange()
 LFNModule::LFNModule() : lfn(this)
 {
     config(lfn.NUM_PARAMS,lfn.NUM_INPUTS,lfn.NUM_OUTPUTS,lfn.NUM_LIGHTS);
+    for (int i=0;i<5;i++) {
+        configInput(Comp::EQ0_INPUT + i,"EQ Gain");
+    }
+    configOutput(LFN<WidgetComposite>::OUTPUT,"Noise");
+
     onSampleRateChange();
     lfn.init();
     std::shared_ptr<IComposite> icomp = Comp::getDescription();

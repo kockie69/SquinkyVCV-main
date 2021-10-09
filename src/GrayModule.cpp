@@ -33,6 +33,10 @@ private:
 GrayModule::GrayModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Gray<WidgetComposite>::INPUT_CLOCK,"Clock");
+    configOutput(Gray<WidgetComposite>::OUTPUT_MIXED,"Mixed");
+    for (int i = 0; i < 8; ++i) 
+        configOutput(Gray<WidgetComposite>::OUTPUT_0 + i,"Gray code " + std::to_string(i+1));
 
     //wait until after config to allocate this guy.
     gray = std::make_shared<Comp>(this);

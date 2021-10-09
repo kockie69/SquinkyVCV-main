@@ -41,6 +41,14 @@ SequencerModule::SequencerModule()
 {
     runStopRequested = false;
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Comp::CLOCK_INPUT,"Clock");
+    configInput(Comp::RUN_INPUT,"Run");
+    configInput(Comp::RESET_INPUT,"Reset");
+    configInput(Comp::CV_INPUT,"CV");  
+    configInput(Comp::GATE_INPUT,"Gate"); 
+    configOutput(Seq<WidgetComposite>::CV_OUTPUT,"CV");
+    configOutput(Seq<WidgetComposite>::GATE_OUTPUT,"Gate");
+
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
     runStopRequested = false;

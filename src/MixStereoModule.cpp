@@ -65,7 +65,17 @@ void MixStereoModule::setExternalOutput(float* buf)
 MixStereoModule::MixStereoModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
-    
+    for (int channel = 0; channel<Comp::numChannels; ++channel) {
+        std::string pos = ((channel%2)==0) ? " Left" : " Right"; 
+        configInput(channel + Comp::AUDIO0_INPUT, "Channel " + std::to_string((channel/2)+1) + pos + " Audio");
+        configOutput(channel + Comp::CHANNEL0_OUTPUT, "Channel " + std::to_string((channel/2)+1) + pos + " Audio");
+    }
+
+    for (int group = 0; group<Comp::numGroups; ++group) {
+       configInput(group + Comp::MUTE0_INPUT, "Channel " + std::to_string(group+1) + " Mute CV");
+       configInput(group + Comp::LEVEL0_INPUT, "Channel " + std::to_string(group+1) + " Volume Control CV");
+       configInput(group + Comp::PAN0_INPUT, "Channel " + std::to_string(group+1) + " Pan Control CV");
+    }
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 
     MixStereo = std::make_shared<Comp>(this);

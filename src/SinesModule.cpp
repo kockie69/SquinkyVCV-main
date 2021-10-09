@@ -16,8 +16,8 @@ class Drawbar : public app::SvgSlider {
 public:
     Drawbar() {
         
-        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
-		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/blue-handle-16.svg")));    
+    //    setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
+	//	this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/blue-handle-16.svg")));    
 	}
 
     void DrawbarSvg(const std::string& handleName) {
@@ -25,12 +25,11 @@ public:
         
         maxHandlePos = math::Vec(-7, 10).plus(margin);
 		minHandlePos = math::Vec(-7, 90).plus(margin);
-
+        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
+		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, handleName.c_str())));
         background->box.pos = margin;
         this->box.size.x = 29;
         this->box.size.y = 120; 
-        setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/scaletx.svg")));
-		this->setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance, handleName.c_str())));
     }
 };
 
@@ -68,6 +67,14 @@ void SinesModule::onSampleRateChange()
 SinesModule::SinesModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+        for (int i=0; i < 9 ;i++) 
+            configInput(Comp::DRAWBAR1_INPUT + i,"Drawbar " + std::to_string(i+1) + " Volume");
+        configInput(Comp::VOCT_INPUT,"1V/oct");
+        configInput(Comp::GATE_INPUT,"Gate");
+        configOutput(Comp::MAIN_OUTPUT,"Audio");
+        configInput(Comp::ATTACK_INPUT,"Attack");
+        configInput(Comp::RELEASE_INPUT,"Release");
+
     blank = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 
@@ -148,7 +155,7 @@ const char* handles[] = {
 
 void SinesWidget::addDrawbars(SinesModule *module, std::shared_ptr<IComposite> icomp)
 {
-    float drawbarX = 4;
+    float drawbarX = 6;
     float drawbarDX = 29;
     float drawbarY = 132;
  

@@ -39,6 +39,19 @@ void SubModule::onSampleRateChange()
 SubModule::SubModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+
+    for (int side=0; side < 2; side++ ) {
+        std::string pos = (side==0) ? "VCO 1 " : "VCO 2 ";
+        configInput(Comp::PWM1_INPUT+side,pos + "Pulse Width Modulation");
+        configInput(Comp::SUB1A_TUNE_INPUT+side,pos + "Subharmonic A tune");
+        configInput(Comp::SUB1B_TUNE_INPUT+side,pos + "Subharmonic B tune");
+        configInput(Comp::MAIN1_LEVEL_INPUT+side,pos + "Main level");
+        configInput(Comp::SUB1A_LEVEL_INPUT+side,pos + "Subharmonic A level");
+        configInput(Comp::SUB1B_LEVEL_INPUT+side,pos + "Subharmonic B level");
+        configInput(Comp::VOCT_INPUT,"1V/oct");
+        configOutput(Comp::MAIN_OUTPUT,"Audio");
+    }
+
     blank = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 

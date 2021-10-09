@@ -44,6 +44,10 @@ CompressorModule::CompressorModule() {
     configBypass(Comp::LAUDIO_INPUT, Comp::LAUDIO_OUTPUT);
     configBypass(Comp::RAUDIO_INPUT, Comp::RAUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Comp::LAUDIO_INPUT, "Audio Left");
+    configInput(Comp::RAUDIO_INPUT, "Audio Right");
+    configOutput(Comp::LAUDIO_OUTPUT, "Audio Left");
+    configOutput(Comp::RAUDIO_OUTPUT, "Audio Right");
     compressor = std::make_shared<Comp>(this);
     addParams();
     onSampleRateChange();

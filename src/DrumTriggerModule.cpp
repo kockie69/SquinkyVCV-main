@@ -35,6 +35,32 @@ void DrumTriggerModule::onSampleRateChange()
 DrumTriggerModule::DrumTriggerModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Comp::CV_INPUT,"CV");
+    configInput(Comp::GATE_INPUT,"Gate");
+    std::string note;
+
+    for (int i; i < numTriggerChannels ;i++) {
+        switch (i) {
+            case 0: note="C";
+            break;
+            case 1: note="C#";
+            break;
+            case 2: note="D";
+            break;
+            case 3: note="D#";
+            break;
+            case 4: note="E";
+            break;
+            case 5: note="F";
+            break;
+            case 6: note="F#";
+            break;
+            case 7: note="G";
+            break;
+        }
+        configOutput(i + Comp::GATE0_OUTPUT,"Gate " + note);
+    }
+
     drumTrigger = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this); 

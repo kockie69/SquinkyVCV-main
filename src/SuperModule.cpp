@@ -41,6 +41,14 @@ void SuperModule::onSampleRateChange()
 SuperModule::SuperModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Super<WidgetComposite>::DETUNE_INPUT,"Detune");
+    configInput(Super<WidgetComposite>::MIX_INPUT,"Mix");
+    configInput(Super<WidgetComposite>::CV_INPUT,"1V/oct");
+    configInput(Super<WidgetComposite>::TRIGGER_INPUT,"Trigger");
+    configInput(Super<WidgetComposite>::FM_INPUT,"Frequency modulation");
+    configOutput(Super<WidgetComposite>::MAIN_OUTPUT_LEFT,"Main left");
+    configOutput(Super<WidgetComposite>::MAIN_OUTPUT_RIGHT,"Main right");
+
     paramQuantities[Comp::OCTAVE_PARAM]->snapEnabled = true;
     paramQuantities[Comp::OCTAVE_PARAM]->smoothEnabled = false;
     super = std::make_shared<Comp>(this);

@@ -63,6 +63,14 @@ private:
 
 SampModule::SampModule() {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configOutput(Comp::AUDIO_OUTPUT,"Audio");
+    configInput(Comp::PITCH_INPUT,"V/Oct Pitch");
+    configInput(Comp::GATE_INPUT,"Gate");
+    configInput(Comp::VELOCITY_INPUT,"Velocity");
+    configInput(Comp::FM_INPUT,"Frequency modulation");
+    configInput(Comp::LFM_INPUT,"Linear Frequency Modulation");
+    configInput(Comp::LFMDEPTH_INPUT,"Linear Frequency Modulation Depth");
+
     samp = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     //SqHelper::setupParams(icomp, this);

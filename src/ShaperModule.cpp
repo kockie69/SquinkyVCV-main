@@ -37,6 +37,13 @@ ShaperModule::ShaperModule() : shaper(this)
     configBypass(Shaper<WidgetComposite>::INPUT_AUDIO0, Shaper<WidgetComposite>::OUTPUT_AUDIO0);
     configBypass(Shaper<WidgetComposite>::INPUT_AUDIO1, Shaper<WidgetComposite>::OUTPUT_AUDIO1);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
+    configInput(Shaper<WidgetComposite>::INPUT_AUDIO0,"Left audio");
+    configInput(Shaper<WidgetComposite>::INPUT_AUDIO1,"Right audio");
+    configOutput(Shaper<WidgetComposite>::OUTPUT_AUDIO0,"Left audio");
+    configOutput(Shaper<WidgetComposite>::OUTPUT_AUDIO1,"Right audio");
+    configInput(Shaper<WidgetComposite>::INPUT_GAIN,"Gain");
+    configInput(Shaper<WidgetComposite>::INPUT_OFFSET,"Offset");
+
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
 }

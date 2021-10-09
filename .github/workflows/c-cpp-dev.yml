@@ -1,11 +1,14 @@
 name: Build VCV Rack Plugin Development
 on:
+  workflow_dispatch:
   push:
     branches:
-    - 'Nwe-Development'
+    - 'New-Development'
+    - master
   pull_request:
     branches:
     - 'New-Development'
+    - master
 env:
   rack-sdk-version: 2.git.042a9ce0
 
@@ -86,12 +89,30 @@ jobs:
           export RACK_DIR=$HOME/Rack-SDK
           make dep
           make dist
+<<<<<<< HEAD
+=======
+      - name: Create plantUml
+        if: runner.os == 'windows'
+        run: |  
+          pip install hpp2plantuml
+          hpp2plantuml -i "*/*.hpp" -o output.puml
+>>>>>>> Issue-#23-Add-port-and-light-labels
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           path: dist
           name: ${{ matrix.name }}
+<<<<<<< HEAD
 
+=======
+      - name: Upload PlantUML output
+        if: runner.os == 'windows'
+        uses: actions/upload-artifact@v2
+        with:
+          name: PlantUML-out
+          path: output.puml
+       
+>>>>>>> Issue-#23-Add-port-and-light-labels
   publish:
     name: Publish plugin
     # only create a release if a tag was created that is called e.g. v1.2.3
