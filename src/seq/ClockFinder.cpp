@@ -392,13 +392,30 @@ void ClockFinder::go(ModuleWidget* host, int div, int clockInput, int runInput, 
 
     // const NVGcolor color = nvgRGB(0, 0, 0);
     for (int i = 0; i < 3; ++i) {
-        CableWidget* cable = new CableWidget();
-        // cable->color = color;
-        cable->outputPort=outputs[i];
-        cable->inputPort=inputs[i];
-        APP->scene->rack->addCable(cable);
+        rack::engine::Cable* cable = new rack::engine::Cable;
+        cable->inputModule=host->getModule();
+        cable->outputModule=moduleAndDescription.first->getModule();
+        cable->id=-1;      
+        for (PortWidget *port : outputs) {
+            if (port->portId == outputs[i]->portId) {
+                cable->outputId=port->portId;
+                break;
+            }
+        }
+        for (PortWidget *port : inputs) {
+            if (port->portId == inputs[i]->portId) {
+                cable->inputId=port->portId;
+                break;
+            }
+        }
+        APP->engine->addCable(cable);
+        rack::app::CableWidget* cw = new rack::app::CableWidget;
+	    cw->setCable(cable);
+	    cw->setNextCableColor();
+	    if (cw->isComplete())
+            APP->scene->rack->addCable(cw);
     }
-
+    
     if (!clockOutput.second) {
         // if the clock output was empty before us, then we can set the
         // ratio to match the sequencer.

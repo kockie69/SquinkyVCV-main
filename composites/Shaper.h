@@ -272,39 +272,46 @@ void Shaper<TBase>::step() {
         processCV();
     }
 
+    int inChanN = std::max(TBase::inputs[INPUT_AUDIO0].getChannels(),TBase::inputs[INPUT_AUDIO1].getChannels());
+    int ch;
+
     for (int i = 0; i < 2; ++i) {
-        DSPImp& imp = dsp[i];
-        if (imp.isActive) {
-            float buffer[maxOversample];
-            float input = TBase::inputs[INPUT_AUDIO0 + i].getVoltage(0);
+        for (ch = 0; ch < inChanN; ++ch) {
+            DSPImp& imp = dsp[i];
+            if (imp.isActive) {
+                float buffer[maxOversample];
+                float input = TBase::inputs[INPUT_AUDIO0 + i].getPolyVoltage(ch);
 
-            // TODO: maybe add offset after gain?
-            if (shape != Shapes::AsymSpline) {
-                input += _offset;
-            }
-            if (shape != Shapes::Crush) {
-                input *= _gain;
-            }
+                // TODO: maybe add offset after gain?
+                if (shape != Shapes::AsymSpline) {
+                    input += _offset;
+                }
+                if (shape != Shapes::Crush) {
+                    input *= _gain;
+                }
 
-            if (curOversample != 1) {
-                imp.up.process(buffer, input);
-            } else {
-                buffer[0] = input;
-            }
+                if (curOversample != 1) {
+                    imp.up.process(buffer, input);
+                } else {
+                    buffer[0] = input;
+                }
 
-            processBuffer(buffer);
-            float output;
-            if (curOversample != 1) {
-                output = imp.dec.process(buffer);
-            } else {
-                output = buffer[0];
-            }
+                processBuffer(buffer);
+                float output;
+                if (curOversample != 1) {
+                    output = imp.dec.process(buffer);
+                } else {
+                    output = buffer[0];
+                }
 
-            if (TBase::params[PARAM_ACDC].value < .5) {
-                output = float(BiquadFilter<double>::run(output, imp.dcBlockState, imp.dcBlockParams));
+                if (TBase::params[PARAM_ACDC].value < .5) {
+                    output = float(BiquadFilter<double>::run(output, imp.dcBlockState, imp.dcBlockParams));
+                }
+                TBase::outputs[OUTPUT_AUDIO0 + i].setVoltage(output, ch);
             }
-            TBase::outputs[OUTPUT_AUDIO0 + i].setVoltage(output, 0);
         }
+        TBase::outputs[OUTPUT_AUDIO0].setChannels(ch+1);
+        TBase::outputs[OUTPUT_AUDIO1].setChannels(ch+1);
     }
 
     // Do special processing for unconnected outputs

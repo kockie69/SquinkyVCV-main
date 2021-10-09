@@ -54,6 +54,7 @@ public:
     {
         Module* otherModule = getLeftMatchingModule(hostModule); 
         ModuleWidget* otherModuleWidget = getWidgetForModule(otherModule);
+    
         patchVOct(otherModuleWidget, hostWidget);
         patchGate(otherModuleWidget, hostWidget);
         patchModulator(otherModuleWidget, hostWidget);
@@ -82,7 +83,7 @@ private:
         assert(otherOutput->type == PortWidget::OUTPUT);
 
          //   (output, input)
-        patchBetweenPorts(otherOutput, myFMPort);
+        patchBetweenPorts(myModuleWidget, otherModuleWidget, otherOutput, myFMPort);
     }
 
     static void patchVOct(ModuleWidget* otherModuleWidget, ModuleWidget* myModuleWidget) {
@@ -99,7 +100,8 @@ private:
             return;
         }
         PortWidget* source = getOutputThatConnectsToThisInput(myVOctPort);
-        patchBetweenPorts(source, otherVOctPort);
+       
+        patchBetweenPorts(myModuleWidget, otherModuleWidget, source, otherVOctPort);
     }
 
     static void patchGate(ModuleWidget* otherModuleWidget, ModuleWidget* myModuleWidget) {
@@ -116,7 +118,7 @@ private:
             return;
         }
         PortWidget* source = getOutputThatConnectsToThisInput(myGatePort);
-        patchBetweenPorts(source, otherGatePort);
+        patchBetweenPorts(myModuleWidget, otherModuleWidget, source, otherGatePort);
     }
 
     static Module* getLeftMatchingModule(Module* myModule) {
@@ -156,16 +158,23 @@ private:
         return nullptr;
     }
 
-    static void patchBetweenPorts(PortWidget* output, PortWidget* input) {
+    static void patchBetweenPorts(ModuleWidget* host,ModuleWidget* neighbour, PortWidget* output, PortWidget* input) {
         if (isPortPatched(input)) {
             WARN("can't patch to input that is already patched");
             return;
         }
-        CableWidget* cable = new CableWidget();
-        // cable->color = color;
-        cable->outputPort = output;
-        cable->inputPort = input;
-        APP->scene->rack->addCable(cable);
+        rack::engine::Cable* cable = new rack::engine::Cable;
+        cable->inputModule=host->getModule();
+        cable->outputModule=neighbour->getModule();
+        cable->id=-1;      
+        cable->outputId=output->portId;
+        cable->inputId=input->portId;
+        APP->engine->addCable(cable);
+        rack::app::CableWidget* cw = new rack::app::CableWidget;
+	    cw->setCable(cable);
+	    cw->setNextCableColor();
+	    if (cw->isComplete())
+            APP->scene->rack->addCable(cw);
     }
 
     static PortWidget* getInput(ModuleWidget* moduleWidget, int portId) {
@@ -311,13 +320,13 @@ void WVCOWidget::appendContextMenu(Menu *menu)
 
     {
         if (WvcoPatcher::shouldShowMenu(module)) {
-            /* Kockr: auto item = new SqMenuItem( []() { return false; }, [this](){
+            auto item = new SqMenuItem( []() { return false; }, [this](){
                 assert(module);
                 WvcoPatcher::go(this, module);
             });
 
             item->text = "Hookup Modulator";
-            menu->addChild(item);*/
+            menu->addChild(item);
         }
     }
 }

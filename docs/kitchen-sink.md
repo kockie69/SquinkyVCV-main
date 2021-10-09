@@ -67,6 +67,12 @@ To those more mathematically inclined, the knob value, ADSR, and CV are all mult
 
 Note that all CV inputs are polyphonic, so individual VCOs can be modulated. If the input is monophonic, however, then it will be copied to all the destinations.
 
+## The hookup modulator command
+
+This will save a ton of time if you are doing two or more operators of FM.
+
+If two kitchen-sinks are next to each other, the one on the right will have a new item in its context menu: "hookup modulator". The command will "reach into" the module to the left and patch it up to be an FM modulator. The module on the right will be the carrier.
+
 ## The controls
 
 **Octave knob** sets the base pitch of the VCO, and allows adjustments up and down in even octave steps.
