@@ -55,6 +55,9 @@ CHBModule::CHBModule() : chb(this)
     configInput(CHB<WidgetComposite>::RISE_INPUT,"Rise");
     configInput(CHB<WidgetComposite>::FALL_INPUT,"Fall");
     configOutput(CHB<WidgetComposite>::MIX_OUTPUT,"Mix"); 
+
+    std::shared_ptr<IComposite> icomp = Comp::getDescription();
+    SqHelper::setupParams(icomp, this);
 }
 
 void CHBModule::step()
@@ -176,7 +179,6 @@ inline void CHBWidget::addHarmonics(CHBModule *module, std::shared_ptr<IComposit
 void CHBWidget::addRow1(CHBModule *module, std::shared_ptr<IComposite> icomp)
 {
     const float row = row1;
-
     addParam(SqHelper::createParamCentered<RoganSLBlue30>(
         icomp,
         Vec(col1, row),
@@ -184,11 +186,16 @@ void CHBWidget::addRow1(CHBModule *module, std::shared_ptr<IComposite> icomp)
         CHB<WidgetComposite>::PARAM_RISE));
     addLabel(Vec(col1 - 20, row - labelAboveKnob), "Rise");
 
-    addParam(SqHelper::createParamCentered<Blue30SnapKnob>(
+    Blue30SnapKnob* p = SqHelper::createParamCentered<Blue30SnapKnob>(
         icomp,
         Vec(col2, row),
         module,
-        CHB<WidgetComposite>::PARAM_OCTAVE));
+        CHB<WidgetComposite>::PARAM_OCTAVE);
+
+    p->snap = true;
+	p->smooth = false;
+    addParam(p);
+
     semitoneDisplay.setOctLabel(
         addLabel(Vec(col2 - 22, row1 - labelAboveKnob), "Octave"),
         CHB<WidgetComposite>::PARAM_OCTAVE);
@@ -198,6 +205,7 @@ void CHBWidget::addRow1(CHBModule *module, std::shared_ptr<IComposite> icomp)
         Vec(col3, row),
         module,
         CHB<WidgetComposite>::PARAM_SEMIS));
+
     semitoneDisplay.setSemiLabel(
         addLabel(Vec(col3 - 26, row - labelAboveKnob), "Semi"),
         CHB<WidgetComposite>::PARAM_SEMIS);
