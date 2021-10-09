@@ -41,6 +41,8 @@ private:
 };
 
 CompressorModule::CompressorModule() {
+    configBypass(Comp::LAUDIO_INPUT, Comp::LAUDIO_OUTPUT);
+    configBypass(Comp::RAUDIO_INPUT, Comp::RAUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
     compressor = std::make_shared<Comp>(this);
     addParams();

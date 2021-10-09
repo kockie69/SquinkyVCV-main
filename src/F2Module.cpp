@@ -113,6 +113,7 @@ void F2Module::onSampleRateChange() {
 }
 
 F2Module::F2Module() {
+    configBypass(Comp::AUDIO_INPUT, Comp::AUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
     blank = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();

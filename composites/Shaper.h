@@ -310,8 +310,8 @@ void Shaper<TBase>::step() {
                 TBase::outputs[OUTPUT_AUDIO0 + i].setVoltage(output, ch);
             }
         }
-        TBase::outputs[OUTPUT_AUDIO0].setChannels(ch+1);
-        TBase::outputs[OUTPUT_AUDIO1].setChannels(ch+1);
+        TBase::outputs[OUTPUT_AUDIO0].setChannels(ch);
+        TBase::outputs[OUTPUT_AUDIO1].setChannels(ch);
     }
 
     // Do special processing for unconnected outputs

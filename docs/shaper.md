@@ -9,6 +9,8 @@ A unique feature of Shaper is that it has very little aliasing, whereas most we 
 
 Shaper also has switchable high-pass filters on the outputs, to prevent accumulation of DC. Asymmetric waveshapes frequently contain DC, which should be removed. If not removed there will likely be loud thumps when the results are run through a VCA. The filters in Shaper are four-pole butterworth filters at 20 Hz.
 
+When Shaper is bypassed the upper/lower Inputs will be directly connected to the upper/lower Outputs.
+
 ## Controls
 
 *Shape* – this is the big unlabeled knob. It selects from the different shapes that Shaper can produce. The name of the selected shape is to the right of the knob.

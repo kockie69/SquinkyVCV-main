@@ -16,6 +16,8 @@ Comp also has a wet/dry mix to allow "parallel compression", which is very styli
 
 It can be a little tricky at first to learn how to use a compressor. But there are lots and lots of articles and videos on the Internet that will be very helpful. Also see [using a compressor](./using-a-compressor.md)
 
+When Comp is bypassed the upper/lower Inputs will be directly connected to the upper/lower Outputs.
+
 ## vs. Comp II
 
 We have another compressor, called Comp II. The two are very similar. Comp II is designed to be patched into the send/returns of the Mind Meld mixer, although it does not need to be. Comp can be a little easier to use for a stereo signal, and is slightly smaller. Comp II does have a linked stereo mode, and a side-chain which Comp does not. The documentation for Comp II contains a useful block diagram which mostly applies to Comp. Documentation for Comp II [here](./compressor2.md)

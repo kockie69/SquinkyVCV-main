@@ -34,6 +34,8 @@ private:
 
 ShaperModule::ShaperModule() : shaper(this)
 {
+    configBypass(Shaper<WidgetComposite>::INPUT_AUDIO0, Shaper<WidgetComposite>::OUTPUT_AUDIO0);
+    configBypass(Shaper<WidgetComposite>::INPUT_AUDIO1, Shaper<WidgetComposite>::OUTPUT_AUDIO1);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
