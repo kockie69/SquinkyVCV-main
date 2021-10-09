@@ -149,17 +149,16 @@ struct ColorDisplay : TransparentWidget
     ColoredNoiseModule *module;
     ColorDisplay(Label *slopeLabel, Label *signLabel)
         : _slopeLabel(slopeLabel),
-        _signLabel(signLabel)
-    {
-    }
-    ~ColorDisplay() {
+        _signLabel(signLabel) {}
+
+    void onContextDestroy(const ContextDestroyEvent & e) override {
         _noiseDrawer.release();
+        TransparentWidget::onContextDestroy(e);  
     }
     
     Label* _slopeLabel;
     Label* _signLabel;
-    
-
+   
     void draw(NVGcontext *vg) override
     {
         nvgGlobalTint(vg, color::WHITE);
@@ -291,6 +290,7 @@ ColoredNoiseWidget::ColoredNoiseWidget(ColoredNoiseModule *module) : ModuleWidge
     addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
     addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 }
+
 
 #ifdef __V1x
 Model *modelColoredNoiseModule = createModel<ColoredNoiseModule, ColoredNoiseWidget>(
