@@ -94,8 +94,8 @@ jobs:
         with:
           path: dist
           name: ${{ matrix.name }}
-          
- publish:
+
+  publish:
     name: Publish plugin
     # only create a release if a tag was created that is called e.g. v1.2.3
     # see also https://vcvrack.com/manual/Manifest#version
