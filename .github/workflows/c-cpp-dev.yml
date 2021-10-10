@@ -41,7 +41,7 @@ jobs:
       - name: Get Rack-SDK
         run: |
           pushd $HOME
-          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.${{ rack-sdk-version }}-${{ matrix.arch }}.zip
+          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.${{ env.rack-sdk-version }}-${{ matrix.arch }}.zip
           unzip RackSDK.zip
       - name: Patch makefiles, use 7zip on Windows
         if: runner.os == 'windows'
@@ -86,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: dist
-          name: ${{ matrix.name }}-${{ rack-sdk-version }}
+          name: ${{ matrix.name }}-${{ env.rack-sdk-version }}
           
   publish:
     name: Publish plugin
