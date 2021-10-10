@@ -81,7 +81,6 @@ jobs:
           export RACK_DIR=$HOME/Rack-SDK
           make dep
           make dist
-          mv dist/*.zip 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
