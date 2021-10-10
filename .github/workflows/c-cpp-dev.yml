@@ -2,7 +2,7 @@ name: Build VCV Rack Plugin Development
 on: [workflow_dispatch,push,pull_request]
 
 env:
-  rack-sdk-version: 2.git.042a9ce0
+  rack-sdk-version: 042a9ce0
 
 defaults:
   run:
@@ -41,7 +41,7 @@ jobs:
       - name: Get Rack-SDK
         run: |
           pushd $HOME
-          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.042a9ce0-${{ matrix.arch }}.zip
+          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.${{ rack-sdk-version }}-${{ matrix.arch }}.zip
           unzip RackSDK.zip
       - name: Patch makefiles, use 7zip on Windows
         if: runner.os == 'windows'
@@ -81,12 +81,13 @@ jobs:
           export RACK_DIR=$HOME/Rack-SDK
           make dep
           make dist
+          mv dist/*.zip 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           path: dist
-          name: ${{ matrix.name }}
-
+          name: ${{ matrix.name }}-${{ rack-sdk-version }}
+          
   publish:
     name: Publish plugin
     # only create a release if a tag was created that is called e.g. v1.2.3

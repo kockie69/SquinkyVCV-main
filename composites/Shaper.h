@@ -276,7 +276,8 @@ void Shaper<TBase>::step() {
     int ch;
 
     for (int i = 0; i < 2; ++i) {
-        for (ch = 0; ch < inChanN; ++ch) {
+       // for (ch = 0; ch < inChanN; ++ch) {
+            ch =0;
             DSPImp& imp = dsp[i];
             if (imp.isActive) {
                 float buffer[maxOversample];
@@ -309,7 +310,7 @@ void Shaper<TBase>::step() {
                 }
                 TBase::outputs[OUTPUT_AUDIO0 + i].setVoltage(output, ch);
             }
-        }
+        //}
         TBase::outputs[OUTPUT_AUDIO0].setChannels(ch);
         TBase::outputs[OUTPUT_AUDIO1].setChannels(ch);
     }
