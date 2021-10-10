@@ -1,14 +1,6 @@
 name: Build VCV Rack Plugin Development
-on:
-  workflow_dispatch:
-  push:
-    branches:
-    - 'New-Development'
-    - master
-  pull_request:
-    branches:
-    - 'New-Development'
-    - master
+on: [workflow_dispatch,push,pull_request]
+
 env:
   rack-sdk-version: 2.git.042a9ce0
 
