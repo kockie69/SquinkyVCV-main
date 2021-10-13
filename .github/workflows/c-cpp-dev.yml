@@ -85,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: dist
-          name: ${{ matrix.name }}-${{ env.rack-sdk-version }}
+          # name: ${{ matrix.name }}-${{ env.rack-sdk-version }}
           
   publish:
     name: Publish plugin
