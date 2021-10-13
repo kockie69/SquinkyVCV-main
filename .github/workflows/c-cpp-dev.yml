@@ -47,9 +47,9 @@ jobs:
         if: runner.os == 'windows'
         run: |
           sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk
-          sed -i 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
-          sed -i 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
-          cat $HOME/Rack-SDK/compile.mk
+          #sed -i 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
+          #sed -i 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
+          #cat $HOME/Rack-SDK/compile.mk
       - name: Update compile.mk file to remove debugging for Mac
         if: runner.os == 'macOS'
         run: |
