@@ -566,8 +566,8 @@ void SequencerWidget::addJacks(SequencerModule *module)
 
 void SequencerModule::dataFromJson(json_t *data)
 {
-    MidiSequencerPtr newSeq = SequencerSerializer::fromJson(data, this);
-    setNewSeq(newSeq);
+//    MidiSequencerPtr newSeq = SequencerSerializer::fromJson(data, this);
+//    setNewSeq(newSeq);
 }
 
 void SequencerModule::setNewSeq(MidiSequencerPtr newSeq)
