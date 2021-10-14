@@ -29,7 +29,7 @@ jobs:
               compiler: cc
               install-dependencies: |
                 brew install mesa
-            - os: windows-2016
+            - os: windows-latest
               name: Windows
               arch: win
               compiler: gcc
