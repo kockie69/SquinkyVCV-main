@@ -5,7 +5,7 @@
 #define _XFORM
 #define _CH10
 
-/*#define _FUN        // works with 1.0
+#define _FUN        // works with 1.0
 
 #define _LFN
 #define _FORMANTS
@@ -38,7 +38,7 @@
 #define _COMP2
 #define _LFNB
 #define _BLANKMODULE
-*/
+
 using namespace ::rack;
 
 extern plugin::Plugin *pluginInstance;

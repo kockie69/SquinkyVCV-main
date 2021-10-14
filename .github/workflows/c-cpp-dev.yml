@@ -45,7 +45,7 @@ jobs:
           curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.${{ env.rack-sdk-version }}-${{ matrix.arch }}.zip
           unzip RackSDK.zip
       - name: Patch makefiles, use 7zip on Windows
-        if: runner.os == 'windows-2016'
+        if: runner.os == windows-latest
         run: |
           sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk
           sed -i 's/FLAGS += -O3/FLAGS += -O0/' $HOME/Rack-SDK/compile.mk
