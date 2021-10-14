@@ -3,8 +3,10 @@
 // #define _TIME_DRAWING
 
 #define _XFORM
+#define _CH10
 
-#define _FUN        // works with 1.0
+/*#define _FUN        // works with 1.0
+
 #define _LFN
 #define _FORMANTS
 #define _SHAPER
@@ -23,7 +25,6 @@
 #define _FILT
 #define _MIX4
 #define _MIX_STEREO
-//#define _USERKB
 #define _SAMP
 #define _F2
 
@@ -34,22 +35,10 @@
 #define _WVCO
 #define _SUB
 #define _SINES
-//#define _GMR
 #define _COMP2
-
-// Next were already commented out
-//#define _SEQ
-#define _CH10
 #define _LFNB
-//#define _CHAOS
-//#define _DG
-//#define _F4
-//#define _DIVR
-//#define _F4
-//#define _TESTM
 #define _BLANKMODULE
-
-
+*/
 using namespace ::rack;
 
 extern plugin::Plugin *pluginInstance;
