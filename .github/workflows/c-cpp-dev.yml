@@ -2,7 +2,7 @@ name: Build VCV Rack Plugin Development
 on: [workflow_dispatch,push,pull_request]
 
 env:
-  rack-sdk-version: 2.git.042a9ce0
+  rack-sdk-version: 042a9ce0
 
 defaults:
   run:
@@ -41,29 +41,12 @@ jobs:
       - name: Get Rack-SDK
         run: |
           pushd $HOME
-          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.042a9ce0-${{ matrix.arch }}.zip
+          curl -o RackSDK.zip https://vcvrack.com/downloads/Rack-SDK-2.git.${{ env.rack-sdk-version }}-${{ matrix.arch }}.zip
           unzip RackSDK.zip
       - name: Patch makefiles, use 7zip on Windows
         if: runner.os == 'windows'
         run: |
           sed -i 's/zip -q -9 -r/7z a -tzip -mx=9/' $HOME/Rack-SDK/plugin.mk
-          sed -i 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
-          sed -i 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
-          cat $HOME/Rack-SDK/compile.mk
-      - name: Update compile.mk file to remove debugging for Mac
-        if: runner.os == 'macOS'
-        run: |
-          sed 's/FLAGS += -O0/FLAGS += -O3/' $HOME/Rack-SDK/compile.mk
-          sed 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
-          cat $HOME/Rack-SDK/compile.mk
-      - name: Update compile.mk file to remove debugging for Linux
-        if: runner.os == 'linux'
-        run: |
-          ls
-          sed 's/FLAGS += -g/FLAGS += /' $HOME/Rack-SDK/compile.mk
-          sed 's/FLAGS += -finline-limit=500000 -finline-functions-called-once/FLAGS += /' ./Makefile
-          sed 's/LDFLAGS += -flto/LDFLAGS += /' ./Makefile
-          cat $HOME/Rack-SDK/compile.mk
       - name: Modify plugin version
         # only modify plugin version if no tag was created
         if: "! startsWith(github.ref, 'refs/tags/v')"
@@ -81,23 +64,12 @@ jobs:
           export RACK_DIR=$HOME/Rack-SDK
           make dep
           make dist
-      - name: Create plantUml
-        if: runner.os == 'windows'
-        run: |  
-          pip install hpp2plantuml
-          hpp2plantuml -i "*/*.hpp" -o output.puml
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           path: dist
-          name: ${{ matrix.name }}
-      - name: Upload PlantUML output
-        if: runner.os == 'windows'
-        uses: actions/upload-artifact@v2
-        with:
-          name: PlantUML-out
-          path: output.puml
-       
+          name: ${{ matrix.name }}-${{ env.rack-sdk-version }}
+          
   publish:
     name: Publish plugin
     # only create a release if a tag was created that is called e.g. v1.2.3
@@ -121,12 +93,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: Release ${{ github.ref }} - Rack version ${{ env.rack-sdk-version }}
           body: |
             ${{ env.GITHUB_REPOSITORY_NAME }} VCV Rack Plugin ${{ env.GITHUB_REF_NAME }}
           draft: false
           prerelease: false
-          allowUpdates: true
       - uses: actions/download-artifact@v2
         with:
           path: _artifacts
