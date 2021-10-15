@@ -23,7 +23,7 @@
 			"slug": "squinkylabs-mixStereo",
 			"name": "ExTwo",
 			"description": "Two channel stereo mixer expander",
-			"disabled": true,
+			"disabled": false,
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/extwo.md",
 			"tags": ["Mixer", "Expander"]
 		},
@@ -31,14 +31,21 @@
 			"slug": "squinkylabs-mix4",
 			"name": "ExFor",
 			"description": "4 channel mixer expander",
-			"disabled": true,
+			"disabled": false,
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/exfor.md",
 			"tags": ["Mixer", "Expander"]
 		},
 		{
+			"slug": "squinkylabs-ch10",
+			"name": "ch10",
+			"disabled": true,
+			"description": "ch10",
+			"tags": ["VCO"]
+		},
+		{
 			"slug": "squinkylabs-comp2",
 			"name": "Comp II",
-			"disabled": true,
+			"disabled": false,
 			"description": "Polyphonic Compressor",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/compressor2.md",
 			"tags": [
@@ -51,14 +58,14 @@
 			"slug": "squinkylabs-samp",
 			"name": "SFZ Player",
 			"description": "Sampler that plays standard SFZ files.",
-			"disabled": true,
+			"disabled": false,
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/sfz-player.md",
 			"tags": ["Polyphonic", "Sampler", "Synth Voice"]
 		},
 		{
 			"slug": "squinkylabs-comp",
 			"name": "Comp",
-			"disabled": true,
+			"disabled": false,
 			"description": "Ultra clean Compressor",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/compressor.md",
 			"tags": [
@@ -70,7 +77,6 @@
 		{
 			"slug": "squinkylabs-filt",
 			"name": "Stairway",
-			"disabled": true,
 			"description": "Ladder filter on steroids",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/filter.md",
 			"tags": ["VCF", "Polyphonic", "Distortion"]
@@ -78,48 +84,8 @@
 		{
 			"slug": "squinkylabs-funv",
 			"name": "Functional VCO-1",
-			"disabled": true,
 			"description": "[deprecated] Multi-function VCO with low aliasing",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/functional-vco-1.md",
-			"tags": ["VCO"]
-		},
-		{
-			"slug": "squinkylabs-dt",
-			"name": "Polygate",
-			"disabled": true,
-			"description": "Polyphonic gate demultiplexer",
-			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/dt.md",
-			"tags": ["Polyphonic"]
-		},
-		{
-			"slug": "squinkylabs-wvco",
-			"name": "FM Kitchen Sink",
-			"disabled": true,
-			"description": "Many function VCO",
-			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/kitchen-sink.md",
-			"tags": ["VCO", "Polyphonic", "Synth voice"]
-		},
-		
-		{
-			"slug": "squinkylabs-sub",
-			"name": "Substitute",
-			"disabled": true,
-			"description": "Subharmonic VCO",
-			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/substitute.md",
-			"tags": ["VCO", "Polyphonic"]
-		},
-		{
-			"slug": "squinkylabs-blank",
-			"name": "Blank",
-			"disabled": true,
-			"description": "blank starting project",
-			"tags": ["Blank"]
-		},
-		{
-			"slug": "squinkylabs-ch10",
-			"name": "ch10",
-			"disabled": true,
-			"description": "ch10",
 			"tags": ["VCO"]
 		},
 		{
@@ -130,9 +96,38 @@
 			"tags": ["NOISE", "RANDOM", "LFO"]
 		},
 		{
+			"slug": "squinkylabs-dt",
+			"name": "Polygate",
+			"description": "Polyphonic gate demultiplexer",
+			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/dt.md",
+			"tags": ["Polyphonic"]
+		},
+		{
+			"slug": "squinkylabs-wvco",
+			"name": "FM Kitchen Sink",
+			"description": "Many function VCO",
+			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/kitchen-sink.md",
+			"tags": ["VCO", "Polyphonic", "Synth voice"]
+		},
+		
+		{
+			"slug": "squinkylabs-sub",
+			"name": "Substitute",
+			"description": "Subharmonic VCO",
+			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/substitute.md",
+			"tags": ["VCO", "Polyphonic"]
+		},
+		{
+			"slug": "squinkylabs-basic",
+			"name": "Basic VCO",
+			"description": "Precision VCO",
+			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/basic.md",
+			"tags": ["VCO", "Polyphonic"]
+		},
+		{
 			"slug": "squinkylabs-f2",
 			"name": "F2",
-			"disabled": true,
+			"disabled": false,
 			"description": "Multimode state-variable filter",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/f2.md",
 			"tags": ["VCF", "Polyphonic"]
@@ -140,7 +135,6 @@
 		{
 			"slug": "squinkylabs-sines",
 			"name": "Organ Three",
-			"disabled": true,
 			"description": "Hammond organ emulator",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/og.md",
 			"tags": ["VCO", "Polyphonic", "Hardware", "Synth voice"]
@@ -148,7 +142,6 @@
 		{
 			"slug": "squinkylabs-mix8",
 			"name": "Mixer-8",
-			"disabled": true,
 			"description": "8 channel mixer",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/mix8.md",
 			"tags": ["Mixer"]
@@ -156,7 +149,6 @@
 		{
 			"slug": "squinkylabs-slew4",
 			"name": "Slade",
-			"disabled": true,
 			"description": "Octal slew/lag/VCA",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/slew4.md",
 			"tags": ["Slew limiter", "VCA"]
@@ -165,14 +157,13 @@
 			"slug": "squinkylabs-sequencer4",
 			"name": "Seq4x4",
 			"description": "Sequence player",
-			"disabled": true,
+			"disabled": false,
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/4x4.md",
 			"tags": ["Sequencer", "Polyphonic"]
 		},
 		{
 			"slug": "squinkylabs-tremolo",
 			"name": "Chopper",
-			"disabled": true,
 			"description": "Tremolo with synched LFO",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/chopper.md",
 			"tags": ["Clock modulator", "Effect", "LFO"]
@@ -182,7 +173,6 @@
 		{
 			"slug": "squinkylabs-lfn",
 			"name": "LFN",
-			"disabled": true,
 			"description": "Low frequency random voltage generator",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/lfn.md",
 			"tags": ["Noise", "Random", "LFO"]
@@ -190,7 +180,6 @@
 		{
 			"slug": "squinkylabs-ev3",
 			"name": "EV3",
-			"disabled": true,
 			"description": "Triple VCO with even waveform",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/ev3.md",
 			"tags": ["VCO", "Multiple"]
@@ -198,7 +187,6 @@
 		{
 			"slug": "squinkylabs-vocalanimator",
 			"name": "Growler",
-			"disabled": true,
 			"description": "Vocal Animator",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/growler.md",
 			"tags":  ["Effect", "Filter"]
@@ -206,7 +194,6 @@
 		{
 			"slug": "squinkylabs-CHB2",
 			"name": "Chebyshev II",
-			"disabled": true,
 			"description": "Waveshaper VCO with FM",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/chebyshev.md",
 			"tags": ["VCO"]
@@ -214,15 +201,20 @@
 		{
 			"slug": "squinkylabs-shp",
 			"name": "Shaper",
-			"disabled": true,
 			"description": "Precision Wave Shaper",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/shaper.md",
 			"tags": ["Effect", "Waveshaper", "Distortion"]
 		},
 		{
+			"slug": "squinkylabs-blank",
+			"name": "Blank",
+			"disabled": true,
+			"description": "blank starting project",
+			"tags": ["Blank"]
+		},
+		{
 			"slug": "squinkylabs-vocalfilter",
 			"name": "Formants",
-			"disabled": true,
 			"description": "Singing Vocal Filter",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/formants.md",
 			"tags":  ["Effect", "Filter"]
@@ -230,7 +222,6 @@
 		{
 			"slug": "squinkylabs-gry",
 			"name": "Gray Code",
-			"disabled": true,
 			"description": "Eclectic clock divider",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/gray-code.md",
 			"tags": [ "Clock modulator", "Random", "Logic"]
@@ -238,7 +229,6 @@
 		{
 			"slug": "squinkylabs-freqshifter",
 			"name": "Booty Shifter",
-			"disabled": true,
 			"description": "Frequency Shifter",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/shifter.md",
 			"tags": ["Ring Modulator", "effect"]
@@ -246,7 +236,6 @@
 		{
 			"slug": "squinkylabs-coloredNoise",
 			"name": "Colors",
-			"disabled": true,
 			"description": "All the colors of noise",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/colors.md",
 			"tags": ["Noise"]
@@ -255,14 +244,13 @@
 			"slug": "squinkylabs-sequencer",
 			"name": "Seq++",
 			"description": "DAW-like sequencer",
-			"disabled": true,
+			"disabled": false,
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/sq2.md",
 			"tags": ["Sequencer", "Polyphonic"]
 		},
 		{
 			"slug": "squinkylabs-super",
 			"name": "Saws",
-			"disabled": true,
 			"description": "Super saw VCO emulation",
 			"manualUrl": "https://github.com/kockie69/SquinkyVCV-main/blob/master/docs/saws.md",
 			"tags": ["VCO", "Polyphonic"]
