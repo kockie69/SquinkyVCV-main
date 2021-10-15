@@ -497,12 +497,12 @@ MixMWidget::MixMWidget(MixMModule *module)
     mixModule = module;
     box.size = Vec((16 + WIDE) * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
     SqHelper::setPanel(this, "res/mixm_panel.svg");
-    std::shared_ptr<IComposite> icomp = Comp::getDescription();
+   /* std::shared_ptr<IComposite> icomp = Comp::getDescription();
 
     for (int i=0; i<Comp::numChannels; ++i) {
         makeStrip(module, icomp, i);
     }
-    makeMaster(module, icomp);
+    makeMaster(module, icomp);*/
 
     // screws
     addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
