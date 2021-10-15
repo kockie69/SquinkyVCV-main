@@ -21,6 +21,7 @@ jobs:
               arch: lin
               compiler: cc
               install-dependencies: |
+                sudo apt-get update
                 sudo apt-get install libglu1-mesa-dev 
             - os: macos-latest
               name: Mac
