@@ -76,10 +76,10 @@ ifdef ARCH_WIN
 	FLAGS += -fmax-errors=5
 endif
 
-# FLAGS += -finline-limit=500000 -finline-functions-called-once
-# LDFLAGS += 
-FLAGS += -finline-limit=500000 -finline-functions-called-once -flto
-LDFLAGS += -flto
+FLAGS += -finline-limit=500000 -finline-functions-called-once
+LDFLAGS += 
+# FLAGS += -finline-limit=500000 -finline-functions-called-once -flto
+# LDFLAGS += -flto
 
 # this will turn O3 into O1. can't get no opt to compile
 # to totally remove lto you need to remove it from test.mak also
