@@ -2,7 +2,7 @@ name: Build VCV Rack Plugin Development
 on: [workflow_dispatch,push,pull_request]
 
 env:
-  rack-sdk-version: 042a9ce0
+  rack-sdk-version: 219bbaf1
 
 defaults:
   run:
