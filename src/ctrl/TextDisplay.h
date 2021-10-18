@@ -58,7 +58,8 @@ protected:
 
 class StyledTextDisplay : public TextDisplay {
 public:
-    void draw(const DrawArgs& args) override;
+    //void draw(const DrawArgs& args) override;
+    void drawLayer(const DrawArgs& args, int layer) override;
 };
 
 #if 0
@@ -76,8 +77,9 @@ void StyledTextDisplay::draw(const DrawArgs& args) {
 }
 #endif
 
-void StyledTextDisplay::draw(const DrawArgs& args) {
-    nvgGlobalTint(args.vg, color::WHITE);
+void StyledTextDisplay::drawLayer(const DrawArgs& args, int layer) {
+
+    if (layer == 1) {
 	nvgScissor(args.vg, RECT_ARGS(args.clipBox));
 
 	// Background
@@ -108,6 +110,8 @@ void StyledTextDisplay::draw(const DrawArgs& args) {
 
 
 	nvgResetScissor(args.vg);
+    }
+    widget::OpaqueWidget::drawLayer(args, layer);
 }
 
 class TextDisplaySamp : public StyledTextDisplay {

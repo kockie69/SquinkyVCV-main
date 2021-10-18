@@ -156,14 +156,16 @@ void AboveNoteGrid::updateTimeLabels() {
     }
 }
 
-void AboveNoteGrid::draw(const DrawArgs& args) {
+void AboveNoteGrid::drawLayer(const DrawArgs& args, int layer) {
     NVGcontext* vg = args.vg;
-    nvgGlobalTint(args.vg, color::WHITE);
+    if (layer == 1) {
 
-    if (!this->sequencer) {
-        return;
+        if (!this->sequencer) {
+            return;
+        }
+
+        filledRect(vg, UIPrefs::NOTE_EDIT_BACKGROUND, 0, 0, box.size.x, box.size.y);
+        OpaqueWidget::draw(args);
     }
-
-    filledRect(vg, UIPrefs::NOTE_EDIT_BACKGROUND, 0, 0, box.size.x, box.size.y);
-    OpaqueWidget::draw(args);
+    OpaqueWidget::drawLayer(args,layer);
 }

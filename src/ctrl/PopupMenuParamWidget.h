@@ -36,7 +36,7 @@ public:
     void setValueToIndexFunction(ValueToIndexFunction);
 
 
-    void draw(const DrawArgs &arg) override;
+    void drawLayer(const DrawArgs &arg, int layer) override;
     void onButton(const ::rack::event::Button &e) override;
     void onChange(const ::rack::event::Change &e) override;
     void onAction(const ::rack::event::Action &e) override;
@@ -100,10 +100,12 @@ inline void PopupMenuParamWidget::onChange(const ::rack::event::Change &e) {
     }
 }
 
-inline void PopupMenuParamWidget::draw(const DrawArgs &args) {
-    nvgGlobalTint(args.vg, rack::color::WHITE);
-    BNDwidgetState state = BND_DEFAULT;
-    bndChoiceButton(args.vg, 0.0, 0.0, box.size.x, box.size.y, BND_CORNER_NONE, state, -1, text.c_str());
+inline void PopupMenuParamWidget::drawLayer(const DrawArgs &args, int layer) {
+    if (layer == 1) {
+        BNDwidgetState state = BND_DEFAULT;
+        bndChoiceButton(args.vg, 0.0, 0.0, box.size.x, box.size.y, BND_CORNER_NONE, state, -1, text.c_str());
+    }
+    ParamWidget::drawLayer(args,layer);
 }
 
 inline void PopupMenuParamWidget::onButton(const ::rack::event::Button &e) {

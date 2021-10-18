@@ -188,10 +188,12 @@ struct RangeChoice : ChoiceButton
         }
     }
 
-    void draw(const DrawArgs& args) override {
-	nvgGlobalTint(args.vg, color::WHITE);
-	ChoiceButton::draw(args);
-}
+    void drawLayer(const DrawArgs& args,int layer) override {
+	    if (layer == 1) {
+	        ChoiceButton::draw(args);
+        }
+        Widget::drawLayer(args,layer);
+    }
 };
 
 ////////////////////

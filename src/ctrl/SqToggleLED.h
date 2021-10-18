@@ -34,7 +34,7 @@ public:
     void onDragHover(const event::DragHover &e) override;
     void onDragEnter(const event::DragEnter &e) override;
     void onDragLeave(const event::DragLeave &e) override;
-    void draw(const DrawArgs &args) override;
+    void drawLayer(const DrawArgs &args, int layer) override;
 
 
 private:
@@ -74,12 +74,14 @@ inline int SqToggleLED::getSvgIndex()
 }
 
 
-inline void SqToggleLED::draw(const DrawArgs &args)
+inline void SqToggleLED::drawLayer(const DrawArgs &args, int layer)
 {
-    nvgGlobalTint(args.vg, color::WHITE);
-    int index = getSvgIndex();
-    auto svg = svgs[index];
-    svg->draw(args);
+    if (layer == 1) {
+        int index = getSvgIndex();
+        auto svg = svgs[index];
+        svg->draw(args);
+    }
+    ModuleLightWidget::drawLayer(args, layer);
 }
 
 

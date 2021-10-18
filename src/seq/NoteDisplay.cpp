@@ -189,25 +189,27 @@ void NoteDisplay::drawCursor(NVGcontext *vg) {
     }
 }
 
-void NoteDisplay::draw(const Widget::DrawArgs &args) {
+void NoteDisplay::drawLayer(const Widget::DrawArgs &args, int layer) {
 
     NVGcontext *vg = args.vg;
-    nvgGlobalTint(args.vg, color::WHITE);
+    if (layer == 1) {
     
-    if (!this->sequencer) {
-        return;
+        if (!this->sequencer) {
+            return;
+        }
+
+        // let's clip everything to our window
+        nvgScissor(vg, 0, 0, this->box.size.x, this->box.size.y);
+        drawBackground(vg);
+        drawGrid(vg);
+        drawNotes(vg);
+
+        // if we are dragging, will have something to draw
+        mouseManager->draw(vg);
+        drawCursor(vg);
+        OpaqueWidget::draw(args);
     }
-
-    // let's clip everything to our window
-    nvgScissor(vg, 0, 0, this->box.size.x, this->box.size.y);
-    drawBackground(vg);
-    drawGrid(vg);
-    drawNotes(vg);
-
-    // if we are dragging, will have something to draw
-    mouseManager->draw(vg);
-    drawCursor(vg);
-    OpaqueWidget::draw(args);
+    OpaqueWidget::drawLayer(args,layer);
 }
 
 void NoteDisplay::drawBackground(NVGcontext *vg) {

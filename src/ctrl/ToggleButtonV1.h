@@ -86,7 +86,7 @@ class SqSvgParamToggleButton : public ParamWidget
 public:
     SqSvgParamToggleButton();
     void addFrame(std::shared_ptr<Svg> svg);
-    void draw(const DrawArgs &args) override;
+    void drawLayer(const DrawArgs &args, int later) override;
     void onAdd(const event::Add&) override;
 
     void onDragStart(const event::DragStart &e) override;
@@ -163,10 +163,12 @@ inline float SqSvgParamToggleButton::getValue()
     return button->getValue();
 }
 
-inline void SqSvgParamToggleButton::draw(const DrawArgs &args)
+inline void SqSvgParamToggleButton::drawLayer(const DrawArgs &args, int layer)
 {
-    nvgGlobalTint(args.vg, color::WHITE);
-    button->draw(args);
+    if (layer == 1) {
+        button->draw(args);
+    }
+    ParamWidget::drawLayer(args,layer);
 }
 
 void SqSvgParamToggleButton::onButton(const event::Button &e) 

@@ -136,7 +136,7 @@ public:
     MultiVUMeter(int* stereo, int* labelMode, int* channel) : isStereo_(stereo), labelMode_(labelMode), channel_(channel) {
         box.size = Vec(125, 75);
     }
-    void draw(const DrawArgs& args) override;
+    void drawLayer(const DrawArgs& args, int layer) override;
     float getFakeGain(int channel);
     int getNumFakeChannels() {
         return 8;
@@ -159,8 +159,8 @@ inline float MultiVUMeter::getFakeGain(int channel) {
     return ret;
 }
 
-inline void MultiVUMeter::draw(const DrawArgs& args) {
-    nvgGlobalTint(args.vg, color::WHITE);
+inline void MultiVUMeter::drawLayer(const DrawArgs& args, int layer) {
+    if (layer == 1) {
     nvgBeginPath(args.vg);
     nvgRect(args.vg, 0, 0, box.size.x, box.size.y);
     nvgFillColor(args.vg, nvgRGB(0, 0, 0));
@@ -251,4 +251,6 @@ inline void MultiVUMeter::draw(const DrawArgs& args) {
         nvgFillColor(args.vg, ltBlue);
         nvgFill(args.vg);
     }
+    }
+    Widget::drawLayer(args, layer);
 }
