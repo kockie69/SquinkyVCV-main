@@ -358,9 +358,11 @@ void S4Button::onDragHover(const rack::event::DragHover& e) {
     sq::consumeEvent(&e, this);
 }
 
-void S4Button::draw(const DrawArgs& args) {
-	nvgGlobalTint(args.vg, color::WHITE);
-	::rack::app::ParamWidget::draw(args);
+void S4Button::drawLayer(const DrawArgs& args, int layer) {
+	if (layer == 1) {
+	    ::rack::app::ParamWidget::draw(args);
+    }
+    ParamWidget::drawLayer(args,layer);
 }
 
 void S4Button::onButton(const rack::event::Button& e) {

@@ -45,9 +45,11 @@ public:
         return  SqHelper::getValue(this);
     }
 
-    void draw(const DrawArgs& args) override {
-	    nvgGlobalTint(args.vg, rack::color::WHITE);
-        ::rack::app::SvgSwitch::draw(args);
+    void drawLayer(const DrawArgs& args,int layer) override {
+	    if (layer ==1) {
+            ::rack::app::SvgSwitch::draw(args);
+        }
+        SvgSwitch::drawLayer(args,layer);
     }
 };
 
@@ -85,7 +87,7 @@ public:
     }
 
     void onButton(const event::Button &e) override;
-    void draw(const DrawArgs &args) override;
+    void drawLayer(const DrawArgs &args, int layer) override;
     void registerManager(std::shared_ptr<ToggleManager>);
     void turnOff();
     
@@ -134,13 +136,15 @@ inline void ToggleButton::addSvg(const char* resourcePath)
     this->box.size.y = std::max(this->box.size.y, svg->box.size.y);
 }
 
-inline void ToggleButton::draw(const DrawArgs &args)
+inline void ToggleButton::drawLayer(const DrawArgs &args,int layer)
 {
-    nvgGlobalTint(args.vg, color::WHITE);
-    const float _value = SqHelper::getValue(this);
-    int index = int(std::round(_value));
-    auto svg = svgs[index];
-    svg->draw(args);
+    if (layer == 1) {
+        const float _value = SqHelper::getValue(this);
+        int index = int(std::round(_value));
+        auto svg = svgs[index];
+        svg->draw(args);
+    }
+    ParamWidget::drawLayer(args,layer);
 }
 
 inline void ToggleButton::turnOff()

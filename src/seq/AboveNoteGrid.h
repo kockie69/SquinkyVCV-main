@@ -18,7 +18,7 @@ public:
     void setSequencer(MidiSequencerPtr seq);
     void songUpdated();
 
-    void draw(const DrawArgs& args) override;
+    void drawLayer(const DrawArgs& args, int layer) override;
     void step() override;
 
 private:

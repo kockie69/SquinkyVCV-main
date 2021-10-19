@@ -327,9 +327,7 @@ void SequencerWidget::setupRemoteEditMenu()
 
     // poll every 8 frames. save a little CPU.
     remoteEditDivider.setup(8, [this]() {
-        if (!_module) {
-            return;
-        }
+        if (module) {
         // Inspect the flag. It's set from menu, and saved in patch as a module param.
         bool wantRemoteEdit =   APP->engine->getParamValue(
             _module, 
@@ -361,6 +359,7 @@ void SequencerWidget::setupRemoteEditMenu()
                     this->_module->postNewSong(song, "", false);
                 }
             }
+        }
         }
     });
 }
@@ -567,8 +566,8 @@ void SequencerWidget::addJacks(SequencerModule *module)
 
 void SequencerModule::dataFromJson(json_t *data)
 {
-    MidiSequencerPtr newSeq = SequencerSerializer::fromJson(data, this);
-    setNewSeq(newSeq);
+//    MidiSequencerPtr newSeq = SequencerSerializer::fromJson(data, this);
+//    setNewSeq(newSeq);
 }
 
 void SequencerModule::setNewSeq(MidiSequencerPtr newSeq)

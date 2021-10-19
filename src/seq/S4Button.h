@@ -57,7 +57,7 @@ public:
     bool isSelected() const {
         return _isSelected;
     }
-    void draw(const DrawArgs& args) override;
+    void drawLayer(const DrawArgs& args, int layer) override;
     
     void step() override;
 

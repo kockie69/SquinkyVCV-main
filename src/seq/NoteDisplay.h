@@ -75,7 +75,7 @@ private:
 
     void onSelect(const event::Select &e) override;
     void onDeselect(const event::Deselect &e) override;
-    void draw(const DrawArgs &args) override;
+    void drawLayer(const DrawArgs &args, int layer) override;
     void onDoubleClick(const event::DoubleClick &e) override;
     void onButton(const event::Button &e) override;
     void onHoverKey(const event::HoverKey &e) override;

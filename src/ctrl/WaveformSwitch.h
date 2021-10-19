@@ -34,7 +34,7 @@ public:
     WaveformSwitch();
     void step() override;
     void onButton(const event::Button& e) override;
-    void draw(const DrawArgs& args) override;
+    void drawLayer(const DrawArgs& args, int layer) override;
 private:
     FramebufferWidget* fw = nullptr;
 
@@ -82,10 +82,11 @@ inline void WaveformSwitch::onButton(const event::Button& e) {
     }
 }
 
-void WaveformSwitch::draw(const DrawArgs& args) {
-	    nvgGlobalTint(args.vg, color::WHITE);
-	    ::rack::ParamWidget::draw(args);
-    }
+void WaveformSwitch::drawLayer(const DrawArgs& args,int layer) {
+	    if (layer ==1) 
+	        ::rack::ParamWidget::draw(args);
+        ParamWidget::drawLayer(args,layer);
+        }
 
 WaveCell* WaveformSwitch::getCell(int index) {
     return cells[index];
