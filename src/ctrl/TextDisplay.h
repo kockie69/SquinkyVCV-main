@@ -16,7 +16,7 @@ inline TextDisplayBase::TextDisplayBase() {
 }
 
 inline void TextDisplayBase::draw(const DrawArgs& args) {
-    INFO("TestDisplayBase");
+    //INFO("TestDisplayBase");
     nvgScissor(args.vg, RECT_ARGS(args.clipBox));
 
     BNDwidgetState state;
