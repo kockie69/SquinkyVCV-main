@@ -72,11 +72,11 @@ struct BlueToggle : public SvgSwitch
     }
 };
 
-struct SqTrimpot24 : app::SvgKnob {
+struct SqTrimpot24 : Trimpot {
 	SqTrimpot24() {
 		minAngle = -0.75 * M_PI;
 		maxAngle = 0.75 * M_PI;
-        setSvg(SqHelper::loadSvg("res/trimpot-24.svg"));
+        //setSvg(SqHelper::loadSvg("res/trimpot-24.svg"));
 	}
 };
 
