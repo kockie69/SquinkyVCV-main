@@ -81,7 +81,7 @@ inline void SqToggleLED::drawLayer(const DrawArgs &args, int layer)
         auto svg = svgs[index];
         svg->draw(args);
     }
-    ModuleLightWidget::drawLayer(args, layer);
+    ModuleLightWidget::draw(args);
 }
 
 
