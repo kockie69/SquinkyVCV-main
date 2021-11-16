@@ -1,9 +1,10 @@
+#include "WidgetComposite.h"
 #include "ClockFinder.h"
 
 #include "GMR2.h"
 #include "Seq.h"
 #include "Seq4.h"
-#include "WidgetComposite.h"
+
 //#include "app.hpp"
 #include "app/CableWidget.hpp"
 #include "app/ModuleWidget.hpp"
@@ -411,7 +412,7 @@ void ClockFinder::go(ModuleWidget* host, int div, int clockInput, int runInput, 
         APP->engine->addCable(cable);
         rack::app::CableWidget* cw = new rack::app::CableWidget;
 	    cw->setCable(cable);
-	    cw->setNextCableColor();
+	    //cw->getNextCableColor();
 	    if (cw->isComplete())
             APP->scene->rack->addCable(cw);
     }

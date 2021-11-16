@@ -1,8 +1,9 @@
 
 #pragma once
 
-#include "SqStream.h"
 #include "rack.hpp"
+#include "SqStream.h"
+
 
 
 #include <string>

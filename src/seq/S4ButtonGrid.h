@@ -10,12 +10,13 @@
  * 
  ****************************************************************************/
 
+#include "rack.hpp"
 #include "MidiSong4.h"
 
 #include "Seq4.h"
 //#include "TimeUtils.h"
 #include "WidgetComposite.h"
-#include "rack.hpp"
+
 
 class S4Button;
 

@@ -1,8 +1,9 @@
+#include "rack.hpp"
 #include "InputScreenManager.h"
 
 #include "InputScreen.h"
 #include "XformScreens.h"
-#include "rack.hpp"
+
 
 InputScreenManager::InputScreenManager(::rack::math::Vec siz) : size(siz) {
 }

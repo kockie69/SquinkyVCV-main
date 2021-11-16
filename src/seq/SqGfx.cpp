@@ -1,8 +1,9 @@
 
+#include "rack.hpp"
 #include "SqGfx.h"
 
 #include "UIPrefs.h"
-#include "rack.hpp"
+
 
 void SqGfx::strokedRect(NVGcontext *vg, NVGcolor color, float x, float y, float w, float h) {
     nvgStrokeColor(vg, color);

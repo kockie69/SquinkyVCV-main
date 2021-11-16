@@ -1,10 +1,11 @@
+#include "rack.hpp"
 #include "SqMidiEvent.h"
 #include "InteropClipboard.h"
 #include "MidiLock.h"
 #include "MidiTrack.h"
 #include <asserts.h>
 
-#include "rack.hpp"
+
 
 bool InteropClipboard::empty()
 {

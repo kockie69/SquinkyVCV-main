@@ -1,11 +1,10 @@
 
-
+#include "Squinky.hpp"
 #include "C2Json.h"
 #include "Comp2TextUtil.h"
 #include "Compressor2.h"
 #include "CompressorTooltips.h"
 #include "SqStream.h"
-#include "Squinky.hpp"
 #include "WidgetComposite.h"
 #include "ctrl/PopupMenuParamWidget.h"
 #include "ctrl/SqHelper.h"

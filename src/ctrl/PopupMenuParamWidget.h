@@ -1,7 +1,8 @@
 #pragma once
 
-#include "SqUI.h"
 #include "rack.hpp"
+#include "SqUI.h"
+
 
 #include <random>
 #include <functional>

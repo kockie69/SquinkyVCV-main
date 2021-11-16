@@ -1,7 +1,7 @@
 #pragma once
-
-#include "SqLog.h"
 #include "../Squinky.hpp"
+#include "SqLog.h"
+
 
 class GMRTabbedHeader;
 class StochasticGrammar;

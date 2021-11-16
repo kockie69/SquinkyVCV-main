@@ -1,9 +1,9 @@
 #pragma once
 
-
+#include "rack.hpp"
 #include "ISeqSettings.h"
 
-#include "rack.hpp"
+
 
 #include <stdio.h>
 

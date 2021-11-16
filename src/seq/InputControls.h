@@ -1,10 +1,11 @@
 #pragma once
 
+#include "rack.hpp"
 #include "UIPrefs.h"
 #include "../ctrl/PopupMenuParamWidget.h"
 
 #include <functional>
-#include "rack.hpp"
+
 
 /**
  * A basic button with callback.

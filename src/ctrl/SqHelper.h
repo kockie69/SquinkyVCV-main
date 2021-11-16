@@ -5,9 +5,10 @@
  * and VCV 0.6.n. Now that 1.0 is out, and this code base requires 1.0,
  * we have removed the 0.6 versions. 
  */
+#include "rack.hpp"
 #include <string>
 #include "IComposite.h"
-#include "rack.hpp"
+
 
 extern ::rack::plugin::Plugin* pluginInstance;
 

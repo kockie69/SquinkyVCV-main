@@ -1,8 +1,9 @@
+#include "rack.hpp"
 #include "KbdManager.h"
 #include "ActionContext.h"
 #include "KeyMapping.h"
 #include "StepRecorder.h"
-#include "rack.hpp"
+
 
 #include <unistd.h>
 

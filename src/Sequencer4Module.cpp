@@ -1,10 +1,10 @@
-
+#include "Squinky.hpp"
 #include "Sequencer4Module.h"
 #include "Sequencer4Widget.h"
 
 #include "SqStream.h"
 #include "MidiSong4.h"
-#include "Squinky.hpp"
+
 #include "UndoRedoStack.h"
 #include "WidgetComposite.h"
 

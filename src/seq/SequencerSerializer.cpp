@@ -1,10 +1,10 @@
-
+#include "../SequencerModule.h"
 #include "MidiLock.h"
 #include "MidiSequencer.h"
 #include "MidiSequencer4.h"
 #include "MidiTrack4Options.h"
 #include "MidiSong4.h"
-#include "../SequencerModule.h"
+
 #include "../Sequencer4Module.h"
 #include "SequencerSerializer.h"
 #include "SeqSettings.h"

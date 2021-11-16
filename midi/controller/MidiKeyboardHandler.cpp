@@ -1,9 +1,9 @@
-
+#include "../Squinky.hpp"
 #include "MidiKeyboardHandler.h"
 
 #include <assert.h>
 
-#include "../Squinky.hpp"
+
 #include "ISeqSettings.h"
 #include "MidiSequencer.h"
 

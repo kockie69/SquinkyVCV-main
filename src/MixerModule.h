@@ -1,8 +1,9 @@
 
 #pragma once
 
-#include "CommChannels.h"
 #include "rack.hpp"
+#include "CommChannels.h"
+
 
 #include "ctrl/SqHelper.h"
 

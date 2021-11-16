@@ -1,12 +1,12 @@
 #pragma once
-
+#include "rack.hpp"
 //#include "DiatonicUtils.h"
 #include <functional>
 #include <memory>
 #include <widget/FramebufferWidget.hpp>
 
 #include "Scale.h"
-#include "rack.hpp"
+
 
 class InputControl;
 class MidiSequencer;

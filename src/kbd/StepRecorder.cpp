@@ -1,7 +1,8 @@
+#include "../ctrl/SqHelper.h"
 #include "ISeqSettings.h"
 #include "MidiSequencer.h"
 #include "StepRecorder.h"
-#include "../ctrl/SqHelper.h"
+
 #include "WidgetComposite.h"
 
 #include <assert.h>

@@ -1,11 +1,12 @@
 #pragma once
+#include "rack.hpp"
 
 #include "SqUI.h"
 #include "SqHelper.h"
 
 #include <memory>
 
-#include "rack.hpp"
+
 
 #if 1   // just use SvgSwitch
 

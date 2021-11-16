@@ -1,9 +1,8 @@
-
+#include "WidgetComposite.h"
 #include "Compressor.h"
 #include "CompressorTooltips.h"
 #include "SqStream.h"
 #include "Squinky.hpp"
-#include "WidgetComposite.h"
 #include "ctrl/PopupMenuParamWidget.h"
 #include "ctrl/SqHelper.h"
 #include "ctrl/SqMenuItem.h"

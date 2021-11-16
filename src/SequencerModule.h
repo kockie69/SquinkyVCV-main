@@ -1,12 +1,12 @@
 #pragma once
 
-
+#include "WidgetComposite.h"
 #include "Seq.h"
 #include "MidiSequencer.h"
 #include "seq/SequencerSerializer.h"
 
 class SequencerWidget;
-#include "WidgetComposite.h"
+
 using Module =  ::rack::engine::Module;
 
 #include <atomic>

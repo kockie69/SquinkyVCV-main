@@ -1,10 +1,10 @@
 #pragma once
 
 class InputPopupMenuParamWidget;
-
+#include "rack.hpp"
 #include "InputControls.h"
 #include <vector>
-#include "rack.hpp"
+
 
 class PitchInputWidget : public InputControl, public ::rack::OpaqueWidget
 {

@@ -1,4 +1,5 @@
 
+#include "rack.hpp"
 #include "GMRSerialization.h"
 #include "SqStream.h"
 
@@ -6,7 +7,7 @@
 
 #include "StochasticGrammar2.h"
 #include "StochasticProductionRule.h"
-#include "rack.hpp"
+
 
 StochasticGrammarPtr GMRSerialization::readGrammarFile(const std::string& path) {
     // json_t *json_load_file(const char *path, size_t flags, json_error_t *error) JANSSON_ATTRS(warn_unused_result);

@@ -1,10 +1,11 @@
 
 #pragma once
 
+#include "WidgetComposite.h"
 #include "Compressor.h"
 #include "Compressor2.h"
 #include "SqStream.h"
-#include "WidgetComposite.h"
+
 
 class AttackQuantity2 : public rack::engine::ParamQuantity {
 public:
