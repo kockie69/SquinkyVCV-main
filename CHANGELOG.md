@@ -1,5 +1,9 @@
 # Change log for Squinky Labs modules
 
+## 2.0.14
+
+Code changes to be complianrt with 588342d7 SDK
+
 ## 2.0.5
 
 All the modules have been ported and now are ready to run in Rack v2.
