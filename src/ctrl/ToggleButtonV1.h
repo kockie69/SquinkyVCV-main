@@ -111,6 +111,7 @@ private:
 
     bool didStep = false;
     bool isControlKey = false;
+    const float luminosity = 4.f/9.f;
 };
 
 
@@ -166,6 +167,8 @@ inline float SqSvgParamToggleButton::getValue()
 inline void SqSvgParamToggleButton::drawLayer(const DrawArgs &args, int layer)
 {
     if (layer == 1) {
+        // Scale from max brightness to min brightness, as rack brightness is reduced from one to zero
+        nvgAlpha(args.vg, (1.f - luminosity) * rack::settings::rackBrightness + luminosity);
         button->draw(args);
     }
     ParamWidget::drawLayer(args,layer);

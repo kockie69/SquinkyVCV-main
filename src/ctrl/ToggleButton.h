@@ -48,10 +48,15 @@ public:
 
     void drawLayer(const DrawArgs& args,int layer) override {
 	    if (layer ==1) {
+            // Scale from max brightness to min brightness, as rack brightness is reduced from one to zero
+            nvgAlpha(args.vg, (1.f - luminosity) * rack::settings::rackBrightness + luminosity);
+
             ::rack::app::SvgSwitch::draw(args);
         }
         SvgSwitch::drawLayer(args,layer);
     }
+private:
+    const float luminosity = 7.f/12.f;
 };
 
 #else

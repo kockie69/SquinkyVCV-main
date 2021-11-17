@@ -45,6 +45,7 @@ private:
     int getSvgIndex();
 
     bool isDragging = false;
+    const float luminosity = 7.f/12.f;
 };
 
 inline void SqToggleLED::setHandler(callback h)
@@ -77,6 +78,9 @@ inline int SqToggleLED::getSvgIndex()
 inline void SqToggleLED::drawLayer(const DrawArgs &args, int layer)
 {
     if (layer == 1) {
+        // Scale from max brightness to min brightness, as rack brightness is reduced from one to zero
+        nvgAlpha(args.vg, (1.f - luminosity) * rack::settings::rackBrightness + luminosity);
+
         int index = getSvgIndex();
         auto svg = svgs[index];
         svg->draw(args);
