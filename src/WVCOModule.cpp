@@ -172,7 +172,7 @@ private:
         APP->engine->addCable(cable);
         rack::app::CableWidget* cw = new rack::app::CableWidget;
 	    cw->setCable(cable);
-	    //cw->setNextCableColor();
+	    cw->color = APP->scene->rack->getNextCableColor();
         cw->color= nvgRGBAf(255, 255, 255, 255);
 	    if (cw->isComplete())
             APP->scene->rack->addCable(cw);

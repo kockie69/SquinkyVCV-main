@@ -412,7 +412,7 @@ void ClockFinder::go(ModuleWidget* host, int div, int clockInput, int runInput, 
         APP->engine->addCable(cable);
         rack::app::CableWidget* cw = new rack::app::CableWidget;
 	    cw->setCable(cable);
-	    //cw->getNextCableColor();
+        cw->color = APP->scene->rack->getNextCableColor();
 	    if (cw->isComplete())
             APP->scene->rack->addCable(cw);
     }
