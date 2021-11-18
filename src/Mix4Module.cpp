@@ -197,7 +197,7 @@ void Mix4Widget::makeStrip(
     addParam(_mute);
 
     addChild(createLight<MuteLight<SquinkyLight>>(
-        Vec(mutx + 2.2, muty + 2),
+        Vec(mutx + 2, muty + 2),
         module,
         channel + Comp::MUTE0_LIGHT));
 
@@ -207,7 +207,7 @@ void Mix4Widget::makeStrip(
         Vec(x-11, y-12),
         module,
         channel + Comp::SOLO0_LIGHT));
-    std::string sLed = asset::system("res/ComponentLibrary/LEDBezel.svg");
+    std::string sLed = asset::system("res/ComponentLibrary/VCVBezel.svg");
     tog->addSvg(sLed.c_str(), true);
     tog->addSvg("res/SquinkyBezel.svg");
     tog->setHandler( [this, channel](bool ctrlKey) {

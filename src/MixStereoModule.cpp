@@ -201,17 +201,16 @@ void MixStereoWidget::makeGroup(
     addParam(_mute);
 
     addChild(createLight<MuteLight<SquinkyLight>>(
-        Vec(mutx + 2.2, muty + 2),
+        Vec(mutx + 2, muty + 2),
         module,
         group + Comp::MUTE0_LIGHT));
-
-    
+        
     y -= (channelDy-1);
     SqToggleLED* tog = (createLight<SqToggleLED>(
         Vec(x-11, y-12),
         module,
         group + Comp::SOLO0_LIGHT));
-    std::string sLed = asset::system("res/ComponentLibrary/LEDBezel.svg");
+    std::string sLed = asset::system("res/ComponentLibrary/VCVBezel.svg");
     tog->addSvg(sLed.c_str(), true);
     tog->addSvg("res/SquinkyBezel.svg");
     tog->setHandler( [this, group](bool ctrlKey) {
