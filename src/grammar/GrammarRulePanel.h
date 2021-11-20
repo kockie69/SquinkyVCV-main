@@ -5,7 +5,6 @@
 
 #include "../Squinky.hpp"
 #include "WidgetComposite.h"
-#include "widget/Widget.hpp"
 
 class StochasticGrammar;
 class GMRModule;

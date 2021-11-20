@@ -1,9 +1,10 @@
 #pragma once
 
+#include "asserts.h"
 #include <memory>
 #include <utility>
 
-#include "asserts.h"
+
 
 class HermiteSpline;
 

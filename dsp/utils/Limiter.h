@@ -1,7 +1,6 @@
 #pragma once
 
 #include <stdint.h>
-#include "simd/functions.hpp"
 #include "MultiLag2.h"
 #include "SqLog.h"
 #include "SqMath.h"

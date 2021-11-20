@@ -2,12 +2,7 @@
 
 
 #include "SimdBlocks.h"
-#include "engine/Port.hpp"
 #include "SqPort.h"
-#include "dsp/approx.hpp"
-#include "dsp/minblep.hpp"
-#include "simd/Vector.hpp"
-#include "simd/functions.hpp"
 
 #include "ObjectCache.h"
 #include "simd.h"

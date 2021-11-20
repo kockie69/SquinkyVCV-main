@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "CompiledRegion.h"
 #include "SimdBlocks.h"
+#include "CompiledRegion.h"
 #include "SqLog.h"
 
 /**

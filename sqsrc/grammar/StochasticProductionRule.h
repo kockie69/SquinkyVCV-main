@@ -1,12 +1,12 @@
 #pragma once
-
+#include "asserts.h"
 #include <memory>
 #include <set>
 #include <vector>
 
 #include "SqLog.h"
 #include "StochasticNote.h"
-#include "asserts.h"
+
 
 class StochasticProductionRuleEntry;
 class StochasticProductionRule;

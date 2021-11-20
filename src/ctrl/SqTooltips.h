@@ -1,9 +1,6 @@
 
 #pragma once
 
-#include "engine/ParamQuantity.hpp"
-#include "engine/Module.hpp"
-
 namespace SqTooltips
 {
 

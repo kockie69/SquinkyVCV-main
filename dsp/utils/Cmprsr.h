@@ -1,13 +1,13 @@
 #pragma once
 
+#include "MultiLag2.h"
 #include "CompCurves.h"
-// #include "simd/functions.hpp"
 #include <assert.h>
 #include <stdint.h>
 
 #include <atomic>
 
-#include "MultiLag2.h"
+
 #include "SqLog.h"
 #include "SqMath.h"
 #include "simd.h"

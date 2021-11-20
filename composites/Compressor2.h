@@ -13,7 +13,6 @@
 #include "ObjectCache.h"
 #include "SqLog.h"
 #include "SqPort.h"
-#include "engine/Port.hpp"
 
 #define _CMP_SCHEMA2
 

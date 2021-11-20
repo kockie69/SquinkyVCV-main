@@ -1,9 +1,9 @@
-
+#include "SplineRenderer.h"
 #include "CompCurves.h"
 
 #include <functional>
 
-#include "SplineRenderer.h"
+
 #include "asserts.h"
 
 CompCurves::xy CompCurves::getGainAtRightInflection(const CompCurves::Recipe& r) {

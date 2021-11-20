@@ -121,8 +121,6 @@ inline void VULabels::draw(const DrawArgs& args) {
 // this control adapted from Fundamental VCA 16 channel level meter
 // widget::TransparentWidget
 
-#include "app/LightWidget.hpp"
-
 class MultiVUMeter : public app::LightWidget {
 private:
     int* const isStereo_;

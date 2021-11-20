@@ -15,7 +15,6 @@
 #endif
 
 #include "SqMath.h"
-#include "dsp/filter.hpp"
 
 #include "BiquadFilter.h"
 #include "BiquadParams.h"

@@ -17,8 +17,6 @@
 #include "ObjectCache.h"
 #include "IIRDecimator.h"
 
-#include "dsp/filter.hpp"
-
 extern float sawTable[2048];
 extern float triTable[2048];
 

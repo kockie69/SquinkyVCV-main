@@ -1,13 +1,9 @@
+#include "rack.hpp"
 #include "IMidiPlayerHost.h"
 #include "MidiTrackPlayer.h"
 #include "MidiSong4.h"
 #include "MidiTrack4Options.h"
 #include "TimeUtils.h"
-
-#ifdef __PLUGIN
-#include "engine/Param.hpp"
-#include "engine/Port.hpp"
-#endif
 
 #include <assert.h>
 #include <stdio.h>

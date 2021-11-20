@@ -5,16 +5,6 @@
 #include "Seq.h"
 #include "Seq4.h"
 
-//#include "app.hpp"
-#include "app/CableWidget.hpp"
-#include "app/ModuleWidget.hpp"
-#include "app/ParamWidget.hpp"
-#include "app/PortWidget.hpp"
-#include "app/Scene.hpp"
-#include "engine/Engine.hpp"
-#include "plugin/Model.hpp"
-#include "widget/Widget.hpp"
-
 using ModuleWidget = ::rack::app::ModuleWidget;
 using Model = ::rack::plugin::Model;
 using PortWidget = ::rack::app::PortWidget;

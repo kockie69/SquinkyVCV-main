@@ -1,7 +1,7 @@
-
+#include "StochasticProductionRule.h"
 #include "StochasticGrammar2.h"
 
-#include "StochasticProductionRule.h"
+
 
 StochasticProductionRulePtr StochasticGrammar::getRule(const StochasticNote& n) const {
     auto it = rules.find(n);

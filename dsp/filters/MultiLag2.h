@@ -2,9 +2,9 @@
 
 // #ifndef _MSC_VER
 #if 1
+#include "SimdBlocks.h"
 #include "LookupTable.h"
 #include "LowpassFilter.h"
-#include "SimdBlocks.h"
 #include "simd.h"
 
 /**

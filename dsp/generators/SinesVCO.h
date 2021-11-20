@@ -2,9 +2,6 @@
 
 #include "simd.h"
 #include "SimdBlocks.h"
-//#include "dsp/minblep.hpp"
-#include "dsp/approx.hpp"
-//#include "dsp/filter.hpp"
 
 using namespace rack;		// normally I don't like "using", but this is third party code...
 

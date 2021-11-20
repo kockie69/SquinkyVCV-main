@@ -11,7 +11,6 @@
 #include "LookupTableFactory.h"
 #include "ObjectCache.h"
 #include "SqPort.h"
-#include "engine/Port.hpp"
 
 #define _CMP_SCHEMA2
 #ifdef _CMP_SCHEMA2

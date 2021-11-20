@@ -2,8 +2,6 @@
 
 #include "../seq/SqGfx.h"
 #include "../seq/UIPrefs.h"
-// #include "widget/TransparentWidget.hpp"
-#include "app/LightWidget.hpp"
 
 class SqVuMeter : public app::LightWidget
 {

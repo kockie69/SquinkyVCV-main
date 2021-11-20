@@ -1,5 +1,6 @@
 #pragma once
 
+#include "rack.hpp"
 #include <immintrin.h>
 #include <random>
 #if !defined(M_PI)
@@ -21,8 +22,6 @@
 #pragma warning (push)
 #pragma warning (disable: 4305)
 #endif
-
-#include "dsp/filter.hpp"
 
 #if defined(_MSC_VER)
 #pragma warning (pop)
