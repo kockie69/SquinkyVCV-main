@@ -67,13 +67,16 @@ public:
 
     enum InputIds {
         AUDIO_INPUT,
+        AUDIO_R_INPUT,
         CV_INPUT,
         NUM_INPUTS
     };
 
     enum OutputIds {
         SIN_OUTPUT,
+        SIN_R_OUTPUT,
         COS_OUTPUT,
+        COS_R_OUTPUT,
         NUM_OUTPUTS
     };
 
@@ -91,10 +94,13 @@ public:
 private:
     SinOscillatorParams<T> oscParams;
     SinOscillatorState<T> oscState;
+    SinOscillatorState<T> oscStateR;
     BiquadParams<T, 3> hilbertFilterParamsSin;
     BiquadParams<T, 3> hilbertFilterParamsCos;
     BiquadState<T, 3> hilbertFilterStateSin;
     BiquadState<T, 3> hilbertFilterStateCos;
+    BiquadState<T, 3> hilbertFilterStateSinR;
+    BiquadState<T, 3> hilbertFilterStateCosR;
 
     std::shared_ptr<LookupTableParams<T>> exponential2;
 
@@ -127,21 +133,28 @@ inline void FrequencyShifter<TBase>::step() {
     SinOscillator<float, true>::setFrequency(oscParams, freqHz * reciprocalSampleRate);
 
     // Generate the quadrature sin oscillators.
-    T x, y;
+    T x, xR, y, yR;
     SinOscillator<T, true>::runQuadrature(x, y, oscState, oscParams);
+    SinOscillator<T, true>::runQuadrature(xR, yR, oscStateR, oscParams);
 
     // Filter the input through the quadrature filter
     const T input = TBase::inputs[AUDIO_INPUT].getVoltage(0);
+    const T inputR = TBase::inputs[AUDIO_R_INPUT].getVoltage(0);
     const T hilbertSin = BiquadFilter<T>::run(input, hilbertFilterStateSin, hilbertFilterParamsSin);
     const T hilbertCos = BiquadFilter<T>::run(input, hilbertFilterStateCos, hilbertFilterParamsCos);
-
+    const T hilbertSinR = BiquadFilter<T>::run(inputR, hilbertFilterStateSinR, hilbertFilterParamsSin);
+    const T hilbertCosR = BiquadFilter<T>::run(inputR, hilbertFilterStateCosR, hilbertFilterParamsCos);
     // Cross modulate the two sections.
     x *= hilbertSin;
     y *= hilbertCos;
+    xR *= hilbertSinR;
+    yR *= hilbertCosR;
 
     // And combine for final SSB output.
     TBase::outputs[SIN_OUTPUT].setVoltage(x + y, 0);
+    TBase::outputs[SIN_R_OUTPUT].setVoltage(xR + yR, 0);
     TBase::outputs[COS_OUTPUT].setVoltage(x - y, 0);
+    TBase::outputs[COS_R_OUTPUT].setVoltage(xR - yR, 0);
 }
 
 template <class TBase>
