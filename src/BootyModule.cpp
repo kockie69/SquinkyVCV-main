@@ -276,7 +276,7 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
     // knob on row 1
     addParam(SqHelper::createParam<RoganSLBlue40>(
         icomp,
-        Vec(18, row1),
+        Vec(25, row1),
         module,
         Comp::PITCH_PARAM));
 
