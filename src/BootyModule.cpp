@@ -51,10 +51,13 @@ extern const char* ranges[];
 BootyModule::BootyModule()
 {
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS); 
-        configInput(Comp::AUDIO_INPUT,"Audio");
+        configInput(Comp::AUDIO_INPUT,"Audio Left");
+        configInput(Comp::AUDIO_R_INPUT,"Audio Right");
         configInput(Comp::CV_INPUT,"Disorder");
-        configOutput(Comp::SIN_OUTPUT,"Up-shifted");
-        configOutput(Comp::COS_OUTPUT,"Down-shifted");
+        configOutput(Comp::SIN_OUTPUT,"Up-shifted Left");
+        configOutput(Comp::COS_OUTPUT,"Down-shifted Left");
+        configOutput(Comp::SIN_R_OUTPUT,"Up-shifted Right");
+        configOutput(Comp::COS_R_OUTPUT,"Down-shifted Right");
 
     shifter = std::make_shared<Comp>(this);
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
@@ -233,6 +236,7 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
 
     const int leftInputX = 11;
     const int rightInputX = 55;
+    const int middleInputX = 33;
 
     const int row0 = 45;
     const int row1 = 102;
@@ -246,7 +250,7 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
     addInput(createInput<PJ301MPort>(
         Vec(rightInputX, row0),
         module,
-        Comp::CV_INPUT));
+        Comp::AUDIO_R_INPUT));
 
     // shift Range on row 2
     const float margin = 16;
@@ -276,20 +280,38 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
         module,
         Comp::PITCH_PARAM));
 
-    const float row3 = 317.5;
+    const float row3 = 240.5;   
 
-    // Outputs on row 3
+    addInput(createInput<PJ301MPort>(
+        Vec(middleInputX, row3),
+        module,
+        Comp::CV_INPUT));
+
+    const float row4 = 300.5;
+
+    // Outputs on row 4
     const float leftOutputX = 9.5;
     const float rightOutputX = 55.5;
 
     addOutput(createOutput<PJ301MPort>(
-        Vec(leftOutputX, row3),
+        Vec(leftOutputX, row4),
         module,
         Comp::SIN_OUTPUT));
     addOutput(createOutput<PJ301MPort>(
-        Vec(rightOutputX, row3),
+        Vec(rightOutputX, row4),
+        module,
+        Comp::SIN_R_OUTPUT));
+
+    const float row5 = 330.5;
+
+    addOutput(createOutput<PJ301MPort>(
+        Vec(leftOutputX, row5),
         module,
         Comp::COS_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(
+        Vec(rightOutputX, row5),
+        module,
+        Comp::COS_R_OUTPUT));
 
     // screws
     addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
