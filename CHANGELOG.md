@@ -1,5 +1,13 @@
 # Change log for Squinky Labs modules
 
+## 2.1.2
+
+LFN now has menu setting for switching to unipolar
+
+## 2.1.1
+
+Booty Shifter is now a stereo module
+
 ## 2.0.14
 
 Code changes to be complianrt with 588342d7 SDK

@@ -6,7 +6,7 @@
 
 The name "Booty Shifter" is a nod to the classic analog module, as well as to a black cat named Booty.
 
-Booty Shifter  will take audio (stereo) input and shift the frequencies up or down. This is not like a pitch shift where harmonics will remain in tune; it is an absolute frequency shift in Hz, so in general **harmonics will go way out of tune.** It is similar to a ring-modulator, but less extreme and more versatile.
+Booty Shifter will take audio (stereo) input and shift the frequencies up or down. This is not like a pitch shift where harmonics will remain in tune; it is an absolute frequency shift in Hz, so in general **harmonics will go way out of tune.** It is similar to a ring-modulator, but less extreme and more versatile.
 
 When the original module was released long ago it cost around $1000. More recent Eurorack frequency shifters are still very expensive, because the frequency shifter requires a large number of components, and must be carefully calibrated.
 

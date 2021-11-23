@@ -12,6 +12,8 @@ For example, it the base frequency is 1.0, the EQ sections will be at 1Hz, 2Hz, 
 
 Normally the base frequency has a range of 0.1 Hz to 2.0 Hz. But there is an additional option in the context menu: Extra Low Frequency. When extra low frequency is enabled, the range is 0.01 Hz to 0.2 Hz.
 
+We now also provide the option to select unipolar (0-10V) output instead of the standard -5 to 5V. Again this can be changed by going into the contect menu.
+
 Just right click on LFN's panel to open the context menu. Here is an image:
 
 ![Context Menu](./xlfn.png)

@@ -143,8 +143,13 @@ public:
      */
     void pollForChangeOnUIThread();
 
+    void setUniPolar(bool);
+    
+    bool uniPolar = false;
+
 private:
     float reciprocalSampleRate = 0;
+
 
     ::Decimator decimator;
 
@@ -257,6 +262,11 @@ inline void LFN<TBase>::pollForChangeOnUIThread() {
 }
 
 template <class TBase>
+void LFN<TBase>::setUniPolar(bool uni) {
+    uniPolar = uni;
+}
+
+template <class TBase>
 inline void LFN<TBase>::init() {
     updateLPF();
 }
@@ -303,5 +313,8 @@ inline void LFN<TBase>::step() {
         decimator.acceptData(z);
     }
 
-    TBase::outputs[OUTPUT].setVoltage((float)x, 0);
+    if (uniPolar)
+        TBase::outputs[OUTPUT].setVoltage((float)x+5, 0); 
+    else  
+        TBase::outputs[OUTPUT].setVoltage((float)x, 0);
 }

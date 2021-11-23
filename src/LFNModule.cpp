@@ -30,6 +30,7 @@ public:
     void onSampleRateChange() override;
 
     Comp lfn;
+    bool uniPolar;
 private:
 
 };
@@ -55,6 +56,7 @@ LFNModule::LFNModule() : lfn(this)
 
 void LFNModule::step()
 {
+    lfn.setUniPolar(uniPolar);
     lfn.step();
 }
 
@@ -152,6 +154,9 @@ void LFNWidget::appendContextMenu(Menu* theMenu)
         xlfnWidget);
     item->text = "Extra Low Frequency";
     theMenu->addChild(item);
+
+    theMenu->addChild(createBoolPtrMenuItem("Unipolar", "", &module->uniPolar));
+
 }
 
 /**
