@@ -28,6 +28,8 @@ public:
      */
     void step() override;
     void onSampleRateChange() override;
+    json_t *dataToJson() override;
+    void dataFromJson(json_t *rootJ) override;
 
     Comp lfn;
     bool uniPolar;
@@ -105,7 +107,7 @@ struct LFNWidget : ModuleWidget
 
     void appendContextMenu(Menu *menu) override;
     void addStage(int i);
-
+    
     LFNLabelUpdater updater;
     // note that module will be null in some cases
     LFNModule* module;
@@ -143,6 +145,24 @@ void LFNWidget::addStage(int index)
     addInput(createInput<PJ301MPort>(
         Vec(inputX, inputY + index * knobDy),
         module, Comp::EQ0_INPUT + index));
+}
+
+json_t *LFNModule::dataToJson()
+{
+    json_t *rootJ = json_object();
+    const bool up = uniPolar;
+    json_object_set_new(rootJ, "unipolar", json_boolean(up));
+    return rootJ;
+}
+
+void LFNModule::dataFromJson(json_t *rootJ)
+{
+    json_t *driverJ = json_object_get(rootJ, "unipolar");
+    if (driverJ) {
+        const bool up = json_boolean_value(driverJ);
+        if (up)
+            uniPolar = up;
+    }
 }
 
 void LFNWidget::appendContextMenu(Menu* theMenu) 

@@ -144,7 +144,7 @@ public:
     void pollForChangeOnUIThread();
 
     void setUniPolar(bool);
-    
+
     bool uniPolar = false;
 
 private:
