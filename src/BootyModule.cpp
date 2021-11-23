@@ -290,8 +290,8 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
     const float row4 = 300.5;
 
     // Outputs on row 4
-    const float leftOutputX = 9.5;
-    const float rightOutputX = 55.5;
+    const float leftOutputX = 11;
+    const float rightOutputX = 55;
 
     addOutput(createOutput<PJ301MPort>(
         Vec(leftOutputX, row4),
@@ -302,7 +302,7 @@ BootyWidget::BootyWidget(BootyModule *module) : ModuleWidget(module)
         module,
         Comp::SIN_R_OUTPUT));
 
-    const float row5 = 330.5;
+    const float row5 = 329.5;
 
     addOutput(createOutput<PJ301MPort>(
         Vec(leftOutputX, row5),
