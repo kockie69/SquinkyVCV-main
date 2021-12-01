@@ -83,10 +83,10 @@ inline void WaveformSwitch::onButton(const event::Button& e) {
 }
 
 void WaveformSwitch::drawLayer(const DrawArgs& args,int layer) {
-	    if (layer ==1) 
-	        ::rack::ParamWidget::draw(args);
-        ParamWidget::drawLayer(args,layer);
-        }
+	if (layer ==1) 
+	    ::rack::ParamWidget::draw(args);
+    ParamWidget::drawLayer(args,layer);
+}
 
 WaveCell* WaveformSwitch::getCell(int index) {
     return cells[index];
@@ -94,7 +94,8 @@ WaveCell* WaveformSwitch::getCell(int index) {
 
 void WaveformSwitch::step() {
     float fval = SqHelper::getValue(this);
-    int val = int(std::round(fval));
+    //int val = int(std::round(fval));
+    int val = int(std::floor(fval));
     if (val != currentValue) {
         //DEBUG("step found new value %d old=%d\n", val, currentValue);
         if (currentValue >= 0) {
@@ -104,9 +105,11 @@ void WaveformSwitch::step() {
             }
         }
         auto cell = getCell(val);
-        cell->setState(true);
-        currentValue = val;
-        fw->dirty = true;
+        if (cell) {
+            cell->setState(true);
+            currentValue = val;
+            fw->dirty = true;
+        }
     }
     ParamWidget::step();
 }
