@@ -51,6 +51,7 @@ private:
 };
 
 Compressor2Module::Compressor2Module() {
+    configBypass(Comp::LAUDIO_INPUT,Comp::LAUDIO_OUTPUT);
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
     configInput(Comp::LAUDIO_INPUT,"Audio");
     configInput(Comp::SIDECHAIN_INPUT,"Sidechain");

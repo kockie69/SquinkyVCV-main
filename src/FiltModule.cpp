@@ -29,8 +29,12 @@ public:
      */
     void step() override;
     void onSampleRateChange() override;
+    json_t *dataToJson() override;
+    void dataFromJson(json_t *rootJ) override;
 
     std::shared_ptr<Comp> filt;
+    bool poly;
+
 private:
 
 };
@@ -60,10 +64,12 @@ FiltModule::FiltModule()
     SqHelper::setupParams(icomp, this); 
     onSampleRateChange();
     filt->init();
+    poly=false;
 }
 
 void FiltModule::step()
 {
+    filt->setPoly(poly);
     filt->step();
 }
 
@@ -84,7 +90,10 @@ struct FiltWidget : ModuleWidget
         addChild(label);
         return label;
     }
+    
+    FiltModule* module;
 
+    void appendContextMenu(Menu* theMenu) override;
     void addParams(FiltModule *module, std::shared_ptr<IComposite> icomp);
     void addTrimmers(FiltModule *module, std::shared_ptr<IComposite> icomp);
     void addJacks(FiltModule *module, std::shared_ptr<IComposite> icomp);
@@ -106,7 +115,7 @@ struct FiltWidget : ModuleWidget
  * This is not shared by all modules in the DLL, just one
  */
 #ifdef __V1x
-FiltWidget::FiltWidget(FiltModule *module)
+FiltWidget::FiltWidget(FiltModule *module) : module(module)
 {
     setModule(module);
 #else
@@ -409,6 +418,31 @@ void FiltWidget::addJacks(FiltModule *module, std::shared_ptr<IComposite> icomp)
         Vec(x1 - 6 + 4 * deltaXJack -18, yJacks2 + JackLabelY),
         "Out R",
         SqHelper::COLOR_WHITE);
+}
+
+json_t *FiltModule::dataToJson()
+{
+    json_t *rootJ = json_object();
+    const bool up = poly;
+    json_object_set_new(rootJ, "Polyphonic", json_boolean(up));
+    return rootJ;
+}
+
+void FiltModule::dataFromJson(json_t *rootJ)
+{
+    json_t *driverJ = json_object_get(rootJ, "Polyphonic");
+    if (driverJ) {
+        const bool up = json_boolean_value(driverJ);
+        if (up)
+            poly = up;
+    }
+}
+
+void FiltWidget::appendContextMenu(Menu* theMenu) 
+{
+    theMenu->addChild(new MenuSeparator());
+    theMenu->addChild(createBoolPtrMenuItem("Stereo Polyphonic", "", &module->poly));
+
 }
 
 

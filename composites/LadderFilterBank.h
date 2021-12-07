@@ -29,9 +29,9 @@ public:
      * They will be null except for special modes.
      */
     void step(int numChannels, Modes mode,
-              SqInput& audioInput, SqOutput& audioOutput,
+              SqInput& audioInput, SqOutput& audioOutput, SqOutput& audioOutputR,
               SqInput* inputForChannel0, SqInput* inputForChannel1,
-              PeakDetector& peak);
+              PeakDetector& peak, bool poly);
 
     void _dump(int channel, const std::string& label) {
         SqStream s;
@@ -39,14 +39,17 @@ public:
         s.add("[");
         s.add(channel);
         s.add("] ");
-        filters[channel]._dump(s.str());
+        filterL[channel]._dump(s.str());
+        filterR[channel]._dump(s.str());
     }
     const LadderFilter<T>& get(int channel) {
-        return filters[channel];
+        //return filters[channel];
+        return filterL[channel];
     }
 
 private:
-    LadderFilter<T> filters[16];
+    LadderFilter<T> filterL[16];
+    LadderFilter<T> filterR[16];
 
     std::shared_ptr<LookupTableParams<T>> expLookup = ObjectCache<T>::getExp2();  // Do we need more precision?
     AudioMath::ScaleFun<float> scaleGain = AudioMath::makeLinearScaler<float>(0, 1);
@@ -69,12 +72,17 @@ inline void LadderFilterBank<T>::stepn(float sampleTime, int numChannels,
                                        float edgeParam, float edgeTrim,
                                        float slopeParam, float slopeTrim,
                                        float spreadParam) {
+
     for (int channel = 0; channel < numChannels; ++channel) {
-        LadderFilter<T>& filt = filters[channel];
+        LadderFilter<T>& filt = filterL[channel];
+        LadderFilter<T>& filtR = filterR[channel];
 
         filt.setType(type);
+        filtR.setType(type);
         filt.setVoicing(voicing);
+        filtR.setVoicing(voicing);
         filt.setVolume(volume);
+        filtR.setVolume(volume);
 
         // filter Fc calc
         {
@@ -94,6 +102,7 @@ inline void LadderFilterBank<T>::stepn(float sampleTime, int numChannels,
             fcClipped = std::min(normFc, T(.48));
             fcClipped = std::max(fcClipped, T(.0000001));
             filt.setNormalizedFc(fcClipped);
+            filtR.setNormalizedFc(fcClipped);
         }
         {
             T res = scaleQ(
@@ -109,7 +118,9 @@ inline void LadderFilterBank<T>::stepn(float sampleTime, int numChannels,
             const T makeupGain = 1 + bAmt * (res);
 
             filt.setFeedback(res);
+            filtR.setFeedback(res);
             filt.setBassMakeupGain(makeupGain);
+            filtR.setBassMakeupGain(makeupGain);
         }
         {
             float gainInput = scaleGain(
@@ -119,6 +130,7 @@ inline void LadderFilterBank<T>::stepn(float sampleTime, int numChannels,
 
             T gain = T(.15) + 4 * LookupTable<float>::lookup(*audioTaper, gainInput, false);
             filt.setGain(gain);
+            filtR.setGain(gain);
         }
         {
             const float edge = scaleEdge(
@@ -126,6 +138,7 @@ inline void LadderFilterBank<T>::stepn(float sampleTime, int numChannels,
                 edgeParam,
                 edgeTrim);
             filt.setEdge(edge);
+            filtR.setEdge(edge);
         }
         {
             T slope = scaleSlope(
@@ -133,43 +146,83 @@ inline void LadderFilterBank<T>::stepn(float sampleTime, int numChannels,
                 slopeParam,
                 slopeTrim);
             filt.setSlope(slope);
+            filtR.setSlope(slope);
         }
         filt.setFreqSpread(spreadParam);
+        filtR.setFreqSpread(spreadParam);
     }
 }
 
 template <typename T>
 inline void LadderFilterBank<T>::step(int numChannels, Modes mode,
-                                      SqInput& audioInput, SqOutput& audioOutput,
+                                      SqInput& audioInput, SqOutput& audioOutput, SqOutput& audioOutputR,
                                       SqInput* inputForChannel0, SqInput* inputForChannel1,
-                                      PeakDetector& peak) {
+                                      PeakDetector& peak, bool poly) {
+
     for (int channel = 0; channel < numChannels; ++channel) {
-        LadderFilter<T>& filt = filters[channel];
+        LadderFilter<T>& filt = filterL[channel];
 
         float input = audioInput.getVoltage(channel);
-        switch (mode) {
-            case Modes::stereo:
-                if (channel == 1) {
-                    assert(inputForChannel1);
-                    // for legacy stereo mode, dsp1 gets input from right input
-                    input = inputForChannel1->getVoltage(0);
-                }
-                assert(numChannels == 2);
-                break;
-            case Modes::rightOnly:
-                assert(channel == 0);
-                input = inputForChannel0->getVoltage(0);
-                break;
-            case Modes::normal:
-            case Modes::leftOnly:
-                break;
-            default:
-                assert(false);
+        if (!poly) {
+            switch (mode) {
+                case Modes::stereo:
+                    if (channel == 1) {
+                        assert(inputForChannel1);
+                        // for legacy stereo mode, dsp1 gets input from right input
+                        input = inputForChannel1->getVoltage(0);
+                    }
+                    assert(numChannels == 2);
+                    break;
+                case Modes::rightOnly:
+                    assert(channel == 0);
+                    input = inputForChannel0->getVoltage(0);
+                    break;
+                case Modes::normal:
+                case Modes::leftOnly:
+                    break;
+                default:
+                    assert(false);
+            }
+            filt.run(input);
+            const float output = (float)filt.getOutput();
+            audioOutput.setVoltage(output, channel);
+            peak.step(output);
         }
+        else {
+            // It is poly
+            switch (mode) {
+                case Modes::stereo: {
 
-        filt.run(input);
-        const float output = (float)filt.getOutput();
-        audioOutput.setVoltage(output, channel);
-        peak.step(output);
+                    filt.run(input);
+                    const float output = (float)filt.getOutput();
+                    audioOutput.setVoltage(output, channel);
+                    peak.step(output);
+                    
+                    LadderFilter<T>& filtR = filterR[channel];
+                    float inputR = inputForChannel1->getVoltage(channel);
+                    filtR.run(inputR);
+                    const float outputr = (float)filtR.getOutput();
+                    audioOutputR.setVoltage(outputr, channel);
+                    //peak.step(outputr);
+                    }
+                    break; 
+                case Modes::rightOnly: {
+                    float inputR = inputForChannel0->getVoltage(channel);
+                    LadderFilter<T>& filtR = filterR[channel];
+                    filtR.run(inputR);
+                    const float outputr = (float)filtR.getOutput();
+                    audioOutputR.setVoltage(outputr, channel);
+                    peak.step(outputr); }
+                    break; 
+                case Modes::leftOnly: {
+                    filt.run(input);
+                    const float output = (float)filt.getOutput();
+                    audioOutput.setVoltage(output, channel);
+                    peak.step(output); }
+                    break;   
+                default:
+                    assert(false);
+            }
+        }
     }
 }

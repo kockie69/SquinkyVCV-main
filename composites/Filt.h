@@ -40,6 +40,7 @@ template <class TBase>
 class Filt : public TBase {
 public:
     using T = double;
+    //using T = float_4;
     Filt(Module* module) : TBase(module) {
     }
     Filt() : TBase() {
@@ -123,6 +124,7 @@ public:
      * Main processing entry point. Called every sample
      */
     void step() override;
+    void setPoly(bool);
 
     float getLevel() const {
         return peak.get();
@@ -155,6 +157,7 @@ private:
     LadderFilterBank<T> filters;
     Divider div;
     PeakDetector peak;
+    bool poly=false;
 
     ProcessingVars processingVars;
     void setupProcessingVars();
@@ -171,10 +174,15 @@ template <class TBase>
 inline void Filt<TBase>::setupProcessingVars() {
     // in nomrmal poly mode, we use one dsp per channel in the left input.
     // but of only right input connected, we still need one.
-    processingVars.numFiltersActive = TBase::inputs[L_AUDIO_INPUT].channels;
-    if (processingVars.numFiltersActive == 0) {
-        processingVars.numFiltersActive = TBase::inputs[R_AUDIO_INPUT].channels;
+    
+    if (!poly) {
+        processingVars.numFiltersActive = TBase::inputs[L_AUDIO_INPUT].channels;
+        if (processingVars.numFiltersActive == 0) {
+            processingVars.numFiltersActive = TBase::inputs[R_AUDIO_INPUT].channels;
+        }
     }
+    else 
+        processingVars.numFiltersActive = std::max(TBase::inputs[L_AUDIO_INPUT].channels,TBase::inputs[R_AUDIO_INPUT].channels);
 
     const bool li = TBase::inputs[L_AUDIO_INPUT].isConnected();
     const bool ri = TBase::inputs[R_AUDIO_INPUT].isConnected();
@@ -184,15 +192,19 @@ inline void Filt<TBase>::setupProcessingVars() {
     // Decode the modes. "weird" modes only possible with one filter
     processingVars.mode = LadderFilterBank<T>::Modes::normal;
     processingVars.leftOutputChannels = processingVars.numFiltersActive;
-    processingVars.rightOutputChannels = 1;
+    if (!poly)
+        processingVars.rightOutputChannels = 1;
+    else
+        processingVars.rightOutputChannels = processingVars.numFiltersActive;
     processingVars.inputForChannel0 = nullptr;
     processingVars.inputForChannel1 = nullptr;
 
-    if (processingVars.numFiltersActive == 1) {
+    if (((processingVars.numFiltersActive ==1) && !poly) || ((processingVars.numFiltersActive >0) && poly)) {
         if (li && ri && lo && ro) {
             processingVars.mode = LadderFilterBank<T>::Modes::stereo;
             processingVars.inputForChannel1 = &TBase::inputs[R_AUDIO_INPUT];
-            processingVars.numFiltersActive = 2;
+            if (!poly)
+                processingVars.numFiltersActive = 2;
         } else if (li && !ri && lo && ro) {
             // do we need lo here? if only right was connected we would still do this, yes?
             processingVars.mode = LadderFilterBank<T>::Modes::leftOnly;
@@ -201,6 +213,11 @@ inline void Filt<TBase>::setupProcessingVars() {
             processingVars.inputForChannel0 = &TBase::inputs[R_AUDIO_INPUT];
         }
     }
+}
+
+template <class TBase>
+inline void Filt<TBase>::setPoly(bool _poly) {
+    poly = _poly;
 }
 
 template <class TBase>
@@ -242,44 +259,47 @@ inline void Filt<TBase>::stepn(int divFactor) {
     // the main inputs and outputs are polyphonic.
     // copy the channel number
     TBase::outputs[L_AUDIO_OUTPUT].setChannels(processingVars.leftOutputChannels);
+    TBase::outputs[R_AUDIO_OUTPUT].setChannels(processingVars.rightOutputChannels);
 }
 
 template <class TBase>
 inline void Filt<TBase>::step() {
     div.step();
 
+
     if (LadderFilterBank<T>::Modes::stereo == processingVars.mode) assert(processingVars.numFiltersActive == 2);
 
     filters.step(processingVars.numFiltersActive, processingVars.mode,
-                 TBase::inputs[L_AUDIO_INPUT], TBase::outputs[L_AUDIO_OUTPUT],
+                 TBase::inputs[L_AUDIO_INPUT], TBase::outputs[L_AUDIO_OUTPUT], TBase::outputs[R_AUDIO_OUTPUT],
                  processingVars.inputForChannel0, processingVars.inputForChannel1,
-                 peak);
+                 peak, poly);
 
-    // if audio, clear out
-    if (processingVars.numFiltersActive == 0) {
-        for (int i = 0; i < TBase::outputs[L_AUDIO_OUTPUT].channels; ++i) {
-            TBase::outputs[L_AUDIO_OUTPUT].setVoltage(0, i);
-        }
-    }
-
-    switch (processingVars.mode) {
-        case LadderFilterBank<T>::Modes::normal:
-            TBase::outputs[R_AUDIO_OUTPUT].setVoltage(0, 0);
-            break;
-        case LadderFilterBank<T>::Modes::stereo:
-            // copy the r output from poly port to  mono R out
-            {
-                const float r = TBase::outputs[L_AUDIO_OUTPUT].getVoltage(1);
-                TBase::outputs[R_AUDIO_OUTPUT].setVoltage(r, 0);
+        // if audio, clear out
+        if (processingVars.numFiltersActive == 0) {
+            for (int i = 0; i < TBase::outputs[L_AUDIO_OUTPUT].channels; ++i) {
+                TBase::outputs[L_AUDIO_OUTPUT].setVoltage(0, i);
             }
-            break;
-        case LadderFilterBank<T>::Modes::rightOnly:
-        case LadderFilterBank<T>::Modes::leftOnly: {
-            const float r = TBase::outputs[L_AUDIO_OUTPUT].getVoltage(0);
-            TBase::outputs[R_AUDIO_OUTPUT].setVoltage(r, 0);
-        } break;
-        default:
-            assert(false);
+        }
+    if (!poly) {
+        switch (processingVars.mode) {
+            case LadderFilterBank<T>::Modes::normal:
+                TBase::outputs[R_AUDIO_OUTPUT].setVoltage(0, 0);
+                break;
+            case LadderFilterBank<T>::Modes::stereo:
+                // copy the r output from poly port to  mono R out
+                {
+                    const float r = TBase::outputs[L_AUDIO_OUTPUT].getVoltage(1);
+                    TBase::outputs[R_AUDIO_OUTPUT].setVoltage(r, 0);
+                }
+                break;
+            case LadderFilterBank<T>::Modes::rightOnly:
+            case LadderFilterBank<T>::Modes::leftOnly: {
+                const float r = TBase::outputs[L_AUDIO_OUTPUT].getVoltage(0);
+                TBase::outputs[R_AUDIO_OUTPUT].setVoltage(r, 0);
+            } break;
+            default:
+                assert(false);
+        }
     }
 }
 

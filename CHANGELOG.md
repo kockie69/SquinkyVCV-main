@@ -1,5 +1,10 @@
 # Change log for Squinky Labs modules
 
+## 2.1.3
+
+Fixed bypass bug for COMPII
+Implemented full polyphonic support for Stairway
+ 
 ## 2.1.2
 
 LFN now has menu setting for switching to unipolar
