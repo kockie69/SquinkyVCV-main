@@ -203,7 +203,6 @@ inline void LadderFilterBank<T>::step(int numChannels, Modes mode,
                     filtR.run(inputR);
                     const float outputr = (float)filtR.getOutput();
                     audioOutputR.setVoltage(outputr, channel);
-                    //peak.step(outputr);
                     }
                     break; 
                 case Modes::rightOnly: {
