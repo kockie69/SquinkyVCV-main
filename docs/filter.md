@@ -7,15 +7,17 @@ Polyphonic ladder VCF with influences from Moog, Oberheim, Rossum and others.
 
 Stairway is yet another transistor ladder filter, but one that combines many of the ladder enhancements that have been discovered over the decades since the original Moog filter first came out.
 
-Stairway Provides many more shapes that just four pole low-pass. We believe this innovation was first used in the Oberheim Matrix-12, although our implementation is a little different.
+Stairway Provides many more shapes than just four pole low-pass. We believe this innovation was first used in the Oberheim Matrix-12, although our implementation is a little different.
 
 Like the Moog filter, Stairway has a pleasant mild distortion to make it sound fat, although it is possible to dial in more and quite different distortions.
 
 Stairway is by no means an accurate "model" of a specific moog filter. It is based on a standard good quality model of the transistor ladder, but it uses no component level modeling, and has not been painstakingly voice to sound as close as possible to a Moog. The intention of Stairway is to be rich and warm like a Moog, but with a lot of other sounds, too.
 
-Stairway provides much more control over distortion and overdrive that most filters. The Drive, Edge, and Voicing controls all work together to give a huge range of over-driven sounds. The four independent wave-shapers between the filter stages are where most of the magic comes from.
+Stairway provides much more control over distortion and overdrive than most filters. The Drive, Edge, and Voicing controls all work together to give a huge range of over-driven sounds. The four independent wave-shapers between the filter stages are where most of the magic comes from.
 
 Stairway is "stereo". There are two independent channels. But they will be inactive (using no CPU) if they are not patched.
+
+From version 2.1.3 Stairway can be put in full polyphonic mode by enabling 'Stereo polyphonic' in the context menu. Be aware that the CPU usage will be high if using all 16 channels.
 
 When Stairway is bypassed the Left/Right Inputs will be directly connected to the left/right Outputs.
 

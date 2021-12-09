@@ -98,7 +98,7 @@ Make sure to look in the context menu. There are handy actions in there that can
 
 * **Mix** Blends the "wet" (compressed) signal with the "dry" (unprocessed) signal. Used for "parallel compression".
 
-* **Byp** Enable/Bypass. When the compressor is bypassed the input is fed straight to the output. This allows you to compared the compressed vs. uncompressed sound quickly.
+* **Byp** Enable/Bypass. When the compressor is bypassed the input is fed straight to the output. This allows you to compared the compressed vs. uncompressed sound quickly. This effect can also be achieved by using the now VCV standard bypass option in the context menu.
 
 * **SC** Enables the side-chain input for the current channel. When the side-chain is enabled the compressor's gain detector does not look at the level of the audio input, it looks at the level of the side-chain input. See [using a compressor](./using-a-compressor.md)
 
