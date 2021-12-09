@@ -2,6 +2,7 @@
 
 ## 2.1.3
 
+Seq++ was not loading, fixed
 Fixed bypass bug for COMPII
 Implemented full polyphonic support for Stairway
  
