@@ -37,6 +37,7 @@ Graphic “piano roll” note editor. Undo and redo of every change.
 Notes may be entered and edited with the mouse, PC keyboard, or MIDI keyboard.
 Notes may be edited while the Sequencer is playing.
 Easy to enter and play back “conventional” music.
+Trigger output at End Of Cycle
 
 ## About this Sequencer
 
@@ -257,7 +258,9 @@ On the left are a few inputs, outputs, and controls.
 
 **CV** is the [polyphonic] pitch CV output. It will be polyphonic if Seq++ is set for more than one voice.
 
-**G** is the gate output. It will be polyphonic if Seq++ is set for more than one voice.
+**Gate** is the gate output. It will be polyphonic if Seq++ is set for more than one voice.
+
+**EOC** is the End of Cycle trigger Output.
 
 **CV in and Gate in** are the keyboard inputs for step recording.
 

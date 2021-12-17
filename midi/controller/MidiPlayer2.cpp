@@ -118,6 +118,8 @@ void MidiPlayer2::updateToMetricTimeInternal(double metricTime, float quantizati
         }
 #endif
     }
+    host->setEOC(0,eoc);
+    eoc=false;
 }
 
 bool MidiPlayer2::playOnce(double metricTime, float quantizeInterval) {
@@ -147,6 +149,7 @@ bool MidiPlayer2::playOnce(double metricTime, float quantizeInterval) {
         }
 
         if (loopEnd <= metricTime) {
+            eoc=true;
             currentLoopIterationStart += (song->getSubrangeLoop().endTime - song->getSubrangeLoop().startTime);
             curEvent = track->begin();
             return true;

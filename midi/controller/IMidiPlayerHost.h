@@ -1,5 +1,6 @@
 #pragma once
 
+#include "rack.hpp"
 #include <memory>
 
 /**
@@ -8,6 +9,7 @@
  */
 class IMidiPlayerHost4 {
 public:
+    virtual void setEOC(int track, bool eoc) = 0;
     virtual void setGate(int track, int voice, bool gate) = 0;
     virtual void setCV(int track, int voice, float pitch) = 0;
     virtual void onLockFailed() = 0;
@@ -18,6 +20,7 @@ public:
      */
     virtual void resetClock() = 0;
     virtual ~IMidiPlayerHost4() = default;
+    rack::dsp::PulseGenerator eocTrigger;
 };
 
 using IMidiPlayerHost4Ptr = std::shared_ptr<IMidiPlayerHost4>;

@@ -1,5 +1,9 @@
 # Change log for Squinky Labs modules
 
+## 2.1.4
+
+Seq++ now has EOC gate output
+
 ## 2.1.3
 
 Seq++ was not loading, fixed

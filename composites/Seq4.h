@@ -123,6 +123,7 @@ public:
         GATE1_OUTPUT,
         GATE2_OUTPUT,
         GATE3_OUTPUT,
+        EOC_OUTPUT,
         NUM_OUTPUTS
     };
 
@@ -196,7 +197,16 @@ class SeqHost4 : public IMidiPlayerHost4 {
 public:
     SeqHost4(Seq4<TBase>* s) : seq(s) {
     }
-
+    void setEOC(int track, bool eoc) override {
+        assert(track == 0);
+        if (eoc)
+            eocTrigger.trigger(1e-3f);
+        float time = eocTrigger.process(APP->engine->getSampleTime());
+        if (time)
+            seq->outputs[Seq4<TBase>::EOC_OUTPUT].setVoltage(10.f);
+        else    
+            seq->outputs[Seq4<TBase>::EOC_OUTPUT].setVoltage(0.f);
+    }
     void setGate(int track, int voice, bool gate) override {
         assert(track >= 0 && track < 4);
 #if defined(_MLOG)

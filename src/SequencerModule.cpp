@@ -48,6 +48,7 @@ SequencerModule::SequencerModule()
     configInput(Comp::GATE_INPUT,"Gate"); 
     configOutput(Seq<WidgetComposite>::CV_OUTPUT,"CV");
     configOutput(Seq<WidgetComposite>::GATE_OUTPUT,"Gate");
+    configOutput(Seq<WidgetComposite>::EOC_OUTPUT,"EOC");
 
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
@@ -495,7 +496,12 @@ void SequencerWidget::addStepRecord(SequencerModule *module)
      addInput(createInputCentered<PJ301MPort>(
         Vec(jacksX + 1 * jacksDx, jacksY),
         module,
-        Comp::GATE_INPUT));  
+        Comp::GATE_INPUT)); 
+
+       addChild(createLight<MediumLight<GreenLight>>(
+        Vec(jacksX + 2 * jacksDx -6 , jacksY -6),
+        module,
+        Seq<WidgetComposite>::GATE_LIGHT)); 
 }
 
 void SequencerWidget::addJacks(SequencerModule *module)
@@ -558,10 +564,16 @@ void SequencerWidget::addJacks(SequencerModule *module)
         Vec(labelX + 1 * jacksDx, jacksY2 + dy),
         "Gate");
 #endif
-    addChild(createLight<MediumLight<GreenLight>>(
-        Vec(jacksX + 2 * jacksDx -6 , jacksY2 -6),
+
+    addOutput(createOutputCentered<PJ301MPort>(
+        Vec(jacksX + 2 * jacksDx, jacksY2),
         module,
-        Seq<WidgetComposite>::GATE_LIGHT));
+        Seq<WidgetComposite>::EOC_OUTPUT));
+#ifdef _LAB
+    addLabel(
+        Vec(labelX + 2 * jacksDx, jacksY2 + dy),
+        "EOC");
+#endif        
 }
 
 void SequencerModule::dataFromJson(json_t *data)

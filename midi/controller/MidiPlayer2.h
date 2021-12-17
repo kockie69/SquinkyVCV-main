@@ -50,6 +50,7 @@ private:
     static const int maxVoices = 16;
     MidiVoice voices[maxVoices];
     MidiVoiceAssigner voiceAssigner;
+    bool eoc = false;
 
     /***************************************
      * Variables  to play one track

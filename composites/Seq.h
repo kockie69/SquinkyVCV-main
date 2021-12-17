@@ -78,6 +78,7 @@ public:
     enum OutputIds {
         CV_OUTPUT,
         GATE_OUTPUT,
+        EOC_OUTPUT,
         NUM_OUTPUTS
     };
 
@@ -152,7 +153,20 @@ private:
 template <class TBase>
 class SeqHost : public IMidiPlayerHost4 {
 public:
+    float delta = 0;
     SeqHost(Seq<TBase>* s) : seq(s) {
+    }
+    void setEOC(int track, bool eoc) override {
+        assert(track == 0);
+        if (eoc) {
+            delta = delta + APP->engine->getSampleTime();
+            eocTrigger.trigger(1e-3f);
+        }
+        float time = eocTrigger.process(APP->engine->getSampleTime());
+        if (time)
+            seq->outputs[Seq<TBase>::EOC_OUTPUT].setVoltage(10.f);
+        else    
+            seq->outputs[Seq<TBase>::EOC_OUTPUT].setVoltage(0.f);
     }
     void setGate(int track, int voice, bool gate) override {
         assert(track == 0);
@@ -160,23 +174,23 @@ public:
         printf("host::setGate(%d) = (%d, %.2f) t=%f\n",
                voice,
                gate,
-               seq->outputs[Seq<TBase>::CV_OUTPUT].voltages[voice],
+               seq->outputs[Seq<TBase>::CV_OUTPUT].getVoltage(voice),
                seq->getPlayPosition());
         fflush(stdout);
 #endif
-        seq->outputs[Seq<TBase>::GATE_OUTPUT].voltages[voice] = gate ? 10.f : 0.f;
+        seq->outputs[Seq<TBase>::GATE_OUTPUT].setVoltage(gate ? 10.f : 0.f,voice);
     }
     void setCV(int track, int voice, float cv) override {
         assert(track == 0);
 #if defined(_MLOG)
         printf("*** host::setCV(%d) = (%d, %.2f) t=%f\n",
                voice,
-               seq->outputs[Seq<TBase>::GATE_OUTPUT].voltages[voice] > 5,
+               seq->outputs[Seq<TBase>::GATE_OUTPUT].getVoltage(voice]) > 5,
                cv,
                seq->getPlayPosition());
         fflush(stdout);
 #endif
-        seq->outputs[Seq<TBase>::CV_OUTPUT].voltages[voice] = cv;
+        seq->outputs[Seq<TBase>::CV_OUTPUT].setVoltage(cv,voice);
     }
     void onLockFailed() override {
     }
@@ -231,7 +245,7 @@ void Seq<TBase>::serviceRunStop() {
         runStopRequested = false;
         bool curValue = isRunning();
         curValue = !curValue;
-        TBase::params[RUNNING_PARAM].value = curValue ? 1.f : 0.f;
+        TBase::params[RUNNING_PARAM].setValue(curValue ? 1.f : 0.f);
     }
     TBase::lights[RUN_STOP_LIGHT].value = TBase::params[RUNNING_PARAM].value;
 }
@@ -276,8 +290,8 @@ void Seq<TBase>::stepn(int n) {
 
     // copy the current voice number to the poly ports
     const int numVoices = (int)std::round(TBase::params[NUM_VOICES_PARAM].value + 1);
-    TBase::outputs[CV_OUTPUT].channels = numVoices;
-    TBase::outputs[GATE_OUTPUT].channels = numVoices;
+    TBase::outputs[CV_OUTPUT].setChannels(numVoices);
+    TBase::outputs[GATE_OUTPUT].setChannels(numVoices);
 
     player->setNumVoices(0, numVoices);
 
@@ -289,9 +303,9 @@ void Seq<TBase>::stepn(int n) {
     // light the gate LED is any voices playing
     bool isGate = false;
     for (int i = 0; i < numVoices; ++i) {
-        isGate = isGate || (TBase::outputs[GATE_OUTPUT].voltages[i] > 5);
+        isGate = isGate || (TBase::outputs[GATE_OUTPUT].getVoltage(i) > 5);
     }
-    TBase::lights[GATE_LIGHT].value = isGate;
+    TBase::lights[GATE_LIGHT].setBrightness(isGate);
 
     player->updateSampleCount(n);
 }
@@ -299,7 +313,7 @@ void Seq<TBase>::stepn(int n) {
 template <class TBase>
 inline void Seq<TBase>::allGatesOff() {
     for (int i = 0; i < 16; ++i) {
-        TBase::outputs[GATE_OUTPUT].voltages[i] = 0;
+        TBase::outputs[GATE_OUTPUT].setVoltage(0,i);
     }
 }
 

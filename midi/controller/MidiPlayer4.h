@@ -53,7 +53,7 @@ public:
     int getNextSectionRequest(int track) const;
 
     void setPorts(SqInput* cvInput, SqParam* triggerImmediate);
-    
+
     /**
      * Provide direct access so we don't have to add a zillion
      * "pass thru" APIs.
@@ -70,6 +70,7 @@ private:
     bool isReset = true;
     bool isResetGates = false;
     bool isResetSectionIndex = false;
+    bool eoc = false;
 
     void updateToMetricTimeInternal(double, float);
     void resetAllVoices(bool clearGates);
