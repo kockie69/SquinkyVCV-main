@@ -163,16 +163,12 @@ private:
             WARN("can't patch to input that is already patched");
             return;
         }
-        rack::engine::Cable* cable = new rack::engine::Cable;
-        cable->inputModule=host->getModule();
-        cable->outputModule=neighbour->getModule();
-        cable->id=-1;      
-        cable->outputId=output->portId;
-        cable->inputId=input->portId;
-        APP->engine->addCable(cable);
+        
         rack::app::CableWidget* cw = new rack::app::CableWidget;
-	    cw->setCable(cable);
+        cw->inputPort = input;
+        cw->outputPort = output;
 	    cw->color = APP->scene->rack->getNextCableColor();
+        cw->updateCable();
 	    if (cw->isComplete())
             APP->scene->rack->addCable(cw);
     }
