@@ -177,6 +177,7 @@ bool MidiPlayer2::playOnce(double metricTime, float quantizeInterval) {
                 // for now, should loop.
                 currentLoopIterationStart += curEvent->first;
                 curEvent = track->begin();
+                eoc=true;
                 break;
             default:
                 assert(false);
