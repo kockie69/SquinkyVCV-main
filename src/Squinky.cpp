@@ -13,8 +13,8 @@ Plugin *pluginInstance = nullptr;
 void init (::rack::Plugin *p)
 {
     pluginInstance = p;
-    p->slug = "squinkylabs-plug1";
-    p->version = TOSTRING(VERSION);
+/*    p->slug = "squinkylabs-plug1";
+    p->version = TOSTRING(VERSION);*/
 
 
 #ifdef _BOOTY

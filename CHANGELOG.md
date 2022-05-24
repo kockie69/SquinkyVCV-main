@@ -1,5 +1,9 @@
 # Change log for Squinky Labs modules
 
+## 2.1.6
+
+Due to changes in rack had to remove some code to fix autoupdate issue
+
 ## 2.1.5
 
 Seq++ EOC gate output was not working for all modes
