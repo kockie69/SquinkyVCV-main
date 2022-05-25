@@ -67,15 +67,15 @@ public:
 
     enum InputIds {
         AUDIO_INPUT,
-        AUDIO_R_INPUT,
         CV_INPUT,
+        AUDIO_R_INPUT,
         NUM_INPUTS
     };
 
     enum OutputIds {
         SIN_OUTPUT,
-        SIN_R_OUTPUT,
         COS_OUTPUT,
+        SIN_R_OUTPUT,
         COS_R_OUTPUT,
         NUM_OUTPUTS
     };

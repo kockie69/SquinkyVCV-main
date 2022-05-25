@@ -1,5 +1,9 @@
 # Change log for Squinky Labs modules
 
+## 2.1.7
+
+Bug Fix for Booty implemented. Wrong sequence for inputs and outputs so old patches patched wrongly.
+
 ## 2.1.6
 
 Due to changes in rack had to remove some code to fix autoupdate issue
