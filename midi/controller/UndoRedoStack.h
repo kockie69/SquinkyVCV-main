@@ -1,6 +1,8 @@
 #pragma once
 
 #include <memory>
+#include <atomic>
+#include <stdint.h>
 
 class SqCommand;
 class Sq4Command;
@@ -20,6 +22,9 @@ using MidiSequencer4Ptr = std::shared_ptr<MidiSequencer4>;
 class UndoRedoStack
 {
 public:
+    UndoRedoStack() {
+         moduleId = 0;
+    }
     // It's a bit of a hack to have a version that doesn't require a widget,
     // But since the widget param is rarely used... 
     // execute the command, make undo record
@@ -27,9 +32,9 @@ public:
     void execute(MidiSequencerPtr, SequencerWidget*, std::shared_ptr<SqCommand>);
     void execute4(MidiSequencer4Ptr, std::shared_ptr<Sq4Command>);
     void execute4(MidiSequencer4Ptr, Sequencer4Widget*, std::shared_ptr<Sq4Command>);
-    void setModuleId(int);
+    void setModuleId(int64_t, bool fromUI);
 private:
-    int moduleId=-1;
+    std::atomic<int64_t> moduleId;
 };
 
 using UndoRedoStackPtr = std::shared_ptr<UndoRedoStack>;

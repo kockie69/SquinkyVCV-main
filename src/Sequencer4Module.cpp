@@ -1,26 +1,23 @@
-#include "Squinky.hpp"
 #include "Sequencer4Module.h"
-#include "Sequencer4Widget.h"
 
-#include "SqStream.h"
 #include "MidiSong4.h"
-
+#include "Sequencer4Widget.h"
+#include "SqStream.h"
+#include "Squinky.hpp"
 #include "UndoRedoStack.h"
 #include "WidgetComposite.h"
 
 #ifdef _SEQ4
+#include "MidiSequencer4.h"
+#include "MidiSong4.h"
 #include "ctrl/PopupMenuParamWidget.h"
 #include "ctrl/SqHelper.h"
 #include "ctrl/SqMenuItem.h"
 #include "ctrl/SqToggleLED.h"
 #include "ctrl/SqWidgets.h"
-
 #include "seq/ClockFinder.h"
-#include "seq/SequencerSerializer.h"
 #include "seq/S4ButtonGrid.h"
-
-#include "MidiSequencer4.h"
-#include "MidiSong4.h"
+#include "seq/SequencerSerializer.h"
 
 using Comp = Seq4<WidgetComposite>;
 
@@ -29,10 +26,9 @@ void Sequencer4Module::onSampleRateChange() {
 
 //------------- define some custom param quantities for better tooltips -----
 
-class CVSelectParamQuantity : public ParamQuantity
-{
+class CVSelectParamQuantity : public ParamQuantity {
 public:
-    CVSelectParamQuantity( const ParamQuantity& other) {
+    CVSelectParamQuantity(const ParamQuantity& other) {
         ParamQuantity* base = this;
         *base = other;
     }
@@ -40,10 +36,10 @@ public:
         const unsigned int index = (unsigned int)(std::round(getValue()));
         const std::vector<std::string>& labels = Comp::getCVFunctionLabels();
         std::string ret;
-        switch(index) {
+        switch (index) {
             case 0:
-               ret = "Polyphonic (next, prev, set)";
-               break;
+                ret = "Polyphonic (next, prev, set)";
+                break;
             case 1:
                 ret = "Next section in track";
                 break;
@@ -60,15 +56,14 @@ public:
     }
 };
 
-class PadParamQuantity  : public ParamQuantity
-{
+class PadParamQuantity : public ParamQuantity {
 public:
-    PadParamQuantity( const ParamQuantity& other, int tk, int sect) : track(tk), section(sect) {
+    PadParamQuantity(const ParamQuantity& other, int tk, int sect) : track(tk), section(sect) {
         ParamQuantity* base = this;
         *base = other;
     }
     std::string getDisplayValueString() override { return ""; }
-    std::string getLabel() override { 
+    std::string getLabel() override {
         SqStream s;
         s.add("click: all tk -> section ");
         s.add(section);
@@ -78,6 +73,7 @@ public:
         s.add(section);
         return s.str();
     }
+
 private:
     const int track;
     const int section;
@@ -86,16 +82,16 @@ private:
 Sequencer4Module::Sequencer4Module() {
     runStopRequested = false;
     config(Comp::NUM_PARAMS, Comp::NUM_INPUTS, Comp::NUM_OUTPUTS, Comp::NUM_LIGHTS);
-        configInput(Comp::CLOCK_INPUT,"Clock");
-        configInput(Comp::RESET_INPUT, "Reset");
-        configInput(Comp::RUN_INPUT, "Run");
-        configInput(Comp::SELECT_CV_INPUT, "Select CV");
-        configInput(Comp::SELECT_GATE_INPUT, "Select gate");
-        for (int i = 0; i <4 ; i++) {
-            configOutput(Comp::CV0_OUTPUT + i, "Track " + std::to_string(i+1) + " CV"); 
-            configOutput(Comp::GATE0_OUTPUT + i, "Track " + std::to_string(i+1) + " gate");
-            configInput(Comp::MOD0_INPUT + i, "Track " + std::to_string(i+1) + " CV");
-        }
+    configInput(Comp::CLOCK_INPUT, "Clock");
+    configInput(Comp::RESET_INPUT, "Reset");
+    configInput(Comp::RUN_INPUT, "Run");
+    configInput(Comp::SELECT_CV_INPUT, "Select CV");
+    configInput(Comp::SELECT_GATE_INPUT, "Select gate");
+    for (int i = 0; i < 4; i++) {
+        configOutput(Comp::CV0_OUTPUT + i, "Track " + std::to_string(i + 1) + " CV");
+        configOutput(Comp::GATE0_OUTPUT + i, "Track " + std::to_string(i + 1) + " gate");
+        configInput(Comp::MOD0_INPUT + i, "Track " + std::to_string(i + 1) + " CV");
+    }
 
     MidiSong4Ptr song = MidiSong4::makeTest(MidiTrack::TestContent::empty, 0);
     seq4 = MidiSequencer4::make(song);
@@ -103,23 +99,22 @@ Sequencer4Module::Sequencer4Module() {
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
     SqHelper::setupParams(icomp, this);
 
-    for (int i=0; i<4; ++i) {
+    for (int i = 0; i < 4; ++i) {
         {
             assert(this->paramQuantities.size() == Comp::NUM_PARAMS);
             auto orig = this->paramQuantities[Comp::CV_FUNCTION_PARAM + i];
             auto p = new CVSelectParamQuantity(*orig);
-    
+
             delete orig;
             this->paramQuantities[Comp::CV_FUNCTION_PARAM + i] = p;
         }
         {
-             this->paramQuantities[Comp::NUM_VOICES_PARAM + i]->displayOffset += 1;
+            this->paramQuantities[Comp::NUM_VOICES_PARAM + i]->displayOffset += 1;
         }
     }
 
-    for (int track=0; track<MidiSong4::numTracks; ++track) {
+    for (int track = 0; track < MidiSong4::numTracks; ++track) {
         for (int section = 0; section < MidiSong4::numSectionsPerTrack; ++section) {
-
             const int index = track * MidiSong4::numSectionsPerTrack + section;
             auto orig = this->paramQuantities[Comp::PADSELECT0_PARAM + index];
             assert(this->paramQuantities.size() == Comp::NUM_PARAMS);
@@ -134,9 +129,16 @@ Sequencer4Module::Sequencer4Module() {
     assert(seq4);
 }
 
+void Sequencer4Module::setModuleId(bool fromWidget) {
+    const auto seq4 = getSequencer();
+    if (seq4) {
+        seq4->undo->setModuleId(this->id, fromWidget);
+    }
+}
+
 void Sequencer4Module::step() {
     if (seq4) {
-        seq4->undo->setModuleId(this->id);
+        seq4->undo->setModuleId(this->id, false);
     }
     if (runStopRequested) {
         seq4Comp->toggleRunStop();
@@ -166,7 +168,7 @@ json_t* Sequencer4Module::dataToJson() {
  * provide meta-data.
  * This is not shared by all modules in the DLL, just one
  */
-Sequencer4Widget::Sequencer4Widget(Sequencer4Module* module) {
+Sequencer4Widget::Sequencer4Widget(Sequencer4Module* module) : _module(module) {
     setModule(module);
     if (module) {
         module->widget = this;
@@ -174,7 +176,7 @@ Sequencer4Widget::Sequencer4Widget(Sequencer4Module* module) {
     buttonGrid = std::make_shared<S4ButtonGrid>();
 
     box.size = Vec(12 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
-   SqHelper::setPanel(this, "res/4x4.svg");
+    SqHelper::setPanel(this, "res/4x4.svg");
 
     std::shared_ptr<IComposite> icomp = Comp::getDescription();
 
@@ -189,7 +191,6 @@ Sequencer4Widget::Sequencer4Widget(Sequencer4Module* module) {
     addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 }
 
-
 class BaseOctaveItem : public ::rack::ui::MenuItem {
 public:
     BaseOctaveItem() = delete;
@@ -201,7 +202,7 @@ public:
         };
 
         std::function<void()> clickFn = [module, value]() {
-             APP->engine->setParamValue(module,  Comp::CV_SELECT_OCTAVE_PARAM, value);
+            APP->engine->setParamValue(module, Comp::CV_SELECT_OCTAVE_PARAM, value);
         };
 
         return new SqMenuItem(isCheckedFn, clickFn);
@@ -217,8 +218,7 @@ public:
 
         auto label = ::rack::construct<::rack::ui::MenuLabel>(
             &rack::ui::MenuLabel::text,
-            "Base octave"
-        );
+            "Base octave");
         menu->addChild(label);
 
         for (int i = 1; i <= 16; ++i) {
@@ -231,28 +231,27 @@ public:
 
         return menu;
     }
+
 private:
     Sequencer4Module* const module;
-
 };
 
 void Sequencer4Widget::appendContextMenu(Menu* theMenu) {
     ::rack::ui::MenuLabel* spacerLabel = new ::rack::ui::MenuLabel();
     theMenu->addChild(spacerLabel);
 
-#if 0 // doesn't work yet
+#if 0  // doesn't work yet
     auto item = new SqMenuItem_BooleanParam2(module, Comp::TRIGGER_IMMEDIATE_PARAM);
     item->text = "Trigger Immediately";
     theMenu->addChild(item);
 #endif
     {
-        auto item = new SqMenuItem( []() { return false; }, [this](){
+        auto item = new SqMenuItem([]() { return false; }, [this]() {
             // float rawClockFalue = Comp::CLOCK_INPUT_PARAM
             float rawClockValue = APP->engine->getParamValue(module, Comp::CLOCK_INPUT_PARAM);
             SeqClock::ClockRate rate =  SeqClock::ClockRate(int(std::round(rawClockValue)));
             const int div = SeqClock::clockRate2Div(rate);
-            ClockFinder::go(this, div, Comp::CLOCK_INPUT, Comp::RUN_INPUT, Comp::RESET_INPUT, ClockFinder::SquinkyType::X4X);
-        });
+            ClockFinder::go(this, div, Comp::CLOCK_INPUT, Comp::RUN_INPUT, Comp::RESET_INPUT, ClockFinder::SquinkyType::X4X); });
         item->text = "Hookup Clock";
         theMenu->addChild(item);
     }
@@ -262,9 +261,16 @@ void Sequencer4Widget::appendContextMenu(Menu* theMenu) {
         auto item = new BaseOctaveMenuItem(sModule);
         item->text = "CV select base octave";
         theMenu->addChild(item);
-
     }
-   
+}
+
+void Sequencer4Widget::step() {
+    ModuleWidget::step();
+
+    // give this guy a chance to do some processing on the UI thread.
+    if (_module) {
+        _module->setModuleId(true);
+    }
 }
 
 void Sequencer4Widget::setNewSeq(MidiSequencer4Ptr newSeq) {
@@ -278,12 +284,11 @@ void Sequencer4Widget::toggleRunStop(Sequencer4Module* module) {
 // #define _LAB
 void Sequencer4Widget::addControls(Sequencer4Module* module,
                                    std::shared_ptr<IComposite> icomp) {
-
 #ifdef _LAB
     addLabelLeft(Vec(20, y),
                  "Clock rate");
 #endif
-  
+
     const float y_bottom = 337;
     PopupMenuParamWidget* p = SqHelper::createParam<PopupMenuParamWidget>(
         icomp,
@@ -291,7 +296,7 @@ void Sequencer4Widget::addControls(Sequencer4Module* module,
         module,
         Comp::CLOCK_INPUT_PARAM);
     p->box.size.x = 48;  // width
-    p->box.size.y = 22;      // should set auto like button does
+    p->box.size.y = 22;  // should set auto like button does
     p->text = "x64";
     p->setLabels(Comp::getClockRates());
     addParam(p);
@@ -314,9 +319,9 @@ void Sequencer4Widget::addControls(Sequencer4Module* module,
             Vec(x + poly_dx, y + poly_dy),
             module,
             Comp::NUM_VOICES0_PARAM + i);
-        p->text = "4";              // default text for the module browser
+        p->text = "4";       // default text for the module browser
         p->box.size.x = 38;  // width
-        p->box.size.y = 20;      // should set auto like button does
+        p->box.size.y = 20;  // should set auto like button does
         p->setLabels(Comp::getPolyLabels());
         addParam(p);
 
@@ -325,9 +330,9 @@ void Sequencer4Widget::addControls(Sequencer4Module* module,
             Vec(x + func_dx, y + func_dy),  // 54 too much 50 too little
             module,
             Comp::CV_FUNCTION_PARAM + i);
-        p->text = "Poly";              // default text for the module browser
+        p->text = "Poly";    // default text for the module browser
         p->box.size.x = 48;  // width
-        p->box.size.y = 22;      // should set auto like button does
+        p->box.size.y = 22;  // should set auto like button does
         p->setLabels(Comp::getCVFunctionLabels());
         addParam(p);
 
@@ -409,7 +414,7 @@ void Sequencer4Widget::addJacks(Sequencer4Module* module) {
         "Run");
 #endif
 
-   addInput(createInput<SqInputJack>(
+    addInput(createInput<SqInputJack>(
         Vec(296, jacksY1),
         module,
         Comp::SELECT_CV_INPUT));
@@ -418,7 +423,7 @@ void Sequencer4Widget::addJacks(Sequencer4Module* module) {
         Vec(labelX - 7 + 4 * jacksDx, jacksY1 + dy),
         "Sel CV");
 #endif
-  addInput(createInput<SqInputJack>(
+    addInput(createInput<SqInputJack>(
         Vec(344, jacksY1),
         module,
         Comp::SELECT_GATE_INPUT));
@@ -427,7 +432,6 @@ void Sequencer4Widget::addJacks(Sequencer4Module* module) {
         Vec(labelX - 3 + 5 * jacksDx, jacksY1 + dy),
         "Sel Gate");
 #endif
-
 }
 
 void Sequencer4Module::setNewSeq(MidiSequencer4Ptr newSeq) {

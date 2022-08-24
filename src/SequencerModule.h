@@ -22,9 +22,13 @@ public:
     MidiSequencerPtr sequencer;
     SequencerWidget* widget = nullptr;
 
+    void setModuleId(bool fromWidget) {
+        sequencer->undo->setModuleId(this->id, fromWidget);
+    }
+
     void step() override
     {
-        sequencer->undo->setModuleId(this->id);
+        setModuleId(false);
         if (runStopRequested) {
             seqComp->toggleRunStop();
             runStopRequested = false;
