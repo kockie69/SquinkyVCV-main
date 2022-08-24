@@ -16,48 +16,78 @@
 
 class PopupMenuParamWidget : public ::rack::app::ParamWidget {
 public:
-    std::vector<std::string> labels;
+    std::vector<std::string> longLabels;
+    std::vector<std::string> shortLabels;
     std::string text = {"pop widget default"};
 
+    /** Creator must call this function before adding widget to the stage.
+     * These are the string that will show in the dropdown, and possibly
+     * in the text control while the menu is not open.
+     */
     void setLabels(std::vector<std::string> l) {
-        labels = l;
+        longLabels = l;
         ::rack::event::Change e;
         onChange(e);
     }
 
-    
+    /**
+     * Short labels, if present, will be used for the text shown when menu is closed.
+     * Short labels are optional.
+     * Providing short labels can save panel space, while dropdown shows the full text.
+     */
+    void setShortLabels(std::vector<std::string> l) {
+        shortLabels = l;
+        ::rack::event::Change e;
+        onChange(e);
+    }
 
     using NotificationCallback = std::function<void(int index)>;
     void setNotificationCallback(NotificationCallback);
 
-    // input is paramter value (quantized), output is control index/
+    // input is parameter value (quantized), output is control index/
     using IndexToValueFunction = std::function<float(int index)>;
     using ValueToIndexFunction = std::function<int(float value)>;
     void setIndexToValueFunction(IndexToValueFunction);
     void setValueToIndexFunction(ValueToIndexFunction);
 
-
     void drawLayer(const DrawArgs &arg, int layer) override;
     void onButton(const ::rack::event::Button &e) override;
     void onChange(const ::rack::event::Change &e) override;
     void onAction(const ::rack::event::Action &e) override;
-    void randomize();
-
+  
     friend class PopupMenuItem;
-private:
 
+private:
     NotificationCallback optionalNotificationCallback = {nullptr};
     IndexToValueFunction optionalIndexToValueFunction = {nullptr};
     ValueToIndexFunction optionalValueToIndexFunction = {nullptr};
     int curIndex = 0;
+
+    void randomize();
+    std::string getShortLabel(unsigned int index);
 };
 
-inline void PopupMenuParamWidget::randomize() {  
-	if (getParamQuantity() && getParamQuantity()->isBounded()) {
-		float value = rack::math::rescale(rack::random::uniform(), 0.f, 1.f, getParamQuantity()->getMinValue(), getParamQuantity()->getMaxValue());
-		value = std::round(value);
-		getParamQuantity()->setValue(value);
-	}
+inline std::string PopupMenuParamWidget::getShortLabel(unsigned int index) {
+    std::string ret;
+
+    // if index is out of the range of long labels, ignore it.
+    if (index < longLabels.size()) {
+        // If we have a long label, use it as a fall-back
+        ret = longLabels[index];
+        if (index < shortLabels.size()) {
+            // but if there is a short label, use it.
+            ret = shortLabels[index];
+        }
+    }
+    return ret;
+} 
+
+inline void PopupMenuParamWidget::randomize() {
+    if (getParamQuantity() && getParamQuantity()->isBounded()) {
+        float value = rack::math::rescale(rack::random::uniform(), 0.f, 1.f, getParamQuantity()->getMinValue(), getParamQuantity()->getMaxValue());
+        value = std::round(value);
+        getParamQuantity()->setValue(value);
+    }
 }
 
 inline void PopupMenuParamWidget::setNotificationCallback(NotificationCallback callback) {
@@ -74,24 +104,20 @@ inline void PopupMenuParamWidget::setValueToIndexFunction(ValueToIndexFunction f
 
 inline void PopupMenuParamWidget::onChange(const ::rack::event::Change &e) {
     if (!this->getParamQuantity()) {
-        return;  // no module
+        return;  // no module. Probably in the module browser.
     }
 
-    // process our self to update the text label
-   
+    // process ourself to update the text label
     int index = (int)std::round(this->getParamQuantity()->getValue());
     if (optionalValueToIndexFunction) {
         float value = this->getParamQuantity()->getValue();
         index = optionalValueToIndexFunction(value);
     }
 
-    if (!labels.empty()) {
-        if (index < 0 || index >= (int)labels.size()) {
-            WARN("onChange: index is outside label ranges is %d", index);
-            return;
-        }
-        this->text = labels[index];
-        curIndex = index;               // remember it
+    auto label = getShortLabel(index);
+    if (!label.empty()) {
+        this->text = label;
+        curIndex = index;  // remember it
     }
 
     // Delegate to base class to change param value
@@ -106,11 +132,15 @@ inline void PopupMenuParamWidget::drawLayer(const DrawArgs &args, int layer) {
         BNDwidgetState state = BND_DEFAULT;
         bndChoiceButton(args.vg, 0.0, 0.0, box.size.x, box.size.y, BND_CORNER_NONE, state, -1, text.c_str());
     }
-    ParamWidget::drawLayer(args,layer);
+    ParamWidget::drawLayer(args, layer);
 }
 
 inline void PopupMenuParamWidget::onButton(const ::rack::event::Button &e) {
     if ((e.button == GLFW_MOUSE_BUTTON_LEFT) && (e.action == GLFW_PRESS)) {
+        // remember which param is touched, so mapping can work.
+        if (module) {
+            APP->scene->rack->setTouchedParam(this);
+        }
         ::rack::event::Action ea;
         onAction(ea);
         sq::consumeEvent(&e, this);
@@ -124,8 +154,7 @@ public:
      *  parameter value.
      */
     PopupMenuItem(int index, PopupMenuParamWidget *inParent) : index(index), parent(inParent) {
-        // TODO: just pass text in
-        text = parent->labels[index];
+        text = parent->longLabels[index];
     }
 
     const int index;
@@ -135,11 +164,21 @@ public:
         parent->text = this->text;
         ::rack::event::Change ce;
         if (parent->getParamQuantity()) {
-            float value = index;
+            float newValue = index;
+            const float oldValue =  parent->getParamQuantity()->getValue();
             if (parent->optionalIndexToValueFunction) {
-                value = parent->optionalIndexToValueFunction(index);
+                newValue = parent->optionalIndexToValueFunction(index);
             }
-            parent->getParamQuantity()->setValue(value);
+            parent->getParamQuantity()->setValue(newValue);
+     
+            // Push ParamChange history action so user may undo this change
+			::rack::history::ParamChange* h = new ::rack::history::ParamChange;
+			h->name = "change menu";
+			h->moduleId = parent->module->id;
+			h->paramId = parent->paramId;
+			h->oldValue = oldValue;
+			h->newValue = newValue;
+			APP->history->push(h);
         }
         parent->onChange(ce);
     }
@@ -152,7 +191,7 @@ inline void PopupMenuParamWidget::onAction(const ::rack::event::Action &e) {
     menu->box.pos = getAbsoluteOffset(::rack::math::Vec(0, this->box.size.y)).round();
     menu->box.size.x = box.size.x;
     {
-        for (int i = 0; i < (int)labels.size(); ++i) {
+        for (int i = 0; i < (int)longLabels.size(); ++i) {
             menu->addChild(new PopupMenuItem(i, this));
         }
     }

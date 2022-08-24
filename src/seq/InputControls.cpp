@@ -11,18 +11,18 @@ void InputPopupMenuParamWidget::draw(const Widget::DrawArgs &args)
 void InputPopupMenuParamWidget::setValue(float v)
 {
     int i = int(std::round(v));
-    if (i < 0 || i >= int(labels.size())) {
+    if (i < 0 || i >= int(longLabels.size())) {
         WARN("popup set value illegal");
         assert(false);
         return;
     }
-    this->text = labels[i];
+    this->text = longLabels[i];
 }
 
 float InputPopupMenuParamWidget::getValue() const
 {
     int index = 0;
-    for (auto label : labels) {
+    for (auto label : longLabels) {
        // DEBUG("comparing label >%s< to this >%s<", label.c_str(), this->text.c_str());
         if (this->text == label) {
          //   DEBUG("found match");
