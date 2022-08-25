@@ -253,6 +253,7 @@ void SequencerWidget::step()
 
     // give this guy a chance to do some processing on the UI thread.
     if (_module) {
+        _module->setModuleId(true);
 #ifdef _USERKB
         noteDisplay->onUIThread(_module->seqComp, _module->sequencer);
 #else

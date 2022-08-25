@@ -79,8 +79,8 @@ private:
         }
         auto otherOutput = getOutput(otherModuleWidget, Comp::MAIN_OUTPUT);
 
-        assert(myFMPort->type == PortWidget::INPUT);
-        assert(otherOutput->type == PortWidget::OUTPUT);
+        assert(myFMPort->type == Port::INPUT);
+        assert(otherOutput->type == Port::OUTPUT);
 
          //   (output, input)
         patchBetweenPorts(myModuleWidget, otherModuleWidget, otherOutput, myFMPort);
@@ -135,13 +135,13 @@ private:
     }
 
     static PortWidget* getOutputThatConnectsToThisInput(PortWidget* thisInput) {
-        assert(thisInput->type == PortWidget::INPUT);
+        assert(thisInput->type == Port::INPUT);
         auto cables = APP->scene->rack->getCablesOnPort(thisInput);
         assert(cables.size() == 1);
         auto cable = cables.begin();
         CableWidget* cw = *cable;
         PortWidget* ret =  cw->outputPort;
-        assert(ret->type == PortWidget::OUTPUT);
+        assert(ret->type == Port::OUTPUT);
         return ret;
     }
 

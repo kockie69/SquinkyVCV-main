@@ -44,6 +44,9 @@ struct Sequencer4Widget : ModuleWidget {
         return label;
     }
 
+    Sequencer4Module* _module = nullptr;
+    void step() override;
+
     void setNewSeq(MidiSequencer4Ptr newSeq);
     void addControls(Sequencer4Module* module,
                      std::shared_ptr<IComposite> icomp);

@@ -35,6 +35,7 @@ public:
     void dataFromJson(json_t *data) override;
 
     Sequencer4Widget* widget = nullptr;
+    void setModuleId(bool fromWidget);
 private:
     std::atomic<bool> runStopRequested;
     std::shared_ptr<MidiSequencer4> seq4;

@@ -15,7 +15,7 @@ template<class SequencerPtr, class Command, class Module, class Widget>
 class SeqAction : public ::rack::history::ModuleAction
 {
 public:
-    SeqAction(const std::string& _name, std::shared_ptr<Command> command, int moduleId, const std::string& moduleName)
+    SeqAction(const std::string& _name, std::shared_ptr<Command> command, int64_t moduleId, const std::string& moduleName)
     {
         wrappedCommand = command;
         this->name = moduleName + ": " + wrappedCommand->name;
@@ -45,12 +45,12 @@ private:
         SequencerPtr ret;
         Module* module = dynamic_cast<Module *>(APP->engine->getModule(moduleId));
         if (!module) {
-            fprintf(stderr, "error getting module in undo\n");
+            WARN("error getting module in undo, id = %I64d", moduleId);
             return ret;
         }
         ret = module->getSequencer();
         if (!ret) {
-            fprintf(stderr, "error getting sequencer in undo\n");
+            WARN("error getting sequencer in undo");
         }
         return ret;
     }
@@ -58,12 +58,12 @@ private:
     {
         Module* module = dynamic_cast<Module *>(APP->engine->getModule(moduleId));
         if (!module) {
-            fprintf(stderr, "error getting module in undo\n");
+            WARN("error getting module in undo, id = %I64d", moduleId);
             return nullptr;
         }
         Widget* widget = module->widget;
         if (!widget) {
-            fprintf(stderr, "error getting widget in undo\n");
+            WARN("error getting widget in undo");
             return nullptr;
         }
         return widget;
@@ -75,9 +75,11 @@ using SeqAction1 = SeqAction<MidiSequencerPtr, SqCommand, SequencerModule, Seque
 using SeqAction4 = SeqAction<MidiSequencer4Ptr, Sq4Command, Sequencer4Module, Sequencer4Widget>;
 #endif
 
-void UndoRedoStack::setModuleId(int id)
-{
-    this->moduleId = id;
+void UndoRedoStack::setModuleId(int64_t id, bool fromUI)
+{   
+    if (id != this->moduleId) {
+         this->moduleId = id;
+    }
 }
 
 #ifdef _SEQ4
@@ -121,7 +123,7 @@ void UndoRedoStack::execute(MidiSequencerPtr seq, std::shared_ptr<SqCommand> cmd
 
 #if defined(__USE_VCV_UNDO) && !defined(_SEQ)
 
-void UndoRedoStack::setModuleId(int id)
+void UndoRedoStack::setModuleId(uint64_t id)
 {
     ;
 }
