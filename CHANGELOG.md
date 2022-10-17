@@ -1,5 +1,12 @@
 # Change log for Squinky Labs modules
 
+## 2.1.8
+
+brining enhanced popup widget from SqHarmony.
+This one fixes a broken undo.
+This one fixed midi parameter mapping.
+adds a set of optional short labels that can be used then the menu is closed (to save panel space).
+
 ## 2.1.7
 
 Bug Fix for Booty implemented. Wrong sequence for inputs and outputs so old patches patched wrongly.
