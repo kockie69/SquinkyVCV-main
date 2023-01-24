@@ -6,8 +6,12 @@
 
 #include <assert.h>
 #include <cmath>
+#if ARCH_ARM64
+#include "arm_intrinsics_sub.h"
+#else
 #include <xmmintrin.h>
 #include <mmintrin.h>
+#endif
 
 #define _LLOOK
 #define _LPSSE

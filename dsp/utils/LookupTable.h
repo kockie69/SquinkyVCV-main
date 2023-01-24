@@ -7,7 +7,11 @@
 #include <assert.h>
 #include <cmath>
 #include <memory>
+#if ARCH_ARM64
+#include "arm_intrinsics_sub.h"
+#else
 #include <emmintrin.h>
+#endif
 #include <functional>
 
 template <typename T> class LookupTableParams;
