@@ -1,7 +1,11 @@
 #pragma once
 
 #include "rack.hpp"
+#if ARCH_ARM64
+#include "arm_intrinsics_sub.h"
+#else
 #include <immintrin.h>
+#endif
 #include <random>
 #if !defined(M_PI)
 #define M_PI float(3.14159265358979323846264338327950288)

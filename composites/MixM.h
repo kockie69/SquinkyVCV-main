@@ -2,7 +2,11 @@
 #pragma once
 
 #include <assert.h>
+#if ARCH_ARM64
+#include "arm_intrinsics_sub.h"
+#else
 #include <immintrin.h>
+#endif
 
 #include <memory>
 
