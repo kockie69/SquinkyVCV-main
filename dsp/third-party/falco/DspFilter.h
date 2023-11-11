@@ -47,7 +47,7 @@ THE SOFTWARE.
 #include <cfloat>
 #include <cmath>
 #include <complex>
-
+#include <cstdint>
 #include <memory.h>
 #include <stdlib.h>
 #include <assert.h>
