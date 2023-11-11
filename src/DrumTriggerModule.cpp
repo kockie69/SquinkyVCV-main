@@ -39,7 +39,7 @@ DrumTriggerModule::DrumTriggerModule()
     configInput(Comp::GATE_INPUT,"Gate");
     std::string note;
 
-    for (int i; i < numTriggerChannels ;i++) {
+    for (int i=0; i < numTriggerChannels ;i++) {
         switch (i) {
             case 0: note="C";
             break;
