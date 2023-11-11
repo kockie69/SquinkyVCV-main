@@ -1,5 +1,8 @@
 # Change log for Squinky Labs modules
 
+## 2.1.9
+Changes to support latest toolchain builds
+
 ## 2.1.8
 
 brining enhanced popup widget from SqHarmony.
