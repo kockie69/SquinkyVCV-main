@@ -30,7 +30,7 @@
  */
 
 // Squinky Labs 2020
-#ifdef ARCH_WIN
+#ifdef _WIN32
 #define _CRT_SECURE_NO_WARNINGS
 
 #ifdef HAVE_CONFIG_H

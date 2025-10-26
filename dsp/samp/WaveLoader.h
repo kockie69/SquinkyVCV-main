@@ -4,8 +4,8 @@
 #include <memory>
 #include <string>
 #include <vector>
-
 #include "FilePath.h"
+#include <cstdint>
 
 // Abstract interface for audio files
 class WaveInfoInterface {

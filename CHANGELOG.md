@@ -1,5 +1,9 @@
 # Change log for Squinky Labs modules
 
+## 2.1.10
+Changes to support latest toolchain builds
+Changes to support arm64
+
 ## 2.1.9
 Changes to support latest toolchain builds
 
